@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import KlevaLogo from '../assets/kleva-logo.png';
 const currentYear = new Date().getFullYear();
 ---
 
@@ -8,7 +9,7 @@ const currentYear = new Date().getFullYear();
     <div class="footer-content">
       <div class="footer-section">
         <div class="footer-brand">
-          <h3 class="footer-logo">KLEVA</h3>
+          <img src={KlevaLogo.src} alt="Kleva" class="footer-logo-img" />
           <p class="footer-tagline">
             AI Collections for Latin American Banks & Lenders
           </p>
@@ -102,14 +103,11 @@ const currentYear = new Date().getFullYear();
     margin-bottom: 1.5rem;
   }
 
-  .footer-logo {
-    font-size: 1.75rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.5rem;
+  .footer-logo-img {
+    height: 28px;
+    width: auto;
+    margin-bottom: 1rem;
+    filter: brightness(0) invert(1);
   }
 
   .footer-tagline {

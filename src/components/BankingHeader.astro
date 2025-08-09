@@ -1,13 +1,14 @@
 ---
 import SimpleButton from './Button/SimpleButton.astro';
 import { Icon } from 'astro-icon/components';
+import KlevaLogo from '../assets/kleva-logo.png';
 ---
 
 <header class="header">
   <nav class="nav-container">
     <div class="nav-content">
       <a href="/" class="logo">
-        <span class="logo-text">KLEVA</span>
+        <img src={KlevaLogo.src} alt="Kleva" class="logo-img" />
       </a>
       
       <ul class="nav-menu desktop-only">
@@ -87,11 +88,10 @@ import { Icon } from 'astro-icon/components';
     text-decoration: none;
   }
 
-  .logo-text {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #1e3a8a;
-    letter-spacing: -0.02em;
+  .logo-img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
   }
 
   .nav-menu {
