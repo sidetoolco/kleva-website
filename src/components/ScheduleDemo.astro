@@ -1,0 +1,71 @@
+---
+import ZcalWidget from './ZcalWidget.astro';
+---
+
+<section class="schedule-demo">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Get Started</span>
+      <h2>Ready to cut collection costs by 70%?</h2>
+      <p>Schedule a 15-minute intro call to see Kleva in action</p>
+    </div>
+
+    <div class="calendar-container">
+      <ZcalWidget mode="inline" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .schedule-demo {
+    padding: 80px 0;
+    background: var(--color-white);
+    border-top: 1px solid var(--color-gray-200);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-500);
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--color-black);
+  }
+
+  .section-header p {
+    font-size: 16px;
+    color: var(--color-gray-600);
+  }
+
+  .calendar-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 32px;
+    background: var(--color-gray-50);
+    border-radius: 16px;
+    border: 1px solid var(--color-gray-200);
+  }
+
+  @media (max-width: 768px) {
+    .section-header h2 {
+      font-size: 28px;
+    }
+
+    .calendar-container {
+      padding: 16px;
+    }
+  }
+</style>

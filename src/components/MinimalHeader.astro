@@ -1,5 +1,6 @@
 ---
 import KlevaLogo from '../assets/kleva-logo.png';
+import ZcalWidget from './ZcalWidget.astro';
 ---
 
 <header class="header">
@@ -17,9 +18,7 @@ import KlevaLogo from '../assets/kleva-logo.png';
       </ul>
       
       <div class="nav-actions">
-        <a href="/contact" class="cta-button">
-          Book a 15-minute intro call
-        </a>
+        <ZcalWidget mode="popup" buttonText="Book a 15-minute intro call" />
       </div>
     </div>
   </nav>

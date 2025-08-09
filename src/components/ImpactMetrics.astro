@@ -1,0 +1,182 @@
+---
+import ZcalWidget from './ZcalWidget.astro';
+---
+
+<section class="impact-metrics">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">The Numbers</span>
+      <h2>Transforming debt collection in LATAM</h2>
+      <p>Real impact delivered to financial institutions across Latin America</p>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card primary">
+        <div class="metric-number">$67B</div>
+        <div class="metric-description">Total addressable market in LATAM consumer debt</div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-number">900K+</div>
+        <div class="metric-description">Minutes processed monthly</div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-number">94%</div>
+        <div class="metric-description">Customer satisfaction rate</div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-number">7</div>
+        <div class="metric-description">Countries with full compliance</div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-number">2-3</div>
+        <div class="metric-description">Weeks to full deployment</div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-number">24/7</div>
+        <div class="metric-description">Continuous operation without breaks</div>
+      </div>
+    </div>
+
+    <div class="impact-statement">
+      <h3>Why this matters</h3>
+      <p>
+        Latin America's debt collection industry loses billions annually to inefficiency. 
+        Traditional call centers face 80% annual turnover, inconsistent performance, and rising costs. 
+        Kleva's AI agents deliver consistent, compliant, and cost-effective collections at scale.
+      </p>
+      <div class="impact-cta">
+        <ZcalWidget mode="popup" buttonText="See how much you could save" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .impact-metrics {
+    padding: 80px 0;
+    background: var(--color-white);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-500);
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--color-black);
+  }
+
+  .section-header p {
+    font-size: 16px;
+    color: var(--color-gray-600);
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+
+  .metric-card {
+    padding: 32px;
+    background: var(--color-gray-50);
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid var(--color-gray-200);
+    transition: all 0.3s ease;
+  }
+
+  .metric-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-gray-300);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+  }
+
+  .metric-card.primary {
+    background: var(--color-black);
+    color: var(--color-white);
+    grid-column: span 3;
+  }
+
+  .metric-card.primary .metric-description {
+    color: var(--color-gray-300);
+  }
+
+  .metric-number {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: inherit;
+  }
+
+  .metric-description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-gray-600);
+  }
+
+  .impact-statement {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 48px;
+    background: var(--color-gray-50);
+    border-radius: 16px;
+  }
+
+  .impact-statement h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--color-black);
+  }
+
+  .impact-statement p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-gray-700);
+    margin-bottom: 32px;
+  }
+
+  .impact-cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .metrics-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .metric-card.primary {
+      grid-column: span 1;
+    }
+
+    .metric-number {
+      font-size: 36px;
+    }
+
+    .section-header h2 {
+      font-size: 28px;
+    }
+  }
+</style>

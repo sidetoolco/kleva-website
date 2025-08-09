@@ -1,4 +1,5 @@
 ---
+import ZcalWidget from './ZcalWidget.astro';
 ---
 
 <section class="hero">
@@ -34,9 +35,7 @@
       </div>
 
       <div class="hero-actions">
-        <a href="/contact" class="btn-primary">
-          Book a 15-minute intro call
-        </a>
+        <ZcalWidget mode="popup" buttonText="Book a 15-minute intro call" />
         <a href="#demo" class="btn-secondary">
           View demo
         </a>

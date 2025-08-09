@@ -1,0 +1,58 @@
+---
+interface Props {
+  mode?: 'inline' | 'popup';
+  buttonText?: string;
+}
+
+const { mode = 'inline', buttonText = 'Book a 15-minute intro call' } = Astro.props;
+---
+
+{mode === 'inline' ? (
+  <div class="zcal-widget-container">
+    <div class="zcal-inline-widget">
+      <a href="https://zcal.co/i/mHSsk_2N">Kleva Discovery Call - Schedule a meeting</a>
+    </div>
+  </div>
+) : (
+  <a 
+    href="https://zcal.co/i/mHSsk_2N" 
+    class="zcal-popup-button"
+  >
+    {buttonText}
+  </a>
+)}
+
+<script type="text/javascript" async src="https://static.zcal.co/embed/v1/embed.js"></script>
+
+<style>
+  .zcal-widget-container {
+    width: 100%;
+    min-height: 500px;
+    margin: 40px 0;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .zcal-popup-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--color-black);
+    color: var(--color-white);
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid var(--color-black);
+  }
+
+  .zcal-popup-button:hover {
+    background: var(--color-gray-900);
+    border-color: var(--color-gray-900);
+  }
+
+  @media (max-width: 768px) {
+    .zcal-widget-container {
+      min-height: 400px;
+    }
+  }
+</style>

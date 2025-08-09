@@ -2,14 +2,24 @@
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import MinimalLayout from '@layouts/MinimalLayout.astro';
 import MinimalHero from '@components/MinimalHero.astro';
+import TrustedBy from '@components/TrustedBy.astro';
+import ImpactMetrics from '@components/ImpactMetrics.astro';
 import MinimalFeatures from '@components/MinimalFeatures.astro';
+import HowItWorks from '@components/HowItWorks.astro';
+import Testimonials from '@components/Testimonials.astro';
 import CollapsibleFAQ from '@components/CollapsibleFAQ.astro';
+import ScheduleDemo from '@components/ScheduleDemo.astro';
 ---
 
 <MinimalLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <main>
     <MinimalHero />
+    <TrustedBy />
+    <ImpactMetrics />
     <MinimalFeatures />
+    <HowItWorks />
+    <Testimonials />
+    <ScheduleDemo />
     <CollapsibleFAQ />
   </main>
 </MinimalLayout>

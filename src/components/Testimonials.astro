@@ -1,0 +1,175 @@
+---
+const testimonials = [
+  {
+    quote: "Kleva reduced our collection costs by 72% in just 3 months. The AI agents handle complex negotiations better than our best human collectors.",
+    author: "Carlos Mendoza",
+    role: "Head of Collections",
+    company: "Banco Regional",
+    metric: "72%",
+    metricLabel: "Cost reduction"
+  },
+  {
+    quote: "We're recovering 30% more debt with Kleva. The system never gets tired, never gets frustrated, and treats every customer with patience.",
+    author: "Maria Silva",
+    role: "Chief Risk Officer",
+    company: "Fintech Solutions",
+    metric: "30%",
+    metricLabel: "Higher recovery"
+  },
+  {
+    quote: "Implementation took 2 weeks. We went from 50 agents to 5 supervisors managing thousands of AI calls daily.",
+    author: "Roberto Diaz",
+    role: "VP Operations",
+    company: "Credit Corp",
+    metric: "10x",
+    metricLabel: "Efficiency gain"
+  }
+];
+---
+
+<section class="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Client Success</span>
+      <h2>Real results from real clients</h2>
+      <p>See how leading financial institutions transform collections with Kleva</p>
+    </div>
+
+    <div class="testimonials-grid">
+      {testimonials.map((testimonial) => (
+        <div class="testimonial-card">
+          <div class="testimonial-metric">
+            <span class="metric-value">{testimonial.metric}</span>
+            <span class="metric-label">{testimonial.metricLabel}</span>
+          </div>
+          
+          <blockquote class="testimonial-quote">
+            "{testimonial.quote}"
+          </blockquote>
+          
+          <div class="testimonial-author">
+            <div class="author-info">
+              <div class="author-name">{testimonial.author}</div>
+              <div class="author-role">{testimonial.role}</div>
+              <div class="author-company">{testimonial.company}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    padding: 80px 0;
+    background: var(--color-gray-50);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-500);
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--color-black);
+  }
+
+  .section-header p {
+    font-size: 16px;
+    color: var(--color-gray-600);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .testimonial-card {
+    background: var(--color-white);
+    padding: 32px;
+    border-radius: 12px;
+    border: 1px solid var(--color-gray-200);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonial-metric {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+
+  .metric-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 4px;
+  }
+
+  .metric-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-500);
+  }
+
+  .testimonial-quote {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-gray-700);
+    margin: 0 0 24px 0;
+    flex-grow: 1;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-gray-200);
+  }
+
+  .author-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-black);
+    margin-bottom: 2px;
+  }
+
+  .author-role {
+    font-size: 13px;
+    color: var(--color-gray-600);
+  }
+
+  .author-company {
+    font-size: 13px;
+    color: var(--color-gray-500);
+    margin-top: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .section-header h2 {
+      font-size: 28px;
+    }
+  }
+</style>
