@@ -101,8 +101,8 @@ const popularPages = [
 
 <script>
 	// Track 404 errors in analytics
-	if (typeof gtag !== 'undefined') {
-		gtag('event', 'page_not_found', {
+	if (typeof window !== 'undefined' && typeof (window as any).gtag !== 'undefined') {
+		(window as any).gtag('event', 'page_not_found', {
 			page_location: window.location.href,
 			page_referrer: document.referrer
 		});
