@@ -27,7 +27,7 @@ import { Icon } from 'astro-icon/components';
       
       <div class="nav-actions">
         <SimpleButton href="/contact" size="sm" class="desktop-only">
-          Get Demo
+          Book a 15-minute intro call
         </SimpleButton>
         <button class="mobile-menu-btn mobile-only">
           <Icon name="ion:menu-outline" size={24} />
@@ -48,7 +48,7 @@ import { Icon } from 'astro-icon/components';
         <li><a href="/contact">Contact</a></li>
       </ul>
       <SimpleButton href="/contact" size="md" class="mobile-cta">
-        Get Demo
+        Book a 15-minute intro call
       </SimpleButton>
     </div>
   </div>
@@ -96,10 +96,16 @@ import { Icon } from 'astro-icon/components';
 
   .nav-menu {
     display: flex;
+    flex-direction: row;
+    align-items: center;
     list-style: none;
     gap: 1rem;
     margin: 0;
     padding: 0;
+  }
+  
+  .nav-item {
+    display: inline-block;
   }
 
   .nav-link {

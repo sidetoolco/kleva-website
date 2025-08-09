@@ -5,6 +5,7 @@ interface Props {
   variant?: 'primary' | 'secondary' | 'white' | 'outline-white';
   class?: string;
   target?: '_blank' | '_self';
+  type?: 'button' | 'submit' | 'reset';
 }
 
 const { 
@@ -12,7 +13,8 @@ const {
   size = 'md', 
   variant = 'primary', 
   class: className = '',
-  target = '_self'
+  target = '_self',
+  type = 'button'
 } = Astro.props;
 
 const Component = href ? 'a' : 'button';
@@ -20,7 +22,8 @@ const Component = href ? 'a' : 'button';
 
 <Component 
   href={href} 
-  target={target}
+  target={href ? target : undefined}
+  type={!href ? type : undefined}
   class:list={[
     'btn',
     `btn-${variant}`,
