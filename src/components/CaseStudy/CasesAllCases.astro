@@ -1,0 +1,18 @@
+---
+// types
+import type { CollectionEntry } from 'astro:content';
+// components
+import CasesSmallCard from '@components/CaseStudy/CasesSmallCard.astro';
+
+interface Props {
+	cases: CollectionEntry<'cases'>[];
+}
+
+const { cases } = Astro.props;
+---
+
+<div>
+	<div class="my-6 grid grid-cols-1 gap-6 blog:grid-cols-2">
+		{cases.map((caseStudy) => <CasesSmallCard caseStudy={caseStudy} />)}
+	</div>
+</div>

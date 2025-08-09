@@ -1,0 +1,470 @@
+---
+// Components
+import ButtonPillSimple from '@components/Button/ButtonPillSimple.astro';
+import ButtonMenu from '@components/ButtonMenu.astro';
+// Libs
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+
+//Assets
+import LogoFull from '../assets/sidetool__logo.svg';
+import LogoDarkMode from '../assets/sidetool__logo__dark.svg';
+import CaseStudy1 from '../assets/dropdown-menu.jpg';
+
+const dropdownLinks = [
+	{
+		title: 'AI Agents & Automations',
+		color: 'violet',
+		description: 'Work Smarter, automate the rest with high efficient workflows and tools.',
+		link: '/automations',
+	},
+	{
+		title: 'Scalable Apps',
+		color: 'green',
+		description: 'Apps that handle surging users and feature updates.',
+		link: '/solution/scalable-apps',
+	},
+	{
+		title: 'Startup Apps',
+		color: 'blue',
+		description: 'Transform those brainwaves into a real, living MVP to test.',
+		link: '/solution/startup-apps',
+	},
+];
+---
+
+<header id="main-header" class="dark">
+	<nav class="section">
+		<div class="logo">
+			<a href="/"
+				><Image src={LogoFull} alt="Sidetool" width={108} height={36} class="logo__light" />
+				<Image src={LogoDarkMode} alt="Sidetool" width={108} height={36} class="logo__dark" /></a
+			>
+		</div>
+		<div class="nav-links">
+			<button id="solutions-button" class="nav-link">
+				Solutions <div class="button-icon"><Icon name="ion:chevron-down" size={16} /></div>
+				<div class="dropdown-menu">
+					<div class="dropdown-links">
+						{
+							dropdownLinks.map((link) => (
+								<a href={link.link} class="dropdown-link">
+									<div class="dropdown-link-header">
+										<div class="dropdown-link-circle" class:list={`${link.color}`} />
+										<p class="dropdown-link-title">{link.title}</p>
+									</div>
+									<p class="dropdown-link-description">{link.description}</p>
+								</a>
+							))
+						}
+					</div>
+					<a href="/case-studies" class="dropdown-case-studies">
+						<div class="dropdown-case-studies-header">
+							<p class="dropdown-case-studies-title">Use cases</p>
+							<p class="dropdown-case-studies-description">
+								We create products that people love using. Explore some solutions that we built.
+							</p>
+						</div>
+						<Image src={CaseStudy1} alt="Case Study 1" width={200} height={100} />
+					</a>
+				</div>
+			</button>
+			<a class="nav-link" href="/case-studies">Work</a>
+			<a class="nav-link" href="/about">About us</a>
+			<a class="nav-link" href="/blog">Blog</a>
+			<a class="nav-link" href="/studio">Studio</a>
+		</div>
+		<div class="nav-cta">
+			<ButtonPillSimple fullWidth={true} label="Let's talk" asButton isCTA />
+		</div>
+		<div class="nav-menu">
+			<ButtonMenu />
+		</div>
+	</nav>
+</header>
+
+<style>
+	/* Base Header Styles */
+	#main-header {
+		position: fixed;
+		z-index: 1000;
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+
+		transition-property: padding;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-out;
+		transition-property: transform, opacity;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-out;
+		backdrop-filter: blur(4px);
+	}
+	#main-header.hide {
+		transform: translateY(-50%);
+		opacity: 0;
+	}
+	#main-header.dark {
+		background: rgba(var(--clr-black), 0.8);
+	}
+	#main-header:not(.dark) {
+		background: rgba(var(--clr-white), 0.8);
+	}
+
+	/* Base Navigation Styles */
+	nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-block: 8px;
+	}
+
+	/* Logo Styles */
+	.logo {
+		position: relative;
+	}
+
+	.logo__light,
+	.logo__dark {
+		position: relative;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: auto;
+		transition-property: opacity;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-out;
+	}
+
+	.logo__light {
+		position: absolute;
+	}
+
+	/* Logo Dark/Light Mode States */
+	#main-header:not(.dark) .logo__light {
+		opacity: 1;
+	}
+	#main-header:not(.dark) .logo__dark {
+		opacity: 0;
+	}
+	#main-header.dark .logo__light {
+		opacity: 0;
+	}
+	#main-header.dark .logo__dark {
+		opacity: 1;
+	}
+	#main-header.menu-open .logo__light {
+		opacity: 0;
+	}
+	#main-header.menu-open .logo__dark {
+		opacity: 1;
+	}
+
+	/* Navigation Links Container */
+	.nav-links {
+		display: none;
+		align-items: center;
+		animation: fade-in 0.8s ease-out;
+	}
+
+	/* Common Navigation Link Styles */
+	.nav-link,
+	button.nav-link {
+		font-family: var(--font-titles);
+		font-size: 14px;
+		transition-property: color;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-out;
+		padding-inline: 16px;
+		height: 24px;
+		line-height: 1.8;
+	}
+
+	button.nav-link {
+		color: inherit;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		height: 22px;
+		line-height: 1;
+	}
+
+	/* Navigation Link Dark/Light Mode Colors */
+	#main-header.dark .nav-link {
+		color: rgba(var(--clr-white), 0.8);
+	}
+	#main-header.dark .nav-link:hover {
+		color: rgba(var(--clr-white), 1);
+	}
+	#main-header:not(.dark) .nav-link {
+		color: rgba(var(--clr-black), 0.8);
+	}
+	#main-header:not(.dark) .nav-link:hover {
+		color: rgba(var(--clr-black), 1);
+	}
+
+	/* Navigation CTA and Menu */
+	.nav-cta {
+		display: none;
+	}
+	.nav-menu {
+		transform: translateX(8px);
+	}
+
+	/* Dropdown Menu Styles */
+	#solutions-button {
+		position: relative;
+	}
+
+	.dropdown-menu {
+		position: absolute;
+		top: 130%;
+		left: 0;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-10px);
+		transition: all 0.2s ease-out;
+		padding: 24px;
+		border-radius: 8px;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+		display: flex;
+		gap: 16px;
+		width: max-content;
+	}
+
+	.dropdown-menu.show {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+
+	/* Dropdown Dark/Light Mode Backgrounds */
+	#main-header.dark .dropdown-menu {
+		background-color: rgba(var(--clr-black), 1);
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+	}
+	#main-header:not(.dark) .dropdown-menu {
+		background-color: rgba(var(--clr-white), 1);
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	}
+
+	/* Dropdown Links Section */
+	.dropdown-links {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.dropdown-link {
+		max-width: 224px;
+		padding: 12px 16px;
+	}
+
+	.dropdown-link-header {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.dropdown-link-circle {
+		width: 4px;
+		height: 4px;
+		border-radius: 999px;
+		flex-shrink: 0;
+	}
+
+	.dropdown-link-circle.violet {
+		background-color: rgb(var(--clr-violet));
+	}
+	.dropdown-link-circle.green {
+		background-color: rgb(var(--clr-green));
+	}
+	.dropdown-link-circle.blue {
+		background-color: rgb(var(--clr-blue));
+	}
+
+	/* Dropdown Case Studies Section */
+	.dropdown-case-studies {
+		max-width: 244px;
+		flex-shrink: 0;
+		padding: 24px;
+	}
+
+	/* Dropdown Case Studies Dark/Light Mode Border */
+	#main-header.dark .dropdown-case-studies {
+		border: 1px solid rgba(var(--clr-white), 0.1);
+	}
+	#main-header:not(.dark) .dropdown-case-studies {
+		border: 1px solid rgba(var(--clr-black), 0.1);
+	}
+
+	.dropdown-case-studies-header {
+		margin-bottom: 16px;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.dropdown-case-studies img {
+		width: 200px;
+		height: 100px;
+	}
+
+	/* Common Dropdown Text Styles */
+	.dropdown-link-title,
+	.dropdown-case-studies-title {
+		font-family: var(--font-titles);
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 1.25;
+		text-wrap: nowrap;
+		text-align: left;
+		opacity: 0.75;
+	}
+	.dropdown-link:hover .dropdown-link-title,
+	.dropdown-case-studies:hover .dropdown-case-studies-title {
+		opacity: 1;
+	}
+
+	.dropdown-link-description,
+	.dropdown-case-studies-description {
+		text-align: left;
+		font-family: var(--font-titles);
+		font-size: 12px;
+		line-height: 1.45;
+	}
+
+	/* Dropdown Text Dark/Light Mode Colors */
+	#main-header.dark .dropdown-link-title,
+	#main-header.dark .dropdown-case-studies-title {
+		color: rgba(var(--clr-white), 1);
+	}
+	#main-header:not(.dark) .dropdown-link-title,
+	#main-header:not(.dark) .dropdown-case-studies-title {
+		color: rgba(var(--clr-black), 1);
+	}
+
+	#main-header.dark .dropdown-link-description,
+	#main-header.dark .dropdown-case-studies-description {
+		color: rgba(var(--clr-white), 0.5);
+	}
+	#main-header:not(.dark) .dropdown-link-description,
+	#main-header:not(.dark) .dropdown-case-studies-description {
+		color: rgba(var(--clr-black), 0.5);
+	}
+
+	/* Responsive Design */
+	@media (min-width: 768px) {
+		nav {
+			padding-block: 8px;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		nav {
+			padding-block: 12px;
+		}
+		.nav-links {
+			display: flex;
+		}
+		.nav-cta {
+			display: block;
+		}
+		.nav-menu {
+			display: none;
+		}
+	}
+</style>
+
+<script>
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	document.addEventListener('DOMContentLoaded', () => {
+		const solutionsButton = document.getElementById('solutions-button');
+		const dropdownMenu = solutionsButton?.querySelector('.dropdown-menu');
+		const header = document.getElementById('main-header');
+
+		let lastScrollY = window.scrollY;
+		const MIN_SCROLL_POSITION = 100;
+
+		const handleScroll = () => {
+			const currentScrollY = window.scrollY;
+
+			if (currentScrollY === 0) {
+				header?.classList.remove('hide');
+				header?.classList.remove('scrolled');
+			} else if (currentScrollY > MIN_SCROLL_POSITION && currentScrollY > lastScrollY) {
+				header?.classList.add('hide');
+				header?.classList.add('scrolled');
+			} else if (currentScrollY < lastScrollY) {
+				header?.classList.remove('hide');
+				header?.classList.add('scrolled');
+			}
+
+			lastScrollY = currentScrollY;
+		};
+
+		window.addEventListener('scroll', handleScroll, { passive: true });
+
+		// Dropdown functionality
+		if (solutionsButton && dropdownMenu) {
+			solutionsButton.addEventListener('click', (e) => {
+				e.stopPropagation();
+				dropdownMenu.classList.toggle('show');
+			});
+
+			// Close dropdown when clicking outside
+			document.addEventListener('click', () => {
+				if (dropdownMenu.classList.contains('show')) {
+					dropdownMenu.classList.remove('show');
+				}
+			});
+
+			// Prevent dropdown from closing when clicking inside it
+			dropdownMenu.addEventListener('click', (e) => {
+				e.stopPropagation();
+			});
+		}
+
+		/* Light & Dark Section Handler */
+		const pageSections = document.querySelectorAll('.page__section');
+		const lightSections = document.querySelectorAll('.page__section.light');
+		/* This button is on src/components/ButtonMenu.astro */
+		const menuBtn = document.getElementById('navigation-menu');
+
+		lightSections.forEach((section) => {
+			ScrollTrigger.create({
+				trigger: section,
+				start: 'top 2%',
+				end: 'bottom 2%',
+				onEnter: () => {
+					header?.classList.remove('dark');
+					menuBtn?.classList.remove('dark');
+					//console.log('enter');
+				},
+				onEnterBack: () => {
+					header?.classList.remove('dark');
+					menuBtn?.classList.remove('dark');
+					//console.log('enter back');
+				},
+				onLeave: () => {
+					header?.classList.add('dark');
+					menuBtn?.classList.add('dark');
+					//console.log('leave');
+				},
+				onLeaveBack: () => {
+					//console.log('leave back');
+					header?.classList.add('dark');
+					menuBtn?.classList.add('dark');
+				},
+			});
+		});
+
+		if (pageSections[0].classList.contains('light')) {
+			header?.classList.remove('dark');
+			menuBtn?.classList.remove('dark');
+		}
+	});
+</script>

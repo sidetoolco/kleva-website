@@ -1,0 +1,143 @@
+---
+//Types
+import type { AutomationSolution, AUTOMATION_SOLUTIONSResult } from '../../types/sanity.types';
+//Libs
+import { loadQuery } from '@sanity/lib/load-query';
+import { AUTOMATION_SOLUTIONS } from '@sanity/lib/queries';
+import { urlForImage } from '@sanity/lib/url-for-image';
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+
+const { data: automationSolutions } = await loadQuery<AUTOMATION_SOLUTIONSResult>({
+	query: AUTOMATION_SOLUTIONS,
+});
+---
+
+<article class="pb-24 md:pb-36">
+	<section class="container__wide">
+		<h2 class="section__title mb-4 font-semibold">Solutions</h2>
+		<p class="section__text max-w-3xl text-secondary">
+			We offer custom AI tools to automate any business workflow, personal task, or more! <br />No code required.
+		</p>
+	</section>
+
+	<section class="sm:container__wide relative">
+		<div
+			class="pointer-events-none absolute right-0 z-20 h-full w-10 bg-gradient-to-l from-white to-transparent sm:hidden"
+		>
+		</div>
+		<div
+			class="pointer-events-none absolute left-0 z-20 h-full w-10 bg-gradient-to-r from-white to-transparent sm:hidden"
+		>
+		</div>
+		<div
+			role="group"
+			aria-label="Solution Categories"
+			class="container__wide relative z-10 mt-8 flex gap-2 overflow-x-auto px-4 [-ms-overflow-style:none] [scrollbar-width:none] sm:px-0 [&::-webkit-scrollbar]:hidden"
+		>
+			<button type="button" aria-pressed="true" data-tag="all">All</button>
+			<button type="button" aria-pressed="false" data-tag="sales">Sales</button>
+			<button type="button" aria-pressed="false" data-tag="marketing">Marketing</button>
+			<button type="button" aria-pressed="false" data-tag="operations">Operations</button>
+			<button type="button" aria-pressed="false" data-tag="support">Support</button>
+		</div>
+	</section>
+
+	<section class="container__wide pt-8">
+		<ul class="grid grid-cols-1 gap-8 md:grid-cols-2">
+			{
+				automationSolutions.map((automationSolution: AutomationSolution) => (
+					<li class="solution-item rounded-xl bg-[#F9FAFB] p-4 shadow-md" data-tag={automationSolution.tags?.join(' ')}>
+						<a href={`/automation-solution/${automationSolution.slug?.current}`} class="space-y-6">
+							<div class="aspect-square h-auto max-h-80 w-full overflow-hidden rounded-xl">
+								{automationSolution.solutionBanner && (
+									<Image
+										src={urlForImage(automationSolution.solutionBanner).url()}
+										alt={automationSolution.title ?? ''}
+										inferSize={true}
+										quality={80}
+										loading={'lazy'}
+										class="h-full object-cover object-left"
+									/>
+								)}
+							</div>
+							<div class="space-y-3">
+								<h3 class="flex items-start font-titles text-2xl font-semibold leading-[1]">
+									<Icon name={automationSolution.icon ?? 'ion:rocket-outline'} class="mr-2 text-primary" />
+									{automationSolution.title}
+								</h3>
+								<p class="text-secondary">{automationSolution.brief}</p>
+							</div>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+</article>
+
+<style>
+	button {
+		min-width: 88px;
+		font-size: 18px;
+		line-height: 1.5;
+		padding: 4px 12px;
+		border: 1px solid #141c25;
+		border-radius: 999px;
+		flex-shrink: 0;
+		transition-property: background-color, border-color, color;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-in-out;
+	}
+	button:hover[aria-pressed='false'] {
+		background-color: #be79ff;
+		border-color: #be79ff;
+		color: white;
+	}
+	button[aria-pressed='true'] {
+		border-color: #be79ff;
+		color: #be79ff;
+	}
+</style>
+
+<script>
+	const buttons = document.querySelectorAll('button');
+	const solutionItems = document.querySelectorAll<HTMLElement>('li[data-tag]');
+
+	// Function to filter items based on selected tag
+	function filterItems(selectedTag: string) {
+		solutionItems.forEach((item) => {
+			const itemTags = item.getAttribute('data-tag')?.split(' ') || [];
+
+			if (selectedTag === 'all' || itemTags.includes(selectedTag)) {
+				item.style.display = '';
+			} else {
+				item.style.display = 'none';
+			}
+		});
+	}
+
+	// Add click event listeners to all filter buttons
+	buttons.forEach((button) => {
+		button.addEventListener('click', () => {
+			// Update button states
+			buttons.forEach((btn) => {
+				btn.setAttribute('aria-pressed', 'false');
+			});
+			button.setAttribute('aria-pressed', 'true');
+
+			// Filter items based on selected tag
+			const selectedTag = button.getAttribute('data-tag') || 'all';
+			filterItems(selectedTag);
+		});
+	});
+
+	// Initialize with "all" filter on page load
+	window.addEventListener('DOMContentLoaded', () => {
+		const initialButton = document.querySelector('button[data-tag="all"]');
+		if (initialButton) {
+			initialButton.setAttribute('aria-pressed', 'true');
+			filterItems('all');
+		}
+	});
+</script>

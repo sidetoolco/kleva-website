@@ -1,0 +1,312 @@
+---
+import BankingLayout from '@layouts/BankingLayout.astro';
+import SimpleButton from '@components/Button/SimpleButton.astro';
+
+// Sample blog posts for banking/lending focus
+const blogPosts = [
+  {
+    title: "Why 75% of Collections Agents Quit Within 3 Months",
+    excerpt: "The collections industry faces a burnout crisis. Here's how AI is changing the game for both agents and debtors.",
+    date: "November 15, 2024",
+    category: "Industry Insights",
+    readTime: "5 min read"
+  },
+  {
+    title: "The Real Cost of Manual Collections in 2024",
+    excerpt: "Most lenders don't realize they're losing millions to inefficient collections. We break down the hidden costs.",
+    date: "November 10, 2024",
+    category: "ROI Analysis",
+    readTime: "7 min read"
+  },
+  {
+    title: "How Vana Cut Collection Costs by 70% with AI",
+    excerpt: "Case study: How a Guatemala microlender transformed their collections with Kleva's AI agents.",
+    date: "November 5, 2024",
+    category: "Case Study",
+    readTime: "6 min read"
+  },
+  {
+    title: "LATAM's $67 Billion Collections Problem",
+    excerpt: "77.5% of Brazilian families are in debt. 60% delinquency rates in fintech. The old way isn't working.",
+    date: "October 28, 2024",
+    category: "Market Analysis",
+    readTime: "8 min read"
+  },
+  {
+    title: "Why Debtors Actually Prefer Talking to AI",
+    excerpt: "Surprising research shows customers are more likely to pay when speaking with AI agents. Here's why.",
+    date: "October 20, 2024",
+    category: "Technology",
+    readTime: "4 min read"
+  },
+  {
+    title: "Building AI That Speaks Real Spanish (Not Google Translate)",
+    excerpt: "The technical challenges of building voice AI for LATAM markets and how we solved them.",
+    date: "October 15, 2024",
+    category: "Technology",
+    readTime: "10 min read"
+  }
+];
+---
+
+<BankingLayout title="Kleva Blog - Collections & AI Insights" description="Learn about the future of debt collection, AI agents, and financial technology in Latin America">
+  <main class="blog-page">
+    <section class="hero-section">
+      <div class="container">
+        <h1 class="page-title">Insights & Resources</h1>
+        <p class="page-subtitle">
+          Learn how AI is transforming collections in Latin America
+        </p>
+      </div>
+    </section>
+
+    <section class="blog-section">
+      <div class="container">
+        <div class="featured-post">
+          <span class="featured-badge">Featured</span>
+          <h2 class="featured-title">
+            The Complete Guide to AI Collections in LATAM
+          </h2>
+          <p class="featured-excerpt">
+            Everything banks and lenders need to know about implementing AI agents for collections. 
+            From ROI calculations to compliance requirements, we cover it all.
+          </p>
+          <div class="featured-meta">
+            <span>November 20, 2024</span>
+            <span>•</span>
+            <span>15 min read</span>
+            <span>•</span>
+            <span>Ultimate Guide</span>
+          </div>
+          <SimpleButton href="#" size="md">
+            Read Full Guide
+          </SimpleButton>
+        </div>
+
+        <div class="blog-grid">
+          {blogPosts.map((post) => (
+            <article class="blog-card">
+              <div class="blog-category">{post.category}</div>
+              <h3 class="blog-title">{post.title}</h3>
+              <p class="blog-excerpt">{post.excerpt}</p>
+              <div class="blog-meta">
+                <span class="blog-date">{post.date}</span>
+                <span class="blog-read-time">{post.readTime}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div class="newsletter-section">
+          <h2>Stay Updated on Collections Innovation</h2>
+          <p>Get weekly insights on AI, collections, and fintech in LATAM.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" required />
+            <SimpleButton type="submit" size="md">
+              Subscribe
+            </SimpleButton>
+          </form>
+          <p class="newsletter-note">Join 500+ banking executives already subscribed</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</BankingLayout>
+
+<style>
+  .blog-page {
+    padding-top: var(--header-height-mobile);
+  }
+
+  .hero-section {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+    padding: 3rem 0;
+    text-align: center;
+    color: white;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    opacity: 0.9;
+  }
+
+  .blog-section {
+    padding: 4rem 0;
+    background: #f9fafb;
+  }
+
+  .featured-post {
+    background: white;
+    padding: 3rem;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 2px solid #3730a3;
+  }
+
+  .featured-badge {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    background: #3730a3;
+    color: white;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .featured-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #111827;
+  }
+
+  .featured-excerpt {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+  }
+
+  .featured-meta {
+    display: flex;
+    gap: 0.75rem;
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 2rem;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .blog-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .blog-category {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #dbeafe;
+    color: #1e3a8a;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .blog-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #111827;
+    line-height: 1.3;
+  }
+
+  .blog-excerpt {
+    color: #6b7280;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .blog-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: #9ca3af;
+  }
+
+  .newsletter-section {
+    background: white;
+    padding: 3rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .newsletter-section h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #111827;
+  }
+
+  .newsletter-section p {
+    color: #6b7280;
+    margin-bottom: 2rem;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto 1rem;
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .newsletter-form input:focus {
+    outline: none;
+    border-color: #3730a3;
+  }
+
+  .newsletter-note {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .blog-page {
+      padding-top: var(--header-height-desktop);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .newsletter-form {
+      flex-direction: column;
+    }
+
+    .featured-post {
+      padding: 2rem;
+    }
+  }
+</style>

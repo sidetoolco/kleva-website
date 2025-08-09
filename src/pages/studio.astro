@@ -1,0 +1,59 @@
+---
+// Layout
+import MainLayout from '@layouts/MainLayout.astro';
+
+// Sanity
+import { COMPANY_SHOWCASE } from '@sanity/lib/queries';
+import { loadQuery } from '@sanity/lib/load-query';
+import type { CompanyShowcase as CompanyShowcaseType, COMPANY_SHOWCASEResult } from '../types/sanity.types';
+
+// Components
+import CompanyShowcase from '@components/companies/CompanyShowcase.astro';
+import Contact from '@components/Contact.astro';
+
+const { data: showcasesCompanies } = await loadQuery<COMPANY_SHOWCASEResult>({ query: COMPANY_SHOWCASE });
+---
+
+<MainLayout
+	title={'Studio | Sidetool'}
+	description={`This relentless spirit of innovation is such a fundamental part of who we are. Sidetool Studio is where we turn big market opportunities and deep industry insights into real-world products and companies. Take a look at the companies born from Sidetool Studio.`}
+>
+	<main id="page-content">
+		<div class="page__section light">
+			<section
+				class="container__wide mx-auto flex flex-col items-start justify-between gap-10 md:pt-12 lg:flex-row lg:items-start lg:pb-16"
+			>
+				<h1 class="text-5xl leading-[1] tracking-tight lg:text-[70px]">
+					<span class="font-semibold">Sidetool</span> Studio.
+				</h1>
+				<p class="text-2xl text-secondary lg:w-1/2">
+					This relentless spirit of innovation is such a fundamental part of who we are. Sidetool Studio is where we
+					turn big market opportunities and deep industry insights into real-world products and companies. Take a look
+					at the companies born from Sidetool Studio.
+				</p>
+			</section>
+			<div class="my-24 space-y-24 md:my-36 lg:space-y-36">
+				{showcasesCompanies.map((company: CompanyShowcaseType) => <CompanyShowcase company={company} />)}
+			</div>
+		</div>
+		<Contact />
+	</main>
+</MainLayout>
+<style>
+	.page__section {
+		overflow: hidden;
+		padding-top: calc(var(--header-height-mobile) + 64px);
+	}
+
+	@media (min-width: 768px) {
+		.page__section {
+			padding-top: calc(var(--header-height-desktop) + 82px);
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.page__section {
+			padding-top: calc(var(--header-height-desktop) + 120px);
+		}
+	}
+</style>

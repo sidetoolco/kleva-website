@@ -1,0 +1,104 @@
+---
+import ButtonCircleArrowLink from '@components/Button/ButtonCircleArrowLink.astro';
+import ReviewsSnippet from '@components/new-home/ReviewsSnippet.astro';
+---
+
+<section id="main-hero" class="section page__section dark">
+	<h1 class="hero-title mobile">
+		<span class="word">Let</span>
+		<span class="word">us</span>
+		<span class="word">automate</span>
+		<span class="word">the</span>
+		<span class="word">worst</span>
+		<span class="word">parts</span>
+		<span class="word">of</span>
+		<span class="word">running</span>
+		<span class="word">your</span>
+		<span class="word">company</span>
+	</h1>
+	<p class="hero-subtitle">Custom-built AI automations that handle your tasks, hassle-free.</p>
+	<ButtonCircleArrowLink href="/" label="Book a 15-min intro call" asButton />
+	<ReviewsSnippet />
+</section>
+
+<style>
+	section {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		gap: 22px;
+	}
+	@media (min-width: 768px) {
+		#main-hero {
+			padding-block: 0px;
+		}
+		section {
+			gap: 32px;
+		}
+	}
+	@media (min-width: 1024px) {
+		section {
+			gap: 48px;
+		}
+	}
+	.hero-title {
+		font-family: var(--font-titles);
+		font-size: 48px;
+		line-height: 1;
+		letter-spacing: -1.4px;
+		color: rgb(var(--clr-white));
+		max-width: 1024px;
+	}
+	@media (min-width: 640px) {
+		.hero-title {
+			font-size: 56px;
+		}
+	}
+	@media (min-width: 768px) {
+		.hero-title {
+			font-size: 64px;
+		}
+	}
+	@media (min-width: 1024px) {
+		.hero-title {
+			font-size: 70px;
+		}
+	}
+	.word {
+		opacity: 0.5;
+	}
+	.hero-subtitle {
+		font-family: var(--font-titles);
+		font-size: 18px;
+		color: rgba(var(--clr-white), 1);
+		font-weight: 300;
+	}
+	@media (min-width: 768px) {
+		.hero-subtitle {
+			font-size: 22px;
+		}
+	}
+	@media (min-width: 1024px) {
+		.hero-subtitle {
+			font-size: 24px;
+		}
+	}
+</style>
+
+<script>
+	import { gsap } from 'gsap';
+	document.addEventListener('DOMContentLoaded', () => {
+		const words = document.querySelectorAll('#main-hero .word');
+
+		function animateWords() {
+			gsap.to(words, {
+				opacity: 1,
+				duration: 0.3,
+				ease: 'power2.out',
+				stagger: 0.2,
+			});
+		}
+
+		animateWords();
+	});
+</script>

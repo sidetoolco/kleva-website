@@ -1,0 +1,23 @@
+---
+// const
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+// components
+import MainLayout from '@layouts/MainLayout.astro';
+import ButtonPrimary from '@components/Button/ButtonPrimary.astro';
+---
+
+<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<main id="page-content" class="min-h-screen pt-16">
+		<section class="min-h-screen">
+			<h1
+				class="flex flex-col gap-1 pt-20 text-center text-4xl font-extrabold md:text-6xl xl:pt-16 xl:text-7xl 2xl:pt-40"
+			>
+				Thank you!
+			</h1>
+			<p class="big__text mx-auto mb-8 w-fit md:mb-16">Your next project starts here</p>
+			<div class="mt-6 flex justify-center gap-2 md:mt-8">
+				<ButtonPrimary label="Back to home" theme="light" link={true} href="/" classes="h-12 w-[182px]" />
+			</div>
+		</section>
+	</main>
+</MainLayout>

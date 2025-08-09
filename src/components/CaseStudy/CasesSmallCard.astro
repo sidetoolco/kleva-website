@@ -1,0 +1,43 @@
+---
+//libs
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+
+//types
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	caseStudy: CollectionEntry<'cases'>;
+}
+
+const { caseStudy } = Astro.props;
+---
+
+<div class="flex flex-col overflow-hidden rounded-lg bg-full-white shadow-xl">
+	<a href={`/case-study/${caseStudy.data.slug}`} class="group">
+		<div class="aspect-video overflow-hidden">
+			<Image
+				class="transition-transform duration-300 group-hover:scale-105"
+				src={caseStudy.data.image}
+				alt={caseStudy.data.project_title}
+				quality={80}
+				loading="lazy"
+			/>
+		</div>
+	</a>
+	<div class="flex grow flex-col gap-4 bg-slate-100 p-6">
+		<div class="flex flex-col space-y-2">
+			<span class="text-xs">{caseStudy.data.industry}</span>
+			<h3 class="text-pretty text-2xl font-bold">
+				{caseStudy.data.project_title}
+			</h3>
+			<p>{caseStudy.data.meta_description}</p>
+		</div>
+		<a
+			href={`/case-study/${caseStudy.data.slug}`}
+			class="mt-auto flex w-fit items-center gap-1 border-b border-transparent font-semibold text-indigo-800 hover:border-indigo-800"
+		>
+			Read More <Icon name="ion:arrow-forward" />
+		</a>
+	</div>
+</div>

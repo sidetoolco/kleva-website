@@ -1,0 +1,74 @@
+---
+// Types
+import type { CaseStudy } from '../../types/sanity.types';
+
+// Components
+import CaseStudyWhyCameCard from '@components/CaseStudy/CaseStudyWhyCameCard.astro';
+
+interface Props {
+	caseStudy: CaseStudy;
+}
+
+const { caseStudy } = Astro.props;
+---
+
+<article id="why__they__came" class="relative z-20 bg-black py-24 md:py-36">
+	<header class="fade-in container__wide my-0 mb-8 flex flex-col md:mb-12">
+		<div class="flex flex-col gap-6">
+			<h3 class="section__title text-white">Why they came to us</h3>
+			<p class="section__text max-w-screen-md text-white">{caseStudy.whyTheyCameToUs}</p>
+		</div>
+	</header>
+	<section class="fade-in">
+		<div id="why__came__cards" class="mx-auto pl-3 sm:pl-4 md:pl-8 lg:px-16 xl:px-24 2xl:max-w-desktop">
+			<ul class="swiper-wrapper">
+				{
+					caseStudy.whyCameCardsV2?.map((card) =>
+						caseStudy.version === 1 ? (
+							<li class="swiper-slide h-auto w-[284px] flex-shrink lg:w-full">
+								<CaseStudyWhyCameCard
+									title={card.title ?? ''}
+									body={card.description ?? ''}
+									iconName={card.icon ?? ''}
+									iconClasses=""
+									color={caseStudy.colorTheme?.hex ?? ''}
+								/>
+							</li>
+						) : (
+							<li class="swiper-slide h-auto w-[284px] flex-shrink lg:w-full">
+								<div class="flex h-full min-w-[278px] flex-col items-start gap-[14px] rounded-xl border border-[#616161] bg-transparent px-5 py-8 shadow-md lg:w-full">
+									<h5 class="text-center font-titles text-[22px] font-medium leading-[1.1] text-white md:text-[28px]">
+										{card.title}
+									</h5>
+									<p class="text-center text-sm text-white md:text-lg">{card.description}</p>
+								</div>
+							</li>
+						)
+					)
+				}
+			</ul>
+		</div>
+	</section>
+</article>
+<script>
+	import Swiper from 'swiper';
+	import 'swiper/css';
+
+	new Swiper('#why__came__cards', {
+		freeMode: true,
+		slidesPerView: 'auto',
+		spaceBetween: 24,
+		breakpoints: {
+			950: {
+				slidesPerView: 3,
+			},
+		},
+	});
+</script>
+
+<style>
+	.swiper-slide {
+		width: 284px;
+		height: auto;
+	}
+</style>

@@ -1,0 +1,64 @@
+---
+import { Image } from 'astro:assets';
+
+// Import your images
+import aiImage from '@assets/about/ai.png';
+import startupsImage from '@assets/about/startups.png';
+import automationsImage from '@assets/about/automations.png';
+import scalableImage from '@assets/about/scalable.png';
+import websitesImage from '@assets/about/websites.png';
+
+const builds = [
+	{
+		title: "AI Agents that work 24/7 so you don't have to",
+		href: '/case-studies/mcdonalds',
+		imageUrl: aiImage,
+	},
+	{
+		title: 'MVPs for scrappy founders ready to validate ideas (yesterday).',
+		href: '/case-studies/bidx',
+		imageUrl: startupsImage,
+	},
+	{
+		title: 'Automation that makes operations smoother than your morning coffee.',
+		href: '/case-studies/gritppo',
+		imageUrl: automationsImage,
+	},
+	{
+		title: 'Scalable apps and internal tools that actually scale.',
+		href: '/case-studies/trn',
+		imageUrl: scalableImage,
+	},
+	{
+		title: "Websites that don't suck.",
+		href: '/case-studies/revenueroll',
+		imageUrl: websitesImage,
+	},
+];
+---
+
+<section class="container__wide page__section light py-12 md:py-24">
+	<h3 class="section__title mb-8 font-semibold">What We Build</h3>
+	<ul>
+		{
+			builds.map((build) => (
+				<li class="group relative z-10 border-b border-[#969EB2] transition-colors duration-200 hover:z-20 hover:bg-black">
+					<a
+						class="relative flex justify-between px-4 py-6 text-black transition-colors duration-200 group-hover:text-white md:px-8 md:py-7"
+						href={build.href}
+					>
+						<p class="text-lg font-medium leading-[1.4] md:text-xl">{build.title}</p>
+						<div class="pointer-events-none absolute right-20 top-1/2 hidden -translate-y-1/2 bg-[#E9D1FF] p-8 group-hover:block">
+							<Image src={build.imageUrl} alt={build.title} width={484} height={348} class="shadow-lg" />
+						</div>
+						<div class="grid origin-center -rotate-45 place-items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
+								<path fill="currentColor" d="M4 12h12.25L11 6.75l.66-.75l6.5 6.5l-6.5 6.5l-.66-.75L16.25 13H4z" />
+							</svg>
+						</div>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</section>

@@ -1,0 +1,95 @@
+---
+//components
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	prevUrl: string | undefined;
+	nextUrl: string | undefined;
+	currentPage: number;
+	totalPages: number;
+	baseUrl: string;
+	withButtons: boolean;
+}
+
+const { prevUrl, nextUrl, currentPage, totalPages, baseUrl, withButtons } = Astro.props;
+
+function getVisiblePages(current: number, total: number) {
+	const range: (number | string)[] = [];
+
+	range.push(1);
+	if (current - 1 > 2) {
+		range.push('...');
+	}
+	if (current - 1 > 1) {
+		range.push(current - 1);
+	}
+	if (current !== 1 && current !== total) {
+		range.push(current);
+	}
+	if (current + 1 < total) {
+		range.push(current + 1);
+	}
+	if (current + 1 < total - 1) {
+		range.push('...');
+	}
+	if (total > 1) {
+		range.push(total);
+	}
+
+	return range;
+}
+
+const visiblePages = getVisiblePages(currentPage, totalPages);
+---
+
+<nav class="mx-auto flex w-full items-center justify-center gap-4 p-6" aria-label="blog pages">
+	{
+		withButtons && prevUrl && (
+			<a
+				href={prevUrl}
+				class="flex min-w-28 items-center justify-center gap-1 rounded-md border-2 px-3 py-2 text-sm font-medium hover:bg-text-secondary"
+				aria-label="Go to previous page"
+			>
+				<Icon name={'ion:arrow-left-c'} />
+				Previous
+			</a>
+		)
+	}
+
+	<div class="flex gap-1">
+		{
+			visiblePages.map((page) =>
+				page === '...' ? (
+					<span class="flex h-10 w-10 items-center justify-center text-sm">...</span>
+				) : (
+					<a
+						href={Number(page) === 1 ? baseUrl : `${baseUrl}/${page}`}
+						class:list={[
+							'flex h-10 w-10 items-center justify-center rounded-full text-sm font-medium',
+							{
+								'bg-black text-white': currentPage === page,
+								'hover:bg-text-secondary': currentPage !== page,
+							},
+						]}
+						aria-current={currentPage === Number(page) ? 'page' : undefined}
+					>
+						{page}
+					</a>
+				)
+			)
+		}
+	</div>
+
+	{
+		withButtons && nextUrl && (
+			<a
+				href={nextUrl}
+				class="flex min-w-28 items-center justify-center gap-1 rounded-md border-2 px-3 py-2 text-sm font-medium hover:bg-text-secondary"
+				aria-label="Go to next page"
+			>
+				Next
+				<Icon name={'ion:arrow-right-c'} />
+			</a>
+		)
+	}
+</nav>

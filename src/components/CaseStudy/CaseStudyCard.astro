@@ -1,0 +1,118 @@
+---
+// Types
+import type { CaseStudy } from '../../types/sanity.types';
+// Components
+import PortableText from '@components/PortableText.astro';
+import ButtonLinkArrow from '@components/Button/ButtonLinkArrow.astro';
+// Libs
+import { urlForImage } from 'src/sanity/lib/url-for-image';
+import { Image } from 'astro:assets';
+
+interface Props {
+	caseStudy: CaseStudy;
+	dark?: boolean;
+	simple?: boolean;
+}
+
+const { caseStudy, dark, simple = false } = Astro.props;
+---
+
+<a href={`/case-studies/${caseStudy.slug}`} class="flex h-fit flex-col gap-2">
+	<div
+		class="relative block aspect-[384/280] w-full overflow-hidden rounded-[10px] p-6"
+		style={`background: linear-gradient(180deg, #141C25 35%, ${caseStudy.colorTheme?.hex} 100%);`}
+	>
+		<div class="mb-8 h-1/3">
+			<div class="h-7">
+				{
+					caseStudy.logoContrast && (
+						<Image
+							src={urlForImage(caseStudy.logoContrast).url()}
+							alt={caseStudy.brief ?? ''}
+							inferSize
+							class="mx-auto h-full object-contain"
+						/>
+					)
+				}
+			</div>
+			<h5 class="mt-4 text-center font-titles text-xl text-white">
+				<PortableText portableText={caseStudy.heroTitle} />
+			</h5>
+		</div>
+		{
+			caseStudy.heroImage && (
+				<div class="h-full w-full overflow-hidden rounded-t-md">
+					<Image
+						src={urlForImage(caseStudy.heroImage).url()}
+						alt={caseStudy.brief ?? ''}
+						inferSize
+						class="h-full w-full object-cover"
+					/>
+				</div>
+			)
+		}
+	</div>
+	<div class="flex flex-1 flex-col gap-3">
+		<h4 class:list={[dark && 'dark', simple && 'simple']} class="font-titles text-2xl mt-2">
+			{caseStudy.title}
+			<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+				<path d="M8.74724 7.44824H20.818M20.818 7.44824V19.519M20.818 7.44824L7.2724 20.9938" stroke="white"/>
+			</svg>
+		</h4>
+		{
+			!simple && (
+				<ul class="flex flex-wrap gap-[6px]">
+					{caseStudy.tags?.map((tag: string) => (
+						<li
+							class="text-nowrap rounded-full border px-3 py-[2px] text-sm"
+							class:list={[
+								tag === 'AI Agent' && 'border-primary text-primary',
+								tag === 'Websites' && 'border-green-700 text-green-700',
+								tag === 'Startup Apps' && 'border-blue-700 text-blue-700',
+								tag === 'Automatization' && 'border-orange-700 text-orange-700',
+								tag === 'Internal Tool' && 'border-cyan-700 text-cyan-700',
+								tag === 'Scalable App' && 'border-slate-700 text-slate-700',
+							]}
+						>
+							{tag}
+						</li>
+					))}
+				</ul>
+				<p class="mb-2 text-sm text-secondary md:text-lg">{caseStudy.brief}</p>
+				<ButtonLinkArrow href={`/case-studies/${caseStudy.slug}`} label="Learn more" />
+			)
+		}
+	</div>
+</a>
+
+<style>
+	h4 {
+		color: rgb(var(--clr-black));
+		font-weight: 700;
+	}
+	h4.dark {
+		color: rgb(var(--clr-white));
+	}
+	h4:not(.simple) svg {
+		display: none;
+	}
+	h4.simple {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-weight: 400;
+	}
+	svg {
+		transition: transform 0.15s ease-out;
+	}
+	img {
+		transition: scale 0.15s ease-out;
+	}
+	a:hover svg {
+		transform: rotate(45deg);
+	}
+	a:hover img {
+		scale: 1.05;
+	}
+	
+</style>

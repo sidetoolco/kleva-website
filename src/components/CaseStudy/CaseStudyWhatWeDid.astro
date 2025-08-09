@@ -1,0 +1,97 @@
+---
+// Types
+import type { CaseStudy } from '../../types/sanity.types';
+// Components
+import CaseStudyWhatWeDidCard from './CaseStudyWhatWeDidCard.astro';
+import ButtonPrimary from '@components/Button/ButtonPrimary.astro';
+
+interface Props {
+	caseStudy: CaseStudy;
+}
+
+const { caseStudy } = Astro.props;
+---
+
+<article class="container__wide py-24 md:py-36">
+	<header class="fade-in mb-8 flex flex-col gap-2 text-center xl:mb-16">
+		<h3 class="section__title font-semibold text-white">What We Did for Them</h3>
+		<p class="section__text mx-auto max-w-screen-sm text-text-secondary">{caseStudy.whatWeDid}</p>
+	</header>
+	<section id="what__we__did__slider" class="fade-in flex flex-col gap-3 sm:flex-row">
+		<ul class="swiper-wrapper">
+			{
+				caseStudy.whatWeDidCardsV2?.map((card, i) => (
+					<li class="swiper-slide">
+						<CaseStudyWhatWeDidCard
+							title={card.title ?? ''}
+							description={card.description ?? ''}
+							image={card.image}
+							imagePosition={i % 2 != 0 ? 'bottom' : 'top'}
+						/>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+	<section
+		class="fade-in mt-3 flex flex-col gap-6 rounded-xl border border-[#27313F] bg-[#1A232D] px-6 py-10 text-center shadow-md sm:flex-row sm:gap-16 lg:gap-28"
+	>
+		<div class="space-y-[14px] sm:text-left">
+			<h4 class="font-titles text-2xl font-bold text-white md:text-[28px] md:leading-[1.1]">Solution we provided</h4>
+			<p class="mx-auto max-w-screen-sm text-sm leading-[1.5] text-text-secondary md:text-lg">
+				{caseStudy.solutionWeProvided}
+			</p>
+		</div>
+		<ButtonPrimary
+			label="Explore the full solution"
+			link={true}
+			href="/"
+			theme="light"
+			classes="w-full h-14 sm:max-w-fit sm:mt-auto sm:ml-auto"
+		/>
+	</section>
+</article>
+
+<script>
+	import Swiper from 'swiper';
+	import type { SwiperOptions, Swiper as SwiperInstance } from 'swiper/types';
+	import 'swiper/css';
+
+	let swiper: SwiperInstance | null = null;
+	const breakpoint = 880;
+
+	const initSwiper = (): void => {
+		if (window.innerWidth <= breakpoint && !swiper) {
+			const options: SwiperOptions = {
+				freeMode: true,
+				slidesPerView: 'auto',
+				spaceBetween: 24,
+			};
+			swiper = new Swiper('#what__we__did__slider', options);
+		} else if (window.innerWidth > breakpoint && swiper) {
+			swiper.destroy(true, true);
+			swiper = null;
+		}
+	};
+
+	document.addEventListener('DOMContentLoaded', initSwiper);
+
+	window.addEventListener('resize', () => {
+		initSwiper();
+	});
+</script>
+
+<style>
+	.swiper-slide {
+		width: 256px;
+		height: auto;
+	}
+	@media (min-width: 880px) {
+		.swiper-wrapper {
+			gap: 24px;
+		}
+		.swiper-slide {
+			flex: 1;
+		}
+	}
+</style>

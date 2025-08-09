@@ -1,0 +1,211 @@
+---
+import SimpleButton from './Button/SimpleButton.astro';
+---
+
+<section id="results" class="solution-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">The Solution</span>
+      <h2 class="section-title">AI Agents That Collect Better Than Humans</h2>
+      <p class="section-description">
+        Not just cheaper. Actually better at recovering money.
+      </p>
+    </div>
+
+    <div class="solution-grid">
+      <div class="solution-card highlight">
+        <h3>The Numbers Don't Lie</h3>
+        <ul>
+          <li><strong>25% higher recovery rates</strong> than best human agents</li>
+          <li><strong>70% cost reduction</strong> in operations</li>
+          <li><strong>10,000 calls per day</strong> with perfect consistency</li>
+          <li><strong>Zero turnover</strong> - AI never quits</li>
+        </ul>
+      </div>
+
+      <div class="solution-card">
+        <h3>Why Debtors Prefer AI</h3>
+        <ul>
+          <li>Infinite patience, never shames</li>
+          <li>Offers solutions, not threats</li>
+          <li>Available 24/7 at their convenience</li>
+          <li>Consistent and professional every time</li>
+        </ul>
+      </div>
+
+      <div class="solution-card">
+        <h3>How It Works</h3>
+        <ul>
+          <li>Integrates with your existing systems</li>
+          <li>Makes thousands of calls simultaneously</li>
+          <li>Learns from every conversation</li>
+          <li>Escalates complex cases to humans</li>
+        </ul>
+      </div>
+
+      <div class="solution-card">
+        <h3>Built for LATAM</h3>
+        <ul>
+          <li>Native Spanish & Portuguese</li>
+          <li>Understands local dialects</li>
+          <li>Compliant with regional laws</li>
+          <li>94% address accuracy (vs Google's 70%)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="testimonial">
+      <blockquote>
+        "Kleva doesn't just save us money. They're actually better at collecting than our best agents. 
+        And our customers prefer talking to the AI. It's a win-win-win."
+      </blockquote>
+      <cite>— Tito, CEO of Vana (100K minutes/month)</cite>
+    </div>
+
+    <div class="cta-box">
+      <h3>See Kleva in Action</h3>
+      <p>Watch how our AI handles real collection calls with empathy and effectiveness.</p>
+      <SimpleButton href="/contact" size="lg">
+        Get Your Demo
+      </SimpleButton>
+    </div>
+  </div>
+</section>
+
+<style>
+  .solution-section {
+    padding: 5rem 0;
+    background: white;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-badge {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    background: #dbeafe;
+    color: #1e3a8a;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #111827;
+  }
+
+  .section-description {
+    font-size: 1.25rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .solution-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .solution-card {
+    background: #f9fafb;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid #e5e7eb;
+  }
+
+  .solution-card.highlight {
+    background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+    border: 2px solid #3730a3;
+  }
+
+  .solution-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #111827;
+  }
+
+  .solution-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .solution-card li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: #4b5563;
+    line-height: 1.5;
+  }
+
+  .solution-card li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #10b981;
+    font-weight: bold;
+  }
+
+  .solution-card li strong {
+    color: #111827;
+    font-weight: 600;
+  }
+
+  .testimonial {
+    background: #f3f4f6;
+    padding: 3rem;
+    border-radius: 1rem;
+    text-align: center;
+    margin: 3rem 0;
+  }
+
+  .testimonial blockquote {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #374151;
+    margin: 0 0 1rem 0;
+    font-style: italic;
+  }
+
+  .testimonial cite {
+    color: #6b7280;
+    font-style: normal;
+    font-size: 1rem;
+  }
+
+  .cta-box {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+    padding: 3rem;
+    border-radius: 1rem;
+    text-align: center;
+    color: white;
+  }
+
+  .cta-box h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-box p {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+</style>

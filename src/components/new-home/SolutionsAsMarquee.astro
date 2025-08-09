@@ -1,0 +1,347 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const blocks = [
+	{
+		category: 'General Productivity ',
+		icon: 'ion:checkmark-circle-outline',
+		features: [
+			'Virtual Executive Assistant',
+			'Inbox Management Assistant',
+			'Task Management Assistant',
+			'Meeting Summarizer',
+		],
+	},
+	{
+		category: 'Sales and Marketing ',
+		icon: 'ion:megaphone-outline',
+		features: ['AI Sales Rep', 'Lead Generation Bot', 'Marketing Automation Assistant', 'Social Media Assistant'],
+	},
+	{
+		category: 'Customer Support ',
+		icon: 'ion:ios-people-outline',
+		features: ['Help Desk AI', 'Customer Onboarding Assistant', 'E-commerce Support Agent', 'Multilingual Support AI'],
+	},
+	{
+		category: 'Finance and Accounting ',
+		icon: 'ion:calculator-outline',
+		features: [
+			'Accounts Receivable Automation',
+			'Financial Research Assistant',
+			'Expense Management Bot',
+			'Billing and Payment Automation',
+		],
+	},
+	{
+		category: 'HR and Recruiting ',
+		icon: 'ion:person-add-outline',
+		features: ['AI Recruiter', 'Employee Onboarding Assistant', 'HR Support Agent'],
+	},
+	{
+		category: 'Real Estate ',
+		icon: 'ion:business-outline',
+		features: ['Property Management AI', 'Real Estate Lead Gen Assistant', 'Virtual Leasing Assistant'],
+	},
+	{
+		category: 'Travel and Hospitality ',
+		icon: 'ion:airplane-outline',
+		features: ['Booking Assistant', 'Concierge AI'],
+	},
+	{
+		category: 'Operations and Logistics ',
+		icon: 'ion:settings-outline',
+		features: ['Freight and Logistics AI', 'Supply Chain Assistant', 'Fleet Management Assistant'],
+	},
+	{
+		category: 'Healthcare and Wellness ',
+		icon: 'ion:medkit-outline',
+		features: ['Patient Scheduling Assistant', 'Medical Documentation AI', 'AI Patient Advocate'],
+	},
+	{
+		category: 'Legal ',
+		icon: 'ion:document-text-outline',
+		features: ['Contract Review Assistant', 'Legal Documentation AI', 'Case Management Assistant'],
+	},
+	{
+		category: 'Technical and DevOps ',
+		icon: 'ion:code-slash-outline',
+		features: ['AI DevOps Copilot', 'Code Review Assistant', 'Bug Tracking and Fixing Assistant'],
+	},
+	{
+		category: 'Education ',
+		icon: 'ion:school-outline',
+		features: ['Personalized Learning Bot', 'Admissions Assistant', 'Study Aid Assistant'],
+	},
+	{
+		category: 'Construction and Project Management ',
+		icon: 'ion:construct-outline',
+		features: ['AI Project Manager', 'Site Inspection Bot', 'Document Automation Assistant'],
+	},
+	{
+		category: 'Retail and E-commerce ',
+		icon: 'ion:cart-outline',
+		features: ['Conversational Shopping Assistant', 'Inventory Management Assistant', 'Return and Exchange Assistant'],
+	},
+	{
+		category: 'Automotive ',
+		icon: 'ion:car-sport-outline',
+		features: ['AI Receptionist for Dealerships', 'Maintenance Scheduling Assistant'],
+	},
+	{
+		category: 'Media and Entertainment ',
+		icon: 'ion:tv-outline',
+		features: ['Content Creation AI', 'Video and Audio Production Assistant'],
+	},
+	{
+		category: 'Industry-Specific ',
+		icon: 'ion:business-outline',
+		features: ['Debt Collection AI', 'Compliance and Audit Assistant', 'Chemical Process Design AI'],
+	},
+];
+---
+
+<section class="page__section light">
+	<div class="section">
+		<header>
+			<div>
+				<span class="section__tag">Solutions</span>
+				<h3 class="section__heading">AI Teammates for Every Task <br />You Can Imagine</h3>
+			</div>
+			<p>And unlimited custom solutions, <br /> built exactly how you want.</p>
+		</header>
+
+		<div class="solutions__grid">
+			<div class="gradient__wrapper left"><div class="gradient"></div></div>
+			<div class="gradient__wrapper right"><div class="gradient"></div></div>
+			{
+				Array.from({ length: 5 }).map((_, index) => {
+					// Create a shuffled copy of blocks for each row
+					const shuffledBlocks = [...blocks].sort(() => Math.random() - 0.5);
+					return (
+						<div class="row" class:list={index % 2 === 0 ? 'marqueeLeft' : 'marqueeRight'}>
+							<div class="row__inner">
+								{shuffledBlocks.map((block) => (
+									<div class="block">
+										<div class="block__header">
+											<Icon name={block.icon} class="block__icon text-primary" size={28} />
+											<h4>{block.category}</h4>
+										</div>
+									</div>
+								))}
+								{shuffledBlocks.map((block) => (
+									<div class="block">
+										<div class="block__header">
+											<Icon name={block.icon} class="block__icon text-primary" size={28} />
+											<h4>{block.category}</h4>
+										</div>
+									</div>
+								))}
+							</div>
+						</div>
+					);
+				})
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	/* Base Elements */
+	section {
+		background-color: rgb(var(--clr-white));
+	}
+
+	header:not(.block__header) {
+		margin-bottom: 48px;
+	}
+
+	h3 br {
+		display: none;
+	}
+
+	header p br {
+		display: none;
+	}
+
+	h4 {
+		font-family: var(--font-titles);
+		font-size: 22px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 109%;
+		white-space: nowrap;
+	}
+
+	p {
+		font-size: 16px;
+		color: rgb(var(--clr-violet));
+	}
+
+	/* Layout Grid */
+	.solutions__grid {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 22px;
+		overflow: hidden;
+	}
+
+	/* Gradient Overlays */
+	.gradient__wrapper {
+		position: relative;
+		z-index: 2;
+		overflow: hidden;
+	}
+
+	.gradient__wrapper.left {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 25%;
+		bottom: 0;
+	}
+
+	.gradient__wrapper.left .gradient {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		transform: translateX(-0%);
+		width: 100%;
+		height: 100%;
+		background: #ffffff;
+		background: -webkit-linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+		background: -moz-linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+		background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#FFFFFF", GradientType=1);
+	}
+
+	.gradient__wrapper.right {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 25%;
+		height: 100%;
+		bottom: 0;
+	}
+
+	.gradient__wrapper.right .gradient {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		transform: translateX(0%);
+		width: 100%;
+		height: 100%;
+		background: #ffffff;
+		background: -webkit-linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+		background: -moz-linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+		background: linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#FFFFFF", GradientType=0);
+	}
+
+	/* Rows and Marquee */
+	.solutions__grid .row {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-wrap: nowrap;
+		width: 100%;
+	}
+
+	.row.marqueeLeft {
+		flex-direction: row-reverse;
+		justify-content: flex-end;
+	}
+
+	.row.marqueeRight {
+		display: flex;
+		width: 100%;
+		justify-content: flex-end;
+	}
+
+	.row__inner {
+		display: flex;
+		flex-wrap: nowrap;
+		gap: 22px;
+	}
+
+	.marqueeLeft .row__inner {
+		animation: marqueeLeft 500s linear infinite;
+	}
+
+	.marqueeRight .row__inner {
+		flex-direction: row-reverse;
+		justify-content: flex-end;
+		animation: marqueeRight 500s linear infinite;
+	}
+
+	/* Block Components */
+	.block {
+		padding: 16px 24px;
+		border: 1px solid rgb(var(--clr-black));
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.block__header {
+		display: flex;
+		align-items: start;
+		gap: 8px;
+	}
+
+	/* Icons */
+	[data-icon] {
+		color: rgb(var(--clr-violet));
+	}
+
+	/* Media Queries */
+	@media (min-width: 768px) {
+		h3 br {
+			display: block;
+		}
+
+		h4 {
+			font-size: 28px;
+		}
+
+		p {
+			font-size: 20px;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		header {
+			display: flex;
+			align-items: flex-end;
+			justify-content: space-between;
+			gap: 48px;
+		}
+
+		h3 {
+			margin-bottom: 0;
+		}
+
+		header p br {
+			display: block;
+		}
+	}
+
+	/* Animations */
+	@keyframes marqueeLeft {
+		from {
+			transform: translateX(0%);
+		}
+		to {
+			transform: translateX(-100%);
+		}
+	}
+
+	@keyframes marqueeRight {
+		from {
+			transform: translateX(0%);
+		}
+		to {
+			transform: translateX(100%);
+		}
+	}
+</style>

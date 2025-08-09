@@ -1,0 +1,26 @@
+{
+	"redirects": [
+		{
+			"source": "/retool",
+			"destination": "/",
+			"permanent": true
+		},
+		{
+			"source": "/bubble",
+			"destination": "/",
+			"permanent": true
+		}
+	],
+	"rewrites": [
+		{
+			"source": "/(.*)",
+			"destination": "/campaign/$1",
+			"has": [
+				{
+					"type": "host",
+					"value": "campaign.sidetool.co"
+				}
+			]
+		}
+	]
+}

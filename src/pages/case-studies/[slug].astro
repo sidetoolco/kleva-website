@@ -1,0 +1,48 @@
+---
+//Types
+import type { CaseStudy, CASE_STUDIESResult } from '../../types/sanity.types';
+//Layouts
+import MainLayout from '@layouts/MainLayout.astro';
+//Components
+import CaseStudyV1 from '@components/CaseStudy/CaseStudyV1.astro';
+import CaseStudyV2 from '@components/CaseStudy/CaseStudyV2.astro';
+//Libs
+import { loadQuery } from '@sanity/lib/load-query';
+import { CASE_STUDIES, CASE_STUDY_BY_SLUG, CASE_STUDY_RELATED_CASE_STUDIES } from '@sanity/lib/queries';
+
+export async function getStaticPaths() {
+	const { data: caseStudies } = await loadQuery<CASE_STUDIESResult>({
+		query: CASE_STUDIES,
+	});
+
+	return caseStudies.map((caseStudy: CaseStudy) => {
+		return {
+			params: {
+				slug: caseStudy.slug,
+			},
+		};
+	});
+}
+
+const { params } = Astro;
+
+const { data: caseStudy } = await loadQuery<CaseStudy>({
+	query: CASE_STUDY_BY_SLUG,
+	params: { slug: params.slug ?? '' },
+});
+
+const { data: relatedCaseStudies } = await loadQuery<CaseStudy[]>({
+	query: CASE_STUDY_RELATED_CASE_STUDIES,
+	params: { slug: params.slug ?? '' },
+});
+---
+
+<MainLayout title={caseStudy.title ?? ''} description={caseStudy.brief ?? ''}>
+	{
+		caseStudy.version === 1 ? (
+			<CaseStudyV1 caseStudy={caseStudy} relatedCaseStudies={relatedCaseStudies} />
+		) : (
+			<CaseStudyV2 caseStudy={caseStudy} relatedCaseStudies={relatedCaseStudies} />
+		)
+	}
+</MainLayout>

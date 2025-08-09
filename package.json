@@ -1,0 +1,44 @@
+{
+	"name": "sidetool-website",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "set NODE_OPTIONS=--max-old-space-size=4096 && astro check && astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"format": "prettier --write ."
+	},
+	"dependencies": {
+		"@astrojs/check": "^0.7.0",
+		"@astrojs/react": "^4.2.0",
+		"@astrojs/sitemap": "^3.4.1",
+		"@astrojs/tailwind": "^5.1.0",
+		"@lottiefiles/dotlottie-web": "^0.48.0",
+		"@portabletext/types": "^2.0.13",
+		"@sanity/astro": "^3.2.5",
+		"@sanity/client": "^6.28.0",
+		"@sanity/color-input": "^4.0.3",
+		"@sanity/image-url": "^1.1.0",
+		"@sanity/vision": "^3.76.3",
+		"@sanity/visual-editing": "^2.13.3",
+		"astro": "^4.9.2",
+		"astro-icon": "^1.1.0",
+		"astro-portabletext": "^0.11.1",
+		"groq": "^3.83.0",
+		"gsap": "^3.12.7",
+		"mixpanel-browser": "^2.67.0",
+		"sanity": "^3.75.1",
+		"swiper": "^11.1.4",
+		"tailwindcss": "^3.4.3",
+		"typescript": "^5.4.5"
+	},
+	"devDependencies": {
+		"@iconify-json/ion": "^1.1.18",
+		"eslint-config-prettier": "^9.1.0",
+		"prettier": "^3.3.3",
+		"prettier-plugin-astro": "^0.14.1",
+		"prettier-plugin-tailwindcss": "^0.6.6"
+	}
+}

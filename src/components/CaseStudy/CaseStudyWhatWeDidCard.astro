@@ -1,0 +1,33 @@
+---
+//Libs
+import { urlForImage } from 'src/sanity/lib/url-for-image';
+import { Image } from 'astro:assets';
+
+interface Props {
+	title: string;
+	description: string;
+	image?: {
+		asset?: {
+			_ref: string;
+			_type: 'reference';
+			_weak?: boolean;
+		};
+	};
+	imagePosition?: 'top' | 'bottom';
+}
+
+const { title, description, image, imagePosition = 'bottom' } = Astro.props;
+---
+
+<div
+	class="flex h-full w-full flex-col justify-end gap-5 rounded-xl border border-[#27313F] bg-[#1A232D] px-5 py-6 shadow-md"
+	class:list={imagePosition === 'top' ? ['flex-col-reverse'] : ['flex-col']}
+>
+	<div class="flex flex-col gap-[14px] text-center">
+		<h5 class="font-titles text-[22px] font-bold leading-[1.1] text-white md:text-[28px] md:leading-[1.1]">{title}</h5>
+		<p class="text-sm text-text-secondary md:text-lg">{description}</p>
+	</div>
+	<div class="min-h-32 rounded-[10px]">
+		{image && <Image src={urlForImage(image).url()} alt={title} inferSize={true} class="w-full object-cover" />}
+	</div>
+</div>

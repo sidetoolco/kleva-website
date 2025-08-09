@@ -1,0 +1,169 @@
+---
+import { Image } from 'astro:assets';
+import BidX from 'src/icons/bidx.svg';
+import Envoys from 'src/icons/envoys.svg';
+import Experta from 'src/icons/experta.svg';
+import Mailmaestro from 'src/icons/mailmaestro.svg';
+import TestPilot from 'src/icons/testpilot.svg';
+import TheWieSuite from 'src/icons/thewiesuite.svg';
+import RevenueRoll from 'src/icons/revenueroll.svg';
+import McDonals from 'src/icons/mcdonalds.svg';
+import Grit from 'src/icons/grit.svg';
+import TRN from 'src/icons/trn.svg';
+---
+
+<section class="page__section dark">
+	<div class="section relative">
+		<div class="gradient left h-full w-full"></div>
+		<div class="gradient right h-full w-full"></div>
+		<h3>Trusted by Brands You Trust</h3>
+		<div class="brands-marquee">
+			<div class="top">
+				<Image src={BidX} alt="BidX" />
+				<Image src={Envoys} alt="Envoys" />
+				<Image src={Experta} alt="Experta" />
+				<Image src={Mailmaestro} alt="Mailmaestro" />
+				<Image src={TestPilot} alt="TestPilot" />
+				<Image src={BidX} alt="BidX" />
+				<Image src={Envoys} alt="Envoys" />
+				<Image src={Experta} alt="Experta" />
+				<Image src={Mailmaestro} alt="Mailmaestro" />
+				<Image src={TestPilot} alt="TestPilot" />
+			</div>
+			<div class="top">
+				<Image src={BidX} alt="BidX" />
+				<Image src={Envoys} alt="Envoys" />
+				<Image src={Experta} alt="Experta" />
+				<Image src={Mailmaestro} alt="Mailmaestro" />
+				<Image src={TestPilot} alt="TestPilot" />
+				<Image src={BidX} alt="BidX" />
+				<Image src={Envoys} alt="Envoys" />
+				<Image src={Experta} alt="Experta" />
+				<Image src={Mailmaestro} alt="Mailmaestro" />
+				<Image src={TestPilot} alt="TestPilot" />
+			</div>
+		</div>
+		<div class="brands-marquee bottom">
+			<div class="bottom">
+				<Image src={TheWieSuite} alt="TheWieSuite" />
+				<Image src={RevenueRoll} alt="RevenueRoll" />
+				<Image src={McDonals} alt="McDonals" />
+				<Image src={Grit} alt="Grit" />
+				<Image src={TRN} alt="TRN" />
+				<Image src={TheWieSuite} alt="TheWieSuite" />
+				<Image src={RevenueRoll} alt="RevenueRoll" />
+				<Image src={McDonals} alt="McDonals" />
+				<Image src={Grit} alt="Grit" />
+				<Image src={TRN} alt="TRN" />
+			</div>
+			<div class="bottom">
+				<Image src={TheWieSuite} alt="TheWieSuite" />
+				<Image src={RevenueRoll} alt="RevenueRoll" />
+				<Image src={McDonals} alt="McDonals" />
+				<Image src={Grit} alt="Grit" />
+				<Image src={TRN} alt="TRN" />
+				<Image src={TheWieSuite} alt="TheWieSuite" />
+				<Image src={RevenueRoll} alt="RevenueRoll" />
+				<Image src={McDonals} alt="McDonals" />
+				<Image src={Grit} alt="Grit" />
+				<Image src={TRN} alt="TRN" />
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.gradient {
+		position: absolute;
+		z-index: 10;
+		width: 100%;
+		height: 100%;
+		background: #151515;
+		background: linear-gradient(90deg, rgba(21, 21, 21, 1) 0%, rgba(21, 21, 21, 0) 15%);
+	}
+	.gradient.left {
+		left: 0;
+		top: 0;
+	}
+	.gradient.right {
+		right: 0;
+		top: 0;
+		transform: rotate(180deg);
+	}
+	.section {
+		overflow: hidden;
+	}
+	h3 {
+		font-family: var(--font-titles);
+		color: rgb(var(--clr-white));
+		font-size: 32px;
+		line-height: 1;
+		letter-spacing: -1px;
+		text-align: center;
+		margin: 0 auto 66px auto;
+	}
+
+	.brands-marquee {
+		display: flex;
+		align-items: center;
+		margin-block: 16px;
+	}
+	@media (min-width: 768px) {
+		h3 {
+			font-size: 40px;
+		}
+		.brands-marquee {
+			margin-block: 36x;
+		}
+	}
+	.brands-marquee img {
+		padding-right: 48px;
+	}
+	.brands-marquee img:last-child {
+		margin-right: 0px;
+	}
+	.brands-marquee .top,
+	.brands-marquee .bottom {
+		flex-shrink: 0;
+		display: flex;
+		justify-content: flex-start;
+	}
+	.brands-marquee.bottom {
+		justify-content: flex-end;
+	}
+	.brands-marquee .top {
+		animation: slide-left 40s linear infinite;
+	}
+	.brands-marquee .bottom {
+		justify-content: flex-end;
+		animation: slide-right 40s linear infinite;
+	}
+	.brands-marquee img {
+		height: 42px;
+		width: auto;
+	}
+
+	@media (min-width: 768px) {
+		.brands-marquee img {
+			height: 56px;
+		}
+	}
+
+	@keyframes slide-left {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-100%);
+		}
+	}
+
+	@keyframes slide-right {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(100%);
+		}
+	}
+</style>

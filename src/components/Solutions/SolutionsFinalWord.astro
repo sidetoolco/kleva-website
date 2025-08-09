@@ -1,0 +1,47 @@
+---
+//Components
+import ButtonPrimary from '@components/Button/ButtonPrimary.astro';
+import PortableText from '@components/PortableText.astro';
+import type { Solution } from '../../types/sanity.types';
+interface Props {
+	words: Solution['finalWords'];
+}
+
+const { words }: Props = Astro.props;
+---
+
+<div class="section page__section light">
+	<article class="fade-in flex flex-col gap-8 rounded-[20px] px-5 py-12 sm:px-12 xl:flex-row">
+		<header class="flex-col justify-center xl:flex">
+			<h3 class="font-titles text-3xl font-bold leading-[0.91] text-white md:text-[50px] xl:whitespace-nowrap">
+				The Final Word
+			</h3>
+		</header>
+		<div class="h-[1px] w-full bg-white xl:h-auto xl:w-[1px]"></div>
+		<div>
+			<section class="mb-8 text-text-secondary xl:mb-[36px]">
+				<PortableText portableText={words} />
+				<p class="mt-8 font-titles text-[28px] font-bold leading-[1.45] text-white">Let’s do this! 🚀</p>
+			</section>
+			<footer>
+				<ButtonPrimary
+					label="Let's Talk"
+					theme="dark"
+					link={true}
+					href="/contact"
+					classes="h-12 sm:w-fit min-w-[128px]"
+				/>
+			</footer>
+		</div>
+	</article>
+</div>
+
+<style>
+	.section {
+		padding-top: 0;
+		overflow: hidden;
+	}
+	article {
+		background: linear-gradient(180deg, #414e62 0%, #171f28 100%);
+	}
+</style>

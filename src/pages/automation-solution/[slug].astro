@@ -1,0 +1,46 @@
+---
+//Types
+import type { AutomationSolution, AUTOMATION_SOLUTIONSResult } from '../../types/sanity.types';
+//Layouts
+import MainLayout from '../../layouts/MainLayout.astro';
+//Components
+import AutomationsHero from '@components/Automations/AutomationsHero.astro';
+import AutomationsHowHelp from '@components/Automations/AutomationsHowHelp.astro';
+import AutomationsCTA from '@components/Automations/AutomationsCTA.astro';
+import AutomationsBusinessImpact from '@components/Automations/AutomationsBusinessImpact.astro';
+import Contact from '@components/Contact.astro';
+//Libs
+import { loadQuery } from '@sanity/lib/load-query';
+import { AUTOMATION_SOLUTIONS, AUTOMATION_SOLUTION_BY_SLUG } from '@sanity/lib/queries';
+
+export async function getStaticPaths() {
+	const { data: automationSolutions } = await loadQuery<AUTOMATION_SOLUTIONSResult>({
+		query: AUTOMATION_SOLUTIONS,
+	});
+
+	return automationSolutions.map((automationSolution: AutomationSolution) => {
+		return {
+			params: {
+				slug: automationSolution.slug?.current,
+			},
+		};
+	});
+}
+
+const { params } = Astro;
+
+const { data: automationSolution } = await loadQuery<AutomationSolution>({
+	query: AUTOMATION_SOLUTION_BY_SLUG,
+	params: { slug: params.slug ?? '' },
+});
+---
+
+<MainLayout title={automationSolution.title ?? ''} description={automationSolution.brief ?? ''}>
+	<main>
+		<AutomationsHero automationSolution={automationSolution} />
+		<AutomationsHowHelp automationSolution={automationSolution} />
+		<AutomationsCTA automationSolution={automationSolution} />
+		<AutomationsBusinessImpact automationSolution={automationSolution} />
+		<Contact />
+	</main>
+</MainLayout>

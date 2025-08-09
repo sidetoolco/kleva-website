@@ -1,0 +1,89 @@
+---
+// Types
+import type { GetStaticPaths } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+import type { Post } from '../../types';
+// const
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+// Layouts
+import MainLayout from '@layouts/MainLayout.astro';
+// Components
+import BlogAllPost from '@components/Blog/BlogAllPost.astro';
+import Contact from '@components/Contact.astro';
+// Libraries
+import { getCollection } from 'astro:content';
+import { sanityClient } from 'sanity:client';
+import Pagination from '@components/Pagination.astro';
+
+type CombinedPost = { type: 'collection'; data: CollectionEntry<'posts'> } | { type: 'sanity'; data: Post };
+
+export const getStaticPaths = (async ({ paginate }) => {
+	const posts = await getCollection('posts');
+	const sanityPostsQuery = `*[
+		_type == "post"]|order(publishedAt desc){_id, publishedAt, title, slug, mainImage, tags, body}`;
+	const sanityPosts = await sanityClient.fetch<Post[]>(sanityPostsQuery);
+
+	// Combine both types of posts
+	const combinedPosts: CombinedPost[] = [
+		...posts.map((post) => ({ type: 'collection' as const, data: post })),
+		...sanityPosts.map((post) => ({ type: 'sanity' as const, data: post })),
+	];
+
+	// Sort combined posts by date
+	const sortedPosts = combinedPosts.sort((a, b) => {
+		const dateA = a.type === 'collection' ? new Date(a.data.data.date) : new Date(a.data.publishedAt);
+		const dateB = b.type === 'collection' ? new Date(b.data.data.date) : new Date(b.data.publishedAt);
+		return dateB.getTime() - dateA.getTime();
+	});
+
+	return paginate(sortedPosts, {
+		pageSize: 8,
+	});
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<MainLayout title={`Blog | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
+	<main id="page-content" class="">
+		<div class="page__wrapper container__wide page__section light pb-20">
+			<section class="mb-10 space-y-4 lg:pb-8">
+				<h3 class="font-titles text-4xl font-bold leading-[0.91] tracking-tight text-black md:text-[50px]">
+					The Sidetool Blog
+				</h3>
+				<p class="text-lg leading-[1.55] text-tertiary md:text-2xl">Because good enough was never the goal.</p>
+			</section>
+			<section>
+				<BlogAllPost posts={page.data} />
+				<Pagination
+					prevUrl={page.url.prev}
+					nextUrl={page.url.next}
+					currentPage={page.currentPage}
+					totalPages={page.lastPage}
+					baseUrl="/blog"
+					withButtons={false}
+				/>
+			</section>
+		</div>
+		<Contact />
+	</main>
+</MainLayout>
+
+<style>
+	.page__wrapper {
+		overflow: hidden;
+		padding-top: calc(var(--header-height-mobile) + 64px);
+	}
+
+	@media (min-width: 768px) {
+		.page__wrapper {
+			padding-top: calc(var(--header-height-desktop) + 82px);
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.page__wrapper {
+			padding-top: calc(var(--header-height-desktop) + 120px);
+		}
+	}
+</style>

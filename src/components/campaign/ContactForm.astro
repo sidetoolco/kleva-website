@@ -1,0 +1,279 @@
+---
+import ButtonPill from '@components/Button/ButtonPill.astro';
+---
+
+<section id="contact-form-v2">
+	<div class="iframe__wrapper">
+		<iframe src="https://zcal.co/i/acZ8ztAs?embed=1&embedType=iframe" loading="lazy" id="zcal-invite" scrolling="no"
+		></iframe>
+	</div>
+	<div class="form__wrapper dark__glass">
+		<h2>Ready to Meet Your AI Teammate?</h2>
+		<p class="subtitle">
+			Book a 15-min call with us so we can conduct a sprint to understand your needs and requirements.
+		</p>
+		<p class="subtitle enfasis">
+			Whether you need chatbots, customer support, sales automation, workflows, data analysis—anything else.
+		</p>
+		<form id="contact-form" action="">
+			<fieldset>
+				<label for="name">Full Name</label>
+				<input
+					type="text"
+					id="name"
+					name="name"
+					placeholder="Full name"
+					pattern="^[A-Za-zÀ-ÿ\\s'\\-]+$"
+					title="Only letters, spaces, hyphens, and apostrophes allowed"
+					required
+				/>
+			</fieldset>
+			<fieldset>
+				<label for="phone">Phone</label>
+				<input
+					type="tel"
+					id="phone"
+					name="phone"
+					placeholder="Phone"
+					required
+					autocomplete="tel"
+					minlength="7"
+					pattern="^[\\+0-9\\s\\(\\)\\-]+$"
+					title="Only numbers, spaces, parentheses, dashes, and a plus sign are allowed"
+				/>
+			</fieldset>
+			<fieldset>
+				<label for="email">Email</label>
+				<input type="email" id="email" name="email" placeholder="Email" pattern=".+@.+\..+" required />
+			</fieldset>
+			<fieldset>
+				<label for="message">Tell us about your project</label>
+				<textarea id="message" name="message" placeholder="" rows={1}></textarea>
+			</fieldset>
+			<ButtonPill label="Let's talk" fullWidth id="submit-button" type="submit" />
+		</form>
+	</div>
+</section>
+
+<style>
+	#contact-form-v2 {
+		position: relative;
+		overflow: hidden;
+		transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	h2 {
+		font-size: 36px;
+		color: rgb(var(--clr-white));
+		line-height: 1;
+		letter-spacing: -1.2px;
+	}
+
+	.subtitle {
+		margin-block: 16px;
+		color: rgb(var(--clr-white), 1);
+		max-width: 540px;
+	}
+	.enfasis {
+		color: rgb(var(--clr-violet));
+		font-style: italic;
+	}
+
+	form {
+		padding-top: 64px;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	fieldset {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	label {
+		font-size: 14px;
+		font-weight: 500;
+		color: rgb(var(--clr-white));
+		line-height: 1.42;
+	}
+
+	input {
+		border: none;
+		border-bottom: 1px solid rgb(var(--clr-white), 0.2);
+		background-color: transparent;
+		padding: 8px 0;
+		color: rgb(var(--clr-white));
+		font-size: 16px;
+		line-height: 1.42;
+		transition: border-color 0.2s ease-in-out;
+	}
+
+	textarea {
+		border: none;
+		border-bottom: 1px solid rgb(var(--clr-white), 0.2);
+		background-color: transparent;
+		color: rgb(var(--clr-white));
+		padding: 8px;
+		transition: border-color 0.2s ease-out;
+	}
+	textarea:focus-visible {
+		outline: none;
+		border-bottom: 1px solid rgb(var(--clr-white));
+	}
+
+	fieldset:hover input,
+	fieldset:hover textarea {
+		border-bottom: 1px solid rgb(var(--clr-white));
+	}
+
+	input:focus-visible,
+	input:focus {
+		outline: none;
+		border-bottom: 1px solid rgb(var(--clr-white));
+	}
+
+	.form__wrapper {
+		padding: 48px 24px;
+		border: 1px solid rgb(var(--clr-white), 0.1);
+		border-radius: 24px;
+		transition:
+			opacity 0.4s ease-in-out,
+			transform 0.4s ease-in-out;
+	}
+	@media (min-width: 768px) {
+		h2 {
+			font-size: 40px;
+		}
+		.form__wrapper {
+			padding: 48px 24px;
+		}
+	}
+
+	.form__wrapper.closed {
+		opacity: 0;
+		transform: translateY(-20px);
+		pointer-events: none;
+	}
+
+	.iframe__wrapper {
+		width: 100%;
+		max-width: 600px;
+		margin: 0 auto;
+		background-color: rgb(var(--clr-black));
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		opacity: 0;
+		pointer-events: none;
+		transition:
+			opacity 0.4s ease-in-out,
+			transform 0.4s ease-in-out;
+	}
+
+	.iframe__wrapper.measuring {
+		position: relative;
+		opacity: 0;
+		pointer-events: none;
+		left: auto;
+		transform: none;
+	}
+
+	.iframe__wrapper.open {
+		opacity: 1;
+		pointer-events: auto;
+		transform: translateX(-50%) translateY(0);
+	}
+
+	.iframe__wrapper iframe {
+		width: 100%;
+		height: 1024px;
+		border: none;
+		display: block;
+	}
+</style>
+
+<script>
+	import mixpanel from '@js/mixpanel';
+	import { sendData } from '@js/useFormWebhook';
+	const form = document.getElementById('contact-form') as HTMLFormElement;
+	const submitButton = document.getElementById('submit-button') as HTMLButtonElement;
+	const submitButtonLabel = submitButton.querySelector('.primary') as HTMLSpanElement;
+	const fullNameInput = document.getElementById('name') as HTMLInputElement;
+	const phoneInput = document.getElementById('phone') as HTMLInputElement;
+	const formWrapper = document.querySelector('.form__wrapper') as HTMLDivElement;
+	const iframeWrapper = document.querySelector('.iframe__wrapper') as HTMLDivElement;
+	const container = document.getElementById('contact-form-v2') as HTMLElement;
+
+	console.log(submitButton);
+
+	function measureIframeHeight(): number {
+		// Temporarily make iframe wrapper visible and in document flow to measure height
+		iframeWrapper.classList.add('measuring');
+		const height = iframeWrapper.offsetHeight;
+		iframeWrapper.classList.remove('measuring');
+		return height;
+	}
+
+	function smoothTransition() {
+		const currentHeight = container.offsetHeight;
+		const targetHeight = measureIframeHeight();
+		container.style.height = `${currentHeight}px`;
+		void container.offsetHeight;
+		formWrapper.classList.add('closed');
+
+		setTimeout(() => {
+			container.style.height = `${targetHeight}px`;
+			setTimeout(() => {
+				iframeWrapper.classList.add('open');
+			}, 300); // 300ms is half of the height transition duration of the Container (0.6)
+		}, 100);
+	}
+
+	function onFormSubmit(event: SubmitEvent) {
+		console.log('onFormSubmit');
+		event.preventDefault();
+		submitButton.disabled = true;
+		submitButtonLabel.textContent = 'Sending...';
+		const formData = new FormData(event.target as HTMLFormElement);
+		const name = formData.get('name');
+		const phone = formData.get('phone');
+		const email = formData.get('email');
+		const message = formData.get('message');
+
+		mixpanel.track('Contact Form Submitted', {
+			origin: 'sidetool-website-campaign',
+			hasName: Boolean(name),
+			hasEmail: Boolean(email),
+			hasPhone: Boolean(phone),
+		});
+
+		sendData({
+			origin: 'sidetool-website-campaign',
+			name: name as string,
+			phone: phone as string,
+			email: email as string,
+			message: message as string,
+		});
+
+		setTimeout(() => {
+			smoothTransition();
+		}, 2500);
+	}
+
+	form.addEventListener('submit', onFormSubmit);
+
+	fullNameInput.addEventListener('input', (event) => {
+		const target = event.target as HTMLInputElement;
+		target.value = target.value.replace(/[^A-Za-zÀ-ÿ\s''-]/g, '');
+	});
+	phoneInput.addEventListener('input', (event) => {
+		const target = event.target as HTMLInputElement;
+		target.value = target.value.replace(/[^0-9\s()-]/g, '');
+	});
+</script>

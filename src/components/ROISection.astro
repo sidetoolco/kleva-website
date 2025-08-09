@@ -1,0 +1,272 @@
+---
+import SimpleButton from './Button/SimpleButton.astro';
+---
+
+<section class="roi-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">ROI Calculator</span>
+      <h2 class="section-title">Your Savings with Kleva</h2>
+      <p class="section-description">
+        For a mid-size lender with 10,000 delinquent accounts
+      </p>
+    </div>
+
+    <div class="roi-comparison">
+      <div class="comparison-card current">
+        <h3>Current Method</h3>
+        <div class="cost-breakdown">
+          <div class="cost-item">
+            <span class="label">Human Agents Needed</span>
+            <span class="value">45 agents</span>
+          </div>
+          <div class="cost-item">
+            <span class="label">Monthly Cost</span>
+            <span class="value cost">$80,000</span>
+          </div>
+          <div class="cost-item">
+            <span class="label">Recovery Rate</span>
+            <span class="value">20%</span>
+          </div>
+          <div class="cost-item">
+            <span class="label">Working Hours</span>
+            <span class="value">9-5 only</span>
+          </div>
+          <div class="cost-item">
+            <span class="label">Annual Turnover</span>
+            <span class="value">75-100%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="vs-divider">VS</div>
+
+      <div class="comparison-card kleva">
+        <h3>With Kleva</h3>
+        <div class="cost-breakdown">
+          <div class="cost-item">
+            <span class="label">AI Agents</span>
+            <span class="value">Unlimited</span>
+          </div>
+          <div class="cost-item">
+            <span class="label">Monthly Cost</span>
+            <span class="value savings">$24,000</span>
+          </div>
+          <div class="cost-item">
+            <span class="label">Recovery Rate</span>
+            <span class="value highlight">25%</span>
+          </div>
+          <div class="cost-item">
+            <span class="label">Working Hours</span>
+            <span class="value">24/7</span>
+          </div>
+          <div class="cost-item">
+            <span class="label">Turnover</span>
+            <span class="value highlight">0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="savings-summary">
+      <div class="summary-box">
+        <span class="summary-label">Monthly Savings</span>
+        <span class="summary-value">$56,000</span>
+        <span class="summary-percent">70% reduction</span>
+      </div>
+      <div class="summary-box">
+        <span class="summary-label">Annual Savings</span>
+        <span class="summary-value">$672,000</span>
+        <span class="summary-percent">Plus 25% more recovered</span>
+      </div>
+    </div>
+
+    <div class="cta-center">
+      <SimpleButton href="/contact" size="lg">
+        Calculate Your Savings
+      </SimpleButton>
+    </div>
+  </div>
+</section>
+
+<style>
+  .roi-section {
+    padding: 5rem 0;
+    background: linear-gradient(180deg, #f9fafb 0%, white 100%);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-badge {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    background: #dcfce7;
+    color: #14532d;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #111827;
+  }
+
+  .section-description {
+    font-size: 1.25rem;
+    color: #6b7280;
+  }
+
+  .roi-comparison {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+
+  .comparison-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .comparison-card.current {
+    border: 2px solid #ef4444;
+  }
+
+  .comparison-card.kleva {
+    border: 2px solid #10b981;
+  }
+
+  .comparison-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .current h3 {
+    color: #dc2626;
+  }
+
+  .kleva h3 {
+    color: #059669;
+  }
+
+  .cost-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cost-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .cost-item:last-child {
+    border-bottom: none;
+  }
+
+  .label {
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+
+  .value {
+    font-weight: 600;
+    color: #111827;
+  }
+
+  .value.cost {
+    color: #dc2626;
+    font-size: 1.25rem;
+  }
+
+  .value.savings {
+    color: #059669;
+    font-size: 1.25rem;
+  }
+
+  .value.highlight {
+    color: #059669;
+  }
+
+  .vs-divider {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #9ca3af;
+    text-align: center;
+  }
+
+  .savings-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .summary-box {
+    background: linear-gradient(135deg, #dcfce7 0%, #d1fae5 100%);
+    border: 2px solid #10b981;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .summary-label {
+    display: block;
+    color: #14532d;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .summary-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #059669;
+    margin-bottom: 0.5rem;
+  }
+
+  .summary-percent {
+    display: block;
+    color: #14532d;
+    font-size: 1rem;
+  }
+
+  .cta-center {
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .roi-comparison {
+      grid-template-columns: 1fr;
+    }
+
+    .vs-divider {
+      padding: 1rem 0;
+    }
+  }
+</style>

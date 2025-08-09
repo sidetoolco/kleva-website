@@ -1,0 +1,73 @@
+---
+interface Props {
+	classes?: string;
+}
+
+const { classes } = Astro.props;
+---
+
+<div
+	id="video-mobile-preview"
+	class="relative aspect-[4/5] w-full cursor-pointer rounded-lg bg-[#362f6a]"
+	class:list={[classes]}
+>
+	<div class="flex h-full w-full flex-col items-center justify-center px-8 py-16">
+		<div class="flex flex-grow flex-col items-center justify-center gap-1 text-center">
+			<h2 class="fade-in font-titles text-4xl font-semibold text-white">Case Studies <br />in Motion</h2>
+			<span class="fade-in text-text-secondary">Some of our works</span>
+		</div>
+		<div class="mt-auto flex flex-col items-center gap-2">
+			<span class="text-xs text-text-secondary">Tap to play</span>
+			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+				<g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" color="#fff"
+					><path
+						d="m6.702 13.162l2.009 1.733V6.158c0-.916.737-1.658 1.647-1.658s1.647.742 1.647 1.658v4.473l2.812.453c1.815.274 2.723.41 3.362.796c1.056.637 1.821 1.593 1.821 2.99c0 .972-.239 1.624-.82 3.377c-.367 1.112-.552 1.668-.852 2.108a3.77 3.77 0 0 1-2.063 1.497c-.51.148-1.092.148-2.257.148h-.987c-1.549 0-2.323 0-3.012-.286a4 4 0 0 1-.362-.174c-.655-.358-1.143-.962-2.12-2.172l-3.16-3.916a1.656 1.656 0 0 1-.008-2.068a1.63 1.63 0 0 1 2.343-.222"
+					></path><path d="M14.316 6a4 4 0 0 0-8 0"></path></g
+				></svg
+			>
+		</div>
+	</div>
+</div>
+
+<style>
+	#video-mobile-preview {
+		position: relative;
+		z-index: 20;
+		clip-path: polygon(6% 16%, 94% 16%, 94% 84%, 6% 84%);
+	}
+	@media (min-width: 1024px) {
+		#video-mobile-preview {
+			display: none;
+		}
+	}
+</style>
+
+<script>
+	import gsap from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import useDispatchEvent from '@js/useDispatchEvent';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	const preview = document.getElementById('video-mobile-preview');
+
+	if (preview) {
+		gsap
+			.timeline({
+				scrollTrigger: {
+					trigger: preview,
+					start: 'top 75%',
+					end: 'top 30%',
+					scrub: true,
+				},
+			})
+			.to(preview, {
+				clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+			});
+	}
+
+	preview?.addEventListener('click', () => {
+		// Check @components/VideoFullScreen.astro
+		useDispatchEvent('open-video-mobile');
+	});
+</script>

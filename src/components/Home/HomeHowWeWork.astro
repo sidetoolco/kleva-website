@@ -1,0 +1,62 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const data = [
+	{
+		icon: 'ion:bar-chart-outline',
+		title: 'Outcome-driven',
+		description:
+			'We think about outcomes rather than outputs. We define success as the value that the digital expereinces creates for you and your users.',
+		image_url: 'src/assets/how-we-work/outcome.png',
+	},
+	{
+		icon: 'ion:person-add-outline',
+		title: 'User-centric',
+		description:
+			'The purpose of any business is to help a person or a community. We elevate user needs and focus on impacting their journey in a positive way.',
+		image_url: 'src/assets/how-we-work/user.png',
+	},
+	{
+		icon: 'ion:flash-outline',
+		title: 'Agile-led',
+		description:
+			'We ingrain our process with lean-agile and design thinking values that help us guide our actions and aims toward solid, feasible, and scalable results.',
+		image_url: 'src/assets/how-we-work/agile.png',
+	},
+	{
+		icon: 'ion:flask-outline',
+		title: 'Expertise-powered',
+		description:
+			'Years of crafting top digital products have led us to develop an instinct that guides our work. We enhance universal patterns with our intuition.',
+		image_url: 'src/assets/how-we-work/expertise.png',
+	},
+];
+---
+
+<section id="how-we-work" class="container__wide my-24 md:my-36 md:gap-8">
+	<header class="mb-8 text-left">
+		<h3 class="fade-in mb-2 font-titles text-3xl font-bold leading-[1.2] text-black md:text-[50px]">How We Work.</h3>
+		<p class="fade-in max-w-screen-sm text-pretty font-titles text-lg leading-[1.45] text-secondary md:text-lg">
+			To achieve the optimal balance between investment and impact when delivering products to the market, we cultivate
+			this set of beliefs.
+		</p>
+	</header>
+
+	<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:flex-1 xl:grid-cols-2">
+		{
+			data.map((item) => (
+				<article class="fade-in relative flex flex-col overflow-hidden rounded-lg border border-black bg-white px-8 py-6 text-left lg:flex-row lg:gap-5">
+					<div class="text-primary">
+						<Icon name={item.icon} class="text-[28px]" />
+					</div>
+					<div>
+						<h4 class="mb-2 mt-6 text-nowrap font-titles text-2xl text-[28px] font-semibold text-black lg:mt-0">
+							{item.title}
+						</h4>
+						<p class="mt-auto font-titles text-lg text-secondary lg:max-w-[364px]">{item.description}</p>
+					</div>
+				</article>
+			))
+		}
+	</div>
+</section>

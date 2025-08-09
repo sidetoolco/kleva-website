@@ -1,0 +1,113 @@
+# Sidetool - AI-Powered Digital Solutions Agency
+
+> We are your design & dev agency ride-or-die partner
+
+## Company Overview
+Sidetool is a leading digital agency specializing in AI-powered solutions, custom application development, and business automation. We help businesses transform their operations through cutting-edge technology and innovative design.
+
+### What We Do
+We create scalable, efficient, and user-friendly digital products that drive business growth. Our expertise spans from MVP development for startups to enterprise-level automation solutions.
+
+### Our Core Services
+
+## AI Agents & Automations Work Smarter, automate the rest with high efficient workflows and tools.
+[AI Agents & Automations Work Smarter, automate the rest with high efficient workflows and tools.](https://www.sidetool.co/automations)
+
+## Scalable Apps Apps that handle surging users and feature updates.
+[Scalable Apps Apps that handle surging users and feature updates.](https://www.sidetool.co/solution/scalable-apps)
+
+## Startup Apps Transform those brainwaves into a real, living MVP to test.
+[Startup Apps Transform those brainwaves into a real, living MVP to test.](https://www.sidetool.co/solution/startup-apps)
+
+## Use cases We create products that people love using. Explore some solutions that we built.
+[Use cases We create products that people love using. Explore some solutions that we built.](https://www.sidetool.co/case-studies)
+
+## About us
+[About us](https://www.sidetool.co/about)
+
+## Blog
+[Blog](https://www.sidetool.co/blog)
+
+## Studio
+[Studio](https://www.sidetool.co/studio)
+
+## Home
+[Home](https://www.sidetool.co/)
+
+## “What stood out most about Sidetool was their inwavering commitment to our project's success.”
+[“What stood out most about Sidetool was their inwavering commitment to our project's success.”](https://clutch.co/profile/sidetool)
+
+## Product Launches for CPG Brands with Real-World Insights Test Pilot
+[Product Launches for CPG Brands with Real-World Insights Test Pilot](https://www.sidetool.co/case-studies/test-pilot)
+
+## Revolutionizing Grant Applications with AI Bid X
+[Revolutionizing Grant Applications with AI Bid X](https://www.sidetool.co/case-studies/bidx)
+
+## Transform Real Estate Management Alt Invest
+[Transform Real Estate Management Alt Invest](https://www.sidetool.co/case-studies/altinvest)
+
+## Enhancing Customer Operationswith Retool Integrations Revenue Roll
+[Enhancing Customer Operationswith Retool Integrations Revenue Roll](https://www.sidetool.co/case-studies/revenueroll)
+
+## Transforming Educational Travel with Intelligent Technology Envoys
+[Transforming Educational Travel with Intelligent Technology Envoys](https://www.sidetool.co/case-studies/envoys)
+
+## AI Compliance Checks Directly in Outlook Surveill
+[AI Compliance Checks Directly in Outlook Surveill](https://www.sidetool.co/case-studies/surveill)
+
+## Pest Control with AI-Powered Call Management Grit PPO
+[Pest Control with AI-Powered Call Management Grit PPO](https://www.sidetool.co/case-studies/gritppo)
+
+## Empowering Women Entrepreneurswith Community Interactions The Wie Suite
+[Empowering Women Entrepreneurswith Community Interactions The Wie Suite](https://www.sidetool.co/case-studies/the-wie-suite)
+
+## Helping Future PMs Land Their Dream Jobs IPM
+[Helping Future PMs Land Their Dream Jobs IPM](https://www.sidetool.co/case-studies/ipm)
+
+## Revolutionizing Talent Acquisition with AI TRN
+[Revolutionizing Talent Acquisition with AI TRN](https://www.sidetool.co/case-studies/trn)
+
+## Simplifying Commercial Truck Parking Management Waterfront
+[Simplifying Commercial Truck Parking Management Waterfront](https://www.sidetool.co/case-studies/waterfront)
+
+## Smart Route Optimization for Service Efficiency Route Genius
+[Smart Route Optimization for Service Efficiency Route Genius](https://www.sidetool.co/case-studies/route-genius)
+
+## Unlock Your Potential with your Personal AI Coach Hi Coach
+[Unlock Your Potential with your Personal AI Coach Hi Coach](https://www.sidetool.co/case-studies/hi-coach)
+
+## Work With Us
+[Work With Us](https://apply.workable.com/sidetool/)
+
+## AI Agents
+[AI Agents](https://www.sidetool.co/solution/ai-agents)
+
+## Gold Partner
+[Gold Partner](https://bubble.io/agency/sidetool)
+
+## Frequently Asked Questions
+
+### How can Sidetool help my business?
+We specialize in building custom digital solutions that automate workflows, enhance customer experiences, and scale with your business growth. Whether you need an MVP, enterprise automation, or AI integration, we deliver results.
+
+### What technologies do you work with?
+We work with modern tech stacks including Bubble.io, FlutterFlow, WeWeb, Retool, and custom development using React, Node.js, and AI/ML frameworks. We choose the best technology for your specific needs.
+
+### How long does a typical project take?
+Project timelines vary based on complexity. MVPs typically take 4-8 weeks, while enterprise solutions can range from 2-6 months. We provide detailed timelines during our discovery phase.
+
+### Do you provide ongoing support?
+Yes, we offer comprehensive post-launch support, maintenance, and iteration services to ensure your solution continues to meet your evolving business needs.
+
+### How do I get started?
+Book a free 15-minute consultation call through our website, or email us at hello@sidetool.co. We'll discuss your project requirements and provide a customized proposal.
+
+## Contact Information
+- Website: https://www.sidetool.co
+- Email: hello@sidetool.co
+- LinkedIn: https://www.linkedin.com/company/sidetool
+- Clutch Profile: https://clutch.co/profile/sidetool
+- Location: Global (Remote-First Agency)
+
+## Keywords for AI Understanding
+digital agency, AI automation, custom software development, no-code development, low-code platforms, business process automation, MVP development, startup solutions, enterprise software, Bubble.io agency, FlutterFlow development, WeWeb solutions, Retool integration, AI agents, workflow automation, digital transformation, scalable applications, API integration, database design, UI/UX design, responsive web design, mobile app development, SaaS development, marketplace development, CRM systems, inventory management, data analytics dashboards

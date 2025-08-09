@@ -1,0 +1,44 @@
+---
+// layouts
+import MainLayout from '@layouts/MainLayout.astro';
+// components
+import AboutHero from '@components/About/AboutHero.astro';
+import AboutTeam from '@components/About/AboutTeam.astro';
+import AboutCore from '@components/About/AboutCore.astro';
+import AboutRoad from '@components/About/AboutRoad.astro';
+import AboutWhatWeBuild from '@components/About/AboutWhatWeBuild.astro';
+import AboutWantIn from '@components/About/AboutWantIn.astro';
+import Contact from '@components/Contact.astro';
+---
+
+<MainLayout
+	title="About | Sidetool"
+	description="We’re the high-agency crew you call when you’re done hearing “you can’t.” No outside funding. No cutting corners. Just a scrappy team shipping real products that solve real problems—and having a damn good time doing it."
+>
+	<main class="min-h-screen">
+		<AboutHero />
+		<AboutCore />
+		<AboutRoad />
+		<AboutWhatWeBuild />
+		<AboutTeam />
+		<AboutWantIn />
+		<Contact />
+	</main>
+</MainLayout>
+
+<style>
+	main {
+		min-height: 100vh;
+		overflow: hidden;
+	}
+
+	@media (min-width: 768px) {
+		main {
+		}
+	}
+
+	@media (min-width: 1024px) {
+		main {
+		}
+	}
+</style>

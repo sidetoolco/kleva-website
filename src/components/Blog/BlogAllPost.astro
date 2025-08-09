@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Post } from '../../types';
+import BlogFirstPostCard from '@components/Blog/BlogFirstPostCard.astro';
+import BlogSmallCard from '@components/Blog/BlogSmallCard.astro';
+
+interface Props {
+	posts: Array<{ type: 'collection'; data: CollectionEntry<'posts'> } | { type: 'sanity'; data: Post }>;
+}
+
+const { posts } = Astro.props;
+---
+
+<div>
+	<section class="my-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+		<div class="sm:col-span-2">
+			<BlogFirstPostCard post={posts[0]} />
+		</div>
+		{posts.slice(1, 8).map((post) => <BlogSmallCard post={post} />)}
+	</section>
+</div>

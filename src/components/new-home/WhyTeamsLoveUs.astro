@@ -1,0 +1,165 @@
+---
+import { Image } from 'astro:assets';
+import Infinite from '@assets/infinite.svg';
+
+const features = [
+	{
+		title: 'Clear, Predictable Pricing',
+		text: 'One monthly fee—no surprises.',
+	},
+	{
+		title: 'Built by Experts',
+		text: 'Every automation handled by senior AI specialists.',
+	},
+	{
+		title: 'Fast Results',
+		text: 'Delivered within days—not months.',
+	},
+	{
+		title: 'Fully Flexible',
+		text: 'Pause or scale anytime your needs change.',
+	},
+	{
+		title: 'Tailored to You',
+		text: 'Custom automations exactly how you need them.',
+	},
+];
+---
+
+<article id="why-teams-love-us" class="page__section dark">
+	<div class="section">
+		<header>
+			<h2 class="section__heading">Why Teams <br /> Love Us</h2>
+		</header>
+		<div class="grid">
+			<Image class="infinite-image tablet" src={Infinite} alt="Infinite" width={616} height={311} />
+			{
+				features.map((feature) => (
+					<div class="feature">
+						<p>{feature.title}</p>
+						<p>{feature.text}</p>
+					</div>
+				))
+			}
+		</div>
+		<div class="infinite-image mobile">
+			<Image src={Infinite} alt="Infinite" width={616} height={311} />
+		</div>
+	</div>
+</article>
+
+<style>
+	article {
+		position: relative;
+		background-color: rgb(var(--clr-black));
+		color: rgb(var(--clr-white));
+		overflow: hidden;
+	}
+	header {
+		position: relative;
+		margin-bottom: 48px;
+	}
+	h2 {
+		font-weight: 500;
+	}
+	.grid {
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+	.feature {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		padding: 24px;
+		border-bottom: 1px solid rgba(var(--clr-white), 0.25);
+	}
+	.feature:last-child {
+		border-bottom: none;
+	}
+	.feature p:first-child {
+		font-size: 24px;
+	}
+	.feature p:last-child {
+		font-size: 16px;
+		opacity: 0.5;
+	}
+	@media (min-width: 768px) {
+		.feature p:first-child {
+			font-size: 28px;
+		}
+		.feature p:last-child {
+			font-size: 20px;
+		}
+	}
+	@media (min-width: 1024px) {
+		.section {
+			display: grid;
+			grid-template-columns: 3fr 7fr;
+			gap: 48px;
+		}
+		.feature {
+			padding: 32px;
+		}
+		.feature:first-of-type {
+			padding-top: 0;
+		}
+	}
+	.infinite-image.mobile {
+		position: absolute;
+		top: 0;
+		right: 0;
+		transform-origin: center;
+		transform: translate(22%, -15%) rotate(42deg);
+		opacity: 0.5;
+	}
+	.infinite-image.tablet {
+		display: none;
+	}
+	@media (min-width: 1024px) {
+		.infinite-image.mobile {
+			display: none;
+		}
+
+		.infinite-image.tablet {
+			display: block;
+			flex-shrink: 0;
+			width: 616px;
+			height: 311px;
+			object-fit: none;
+			position: absolute;
+			right: 100%;
+			top: 70%;
+			transform: translate(-3%, -50%) rotate(335deg);
+		}
+	}
+	@media (min-width: 1440px) {
+		.feature {
+			flex-direction: row;
+			gap: 24px;
+			align-items: center;
+		}
+	}
+</style>
+
+<script>
+	import { gsap } from 'gsap';
+
+	document.addEventListener('DOMContentLoaded', () => {
+		const section = document.querySelector('#why-teams-love-us');
+		const image = document.querySelector('.infinite-image.mobile');
+
+		gsap
+			.timeline({
+				scrollTrigger: {
+					trigger: section,
+					start: 'top bottom',
+					end: 'bottom top',
+					scrub: true,
+				},
+			})
+			.to(image, {
+				transform: 'translate(22%, 45%) rotate(38deg)',
+			});
+	});
+</script>

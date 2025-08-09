@@ -1,0 +1,112 @@
+---
+import ButtonCircleArrowLink from '@components/Button/ButtonCircleArrowLink.astro';
+import CampaignReviewSnippet from '@components/campaign/CampaignReviewSnippet.astro';
+import ContactForm from '@components/campaign/ContactForm.astro';
+import CampaignWork from '@components/campaign/CampaignWork.astro';
+import Logo from '@components/LogoSidetool.astro';
+import Video from '@components/new-home/Video.astro';
+---
+
+<section class="page__section dark">
+	<div class="section top__section">
+		<div class="hero-content">
+			<Logo />
+			<h1 class="hero-title mobile">
+				<span class="word">Let</span>
+				<span class="word">us</span>
+				<span class="word">automate</span>
+				<span class="word">the</span>
+				<span class="word">worst</span>
+				<span class="word">parts</span>
+				<span class="word">of</span>
+				<span class="word">running</span>
+				<span class="word">your</span>
+				<span class="word">company</span>
+			</h1>
+			<p class="hero-subtitle">Custom-built AI automations that handle your tasks, hassle-free.</p>
+			<ButtonCircleArrowLink href="/" label="Book a 15-min intro call" asButton id="hero-cta-button" />
+			<CampaignReviewSnippet />
+		</div>
+		<div class="form-container">
+			<ContactForm />
+		</div>
+	</div>
+	<div class="section">
+		<CampaignWork />
+	</div>
+	<div class="section video__section"><Video /></div>
+</section>
+
+<style>
+	.video__section {
+		padding-top: 0;
+	}
+	.top__section {
+		display: flex;
+		flex-direction: column;
+		gap: 48px;
+		padding-bottom: 0;
+	}
+	@media (min-width: 1024px) {
+		.section {
+			flex-direction: row;
+		}
+	}
+	.hero-content {
+		display: flex;
+		flex-direction: column;
+		gap: 28px;
+		flex: 1;
+		padding-top: 48px;
+	}
+
+	.form-container {
+		flex: 1;
+	}
+
+	@media (min-width: 768px) {
+		.hero-content {
+			gap: 32px;
+		}
+	}
+	@media (min-width: 1024px) {
+		.hero-content {
+			gap: 48px;
+		}
+	}
+	.hero-title {
+		font-family: var(--font-titles);
+		font-size: 48px;
+		line-height: 1;
+		letter-spacing: -1.4px;
+		color: rgb(var(--clr-white));
+		max-width: 1024px;
+	}
+	@media (min-width: 640px) {
+		.hero-title {
+			font-size: 56px;
+		}
+	}
+	@media (min-width: 768px) {
+		.hero-title {
+			font-size: 56px;
+		}
+	}
+
+	.hero-subtitle {
+		font-family: var(--font-titles);
+		font-size: 18px;
+		color: rgba(var(--clr-white), 1);
+		font-weight: 300;
+	}
+	@media (min-width: 768px) {
+		.hero-subtitle {
+			font-size: 22px;
+		}
+	}
+	@media (min-width: 1024px) {
+		.hero-subtitle {
+			font-size: 24px;
+		}
+	}
+</style>

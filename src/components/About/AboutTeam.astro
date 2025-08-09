@@ -1,0 +1,139 @@
+---
+// Types
+import type { Staff } from '../../types/sanity.types';
+import { STAFF } from '@sanity/lib/queries';
+//Libs
+import { loadQuery } from '@sanity/lib/load-query';
+import { Image } from 'astro:assets';
+import { urlForImage } from 'src/sanity/lib/url-for-image';
+
+const { data: staff } = await loadQuery<Staff[]>({
+	query: STAFF,
+});
+const categories = [...new Set(staff.map((human) => human.category))];
+---
+
+<section class="container__wide page__section light py-12 md:py-24">
+	<div>
+		<span class="block font-titles text-2xl text-primary">Our Team</span>
+		<h3 class="section__title mb-6 mt-2">High Agency Is <span class="font-semibold">Our DNA</span></h3>
+		<p class="section__text max-w-xl">
+			We believe in <span class="font-semibold">barrels, not ammunition.</span> Our team doesn’t wait to be told what to
+			do—we figure it out, take the shot, and keep moving. Curiosity, hunger, and an allergy to “that’s how we’ve always
+			done it” fuel us.
+		</p>
+	</div>
+	<!-- Filter -->
+	<div class="relative">
+		<div
+			class="pointer-events-none absolute right-0 z-20 h-full w-10 bg-gradient-to-l from-white to-transparent sm:hidden"
+		>
+		</div>
+		<div
+			class="pointer-events-none absolute left-0 z-20 h-full w-10 bg-gradient-to-r from-white to-transparent sm:hidden"
+		>
+		</div>
+		<div
+			class="relative z-10 mt-10 flex max-w-[100vw] items-center overflow-x-auto px-4 font-titles text-lg [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-2 sm:px-0 lg:text-xl [&::-webkit-scrollbar]:hidden"
+		>
+			<button
+				class="team-filter-btn active px-4 py-2 text-tertiary transition-colors hover:text-black data-[active=true]:font-semibold data-[active=true]:text-black"
+				data-category="all"
+				data-active="true">All</button
+			>
+			{
+				categories.length > 0 &&
+					categories.map((category) => (
+						<button
+							class="team-filter-btn px-4 py-2 text-tertiary transition-colors hover:text-black data-[active=true]:font-semibold data-[active=true]:text-black"
+							data-category={category}
+							data-active="false"
+						>
+							{category && category.charAt(0).toUpperCase() + category.slice(1)}
+						</button>
+					))
+			}
+		</div>
+	</div>
+	<div class="mb-16 mt-8">
+		<ul id="team-member-list" class="border-b border-tertiary" data-category="all">
+			{
+				staff.map((human) => (
+					<li
+						class="group relative flex gap-4 border-t border-tertiary py-4 lg:px-8 lg:hover:bg-black"
+						data-category={human.category}
+					>
+						<div class="pointer-events-none z-20 h-12 w-12 overflow-hidden rounded-full lg:absolute lg:left-1/2 lg:top-1/2 lg:aspect-[620/894] lg:h-auto lg:w-80 lg:-translate-y-1/2 lg:overflow-visible lg:rounded-none">
+							{human.image && (
+								<Image
+									src={urlForImage(human.image).width(100).height(100).url()}
+									alt={human.fullName ?? ''}
+									width={100}
+									height={100}
+									class="lg:hidden"
+								/>
+							)}
+							{human.image && (
+								<Image
+									src={urlForImage(human.image).width(620).height(894).url()}
+									alt={human.fullName ?? ''}
+									width={620}
+									height={894}
+									class="pointer-events-none hidden h-full w-full object-cover lg:group-hover:block"
+								/>
+							)}
+						</div>
+						<div class="lg:gap:8 flex flex-col lg:grid lg:w-full lg:grid-cols-3 lg:items-center">
+							<span class="font-titles text-lg font-semibold text-black lg:text-xl lg:group-hover:text-white">
+								{human.fullName}
+							</span>
+							<span class="inline-block h-fit text-xs text-secondary lg:font-titles lg:text-lg lg:group-hover:text-text-secondary">
+								{human.role} <span class="lg:hidden">· {human.location}</span>
+							</span>
+							<span class="hidden text-right text-lg text-secondary lg:inline lg:font-titles lg:group-hover:text-text-secondary">
+								{human.location}
+							</span>
+						</div>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<script>
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	document.addEventListener('DOMContentLoaded', () => {
+		const filterButtons = document.querySelectorAll('.team-filter-btn') as NodeListOf<HTMLButtonElement>;
+		const teamMemberList = document.querySelectorAll('#team-member-list li') as NodeListOf<HTMLLIElement>;
+
+		function handleFilter(e: Event) {
+			const target = e.target as HTMLButtonElement;
+			if (target.dataset.active === 'true') return;
+
+			target.dataset.active = 'true';
+
+			filterButtons.forEach((btn) => {
+				btn.dataset.active = btn != e.target ? 'false' : 'true';
+			});
+
+			teamMemberList.forEach((member) => {
+				if (member.dataset.category === target.dataset.category || target.dataset.category === 'all') {
+					member.classList.remove('hidden');
+				} else {
+					member.classList.add('hidden');
+				}
+			});
+
+			ScrollTrigger.refresh();
+		}
+
+		filterButtons.forEach((button) => {
+			button.addEventListener('click', handleFilter);
+		});
+	});
+</script>

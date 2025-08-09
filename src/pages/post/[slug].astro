@@ -1,0 +1,174 @@
+---
+//layouts
+import MainLayout from '@layouts/MainLayout.astro';
+
+//components
+import BlogPostHeader from '@components/Blog/BlogPostHeader.astro';
+import PortableText from '@components/PortableText.astro';
+import Contact from '@components/Contact.astro';
+import PopupCTA from '@components/PopupCTA.astro';
+
+//libs
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import type { Post } from '../../types';
+import { urlForImage } from '@sanity/lib/url-for-image';
+import { sanityClient } from 'sanity:client';
+
+//Assets
+import Dummy from '@assets/posts/dummy__01.jpg';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('posts');
+
+	const sanityPostsQuery = `*[_type == "post"]{_id, publishedAt, title, slug, mainImage, tags, body}`;
+	const sanityPosts = await sanityClient.fetch<Post[]>(sanityPostsQuery);
+
+	const collectionPaths = posts.map((post: CollectionEntry<'posts'>) => ({
+		params: { slug: post.slug },
+		props: { post: { type: 'collection', data: post } },
+	}));
+
+	const sanityPaths = sanityPosts.map((post) => ({
+		params: { slug: post.slug.current },
+		props: { post: { type: 'sanity', data: post } },
+	}));
+
+	return [...collectionPaths, ...sanityPaths];
+}
+
+interface Props {
+	post: { type: 'collection'; data: CollectionEntry<'posts'> } | { type: 'sanity'; data: Post };
+}
+
+const { post } = Astro.props;
+const { Content } = post.type === 'collection' ? await post.data.render() : { Content: null };
+---
+
+<MainLayout
+	title={post.type === 'collection' ? post.data.data.title : post.data.title}
+	description={post.type === 'collection' ? post.data.data.description : ''}
+>
+	<main class="min-h-screen overflow-x-hidden pt-[calc(var(--header-height))]">
+		<div
+			class="page__section 2xl:container__wide dark relative mx-auto h-52 overflow-hidden sm:aspect-auto sm:h-64 lg:h-[380px]"
+		>
+			{
+				post.type === 'collection' ? (
+					post.data.data.cover && post.data.data.coverAlt ? (
+						<Image
+							src={post.data.data.cover}
+							alt={post.data.data.coverAlt}
+							class="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 object-cover object-center"
+						/>
+					) : (
+						<Image
+							src={Dummy}
+							alt="Sidetool - Your ride-or-die partner"
+							class="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 object-cover object-center"
+						/>
+					)
+				) : post.data.mainImage ? (
+					<Image
+						src={urlForImage(post.data.mainImage).url()}
+						alt={post.data.mainImage.alt || 'Blog post image'}
+						class="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 object-cover object-center"
+						inferSize={true}
+					/>
+				) : (
+					<Image
+						src={Dummy}
+						alt="Sidetool - Your ride-or-die partner"
+						class="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 object-cover object-center"
+					/>
+				)
+			}
+		</div>
+		<article class="container__wide page__section light mx-auto pb-12 md:pb-24">
+			<BlogPostHeader post={post} />
+			<section class="blog__post mx-auto max-w-screen-md">
+				{post.type === 'collection' && Content && <Content />}
+				{post.type === 'sanity' && <PortableText portableText={post.data.body} />}
+			</section>
+		</article>
+		<Contact />
+		<PopupCTA />
+	</main>
+</MainLayout>
+
+<style></style>
+
+<style is:global>
+	.blog__post h2 {
+		font-size: 1.4rem;
+		font-weight: 600;
+		margin-block: 2rem 1rem;
+	}
+	.blog__post h3 {
+		font-size: 1.2rem;
+		font-weight: 600;
+		margin-block: 1.6rem 0.8rem;
+	}
+	.blog__post h4 {
+		font-size: 1.1rem;
+		font-weight: 600;
+		margin-block: 1.6rem 0.8rem;
+	}
+	.blog__post p {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		margin-block: 0.5rem;
+	}
+	.blog__post img {
+		margin-block: 4rem;
+	}
+	.blog__post a {
+		color: blue;
+		font-weight: 500;
+	}
+	.blog__post li {
+		margin-block: 0.5rem;
+		list-style-position: inside;
+	}
+	.blog__post li > * {
+		display: inline;
+	}
+	.blog__post ul,
+	.blog__post ol {
+		margin-block: 1rem;
+	}
+	.blog__post ol li {
+		list-style-type: numeric;
+	}
+	.blog__post ul li {
+		list-style-type: disc;
+	}
+	.blog__post li ul li,
+	.blog__post li ol li {
+		padding-left: 2rem;
+	}
+	.blog__post pre {
+		margin-block: 2rem;
+		padding: 2rem;
+		border-radius: 1rem;
+	}
+	.blog__post table {
+		width: 100%;
+		border-collapse: collapse;
+		background-color: #f9f9f9;
+	}
+	.blog__post th,
+	.blog__post td {
+		border: 1px solid #dddddd;
+		padding: 8px;
+		text-align: left;
+	}
+	.blog__post th {
+		font-weight: bold;
+		background-color: #e0e0e0;
+	}
+	.blog__post td {
+		background-color: #ffffff;
+	}
+</style>

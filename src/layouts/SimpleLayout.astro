@@ -1,0 +1,52 @@
+---
+import BaseHead from '@components/BaseHead.astro';
+import SimpleHeader from '@components/SimpleHeader.astro';
+import SimpleFooter from '@components/SimpleFooter.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const { title, description, image = '/og-image.jpg' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} image={image} />
+    <style>
+      :root {
+        --header-height-mobile: 70px;
+        --header-height-desktop: 80px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Switzer', system-ui, -apple-system, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      main {
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <SimpleHeader />
+    <slot />
+    <SimpleFooter />
+  </body>
+</html>

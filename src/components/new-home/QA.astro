@@ -1,0 +1,193 @@
+---
+const blocks = [
+	{
+		question: 'How does onboarding work?',
+		answer: "Subscribe, and we'll quickly set up your automation board. You'll be ready to go within about an hour.",
+	},
+	{
+		question: 'Who builds the automations?',
+		answer: 'Sidetool is a streamlined team of AI experts, working directly with you throughout the whole process.',
+	},
+	{
+		question: 'Is there a limit to how many requests I can make?',
+		answer: "Add as many automation requests as you'd like, and we'll handle them one by one.",
+	},
+	{
+		question: 'How does pausing work?',
+		answer:
+			'Not enough automation requests this month? Pause your subscription, and resume whenever you have new needs.',
+	},
+	{
+		question: 'What platforms and tools do you use?',
+		answer:
+			'We build automations primarily using n8n, OpenAI, Claude, LangChain, and other leading AI and workflow platforms.',
+	},
+	{
+		question: 'How do I request automations?',
+		answer:
+			'Simply add them directly to your automation board. Attach documents, notes, or brief videos—whatever works best for you.',
+	},
+	{
+		question: "What if I don't like the automation?",
+		answer: "We revise it until you're completely satisfied.",
+	},
+	{
+		question: 'Can I use Sidetool for just a month?',
+		answer: "Absolutely. Whether you need us for a month or forever, we're here whenever you have automation needs.",
+	},
+];
+---
+
+<section class="page__section light">
+	<div class="wrapper section">
+		<div class="qa__container">
+			{
+				blocks.map((block, i) => (
+					<div class="accordion" class:list={[i === 0 && 'open']}>
+						<div class="accordion__label">
+							<p class="question">{block.question}</p>
+							<div class="accordion__icon">
+								<svg xmlns="http://www.w3.org/2000/svg" width="23" height="22" viewBox="0 0 23 22" fill="none">
+									<path d="M7.14941 2.46457L15.6847 10.9999L7.14941 19.5352" stroke="black" />
+								</svg>
+							</div>
+						</div>
+						<div class="accordion__content">
+							<p class="answer">{block.answer}</p>
+						</div>
+					</div>
+				))
+			}
+		</div>
+		<div id="meeting-container">
+			<!-- <div class="iframe-wrapper">
+				<iframe
+					src="https://zcal.co/i/acZ8ztAs?showBackground=1&embed=1&embedType=iframe"
+					loading="lazy"
+					id="zcal-invite"
+					style="border:none; min-width: 320px; min-height: 544px; height: 1065px; width: 768px"
+					scrolling="no"
+					allowfullscreen></iframe>
+					
+			</div> -->
+			<div class="iframe-container">
+				<iframe src="https://zcal.co/i/ZD_tNCwz?embed=1&embedType=iframe" loading="lazy" id="zcal-invite" scrolling="no"
+				></iframe>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	section {
+		background-color: rgb(var(--clr-white));
+	}
+
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 48px;
+	}
+
+	.iframe-container {
+		width: 100%;
+		max-width: 600px;
+		margin: 0 auto;
+		background-color: rgb(var(--clr-white));
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+	}
+
+	.iframe-container iframe {
+		width: 100%;
+		height: 1024px;
+		border: none;
+		display: block;
+	}
+
+	.accordion {
+		display: grid;
+		grid-template-rows: auto 0fr;
+		transition: grid-template-rows 300ms;
+		border-bottom: 1px solid rgba(var(--clr-black), 0.25);
+		padding: 32px;
+	}
+	.accordion:last-child {
+		border-bottom: none;
+	}
+	.accordion.open {
+		grid-template-rows: auto 1fr;
+	}
+	.accordion__label {
+		display: flex;
+		justify-content: space-between;
+		font-size: 20px;
+		line-height: 1.09;
+		font-family: var(--font-titles);
+	}
+	.accordion__icon {
+		transform: rotate(90deg);
+		transition: transform 300ms;
+	}
+	.accordion.open .accordion__icon {
+		transform: rotate(0deg);
+	}
+	.accordion__content {
+		overflow: hidden;
+		font-size: 16px;
+		color: rgba(var(--clr-black), 0.5);
+		line-height: 1.5;
+		padding-top: 16px;
+	}
+
+	/* Large desktop layout */
+	@media (min-width: 1280px) {
+		.wrapper {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 64px;
+			align-items: start;
+		}
+
+		.qa__container {
+			min-height: 0; /* Allows grid item to shrink */
+		}
+
+		.iframe-container {
+			max-width: none;
+			height: fit-content;
+			position: sticky;
+			top: 2rem; /* Sticky positioning for better UX */
+		}
+
+		.iframe-container iframe {
+			height: 864px;
+		}
+	}
+</style>
+
+<script>
+	const accordions: NodeListOf<Element> = document.querySelectorAll('.accordion');
+
+	accordions.forEach((accordion) => {
+		const accordionElement = accordion as HTMLElement;
+
+		function toggleAccordion(ev: MouseEvent) {
+			const currentEl = ev.currentTarget as HTMLElement;
+
+			accordions.forEach((accordion) => {
+				if (currentEl === accordion) {
+					if (accordion.classList.contains('open')) {
+						accordion.classList.remove('open');
+					} else {
+						accordion.classList.add('open');
+					}
+				} else {
+					accordion.classList.remove('open');
+				}
+			});
+		}
+		accordionElement.addEventListener('click', toggleAccordion);
+	});
+</script>

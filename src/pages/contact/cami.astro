@@ -1,0 +1,23 @@
+---
+// const
+import { CONTACT_TITLE, CONTACT_DESCRIPTION } from '../../consts';
+// components
+import MainLayout from '@layouts/MainLayout.astro';
+import ContactForm from '@components/ContactForm.astro';
+import ClutchReviews from '@components/ClutchReviews.astro';
+---
+
+<MainLayout title={CONTACT_TITLE} description={CONTACT_DESCRIPTION}>
+	<main class="overflow-x-hidden pt-[calc(var(--header-height))]">
+		<ContactForm source="cami" />
+		<div class="container__wide mx-auto mb-[40px] sm:mb-[80px]">
+			<ClutchReviews />
+		</div>
+	</main>
+</MainLayout>
+
+<style>
+	main {
+		background: linear-gradient(180deg, rgba(228, 231, 236, 0.08) 0%, rgba(206, 210, 218, 0.28) 100%);
+	}
+</style>

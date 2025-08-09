@@ -1,0 +1,60 @@
+---
+import type { CaseStudy } from '../../types/sanity.types';
+
+// Libs
+import { urlForImage } from 'src/sanity/lib/url-for-image';
+import { Image } from 'astro:assets';
+
+interface Props {
+	caseStudy: CaseStudy;
+}
+
+const { caseStudy } = Astro.props;
+---
+
+<article class="section page__section light py-24 md:py-36">
+	<header class="pb-12">
+		<h3 class="section__title text-black">What we did</h3>
+	</header>
+	<div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+		<section>
+			<ul>
+				{
+					caseStudy.whatWeDidCardsV2 &&
+						caseStudy.whatWeDidCardsV2.map((card) => (
+							<li class="fade-in group flex items-start gap-4 px-4 py-6 md:px-8 lg:max-w-lg lg:gap-5">
+								<div class="relative grid aspect-square w-12 shrink-0 place-items-center transition-transform group-hover:rotate-45">
+									<div style={`background-color: ${caseStudy.colorTheme?.hex}`} class="absolute h-[2px] w-8" />
+									<div style={`background-color: ${caseStudy.colorTheme?.hex}`} class="absolute h-8 w-[2px]" />
+									<div
+										style={`background-color: ${caseStudy.colorTheme?.hex}`}
+										class="absolute h-[2px] w-8 rotate-45"
+									/>
+									<div
+										style={`background-color: ${caseStudy.colorTheme?.hex}`}
+										class="absolute h-[2px] w-8 -rotate-45"
+									/>
+								</div>
+								<div class="h-fit">
+									<p class="text-xl text-black">{card.title}</p>
+									<p class="text-base text-tertiary">{card.description}</p>
+								</div>
+							</li>
+						))
+				}
+			</ul>
+		</section>
+		<section style={`background-color: ${caseStudy.colorTheme?.hex}`} class="overflow-hidden rounded-2xl">
+			{
+				caseStudy.heroImage && (
+					<Image
+						src={urlForImage(caseStudy.heroImage).url()}
+						alt={caseStudy.title ?? ''}
+						inferSize={true}
+						class="translate-x-[6%] translate-y-[12%] lg:h-full lg:w-[130%] lg:object-cover lg:object-left"
+					/>
+				)
+			}
+		</section>
+	</div>
+</article>

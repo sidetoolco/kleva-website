@@ -1,0 +1,36 @@
+---
+// Constants
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+// Layouts
+import SimpleLayout from '@layouts/SimpleLayout.astro';
+// Components
+import Hero from '@components/Hero.astro';
+import Services from '@components/Services.astro';
+import AboutSection from '@components/AboutSection.astro';
+import CTA from '@components/CTA.astro';
+import Contact from '@components/Contact.astro';
+---
+
+<SimpleLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <main id="page-content" class="main-content">
+    <Hero />
+    <Services />
+    <AboutSection />
+    <CTA />
+    <Contact />
+  </main>
+</SimpleLayout>
+
+<style>
+  .main-content {
+    min-height: 100vh;
+    background-color: #ffffff;
+    padding-top: var(--header-height-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .main-content {
+      padding-top: var(--header-height-desktop);
+    }
+  }
+</style>

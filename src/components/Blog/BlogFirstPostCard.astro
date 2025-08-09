@@ -1,0 +1,111 @@
+---
+// Libs
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import type { Post } from '../../types';
+import { getEntry } from 'astro:content';
+import { urlForImage } from '@sanity/lib/url-for-image';
+//Assets
+import Dummy from '@assets/posts/dummy__01.jpg';
+import BlogCardInfo from '@components/Blog/BlogCardInfo.astro';
+
+interface Props {
+	post: { type: 'collection'; data: CollectionEntry<'posts'> } | { type: 'sanity'; data: Post };
+}
+
+const { post } = Astro.props;
+
+let firstTool;
+if (post.type === 'collection') {
+	firstTool = await getEntry('tools', post.data.data.tools[0].id);
+}
+// if (post.type === 'sanity') {
+// 	console.log(post.data.slug.current);
+// 	console.log(post.data.mainImage);
+// }
+---
+
+{
+	post.type === 'collection' && (
+		<article>
+			<a
+				href={`/post/${post.data.slug}`}
+				class="group relative flex min-h-[420px] overflow-hidden rounded-lg md:aspect-[830/500] lg:aspect-auto"
+			>
+				<div class="absolute left-0 top-0 z-0 h-full w-full">
+					{post.data.data.cover && post.data.data.coverAlt ? (
+						<Image
+							class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+							src={post.data.data.cover}
+							alt={post.data.data.coverAlt}
+							quality={80}
+							loading="lazy"
+						/>
+					) : (
+						<Image
+							class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+							src={Dummy}
+							alt="Sidetool is your ride-or-die partner"
+							quality={80}
+							loading="lazy"
+						/>
+					)}
+				</div>
+				<div id="main-post" class="absolute left-0 top-0 z-20 h-full w-full" />
+				<div class="relative z-30 mt-auto">
+					<BlogCardInfo
+						tag={firstTool?.data.name ?? 'Tool'}
+						title={post.data.data.title}
+						date={post.data.data.date}
+						isMain={true}
+					/>
+				</div>
+			</a>
+		</article>
+	)
+}{
+	post.type === 'sanity' && (
+		<article>
+			<a
+				href={`/post/${post.data.slug.current}`}
+				class="group relative flex min-h-[420px] overflow-hidden rounded-lg md:aspect-[830/500] lg:aspect-auto"
+			>
+				<div class="absolute left-0 top-0 z-0 h-full w-full">
+					{post.data.mainImage ? (
+						<Image
+							class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+							src={urlForImage(post.data.mainImage).url()}
+							alt={post.data.mainImage.alt || 'Blog post image'}
+							quality={80}
+							loading="lazy"
+							inferSize={true}
+						/>
+					) : (
+						<Image
+							class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+							src={Dummy}
+							alt="Sidetool is your ride-or-die partner"
+							quality={80}
+							loading="lazy"
+						/>
+					)}
+				</div>
+				<div id="main-post" class="absolute left-0 top-0 z-20 h-full w-full" />
+				<div class="relative z-30 mt-auto">
+					<BlogCardInfo
+						tag={post.data.tags?.[0] ?? 'Post'}
+						title={post.data.title}
+						date={new Date(post.data.publishedAt)}
+						isMain={true}
+					/>
+				</div>
+			</a>
+		</article>
+	)
+}
+
+<style>
+	#main-post {
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 65%, rgba(0, 0, 0, 0.65) 100%);
+	}
+</style>

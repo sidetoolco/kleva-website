@@ -1,0 +1,80 @@
+---
+//components
+import ButtonPrimary from '@components/Button/ButtonPrimary.astro';
+import ColumnBackground from '@components/ColumnBackground.astro';
+
+import { Icon } from 'astro-icon/components';
+---
+
+<section id="home-hero" class="relative">
+	<ColumnBackground zIndex="0" color="bg-slate-100" classes="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+	<div class="container__wide relative">
+		<h1
+			class="mx-auto flex max-w-[540px] flex-col gap-1 text-nowrap text-center font-titles text-5xl leading-[1] tracking-tight md:max-w-[940px] lg:text-[70px]"
+		>
+			We Build Fast,<br class="md:hidden" /> Scale Smart, and <br class="block" /><span class="font-semibold"
+				>Solve Real <br class="sm:hidden" /> Problems<span></span>
+			</span>
+		</h1>
+		<p
+			class="mx-auto mt-4 w-fit max-w-md text-center text-lg text-secondary text-opacity-90 md:max-w-lg md:text-xl lg:mb-4 lg:mt-6 lg:max-w-screen-md"
+		>
+			Your design and development partner, ready to help you move quicker, automate smarter, and deliver software people
+			actually love. No fluff, no shortcuts, just high-agency pros focused on real results.
+		</p>
+		<div class="mt-6 flex justify-center gap-2 md:mt-8">
+			<ButtonPrimary
+				label="Let's Talk"
+				icon={true}
+				theme="light"
+				link={true}
+				href="/contact"
+				classes="h-12 w-[182px]"
+			/>
+		</div>
+		<div class="relative z-20 mx-auto mt-6 flex w-fit flex-col items-center gap-4 md:mt-12 xl:flex-row">
+			<div class="flex gap-1">
+				{Array.from({ length: 5 }).map(() => <Icon name="ion:star-sharp" class="text-lg text-primary" />)}
+			</div>
+			<a
+				href="https://clutch.co/profile/sidetool"
+				class="block max-w-[420px] text-center text-base font-semibold text-secondary xl:max-w-max"
+			>
+				"What stood out most about Sidetool was their unwavering commitment to our project's success."
+			</a>
+			<div>
+				<a href="https://clutch.co/profile/sidetool" target="_blank" rel="noopener noreferrer" class="">
+					<svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M15.2653 15.4898C14.1429 16.3878 12.5714 17.0612 11 17.0612C7.40817 17.0612 4.93878 14.3673 4.93878 10.7755C4.93878 7.18367 7.40817 4.71428 11 4.71428C12.5714 4.71428 14.1429 5.16326 15.2653 6.28571L15.9388 6.95918L19.5306 3.59183L18.6327 2.91836C16.6122 1.12244 13.9184 0 11 0C4.71429 0 0 4.71428 0 11C0 17.2857 4.71429 22 11 22C13.9184 22 16.6122 20.8776 18.6327 19.0816L19.5306 18.4082L15.9388 14.8163L15.2653 15.4898Z"
+							fill="#17313b"></path>
+						<path
+							d="M10.7754 14.5919C12.7592 14.5919 14.3673 12.9838 14.3673 11C14.3673 9.01633 12.7592 7.4082 10.7754 7.4082C8.79172 7.4082 7.18359 9.01633 7.18359 11C7.18359 12.9838 8.79172 14.5919 10.7754 14.5919Z"
+							fill="#EF4335"></path>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	#home-hero {
+		padding-top: calc(var(--header-height) + 32px);
+	}
+	@media (min-width: 640px) {
+		#home-hero {
+			padding-top: calc(var(--header-height) + 48px);
+		}
+	}
+	@media (min-width: 768px) {
+		#home-hero {
+			padding-top: calc(var(--header-height) + 56px);
+		}
+	}
+	@media (min-width: 1024px) {
+		#home-hero {
+			padding-top: calc(var(--header-height) + 96px);
+		}
+	}
+</style>

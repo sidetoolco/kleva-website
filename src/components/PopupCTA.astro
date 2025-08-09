@@ -1,0 +1,161 @@
+---
+import ButtonCircleArrowLink from './Button/ButtonCircleArrowLink.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<article class="popup__cta">
+	<div class="popup__cta__bg"></div>
+	<div class="wrapper">
+		<header>
+			<div>
+				<h6>See if Sidetool is right for you</h6>
+				<h6 class="clr-violet">(it totally is)</h6>
+			</div>
+			<button>
+				<Icon name="ion:close" size={24} />
+			</button>
+		</header>
+		<div class="popup__content">
+			<p>Schedule a quick, guided tour.</p>
+			<Icon name="big-arrow" size={56} />
+		</div>
+		<ButtonCircleArrowLink asButton label="Book a 15-min intro call" fullWidth id="popup-cta-button" />
+	</div>
+</article>
+
+<style>
+	.popup__cta {
+		position: fixed;
+		z-index: 2;
+		bottom: 24px;
+		right: 16px;
+		left: 16px;
+		overflow: hidden;
+		border-radius: 24px;
+		opacity: 0;
+		transform: translateY(20%);
+		transition-property: opacity, transform;
+		transition-duration: 0.3s;
+		transition-timing-function: ease-in-out;
+	}
+
+	.popup__cta.active {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	@media (min-width: 640px) {
+		.popup__cta {
+			right: 24px;
+			left: unset;
+		}
+	}
+	header {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: 24px;
+	}
+	.wrapper {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+		background: rgb(var(--clr-black));
+		background: linear-gradient(
+			152deg,
+			rgba(var(--clr-violet), 0.5) 0%,
+			rgb(var(--clr-black)) 16%,
+			rgb(var(--clr-black)) 79%,
+			rgba(var(--clr-violet), 0.5) 100%
+		);
+		color: rgb(var(--clr-white));
+		padding: 24px;
+	}
+	.popup__cta__bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgb(var(--clr-black));
+		z-index: 1;
+	}
+	h6 {
+		font-family: var(--font-titles);
+		font-size: 24px;
+		font-weight: 500;
+		line-height: 1.2;
+	}
+	.clr-violet {
+		color: rgb(var(--clr-violet));
+		font-style: italic;
+		font-weight: 300;
+	}
+	.popup__content {
+		display: flex;
+		justify-content: space-between;
+		font-size: 14px;
+		margin-block: 16px;
+	}
+	[data-icon] {
+		transform: rotate(90deg);
+		color: rgb(var(--clr-violet));
+	}
+</style>
+
+<script>
+	// Wait for DOM to be fully loaded
+	document.addEventListener('DOMContentLoaded', function () {
+		const popup = document.querySelector('.popup__cta');
+		const closeButton = popup?.querySelector('header button');
+		const ctaButton = popup?.querySelector('#popup-cta-button');
+
+		let hasTriggered = false;
+		let isVisible = false;
+
+		// Function to show popup
+		function showPopup() {
+			if (popup && !isVisible) {
+				popup.classList.add('active');
+				isVisible = true;
+			}
+		}
+
+		// Function to hide popup
+		function hidePopup() {
+			if (popup && isVisible) {
+				popup.classList.remove('active');
+				isVisible = false;
+			}
+		}
+
+		// Scroll detection
+		function handleScroll() {
+			if (hasTriggered) return;
+
+			const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+			const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+			const scrollPercentage = (scrollTop / documentHeight) * 100;
+
+			if (scrollPercentage >= 15) {
+				showPopup();
+				hasTriggered = true;
+				// Remove scroll listener once triggered
+				window.removeEventListener('scroll', handleScroll);
+			}
+		}
+
+		// Add scroll listener
+		window.addEventListener('scroll', handleScroll);
+
+		// Add click listeners for close functionality
+		if (closeButton) {
+			closeButton.addEventListener('click', hidePopup);
+		}
+
+		if (ctaButton) {
+			ctaButton.addEventListener('click', hidePopup);
+		}
+	});
+</script>

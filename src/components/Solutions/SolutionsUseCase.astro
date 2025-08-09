@@ -1,0 +1,97 @@
+---
+import type { Solution } from '../../types/sanity.types';
+import { Icon } from 'astro-icon/components';
+interface Props {
+	useCases: Solution['useCases'];
+}
+
+const { useCases }: Props = Astro.props;
+---
+
+<div class="section page__section light">
+	<section>
+		<header class="fade-in mb-8 space-y-4 sm:mb-16 md:mb-0">
+			<h3 class="font-titles text-3xl font-bold leading-[0.91] sm:text-[50px]">Simple Use Case Examples</h3>
+			<p class="text-lg leading-[1.55] text-secondary md:text-2xl">We create products that people love using</p>
+		</header>
+		<div class="use-case-container">
+			<div class="">
+				{
+					useCases &&
+						useCases.map((useCase, i) => (
+							<article
+								class="use-case-article items-center gap-10 border-t border-[#97A1AF] py-[70px] md:flex md:first:border-t-0"
+								data-index={i}
+							>
+								<div class="grid h-20 w-20 shrink-0 place-items-center rounded-2xl border-2 border-text-secondary lg:h-28 lg:w-28">
+									<Icon name={useCase.iconName} width={48} height={48} />
+								</div>
+								<section>
+									<h4 class="py-[10px] font-titles text-[40px] font-bold leading-[0.91] tracking-tight md:pt-0 md:text-[50px]">
+										{useCase.title}
+									</h4>
+									<p class="max-w-screen-md text-lg leading-[1.45] text-secondary">{useCase.description}</p>
+								</section>
+							</article>
+						))
+				}
+			</div>
+		</div>
+	</section>
+</div>
+
+<style>
+	.section {
+		padding-bottom: 0;
+	}
+	.pin-space {
+		shrink: 0;
+	}
+</style>
+
+<script>
+	// import { gsap } from 'gsap';
+	// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	// gsap.registerPlugin(ScrollTrigger);
+	// const articles = document.querySelectorAll('.use-case-article') as NodeListOf<HTMLElement>;
+	// const container = document.querySelector('.use-case-number-container') as HTMLElement;
+	// let triggerEnd = `+=${articles[0].offsetHeight * (articles.length - 1)}px`;
+
+	// document.addEventListener('DOMContentLoaded', () => {
+	// 	function setNumberContainerHeight() {
+	// 		container.style.height = `${articles[0].offsetHeight}px`;
+	// 	}
+	// 	const numberAnim = ScrollTrigger.create({
+	// 		trigger: '.use-case-container',
+	// 		pin: '#use-case-number',
+	// 		start: 'top 25%',
+	// 		end: `+=${triggerEnd}`,
+	// 	});
+
+	// 	articles.forEach((article, index) => {
+	// 		gsap
+	// 			.timeline({
+	// 				scrollTrigger: {
+	// 					trigger: article,
+	// 					start: 'top 50%',
+	// 					end: `+=${article.offsetHeight * 0.75}px`,
+	// 					scrub: true,
+	// 				},
+	// 			})
+	// 			.to('.use-case-number-slider', {
+	// 				translateY: `-${(100 / articles.length) * index}%`,
+	// 				duration: 0.3,
+	// 			});
+	// 	});
+
+	// 	function handleResize() {
+	// 		triggerEnd = `+=${articles[0].offsetHeight * (articles.length - 1)}px`;
+	// 		setNumberContainerHeight();
+	// 		numberAnim.vars.end = triggerEnd;
+	// 		numberAnim.refresh();
+	// 	}
+
+	// 	setNumberContainerHeight();
+	// 	window.addEventListener('resize', handleResize);
+	// });
+</script>

@@ -1,0 +1,159 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  author?: string;
+  publishDate: string;
+  modifiedDate?: string;
+  image?: string;
+  tags?: string[];
+  readingTime?: number;
+}
+
+const {
+  title,
+  description,
+  author = "Sidetool Team",
+  publishDate,
+  modifiedDate,
+  image = "https://www.sidetool.co/og-image.jpg",
+  tags = [],
+  readingTime = 5
+} = Astro.props;
+
+const blogPostSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": Astro.url.href + "#article",
+      "isPartOf": {
+        "@id": Astro.url.href + "#webpage"
+      },
+      "author": {
+        "@type": "Person",
+        "name": author,
+        "url": "https://www.sidetool.co/about"
+      },
+      "headline": title,
+      "description": description,
+      "datePublished": publishDate,
+      "dateModified": modifiedDate || publishDate,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": Astro.url.href + "#webpage"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Sidetool",
+        "@id": "https://www.sidetool.co/#organization",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.sidetool.co/logo.svg",
+          "width": 200,
+          "height": 60
+        }
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": image,
+        "width": 1200,
+        "height": 630
+      },
+      "keywords": tags.join(", "),
+      "articleSection": "Technology",
+      "inLanguage": "en-US",
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [Astro.url.href]
+        }
+      ],
+      "timeRequired": `PT${readingTime}M`
+    },
+    {
+      "@type": "WebPage",
+      "@id": Astro.url.href + "#webpage",
+      "url": Astro.url.href,
+      "name": title,
+      "isPartOf": {
+        "@id": "https://www.sidetool.co/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": Astro.url.href + "#primaryimage"
+      },
+      "datePublished": publishDate,
+      "dateModified": modifiedDate || publishDate,
+      "description": description,
+      "breadcrumb": {
+        "@id": Astro.url.href + "#breadcrumb"
+      },
+      "inLanguage": "en-US",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [Astro.url.href]
+        }
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": Astro.url.href + "#primaryimage",
+      "inLanguage": "en-US",
+      "url": image,
+      "contentUrl": image,
+      "width": 1200,
+      "height": 630,
+      "caption": title
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": Astro.url.href + "#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.sidetool.co/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.sidetool.co/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": title,
+          "item": Astro.url.href
+        }
+      ]
+    }
+  ]
+};
+
+// Add How-To schema if the title suggests it's a tutorial
+const isHowTo = title.toLowerCase().includes('how to') || 
+                 title.toLowerCase().includes('guide') || 
+                 title.toLowerCase().includes('tutorial');
+
+const howToSchema = isHowTo ? {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": title,
+  "description": description,
+  "image": image,
+  "totalTime": `PT${readingTime}M`,
+  "supply": [],
+  "tool": [],
+  "step": []  // Would need to be populated with actual steps from content
+} : null;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(blogPostSchema)} />
+
+{howToSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+)}

@@ -1,0 +1,106 @@
+---
+// Types
+import ButtonPrimary from '@components/Button/ButtonPrimary.astro';
+import type { CaseStudy } from '../../types/sanity.types';
+// Components
+import CaseStudyCard from './CaseStudyCard.astro';
+
+interface Props {
+	relatedCaseStudies: CaseStudy[] | undefined;
+	title?: string;
+	description: string;
+}
+
+const { relatedCaseStudies, title, description } = Astro.props;
+---
+
+<section class="page__section light overflow-hidden">
+	<div class="wrapper section">
+		<div class="mb-8 w-full md:mb-12 xl:mb-16">
+			<div class="fade-in mb-6 flex-col justify-between space-y-4 sm:mb-0 sm:flex">
+				<h3 class="section__title text-nowrap">
+					{
+						title ? (
+							title
+						) : (
+							<>
+								<span class="font-semibold">
+									We don't <br class="sm:hidden" />
+									Just Work Fast.
+								</span>
+								<br />
+								We Create Products
+								<br class="sm:hidden" /> People Love.
+							</>
+						)
+					}
+				</h3>
+				<div class="items-end justify-between gap-8 space-y-6 sm:flex sm:space-y-0">
+					<p class="section__text max-w-screen-sm text-secondary">{description}</p>
+					<ButtonPrimary
+						classes="h-12 sm:w-52 fade-in shrink-0"
+						link={true}
+						href="/case-studies"
+						label="View All"
+						theme="light"
+						icon={true}
+					/>
+				</div>
+			</div>
+		</div>
+		<div class="related__cases fade-in">
+			<div class="swiper-wrapper w-full">
+				{
+					relatedCaseStudies &&
+						relatedCaseStudies?.map((caseStudy: CaseStudy) => (
+							<div class="swiper-slide xl:w-full">
+								<CaseStudyCard caseStudy={caseStudy} />
+							</div>
+						))
+				}
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	section {
+		padding-block: 0;
+	}
+	.swiper-slide {
+		width: 368px;
+
+		height: auto;
+	}
+</style>
+
+<script>
+	import Swiper from 'swiper';
+	import 'swiper/css';
+
+	new Swiper('.related__cases', {
+		freeMode: true,
+		slidesPerView: 1.1,
+		spaceBetween: 24,
+		breakpoints: {
+			470: {
+				slidesPerView: 1.2,
+			},
+			540: {
+				slidesPerView: 1.3,
+			},
+			640: {
+				slidesPerView: 1.6,
+			},
+			768: {
+				slidesPerView: 1.8,
+			},
+			820: {
+				slidesPerView: 2.1,
+			},
+			950: {
+				slidesPerView: 3,
+			},
+		},
+	});
+</script>

@@ -1,0 +1,165 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	href?: string;
+	label: string;
+	fullWidth?: boolean;
+	dark?: boolean;
+	target?: string;
+	asButton?: boolean;
+	notCTA?: boolean;
+	type?: 'button' | 'submit' | 'reset';
+	form?: string;
+	id?: string;
+}
+
+const {
+	href,
+	label,
+	fullWidth = false,
+	dark = false,
+	target = '_self',
+	asButton = false,
+	notCTA = false,
+	type = 'button',
+	form,
+	id,
+} = Astro.props;
+---
+
+{
+	asButton ? (
+		<button
+			type={type}
+			form={form}
+			id={id}
+			class:list={[!notCTA && 'cta-button', fullWidth && 'full-width', dark && 'dark']}
+		>
+			<div class="arrow-circle">
+				<Icon name="ion:ios-arrow-thin-right" size={36} class="arrow-icon first" />
+				<Icon name="ion:ios-arrow-thin-right" size={36} class="arrow-icon second" />
+			</div>
+			<span class="label">{label}</span>
+		</button>
+	) : (
+		<a href={href} id={id} class:list={[fullWidth && 'full-width', dark && 'dark']} target={target}>
+			<div class="arrow-circle">
+				<Icon name="ion:ios-arrow-thin-right" size={36} class="arrow-icon first" />
+				<Icon name="ion:ios-arrow-thin-right" size={36} class="arrow-icon second" />
+			</div>
+			{label}
+		</a>
+	)
+}
+
+<style>
+	a,
+	button {
+		border: none;
+		border-radius: 999px;
+		background-color: rgb(var(--clr-white));
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 12px;
+		padding: 12px 24px 12px 10px;
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 1.5;
+		width: fit-content;
+		color: rgb(var(--clr-black));
+		cursor: pointer;
+		font-family: inherit;
+	}
+
+	a.dark,
+	button.dark {
+		background-color: rgb(var(--clr-black));
+		color: rgb(var(--clr-white));
+	}
+
+	a.full-width,
+	button.full-width {
+		width: 100%;
+	}
+
+	.arrow-circle {
+		position: relative;
+		width: 40px;
+		height: 40px;
+		display: grid;
+		place-items: center;
+		border: 1px solid rgba(var(--clr-black), 0.4);
+		border-radius: 999px;
+		overflow: hidden;
+		transition-property: background-color;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-out;
+	}
+
+	a.dark .arrow-circle,
+	button.dark .arrow-circle {
+		border-color: rgba(var(--clr-white), 0.4);
+	}
+
+	.arrow-icon {
+		transition-property: transform;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-out;
+	}
+
+	.arrow-icon.first {
+		position: relative;
+		color: rgb(var(--clr-black));
+	}
+
+	a.dark .arrow-icon.first,
+	button.dark .arrow-icon.first {
+		color: rgb(var(--clr-white));
+	}
+
+	.arrow-icon.second {
+		position: absolute;
+		transform: translateX(-100%);
+		color: rgb(var(--clr-white));
+	}
+
+	a.dark .arrow-icon.second,
+	button.dark .arrow-icon.second {
+		color: rgb(var(--clr-black));
+	}
+
+	a:hover .arrow-circle,
+	button:hover .arrow-circle {
+		background-color: rgb(var(--clr-black));
+	}
+
+	a.dark:hover .arrow-circle,
+	button.dark:hover .arrow-circle {
+		background-color: rgb(var(--clr-white));
+	}
+
+	a:hover .first,
+	button:hover .first {
+		transform: translateX(100%);
+	}
+
+	a:hover .second,
+	button:hover .second {
+		transform: translateX(0%);
+	}
+</style>
+
+<script>
+	const buttons = document.querySelectorAll('.cta-button');
+	function scrollToCTA() {
+		const cta = document.getElementById('website-contact');
+		if (cta) {
+			cta.scrollIntoView({ behavior: 'smooth' });
+		}
+	}
+	buttons.forEach((button) => {
+		button.addEventListener('click', scrollToCTA);
+	});
+</script>

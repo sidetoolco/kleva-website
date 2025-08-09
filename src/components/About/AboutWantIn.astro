@@ -1,0 +1,23 @@
+---
+// Components
+import ButtonPrimary from '@components/Button/ButtonPrimary.astro';
+---
+
+<section class="container__wide page__section light space-y-4 pb-24 md:pb-36">
+	<h3 class="section__title font-semibold">What We Build</h3>
+	<p class="section__text max-w-xl text-secondary">
+		We’re not for everyone, and that’s the point. If you’re itching to build big things with a scrappy, ambitious team,
+		let’s talk. Let’s ship something incredible. Let’s break stuff (in a good way). Let’s see just how far we can bend
+		reality—together.
+	</p>
+	<div class="flex items-start justify-between pt-8">
+		<p class="section__text font-semibold text-black">🚀 Let’s do this.</p>
+		<ButtonPrimary
+			size="small"
+			link={true}
+			target="_blank"
+			href="https://apply.workable.com/sidetool/"
+			label="Work With Us"
+		/>
+	</div>
+</section>

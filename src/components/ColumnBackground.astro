@@ -1,0 +1,15 @@
+---
+interface Props {
+	zIndex?: string;
+	color?: string;
+	classes?: string;
+}
+
+const { zIndex = '0', color = 'bg-slate-900', classes }: Props = Astro.props;
+---
+
+<div class="container__wide absolute left-0 top-0 z-0 h-full w-full" class:list={[`z-${zIndex}`, classes]}>
+	<div class="flex h-full w-full justify-between">
+		{Array.from({ length: 6 }).map(() => <div class="bar h-full w-[1px]" class:list={[`${color}`]} />)}
+	</div>
+</div>

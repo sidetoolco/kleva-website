@@ -1,0 +1,60 @@
+---
+import type { AutomationSolution } from '../../types/sanity.types';
+
+// Components
+import ColumnBackground from '@components/ColumnBackground.astro';
+import PortableText from '@components/PortableText.astro';
+
+interface Props {
+	automationSolution: AutomationSolution;
+}
+
+const { automationSolution } = Astro.props;
+---
+
+<section class="page__section light relative overflow-hidden">
+	<ColumnBackground
+		zIndex="10"
+		color="bg-text-secondary"
+		classes="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+	/>
+	<div
+		class="bg-radial absolute bottom-0 left-0 z-0 aspect-square w-1/2 -translate-x-1/2 translate-y-1/2 rounded-full lg:translate-y-1/2"
+	>
+	</div>
+	<div
+		class="bg-radial absolute right-0 top-0 z-0 aspect-square w-1/2 -translate-y-1/2 translate-x-1/2 rounded-full lg:-translate-y-1/2"
+	>
+	</div>
+	<div class="container__wide relative z-10 space-y-12 py-24 md:py-36">
+		<h4 class="mx-auto max-w-4xl text-center text-2xl leading-[1.2] md:text-4xl md:leading-[1.2]">
+			<PortableText portableText={automationSolution.cta} />
+		</h4>
+		<button
+			id="automations-cta-button"
+			class="group mx-auto flex h-[52px] w-fit min-w-44 items-center justify-center gap-2 rounded-full bg-primary px-6 text-black"
+		>
+			Let's Talk
+			<div class="text-black transition-transform group-hover:-translate-y-[1px] group-hover:-rotate-45">
+				<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
+					<path fill="#141c25" d="M4 12h12.25L11 6.75l.66-.75l6.5 6.5l-6.5 6.5l-.66-.75L16.25 13H4z"></path></svg
+				>
+			</div>
+		</button>
+	</div>
+</section>
+
+<style>
+	.bg-radial {
+		background: rgb(190, 121, 255);
+		background: radial-gradient(circle, rgba(190, 121, 255, 1) 0%, rgb(0 235 226 / 0%) 70%);
+	}
+</style>
+<script>
+	const letsTalkButton = document.getElementById('automations-cta-button');
+	function scrollToContact() {
+		const contactSection = document.getElementById('website-contact');
+		contactSection?.scrollIntoView({ behavior: 'smooth' });
+	}
+	letsTalkButton?.addEventListener('click', scrollToContact);
+</script>

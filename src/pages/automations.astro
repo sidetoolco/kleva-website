@@ -1,0 +1,62 @@
+---
+// Layouts
+import MainLayout from '@layouts/MainLayout.astro';
+// Components
+import SolutionsAutomationsGallery from '@components/Solutions/SolutionsAutomationsGallery.astro';
+import Contact from '@components/Contact.astro';
+//Libs
+import { Icon } from 'astro-icon/components';
+---
+
+<MainLayout
+	title="Automations meets AI"
+	description="Our solutions take on the busywork - analyzing data, responding to users, and optimizing workflows- so your team can focus on strategy and innovation."
+>
+	<main id="page-content">
+		<section class="container__wide page__section light pb-24 pt-[calc(var(--header-height)+48px)] md:pb-36">
+			<article class="mx-auto max-w-xl space-y-4 text-center lg:max-w-4xl lg:space-y-8">
+				<header class="space-y-2 md:space-y-8">
+					<span class="inline-block font-titles text-lg text-primary lg:text-2xl"> Automations meets AI </span>
+					<h1 class="font-titles text-5xl leading-[1] tracking-tight lg:text-[70px]">
+						<span class="font-semibold"> Automate </span>
+						your workflow
+					</h1>
+				</header>
+				<p class="mx-auto sm:text-lg lg:text-4xl">
+					Our <span class="font-semibold">solutions</span> take on the busywork - analyzing data, <Icon
+						name="lightbulb"
+						class="inline align-middle text-2xl lg:text-4xl"
+					/> responding to users, and optimizing workflows- so your team can focus on strategy <Icon
+						name="loading"
+						class="inline align-middle text-2xl lg:text-4xl"
+					/> and innovation.
+					<br />
+					<br />
+					<span class="font-semibold text-primary">Efficiency, 24/7.</span>
+				</p>
+			</article>
+		</section>
+		<SolutionsAutomationsGallery />
+		<Contact />
+	</main>
+</MainLayout>
+
+<style>
+	main {
+		min-height: 100vh;
+		overflow: hidden;
+		padding-top: calc(var(--header-height-mobile) + 64px);
+	}
+
+	@media (min-width: 768px) {
+		main {
+			padding-top: calc(var(--header-height-desktop) + 82px);
+		}
+	}
+
+	@media (min-width: 1024px) {
+		main {
+			padding-top: calc(var(--header-height-desktop) + 120px);
+		}
+	}
+</style>

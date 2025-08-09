@@ -1,0 +1,195 @@
+---
+import SimpleButton from './Button/SimpleButton.astro';
+---
+
+<section class="about-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-content">
+        <span class="about-label">About Kleva</span>
+        <h2 class="about-title">
+          We Build Digital Experiences That Matter
+        </h2>
+        <p class="about-description">
+          With over a decade of experience in digital innovation, we've helped hundreds of businesses 
+          transform their ideas into successful digital products. Our team combines technical expertise 
+          with creative thinking to deliver solutions that not only look great but drive real results.
+        </p>
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat-number">100+</span>
+            <span class="stat-label">Projects Delivered</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Happy Clients</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">5+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+        </div>
+        <SimpleButton href="/about" size="md">
+          Learn More About Us
+        </SimpleButton>
+      </div>
+      <div class="about-visual">
+        <div class="visual-card card-1">
+          <div class="card-icon">🚀</div>
+          <h4>Fast Delivery</h4>
+          <p>Quick turnaround without compromising quality</p>
+        </div>
+        <div class="visual-card card-2">
+          <div class="card-icon">💡</div>
+          <h4>Innovation First</h4>
+          <p>Cutting-edge solutions using latest technologies</p>
+        </div>
+        <div class="visual-card card-3">
+          <div class="card-icon">🤝</div>
+          <h4>Partnership</h4>
+          <p>We work as an extension of your team</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    padding: 5rem 0;
+    background: white;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .about-label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .about-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #1a1a1a;
+  }
+
+  .about-description {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #6b7280;
+    margin-bottom: 2rem;
+  }
+
+  .about-stats {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+  }
+
+  .about-visual {
+    display: grid;
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  .visual-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+  }
+
+  .visual-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-1 {
+    background: linear-gradient(135deg, #f3e7fc 0%, #e7ebfd 100%);
+  }
+
+  .card-2 {
+    background: linear-gradient(135deg, #fef3c7 0%, #fee2e2 100%);
+  }
+
+  .card-3 {
+    background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .visual-card h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+  }
+
+  .visual-card p {
+    color: #6b7280;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .visual-card {
+      position: relative;
+    }
+
+    .card-2 {
+      margin-left: 2rem;
+      margin-top: -2rem;
+    }
+
+    .card-3 {
+      margin-top: -1rem;
+    }
+  }
+</style>

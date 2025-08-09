@@ -1,0 +1,57 @@
+---
+//Types
+import type { SOLUTIONSResult, Solution, CaseStudy } from '../../types/sanity.types';
+//Layouts
+import MainLayout from '@layouts/MainLayout.astro';
+//Components
+import SolutionsHero from '@components/Solutions/SolutionsHero.astro';
+import SolutionsWhoIsThisFor from '@components/Solutions/SolutionsWhoIsThisFor.astro';
+import SolutionsFinalWord from '@components/Solutions/SolutionsFinalWord.astro';
+import SolutionsUseCase from '@components/Solutions/SolutionsUseCase.astro';
+import CaseStudyRelatedCaseStudies from '@components/CaseStudy/CaseStudyRelatedCaseStudies.astro';
+import Contact from '@components/Contact.astro';
+// Sanity
+import { loadQuery } from '@sanity/lib/load-query';
+import { SOLUTIONS, SOLUTION_BY_SLUG, SOLUTION_RELATED_SOLUTIONS } from '@sanity/lib/queries';
+
+export async function getStaticPaths() {
+	const { data: solutions } = await loadQuery<SOLUTIONSResult>({
+		query: SOLUTIONS,
+	});
+
+	return solutions.map((solution) => {
+		return {
+			params: {
+				slug: solution.slug,
+			},
+		};
+	});
+}
+
+const { params } = Astro;
+
+const { data: solution } = await loadQuery<Solution>({
+	query: SOLUTION_BY_SLUG,
+	params: { slug: params.slug ?? '' },
+});
+
+const { data: relatedCaseStudies } = await loadQuery<CaseStudy[]>({
+	query: SOLUTION_RELATED_SOLUTIONS,
+	params: { slug: params.slug ?? '' },
+});
+---
+
+<MainLayout title={solution.title ? `${solution.title} | Solutions` : 'Solution'} description={solution.title ?? ''}>
+	<main class="overflow-x-hidden">
+		<SolutionsHero solution={solution} />
+		<SolutionsWhoIsThisFor solution={solution} />
+		<SolutionsUseCase useCases={solution.useCases} />
+		<CaseStudyRelatedCaseStudies
+			relatedCaseStudies={relatedCaseStudies}
+			title="Companies We've Teamed Up With"
+			description="We create products that people love using"
+		/>
+		<SolutionsFinalWord words={solution.finalWords} />
+		<Contact />
+	</main>
+</MainLayout>

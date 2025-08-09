@@ -1,0 +1,99 @@
+---
+
+---
+
+<script>
+	interface NavigationState {
+		currentPage: string;
+		lastVisitedPage: string | null;
+	}
+
+	class NavigationTracker {
+		private NAVIGATION_STATE_KEY = 'navigationState';
+
+		constructor() {
+			this.initializeTracking();
+		}
+
+		private initializeTracking(): void {
+			if (typeof window !== 'undefined') {
+				// Save state before user leaves
+				window.addEventListener('beforeunload', () => {
+					this.saveNavigationState();
+				});
+
+				// Check navigation on page load
+				document.addEventListener('astro:page-load', () => {
+					this.updateNavigationState();
+				});
+
+				// Initial check on first load
+				this.updateNavigationState();
+			}
+		}
+
+		private getNavigationState(): NavigationState {
+			const stateString = localStorage.getItem(this.NAVIGATION_STATE_KEY);
+			if (stateString) {
+				return JSON.parse(stateString);
+			}
+			return {
+				currentPage: window.location.pathname,
+				lastVisitedPage: null,
+			};
+		}
+
+		private saveNavigationState(): void {
+			const currentState = this.getNavigationState();
+			const newState: NavigationState = {
+				currentPage: window.location.pathname,
+				lastVisitedPage: currentState.currentPage,
+			};
+			localStorage.setItem(this.NAVIGATION_STATE_KEY, JSON.stringify(newState));
+		}
+
+		private updateNavigationState(): void {
+			const currentState = this.getNavigationState();
+			const currentPath = window.location.pathname;
+
+			// Only update if we've actually changed pages
+			if (currentPath !== currentState.currentPage) {
+				const newState: NavigationState = {
+					currentPage: currentPath,
+					lastVisitedPage: currentState.currentPage,
+				};
+
+				localStorage.setItem(this.NAVIGATION_STATE_KEY, JSON.stringify(newState));
+
+				// Dispatch navigation event
+				this.handleNavigation(newState);
+			}
+		}
+
+		private handleNavigation(state: NavigationState): void {
+			// Dispatch a custom event that other components can listen to
+			const event = new CustomEvent('navigation-changed', {
+				detail: state,
+			});
+			document.dispatchEvent(event);
+		}
+
+		// Utility method to get current navigation state from any component
+		public static getCurrentNavigation(): NavigationState {
+			const stateString = localStorage.getItem('navigationState');
+			return stateString
+				? JSON.parse(stateString)
+				: {
+						currentPage: window.location.pathname,
+						lastVisitedPage: null,
+					};
+		}
+
+		public clearTracking(): void {
+			localStorage.removeItem(this.NAVIGATION_STATE_KEY);
+		}
+	}
+
+	// Initialize the tracker
+	new NavigationTracker();
+</script>

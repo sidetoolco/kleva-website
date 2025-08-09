@@ -1,0 +1,54 @@
+---
+interface Props {
+	text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<div class="marquee">
+	<div class="marquee__wrapper">
+		<p>{text}</p>
+		<p>{text}</p>
+	</div>
+</div>
+
+<style>
+	@keyframes marqueeLeft {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-100%);
+		}
+	}
+	.marquee {
+		background-color: rgb(var(--clr-black));
+		padding: 10px 0;
+		overflow: hidden;
+	}
+	.marquee__wrapper {
+		display: flex;
+		color: rgb(var(--clr-white));
+		font-size: 32px;
+		font-family: var(--font-titles);
+		font-weight: 400;
+		line-height: 1;
+		letter-spacing: -1.2px;
+		text-wrap: nowrap;
+	}
+	.marquee__wrapper p {
+		white-space: nowrap;
+		animation: marqueeLeft 30s linear infinite;
+		padding-right: 16px;
+	}
+
+	@media (min-width: 768px) {
+		.marquee__wrapper {
+			font-size: 48px;
+		}
+		.marquee__wrapper p {
+			animation: marqueeLeft 35s linear infinite;
+		}
+	}
+</style>

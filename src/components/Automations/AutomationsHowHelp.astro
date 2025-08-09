@@ -1,0 +1,41 @@
+---
+import type { AutomationSolution } from '../../types/sanity.types';
+
+// Libs
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	automationSolution: AutomationSolution;
+}
+
+const { automationSolution } = Astro.props;
+---
+
+<section class="page__section dark bg-[#000] py-12 md:py-20">
+	<header class="container__wide mb-12 space-y-6">
+		<h2 class="section__title mb-4 text-white">How it helps</h2>
+		<p class="section__text max-w-3xl text-white">
+			This solution enables a proactive approach to competitive content positioning
+		</p>
+	</header>
+
+	<ul class="container__wide grid grid-cols-1 gap-6 md:grid-cols-2">
+		{
+			automationSolution.helpCards &&
+				automationSolution.helpCards.map((card) => (
+					<li class="rounded-xl border border-[#616161] px-5 py-8">
+						<article class="space-y-4 text-white">
+							<header class="flex items-center gap-4">
+								<Icon name={card.icon} width={24} height={24} class="text-primary" />
+								<h3 class="font-titles text-2xl font-medium">{card.title}</h3>
+							</header>
+							<ul class="space-y-1 pl-6">
+								{card.benefits &&
+									card.benefits.map((benefit) => <li class="list-disc text-lg leading-[1.45]">{benefit}</li>)}
+							</ul>
+						</article>
+					</li>
+				))
+		}
+	</ul>
+</section>

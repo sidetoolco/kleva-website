@@ -1,0 +1,245 @@
+---
+import { Image } from 'astro:assets';
+
+import mcdonalds from 'src/assets/case-showcase/mcdonalds.png';
+import experta from 'src/assets/case-showcase/experta.png';
+import grit from 'src/assets/case-showcase/grit.png';
+import surveill from 'src/assets/case-showcase/surveill.png';
+import testpilot from 'src/assets/case-showcase/testpilot.png';
+import bidx from 'src/assets/case-showcase/bidx.png';
+
+const cases = [
+	{
+		title: 'McDonald’s Voice AI',
+		text: 'Seamlessly handles thousands of customer orders.',
+		image: mcdonalds,
+	},
+	{
+		title: 'Experta Claims AI',
+		text: 'Speeds up insurance claim processing by 80%.',
+		image: experta,
+	},
+	{
+		title: 'GritPPO Sales AI',
+		text: 'Automatically identifies your best sales opportunities.',
+		image: grit,
+	},
+	{
+		title: 'Surveill Compliance AI',
+		text: 'Keeps your emails compliant automatically.',
+		image: surveill,
+	},
+	{
+		title: 'TestPilot Research AI',
+		text: 'Automates market research at scale.',
+		image: testpilot,
+	},
+	{
+		title: 'BidX Government AI',
+		text: 'Quickly finds and secures new contracts.',
+		image: bidx,
+	},
+];
+---
+
+<article class="section page__section dark">
+	<header>
+		<span class="section__tag dark">Case Studies</span>
+		<h2 class="section__heading">Meet Some of Our Recent AI Teammates</h2>
+	</header>
+	<div class="grid">
+		{
+			cases.map(({ title, text, image }) => (
+				<div class="case__wrapper">
+					<div class="case">
+						<div class="image__animation dark">
+							<Image src={image} alt={title} width={616} height={311} class="case__image" />
+						</div>
+						<div class="case__content">
+							<h5>
+								<span>{title}</span>
+							</h5>
+							<p>{text}</p>
+						</div>
+					</div>
+				</div>
+			))
+		}
+	</div>
+</article>
+
+<style>
+	/* ---------------------------------
+	   Base Styles
+	----------------------------------*/
+	article {
+		background-color: rgb(var(--clr-black));
+		color: rgb(var(--clr-white));
+	}
+
+	.case {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		padding: 24px;
+		border-bottom: 1px solid rgba(var(--clr-white), 0.25);
+	}
+	.case:last-child {
+		border-bottom: none;
+	}
+
+	.case__wrapper {
+		position: relative;
+	}
+
+	.case h5 {
+		font-size: 24px;
+	}
+
+	.case p {
+		font-size: 16px;
+		opacity: 0.5;
+	}
+
+	.case__content {
+		position: relative;
+		z-index: 5;
+	}
+
+	.case__image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		position: relative;
+		z-index: 1;
+	}
+
+	.case .image__animation {
+		margin-bottom: 16px;
+	}
+
+	.plus-icon {
+		position: relative;
+		display: none;
+		width: 3rem;
+		aspect-ratio: 1 / 1;
+		flex-shrink: 0;
+		place-items: center;
+		border-color: black;
+		transition: transform 0.3s ease;
+	}
+
+	/* ---------------------------------
+	   Plus Icon Lines
+	----------------------------------*/
+	.plus-line {
+		position: absolute;
+		background-color: white;
+		transition: background-color 0.3s ease;
+	}
+
+	.plus-line.horizontal {
+		width: 2rem;
+		height: 2px;
+	}
+
+	.plus-line.vertical {
+		width: 2px;
+		height: 2rem;
+	}
+
+	.plus-line.diagonal-1 {
+		width: 2rem;
+		height: 2px;
+		transform: rotate(45deg);
+	}
+
+	.plus-line.diagonal-2 {
+		width: 2rem;
+		height: 2px;
+		transform: rotate(-45deg);
+	}
+
+	/* ---------------------------------
+	   Medium Screens (≥768px)
+	----------------------------------*/
+	@media (min-width: 768px) {
+		.image__animation {
+			background-color: unset;
+		}
+		.case__image {
+			opacity: 0.3;
+		}
+		.case__wrapper {
+			border-bottom: 1px solid rgba(var(--clr-white), 0.25);
+		}
+
+		.case__wrapper:last-child {
+			border-bottom: none;
+		}
+		.case:hover h5 {
+			color: rgb(var(--clr-violet));
+		}
+
+		.case h5 {
+			font-size: 28px;
+			display: flex;
+			align-items: center;
+			gap: 0;
+		}
+
+		.case p {
+			font-size: 20px;
+		}
+
+		.case__content {
+			position: relative;
+			transition: left 0.3s ease-out;
+		}
+
+		.image__animation {
+			position: absolute;
+			top: 50%;
+			right: 0;
+			width: 50%;
+			max-width: 520px;
+			transform: translateY(-50%);
+			opacity: 0;
+		}
+
+		.case:hover .image__animation {
+			opacity: 1;
+		}
+
+		.case:hover .case__content {
+			left: 0;
+		}
+
+		.plus-icon {
+			display: grid;
+			opacity: 0;
+		}
+
+		.case:hover .plus-icon {
+			transform: rotate(45deg);
+			opacity: 1;
+		}
+
+		.case:hover .plus-line {
+			background-color: rgb(var(--clr-violet));
+		}
+	}
+
+	/* ---------------------------------
+	   Large Screens (≥1024px)
+	----------------------------------*/
+	@media (min-width: 1024px) {
+		.case {
+			flex-direction: row;
+		}
+		.case__image {
+			opacity: 1;
+		}
+	}
+</style>

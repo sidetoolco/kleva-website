@@ -1,0 +1,144 @@
+---
+// Local Business Schema for better local SEO
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://www.sidetool.co/#business",
+  "name": "Sidetool",
+  "alternateName": "Sidetool Co",
+  "description": "Leading digital agency specializing in AI-powered solutions, custom application development, and business automation",
+  "url": "https://www.sidetool.co",
+  "logo": "https://www.sidetool.co/logo.svg",
+  "image": [
+    "https://www.sidetool.co/og-image.jpg"
+  ],
+  "telephone": "+1-XXX-XXX-XXXX",
+  "email": "hello@sidetool.co",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "US",
+    "addressLocality": "Remote"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "40.7128",
+    "longitude": "-74.0060"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
+  "priceRange": "$$$",
+  "servesCuisine": "",
+  "areaServed": [
+    {
+      "@type": "GeoShape",
+      "name": "Worldwide"
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Digital Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "AI Agents & Automation",
+          "description": "Custom AI solutions and workflow automation"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Custom Software Development",
+          "description": "Scalable applications built with modern technologies"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "No-Code Solutions",
+          "description": "Rapid development with platforms like Bubble.io and FlutterFlow"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "MVP Development",
+          "description": "Quick prototypes and minimum viable products for startups"
+        }
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "24",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Client Review"
+      },
+      "reviewBody": "What stood out most about Sidetool was their unwavering commitment to our project's success."
+    }
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/company/sidetool",
+    "https://clutch.co/profile/sidetool",
+    "https://bubble.io/agency/sidetool",
+    "https://github.com/sidetool",
+    "https://twitter.com/sidetool"
+  ],
+  "knowsAbout": [
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Automation",
+    "Software Development",
+    "Web Development",
+    "Mobile App Development",
+    "No-Code Development",
+    "Low-Code Platforms",
+    "API Integration",
+    "Database Design",
+    "UI/UX Design",
+    "Digital Transformation"
+  ],
+  "foundingDate": "2021",
+  "founders": [
+    {
+      "@type": "Person",
+      "name": "Sidetool Founding Team"
+    }
+  ],
+  "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "minValue": 10,
+    "maxValue": 50
+  }
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />

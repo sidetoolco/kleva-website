@@ -1,0 +1,65 @@
+---
+import { Image } from 'astro:assets';
+import { urlForImage } from 'src/sanity/lib/url-for-image';
+
+interface companyLogo {
+	_key: string;
+	_type: string;
+	asset: {
+		_ref: string;
+		_type: string;
+	};
+}
+
+interface Props {
+	companyLogos: companyLogo[];
+}
+
+const { companyLogos } = Astro.props;
+---
+
+<div class="container relative max-w-screen-xl">
+	<div class="marquee__wrapper relative overflow-x-hidden">
+		<div class="gradient__left absolute bottom-0 left-[-1px] top-0 w-6"></div>
+		<div class="gradient__right absolute bottom-0 right-[-1px] top-0 w-6 rotate-180"></div>
+		<div class="marquee__container relative flex h-10 w-fit overflow-hidden">
+			<div class="marquee__slide flex shrink-0 gap-4 overflow-hidden pr-4 lg:gap-6 xl:gap-8">
+				{
+					companyLogos &&
+						companyLogos.map((logo) => (
+							<Image src={urlForImage(logo).url()} inferSize={true} class="h-full w-auto" alt="logo logo" />
+						))
+				}
+			</div>
+			<div class="marquee__slide flex shrink-0 gap-4 overflow-hidden pr-4 lg:gap-6 xl:gap-8">
+				{
+					companyLogos &&
+						companyLogos.map((logo) => (
+							<Image src={urlForImage(logo).url()} inferSize={true} class="h-full w-auto" alt="logo logo" />
+						))
+				}
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+	.marquee__wrapper .gradient__left,
+	.marquee__wrapper .gradient__right {
+		z-index: 3;
+		background: rgb(255, 255, 255);
+		background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 35%, rgba(255, 255, 255, 0) 100%);
+	}
+	.marquee__container .marquee__slide {
+		position: relative;
+		z-index: 2;
+		animation: marquee__left 45s linear infinite;
+	}
+	@keyframes marquee__left {
+		from {
+			transform: translateX(0%);
+		}
+		to {
+			transform: translateX(-100%);
+		}
+	}
+</style>

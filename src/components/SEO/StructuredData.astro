@@ -1,0 +1,183 @@
+---
+export interface Props {
+  type?: 'organization' | 'article' | 'service' | 'faq' | 'breadcrumb' | 'website';
+  data?: any;
+}
+
+const { type = 'organization', data } = Astro.props;
+
+// Organization Schema (default)
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Sidetool",
+  "alternateName": "Sidetool Co",
+  "url": "https://www.sidetool.co",
+  "logo": "https://www.sidetool.co/logo.svg",
+  "description": "Leading digital agency specializing in AI-powered solutions, custom application development, and business automation",
+  "email": "hello@sidetool.co",
+  "foundingDate": "2021",
+  "sameAs": [
+    "https://www.linkedin.com/company/sidetool",
+    "https://clutch.co/profile/sidetool",
+    "https://bubble.io/agency/sidetool",
+    "https://github.com/sidetool"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "US",
+    "addressLocality": "Remote"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "sales",
+    "availableLanguage": ["English"],
+    "url": "https://www.sidetool.co/contact"
+  },
+  "areaServed": {
+    "@type": "GeoShape",
+    "name": "Worldwide"
+  },
+  "knowsAbout": [
+    "AI Automation",
+    "Custom Software Development",
+    "No-Code Development",
+    "Business Process Automation",
+    "MVP Development",
+    "Enterprise Solutions"
+  ]
+};
+
+// Website Schema
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Sidetool",
+  "url": "https://www.sidetool.co",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://www.sidetool.co/blog?search={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+};
+
+// Article Schema (for blog posts)
+const articleSchema = data ? {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": data.title,
+  "description": data.description,
+  "image": data.image || "https://www.sidetool.co/og-image.jpg",
+  "datePublished": data.publishDate,
+  "dateModified": data.modifiedDate || data.publishDate,
+  "author": {
+    "@type": "Person",
+    "name": data.author || "Sidetool Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sidetool",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.sidetool.co/logo.svg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": data.url || Astro.url.href
+  }
+} : null;
+
+// Service Schema (for service pages)
+const serviceSchema = data ? {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": data.name,
+  "description": data.description,
+  "provider": {
+    "@type": "Organization",
+    "name": "Sidetool"
+  },
+  "serviceType": data.serviceType,
+  "areaServed": {
+    "@type": "GeoShape",
+    "name": "Worldwide"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": data.name + " Services",
+    "itemListElement": data.features?.map((feature: string) => ({
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": feature
+      }
+    })) || []
+  }
+} : null;
+
+// FAQ Schema
+const faqSchema = data ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": data.questions?.map((item: any) => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  })) || []
+} : null;
+
+// Breadcrumb Schema
+const breadcrumbSchema = data ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": data.items?.map((item: any, index: number) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.name,
+    "item": item.url
+  })) || []
+} : null;
+
+// Select the appropriate schema
+let selectedSchema;
+switch(type) {
+  case 'article':
+    selectedSchema = articleSchema;
+    break;
+  case 'service':
+    selectedSchema = serviceSchema;
+    break;
+  case 'faq':
+    selectedSchema = faqSchema;
+    break;
+  case 'breadcrumb':
+    selectedSchema = breadcrumbSchema;
+    break;
+  case 'website':
+    selectedSchema = websiteSchema;
+    break;
+  default:
+    selectedSchema = organizationSchema;
+}
+---
+
+{selectedSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(selectedSchema)} />
+)}
+
+{/* Always include organization schema on homepage */}
+{Astro.url.pathname === '/' && type !== 'organization' && (
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+)}
+
+{/* Include website schema on homepage */}
+{Astro.url.pathname === '/' && (
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+)}

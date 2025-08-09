@@ -1,0 +1,329 @@
+---
+import BankingLayout from '@layouts/BankingLayout.astro';
+import SimpleButton from '@components/Button/SimpleButton.astro';
+---
+
+<BankingLayout title="About Kleva - AI Collections for LATAM" description="How we're solving the $67 billion collections problem in Latin America">
+  <main class="about-page">
+    <section class="hero-section">
+      <div class="container">
+        <h1 class="page-title">The Story Behind Kleva</h1>
+        <p class="page-subtitle">
+          We discovered a $67 billion problem in LATAM that nobody wants to talk about. 
+          Now we're solving it with AI.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <div class="story-block">
+          <h2>The Discovery</h2>
+          <p>
+            Six months ago, we were building restaurant agents. Then we met Tito, CEO of Vana, 
+            a microloan company in Guatemala. He showed us something shocking: 
+            <strong>60% of his company—over 200 employees—were doing collections.</strong>
+          </p>
+          <p>
+            "This is one of the few opportunities where you can match work directly to ROI," 
+            Tito told us. "Every dollar collected is measurable. As long as you integrate properly, 
+            you'll always justify the service."
+          </p>
+          <p>
+            He was right. We pivoted immediately.
+          </p>
+        </div>
+
+        <div class="story-block">
+          <h2>The Surprise</h2>
+          <p>
+            We thought we'd just save Vana money by automating calls. But our AI agents were 
+            actually <strong>better at recovering money than humans</strong>. Not just cheaper. Better.
+          </p>
+          <div class="results-grid">
+            <div class="result-card">
+              <span class="result-number">25%</span>
+              <span class="result-label">Higher Recovery</span>
+            </div>
+            <div class="result-card">
+              <span class="result-number">70%</span>
+              <span class="result-label">Cost Reduction</span>
+            </div>
+            <div class="result-card">
+              <span class="result-number">0%</span>
+              <span class="result-label">Agent Turnover</span>
+            </div>
+          </div>
+          <p>
+            But here's what really shocked us: <strong>Debtors preferred talking to our AI.</strong> 
+            Why? Because AI has infinite patience. It never shames. It offers solutions, not threats.
+          </p>
+        </div>
+
+        <div class="story-block">
+          <h2>The Mission</h2>
+          <p>
+            We're not just building another collections tool. We're building the 
+            <strong>AI workforce for LATAM's financial industry</strong>.
+          </p>
+          <p>
+            Starting with collections—the hardest, most painful role in banking. 
+            After we perfect this, we'll expand to dispute resolution, fraud prevention, 
+            and credit review. Eventually, every repetitive financial services role will 
+            have a Kleva AI agent that does it better, cheaper, 24/7.
+          </p>
+        </div>
+
+        <div class="team-section">
+          <h2>The Team Making It Happen</h2>
+          <div class="team-grid">
+            <div class="team-card">
+              <h3>Gonza</h3>
+              <span class="role">Product Owner</span>
+              <p>Lives in customer data, ensuring we add value every single day.</p>
+            </div>
+            <div class="team-card">
+              <h3>Santi</h3>
+              <span class="role">Lead Developer</span>
+              <p>Obsesses over making conversations feel natural, not robotic.</p>
+            </div>
+            <div class="team-card">
+              <h3>Os</h3>
+              <span class="role">Infrastructure</span>
+              <p>Built systems handling thousands of simultaneous calls without breaking.</p>
+            </div>
+            <div class="team-card">
+              <h3>Lila</h3>
+              <span class="role">Problem Solver</span>
+              <p>Achieved 94% address accuracy in LATAM (vs Google's 70%).</p>
+            </div>
+            <div class="team-card">
+              <h3>Juli</h3>
+              <span class="role">Quality & AI</span>
+              <p>Reviews every call, building AI that automatically improves.</p>
+            </div>
+            <div class="team-card">
+              <h3>JM</h3>
+              <span class="role">Cofounder</span>
+              <p>Gets customers to their "wow moment" in days, not months.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="investment-block">
+          <h2>We're All In</h2>
+          <p>
+            We believed in this vision so much that we funded it ourselves. 
+            <strong>Over $100K of our own money</strong> invested into developing the technology, 
+            refining the AI, and getting clients live. No outside investors, no dilution, 
+            just pure conviction.
+          </p>
+          <p>
+            We bootstrapped our way to <strong>$150K MRR by December</strong>. 
+            Now, with proven results and a massive pipeline, it's time to scale.
+          </p>
+        </div>
+
+        <div class="cta-section">
+          <h2>Join the Revolution</h2>
+          <p>
+            Every day we wait, 10,000 collections agents burn out. Millions of debtors get 
+            harassed instead of helped. Billions stay locked in bad debt.
+          </p>
+          <p>
+            We've built the solution. We've proven it works. Our clients love it. 
+            Their customers prefer it.
+          </p>
+          <SimpleButton href="/contact" size="lg">
+            Transform Your Collections
+          </SimpleButton>
+        </div>
+      </div>
+    </section>
+  </main>
+</BankingLayout>
+
+<style>
+  .about-page {
+    padding-top: var(--header-height-mobile);
+  }
+
+  .hero-section {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+    padding: 4rem 0;
+    text-align: center;
+    color: white;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .page-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .content-section {
+    padding: 4rem 0;
+  }
+
+  .story-block {
+    margin-bottom: 4rem;
+  }
+
+  .story-block h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #111827;
+  }
+
+  .story-block p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #4b5563;
+    margin-bottom: 1rem;
+  }
+
+  .story-block strong {
+    color: #111827;
+    font-weight: 600;
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .result-card {
+    text-align: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+    border-radius: 1rem;
+  }
+
+  .result-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e3a8a;
+  }
+
+  .result-label {
+    display: block;
+    font-size: 0.875rem;
+    color: #3730a3;
+    margin-top: 0.5rem;
+  }
+
+  .team-section {
+    margin: 4rem 0;
+  }
+
+  .team-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #111827;
+    text-align: center;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .team-card {
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+  }
+
+  .team-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.25rem;
+  }
+
+  .role {
+    display: block;
+    font-size: 0.875rem;
+    color: #3730a3;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  .team-card p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    line-height: 1.5;
+  }
+
+  .investment-block {
+    background: #fef3c7;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 3rem 0;
+  }
+
+  .investment-block h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #78350f;
+  }
+
+  .investment-block p {
+    color: #92400e;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .investment-block strong {
+    color: #78350f;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 3rem;
+    background: #f9fafb;
+    border-radius: 1rem;
+    margin-top: 4rem;
+  }
+
+  .cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #111827;
+  }
+
+  .cta-section p {
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 768px) {
+    .about-page {
+      padding-top: var(--header-height-desktop);
+    }
+  }
+</style>

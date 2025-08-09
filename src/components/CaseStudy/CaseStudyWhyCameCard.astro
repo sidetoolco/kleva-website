@@ -1,0 +1,25 @@
+---
+import { Icon } from 'astro-icon/components';
+interface Props {
+	title: string;
+	body: string;
+	iconName: string;
+	iconClasses?: string;
+	color: string;
+}
+const iconSize = 24;
+const { title, body, iconName, iconClasses, color } = Astro.props;
+---
+
+<div class="flex h-full min-w-[278px] flex-col items-center gap-3 rounded-xl bg-white p-5 shadow-md lg:w-full">
+	<div
+		class="grid h-[40px] w-[40px] place-items-center rounded-full"
+		class:list={iconClasses}
+		style={`background-color: ${color}`}
+	>
+		<Icon name={iconName} width={iconSize} height={iconSize} class="text-white" />
+	</div>
+
+	<h5 class="text-center font-titles text-[22px] font-bold leading-[1.1] md:text-[28px]">{title}</h5>
+	<p class="text-center font-titles text-sm text-tertiary md:text-lg">{body}</p>
+</div>

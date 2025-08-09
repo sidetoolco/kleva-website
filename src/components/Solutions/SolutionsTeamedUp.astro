@@ -1,0 +1,57 @@
+---
+//Types
+import type { CaseStudy } from '../../types/sanity.types';
+//Components
+import ButtonPrimary from '@components/Button/ButtonPrimary.astro';
+import CaseStudyCard from '@components/CaseStudy/CaseStudyCard.astro';
+
+interface Props {
+	caseStudies: CaseStudy[];
+}
+
+const { caseStudies }: Props = Astro.props;
+---
+
+<section class="container__wide py-12">
+	<div class="mb-8 items-end justify-between pt-8 sm:mb-6 sm:flex xl:mb-16">
+		<div class="mb-6 flex flex-col gap-2 sm:mb-0">
+			<h3 class="section__title">Companies We've Teamed Up With</h3>
+			<p class="max-w-screen-sm">We create products that people love using</p>
+		</div>
+		<ButtonPrimary classes="h-12 sm:w-52" link={true} href="/case-studies" label="View All" theme="dark" />
+	</div>
+
+	<div id="teamed__up__swiper">
+		<div class="swiper-wrapper">
+			{
+				caseStudies.map((caseStudy) => (
+					<div class="swiper-slide">
+						<CaseStudyCard caseStudy={caseStudy} />
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<script>
+	import Swiper from 'swiper';
+	import 'swiper/css';
+
+	new Swiper('#teamed__up__swiper', {
+		freeMode: true,
+		slidesPerView: 1.1,
+		spaceBetween: 24,
+		breakpoints: {
+			500: {
+				slidesPerView: 1.3,
+			},
+			560: {
+				slidesPerView: 1.5,
+			},
+			768: {
+				slidesPerView: 2,
+			},
+		},
+	});
+</script>

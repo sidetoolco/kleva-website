@@ -1,0 +1,33 @@
+---
+interface Props {
+	title: string;
+	description: string;
+	mainColor: string;
+}
+
+const { title, description, mainColor } = Astro.props;
+---
+
+<div class="page__section container__wide dark py-7">
+	<article class="fade-in rounded-[20px] px-5 py-12 sm:px-12 xl:flex xl:gap-12">
+		<header class="flex-col justify-center space-y-2 text-white xl:flex desktop:w-2/5">
+			<span class="font-bold" style={`color: ${mainColor}`}> Killer Feature </span>
+			<h3
+				class="text min-w-96 text-pretty py-2 text-3xl font-bold leading-[0.91] tracking-[-0.75px] text-white lg:text-[50px] lg:leading-[0.9]"
+			>
+				{title}
+			</h3>
+		</header>
+		<div class="my-8 h-[1px] w-full bg-white lg:hidden"></div>
+		<div class="my-8 h-full w-[1px] shrink-0 bg-white lg:block"></div>
+		<section>
+			<p class="text-lg leading-[1.45] text-[#E4E7EC]">{description}</p>
+		</section>
+	</article>
+</div>
+
+<style>
+	article {
+		background: var(--Gradients-Skeuomorphic-Gradient-Border, linear-gradient(180deg, #414e62 0%, #171f28 100%));
+	}
+</style>

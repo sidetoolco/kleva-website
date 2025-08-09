@@ -1,0 +1,174 @@
+---
+import topSmallRight from '@assets/about/small_top_left.jpg';
+import topBig from '@assets/about/big_top.png';
+import topMedium from '@assets/about/medium_top.png';
+import topSmallLeft from '@assets/about/small_top_right.jpg';
+import bottomSmallLeft from '@assets/about/small_bottom_left.jpg';
+import bottomBig from '@assets/about/big_bottom.png';
+import bottomMedium from '@assets/about/medium_bottom.png';
+import bottomSmallRight from '@assets/about/small_bottom_right.jpg';
+import { Image } from 'astro:assets';
+---
+
+<section id="about-hero" class="page__section light overflow-x-hidden pb-12 md:pb-[72px]">
+	<div class="hero__header section mb-12 md:mb-[72px]">
+		<h1 class="text-center font-titles text-5xl leading-[1] tracking-tight lg:text-[70px]">
+			We Don't Do <span class="font-semibold">“Impossible”</span>
+		</h1>
+		<p class="mx-auto mt-4 max-w-3xl text-center text-lg text-secondary text-opacity-90 md:text-xl lg:mb-4 lg:mt-6">
+			We're the high-agency crew you call when you're done hearing "you can't." No outside funding. No cutting corners.
+			Just a scrappy team shipping real products that solve real problems—and having a damn good time doing it.
+		</p>
+	</div>
+	<div id="about-gallery" class="max-w-[100vw] space-y-[4vw] overflow-x-hidden md:space-y-[2.152vw]">
+		<div class="top-row flex w-max flex-row items-end space-x-[4vw] sm:space-x-[2.152vw]">
+			<div class="aspect-[345/196] w-[25vw] sm:w-[19.3vw]">
+				<Image src={topSmallLeft} alt="About Hero" width={345} height={196} class="h-full w-full object-cover" />
+			</div>
+			<div class="w-[54.4vw] sm:w-[40.55vw]">
+				<Image
+					src={topBig}
+					alt="About Hero"
+					width={690}
+					height={392}
+					quality={100}
+					class="h-full w-full object-cover"
+				/>
+			</div>
+			<div class="w-[32.8vw] sm:w-[26.38vw]">
+				<Image
+					src={topMedium}
+					alt="About Hero"
+					width={460}
+					height={262}
+					quality={100}
+					class="h-full w-full object-cover"
+				/>
+			</div>
+			<div class="small hidden aspect-[345/196] w-[25vw] sm:block sm:w-[19.3vw]">
+				<Image
+					src={topSmallRight}
+					alt="About Hero"
+					width={345}
+					height={196}
+					quality={100}
+					class="h-full w-full object-cover"
+				/>
+			</div>
+		</div>
+		<div class="bottom-row flex w-max flex-row items-start space-x-[4vw] sm:space-x-[2.152vw]">
+			<div class="aspect-[345/196] w-[25vw] sm:w-[19.3vw]">
+				<Image
+					src={bottomSmallLeft}
+					alt="About Hero"
+					width={345}
+					height={196}
+					quality={100}
+					class="h-full w-full object-cover"
+				/>
+			</div>
+			<div class="order-3 w-[54.4vw] sm:w-[40.55vw]">
+				<Image
+					src={bottomBig}
+					alt="About Hero"
+					width={690}
+					height={392}
+					quality={100}
+					class="h-full w-full object-cover"
+				/>
+			</div>
+			<div class="order-2 w-[32.8vw] sm:w-[26.38vw]">
+				<Image
+					src={bottomMedium}
+					alt="About Hero"
+					width={460}
+					height={262}
+					quality={100}
+					class="h-full w-full object-cover"
+				/>
+			</div>
+			<div class="small hidden aspect-[345/196] w-[25vw] sm:order-4 sm:block sm:w-[19.3vw]">
+				<Image
+					src={bottomSmallRight}
+					alt="About Hero"
+					width={345}
+					height={196}
+					quality={100}
+					class="h-full w-full object-cover"
+				/>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	#about-hero {
+		padding-top: calc(var(--header-height-mobile) + 64px);
+	}
+	@media (min-width: 640px) {
+		#about-hero {
+			padding-top: calc(var(--header-height) + 48px);
+		}
+	}
+	@media (min-width: 768px) {
+		#about-hero {
+			padding-top: calc(var(--header-height-desktop) + 82px);
+		}
+	}
+	@media (min-width: 1024px) {
+		#about-hero {
+			padding-top: calc(var(--header-height-desktop) + 120px);
+		}
+	}
+	.hero__header {
+		padding-bottom: 0;
+	}
+</style>
+
+<script>
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	document.addEventListener('DOMContentLoaded', () => {
+		gsap
+			.timeline({
+				scrollTrigger: {
+					trigger: '#about-gallery',
+					start: 'top bottom',
+					end: 'bottom top',
+					scrub: 1,
+				},
+			})
+			.fromTo(
+				'#about-gallery .top-row',
+				{
+					translateX: 50,
+					ease: 'none',
+				},
+				{
+					translateX: -50,
+				}
+			);
+		gsap
+			.timeline({
+				scrollTrigger: {
+					trigger: '#about-gallery',
+					start: 'top bottom',
+					end: 'bottom top',
+					scrub: 1,
+				},
+			})
+			.fromTo(
+				'#about-gallery .bottom-row',
+				{
+					translateX: -100,
+					ease: 'none',
+				},
+				{
+					translateX: 0,
+				}
+			);
+	});
+</script>

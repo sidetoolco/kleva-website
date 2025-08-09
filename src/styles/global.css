@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'Switzer';
+	src:
+		url('/fonts/Switzer-Light.woff2') format('woff2'),
+		url('/fonts/Switzer-Light.woff') format('woff');
+	font-weight: 300;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Switzer';
+	src:
+		url('/fonts/Switzer-Regular.woff2') format('woff2'),
+		url('/fonts/Switzer-Regular.woff') format('woff');
+	font-weight: 400;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Switzer';
+	src:
+		url('/fonts/Switzer-Medium.woff2') format('woff2'),
+		url('/fonts/Switzer-Medium.woff') format('woff');
+	font-weight: 500;
+	font-display: swap;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Switzer';
+	src:
+		url('/fonts/Switzer-Semibold.woff2') format('woff2'),
+		url('/fonts/Switzer-Semibold.woff') format('woff');
+	font-weight: 600;
+	font-display: swap;
+	font-style: normal;
+}
+
+:root {
+	/* Layout */
+	--section-inline-padding-mobile: 16px;
+	--section-inline-padding-desktop: 28px;
+
+	/* Header */
+	--header-height-mobile: 64px;
+	--header-height-desktop: 84px;
+
+	/* Colors */
+	--clr-white: 255, 255, 255;
+	--clr-black: 21, 21, 21;
+	--clr-violet: 190, 121, 255;
+	--clr-dark-violet: 44, 40, 87;
+	--clr-green: 102, 211, 153;
+	--clr-blue: 102, 153, 211;
+	--clr-secondary: 52, 64, 81;
+
+	/* Fonts */
+	--font-titles: 'Switzer', 'Arial', 'Helvetica', sans-serif;
+	--font-body: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+
+	/* Breakpoints */
+	--breakpoint-lg: 1024px;
+}
+
+@layer base {
+	.container__wide {
+		@apply mx-auto px-3 sm:px-4 md:px-8 lg:px-16 xl:px-24 2xl:max-w-desktop 2xl:px-28;
+	}
+
+	.section__title {
+		@apply font-titles text-4xl leading-[1] tracking-tighter md:text-5xl md:leading-[1];
+	}
+
+	.section__text {
+		@apply text-lg leading-[1.45];
+	}
+
+	.big__text {
+		@apply text-xl leading-[2.25rem] text-opacity-90 md:text-2xl md:leading-[2.5rem] lg:text-3xl lg:leading-[2.8rem] xl:leading-[3.2rem];
+	}
+}
+
+.section {
+	padding-inline: 12px;
+	padding-block: 48px;
+	margin-inline: auto;
+}
+@media (min-width: 768px) {
+	.section {
+		padding-inline: 24px;
+		padding-block: 96px;
+	}
+}
+@media (min-width: 768px) {
+	.section {
+		padding-inline: 16px;
+	}
+}
+@media (min-width: 1024px) {
+	.section {
+		padding-inline: 64px;
+	}
+}
+@media (min-width: 1280px) {
+	.section {
+		padding-inline: 96px;
+	}
+}
+@media (min-width: 1536px) {
+	.section {
+		padding-inline: 128px;
+		padding-block: 120px;
+		max-width: 1440px;
+	}
+}
+.section__heading {
+	font-family: var(--font-titles);
+	font-size: 40px;
+	font-weight: 400;
+	line-height: 1;
+	letter-spacing: -1.2px;
+	margin-block: 16px;
+}
+@media (min-width: 768px) {
+	.section__heading {
+		font-size: 48px;
+	}
+}
+.section__tag {
+	color: rgb(var(--clr-violet));
+	font-family: var(--font-titles);
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 20px;
+	padding: 4px 16px;
+	background-color: rgba(var(--clr-violet), 0.1);
+}
+.section__tag.dark {
+	color: rgb(var(--clr-violet));
+}
+
+/* This is to ensure PortableText blocks that are empty still serve as a placeholder  for a line break*/
+p {
+	min-height: 1.5rem;
+}
+
+.image__animation {
+	background-color: rgba(var(--clr-violet), 0.1);
+	overflow: hidden;
+}
+.image__animation.dark {
+	background-color: rgb(var(--clr-dark-violet));
+}
+.image__animation img {
+	scale: 1.1;
+	clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+
+.anim-fade-in {
+	animation: fade-in 0.8s ease-out;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 100;
+	}
+}
+
+.swiper-slide {
+	height: auto;
+}
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+	background-color: #1e1b4b;
+}

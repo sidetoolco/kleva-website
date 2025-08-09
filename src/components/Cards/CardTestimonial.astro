@@ -1,0 +1,55 @@
+---
+//Types
+import type { Testimonial } from '../../types';
+//Libs
+import { urlForImage } from '@sanity/lib/url-for-image';
+import { Image } from 'astro:assets';
+
+interface Props {
+	testimonial: Testimonial;
+}
+
+const { testimonial } = Astro.props;
+const testimonialLogoUrl = testimonial.logo ? urlForImage(testimonial.logo).url() : null;
+const testimonialAvatarUrl = testimonial.avatar ? urlForImage(testimonial.avatar).url() : null;
+---
+
+<article class="flex h-full flex-col bg-white px-6 py-8 shadow-md">
+	<header class="mb-8 h-10">
+		{
+			testimonialLogoUrl && (
+				<Image src={testimonialLogoUrl} alt={testimonial.fullName} inferSize={true} class="h-full" />
+			)
+		}
+	</header>
+	<p class="text-ellipsis font-titles text-lg leading-[1.45] text-secondary">
+		{testimonial.testimony}
+	</p>
+	<footer class="mt-auto flex flex-col gap-5 pt-5">
+		<div class="h-12 w-12 overflow-hidden rounded-full">
+			{
+				testimonialAvatarUrl && (
+					<Image
+						src={testimonialAvatarUrl}
+						alt={testimonial.fullName}
+						inferSize={true}
+						class="h-wull w-full object-cover"
+					/>
+				)
+			}
+		</div>
+		<div class="flex flex-col">
+			<span>{testimonial.fullName}</span>
+			<span>{testimonial.role} at {testimonial.title}</span>
+		</div>
+	</footer>
+</article>
+
+<style>
+	p {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 8;
+		overflow: hidden;
+	}
+</style>

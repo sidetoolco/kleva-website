@@ -1,0 +1,56 @@
+---
+const texts = [
+	'Prioritize Revenue Growth over vanity metrics.',
+	'Move Quickly and adapt to changing markets.',
+	'Value Expertise and want a true development partner, not just an order-taker.',
+	'Invest in Quality because they know scaling on shaky foundations is a recipe for disaster.',
+];
+---
+
+<div class="relative overflow-hidden bg-[#000] pt-24 md:pt-36">
+	<section class="container__wide">
+		<div class="flex flex-col gap-8 lg:flex-row">
+			<div class="shrink-0 justify-between gap-16 space-y-4 lg:w-1/2">
+				<h3 class="fade-in shrink-0 font-titles text-3xl font-bold leading-[1] text-white md:text-[50px]">
+					Are We Right for You?
+				</h3>
+				<p class="fade-in max-w-96 text-pretty text-lg leading-[1.45] text-text-secondary md:text-2xl">
+					We’re perfect for founders and leaders who:
+				</p>
+			</div>
+			<ul class="grid grid-cols-1 lg:w-1/2">
+				{
+					texts.map((text) => (
+						<li class="fade-in group flex items-center gap-4 border-b border-slate-900 px-8 py-6 lg:gap-8">
+							<div class="relative grid aspect-square w-12 shrink-0 place-items-center border-black transition-transform group-hover:rotate-45">
+								<div class="absolute h-[2px] w-8 bg-white transition-colors group-hover:bg-primary" />
+								<div class="absolute h-8 w-[2px] bg-white transition-colors group-hover:bg-primary" />
+								<div class="absolute h-[2px] w-8 rotate-45 bg-white transition-colors group-hover:bg-primary" />
+								<div class="absolute h-[2px] w-8 -rotate-45 bg-white transition-colors group-hover:bg-primary" />
+							</div>
+							<div class="h-fit">
+								<span class="text-xl text-text-secondary">{text}</span>
+							</div>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+	<div class="radial__small"></div>
+</div>
+
+<style>
+	.radial__small {
+		opacity: 0.25;
+		background: radial-gradient(50% 50% at 50% 50%, #be79ff 0%, rgba(0, 0, 0, 0) 100%);
+		border-radius: 1239px;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 58vw;
+		min-width: 450px;
+		aspect-ratio: 1/1;
+		transform: translate(-50%, 76%);
+	}
+</style>

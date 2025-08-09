@@ -1,0 +1,64 @@
+---
+// const
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+// Types
+import type { CaseStudy } from '../types/sanity.types';
+// Libs
+import { loadQuery } from '@sanity/lib/load-query';
+import { HOME_RELATED_CASE_STUDIES_GALLERY } from '@sanity/lib/queries';
+// layouts
+import MainLayout from '@layouts/MainLayout.astro';
+// components
+import Hero from '@components/new-home/Hero.astro';
+import Video from '@components/new-home/Video.astro';
+import BrandsDobleMarquee from '@components/new-home/BrandsDobleMarquee.astro';
+import HowSidetoolWorks from '@components/new-home/HowSidetoolWorks.astro';
+import WhyTeamsLoveUs from '@components/new-home/WhyTeamsLoveUs.astro';
+import CaseShowcase from '@components/new-home/CaseShowcase.astro';
+import GallerySection from '@components/CaseStudy/GallerySection.astro';
+import Solutions from '@components/new-home/Solutions.astro';
+import Pricing from '@components/new-home/Pricing.astro';
+import Reviews from '@components/new-home/Reviews.astro';
+import Contact from '@components/Contact.astro';
+
+const { data: relatedCaseStudies } = await loadQuery<CaseStudy[]>({
+	query: HOME_RELATED_CASE_STUDIES_GALLERY,
+});
+---
+
+<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<main id="page-content" class="min-h-screen overflow-x-hidden">
+		<Hero />
+		<Video />
+		<BrandsDobleMarquee />
+		<HowSidetoolWorks />
+		<WhyTeamsLoveUs />
+		<CaseShowcase />
+		<GallerySection relatedCaseStudies={relatedCaseStudies} />
+		<Solutions />
+		<Pricing />
+		<Reviews />
+		<Contact />
+	</main>
+</MainLayout>
+
+<style>
+	main {
+		min-height: 100vh;
+		overflow: hidden;
+		background-color: rgb(var(--clr-black));
+		padding-top: calc(var(--header-height-mobile) + 64px);
+	}
+
+	@media (min-width: 768px) {
+		main {
+			padding-top: calc(var(--header-height-desktop) + 82px);
+		}
+	}
+
+	@media (min-width: 1024px) {
+		main {
+			padding-top: calc(var(--header-height-desktop) + 120px);
+		}
+	}
+</style>

@@ -1,0 +1,125 @@
+---
+interface Props {
+	classes?: string;
+	label: string;
+	link?: boolean;
+	href?: string;
+	theme?: 'light' | 'dark' | 'primary';
+	icon?: boolean;
+	size?: 'small' | 'large';
+	fullWidth?: boolean;
+	target?: '_blank' | '_self' | '_parent' | '_top';
+}
+
+const { label, link, href, theme = 'light', icon = false, size = 'large', fullWidth = false, target = '_self' } = Astro.props;
+---
+
+{
+	link ? (
+		<a href={href} class={`button-primary ${theme} ${size} ${fullWidth ? 'full' : ''} ${Astro.props.classes || ''}`} target={target}>
+			<div class="button-hover"></div>
+			<span class="button-label">{label}</span>
+			{icon && <div class="button-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><!-- Icon from Material Design Light by Pictogrammers - https://github.com/Templarian/MaterialDesignLight/blob/master/LICENSE.md --><path fill="currentColor" d="M4 12h12.25L11 6.75l.66-.75l6.5 6.5l-6.5 6.5l-.66-.75L16.25 13H4z"/></svg></div>}
+		</a>
+	) : (
+		<button class={`button-primary ${theme} ${size} ${Astro.props.classes || ''}`}>
+			<div class="button-hover"></div>
+			<span class="button-label">{label}</span>
+			{icon && <div class="button-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><!-- Icon from Material Design Light by Pictogrammers - https://github.com/Templarian/MaterialDesignLight/blob/master/LICENSE.md --><path fill="currentColor" d="M4 12h12.25L11 6.75l.66-.75l6.5 6.5l-6.5 6.5l-.66-.75L16.25 13H4z"/></svg></div>}
+		</button>
+	)
+}
+
+<style>
+	.button-primary {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		border-radius: 999px;
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 1.5;
+		max-width: 182px;
+		min-width: fit-content;
+		overflow: hidden;
+	}
+
+	.button-primary.light {
+		background-color: black;
+		color: white;
+	}
+
+	.button-primary.primary {
+		background-color: #BE79FF;
+		color: white;
+	}
+
+	.button-primary.dark {
+		background-color: white;
+		color: #344051;
+		border: 1px solid #E4E7EC;
+	}
+
+	.button-primary.outline {
+		border: 1px solid white;
+		color: white;
+	}
+
+	.button-primary.small {
+		height: 44px;
+		padding: 10px 20px;
+	}
+
+	.button-primary.large {
+		height: 52px;
+		padding: 12px 24px;
+	}
+
+	.button-primary.full {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.button-hover {
+		position: absolute;
+		inset: 0;
+		background-color: #1e293b; /* slate-800 */
+		transition: all 500ms cubic-bezier(0.11, 0, 0.33, 0.92);
+		clip-path: circle(20% at 0% 50%);
+		transform: translateX(-20%);
+	}
+
+	.button-primary.light .button-hover {
+		background-color: #1e293b;
+	}
+
+	.button-primary.dark .button-hover {
+		background-color:  #dfdfdf;
+	}
+
+	.button-primary.primary .button-hover {
+		background-color:  #7621c5;
+	}
+
+	.button-primary:hover .button-hover {
+		clip-path: circle(200% at 0% 50%);
+		transform: translateX(0%);
+		scale: 1.1;
+	}
+
+	.button-label {
+		position: relative;
+		line-height: 1;
+	}
+
+	.button-icon {
+		position: relative;
+		transition: transform 500ms;
+	}
+
+	.button-primary:hover .button-icon {
+		transform: rotate(-45deg) translateY(-1px);
+	}
+</style>

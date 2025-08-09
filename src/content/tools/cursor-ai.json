@@ -1,0 +1,4 @@
+{
+	"name": "Cursor AI",
+	"description": "Cursor is an AI-enhanced code editor designed to boost developer productivity by integrating advanced AI capabilities directly into the coding environment. As a fork of Visual Studio Code, it offers features such as intelligent code completion, natural language editing, and real-time codebase understanding. Developed by Anysphere Inc., Cursor supports various programming languages and allows seamless integration of existing extensions, themes, and keybindings. Its AI-driven functionalities include multi-line edits, smart rewrites, and an interactive chat for codebase queries, making it a valuable tool for modern software development."
+}

@@ -1,0 +1,114 @@
+---
+import { Icon } from 'astro-icon/components';
+import ButtonArrowAnim from '@components/Button/ButtonArrowAnim.astro';
+
+const blocks = [
+	{
+		icon: 'multi-bubble',
+		title: "Let's Talk",
+		text: 'Book a 15-min call with us so we can conduct a sprint to understand your needs and requirements.',
+	},
+	{
+		icon: 'search',
+		title: 'AI Product Discovery',
+		text: 'Whether you need chatbots, customer support, sales automation, workflows, data analysis—anything else. Subscribe and with a simple monthly fee, get unlimited queued automations.',
+	},
+	{
+		icon: 'frame-select',
+		title: 'Build a Prototype',
+		text: 'We build a functional prototype to validate feasibility of the project, test the hypothesis and gather feedback early in the process.',
+	},
+	{
+		icon: 'circle-spark',
+		title: 'Scale Together',
+		text: 'Receive a fast, custom-built AI automations—usually delivered in just weeks and custom manteinance.',
+	},
+];
+---
+
+<article class="page__section light">
+	<div class="section light-section">
+		<header>
+			<span class="section__tag">Process</span>
+			<h3 class="section__heading">How Sidetool Works <br />— It's Easy</h3>
+		</header>
+
+		<div class="grid">
+			{
+				blocks.map((block, index) => (
+					<div class="block">
+						<div class="icon">
+							<Icon name={block.icon} size={28} />
+						</div>
+						<h5>{block.title}</h5>
+						<p>{block.text}</p>
+						{index === 0 && <ButtonArrowAnim href="/" label="Book a 15-min intro call" asButton />}
+					</div>
+				))
+			}
+		</div>
+	</div>
+</article>
+
+<style>
+	article {
+		background-color: rgb(var(--clr-white));
+	}
+	header {
+		margin-bottom: 48px;
+	}
+	@media (min-width: 768px) {
+		h3 br {
+			display: none;
+		}
+	}
+	.grid {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+	.block {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		border: 1px solid rgb(var(--clr-black));
+		border-bottom: none;
+		padding: 2.25rem 1.5rem;
+	}
+	.block:last-child {
+		border-bottom: 1px solid rgb(var(--clr-black));
+	}
+	.icon {
+		width: 48px;
+		height: 48px;
+		display: grid;
+		place-items: center;
+		border: 1px solid rgb(var(--clr-violet));
+		border-radius: 999px;
+	}
+	h5 {
+		font-size: 24px;
+		font-weight: 500;
+	}
+
+	@media (min-width: 768px) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		.block {
+		}
+		/* Remove right border from odd-positioned blocks (left column) */
+		.block:nth-child(odd) {
+			border-right: none;
+		}
+		/* Remove bottom border from first two blocks (top row) */
+		.block:nth-child(1),
+		.block:nth-child(2) {
+			border-bottom: none;
+		}
+		/* Add back bottom border to last row blocks */
+		.block:nth-child(3),
+		.block:nth-child(4) {
+			border-bottom: 1px solid rgb(var(--clr-black));
+		}
+	}
+</style>

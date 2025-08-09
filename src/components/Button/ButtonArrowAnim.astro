@@ -1,0 +1,136 @@
+---
+interface Props {
+	href?: string;
+	label: string;
+	asButton?: boolean;
+}
+
+const { href, label, asButton = false } = Astro.props;
+---
+
+{
+	asButton ? (
+		<button type="button" class="cta-button">
+			<div class="outer-wrapper">
+				<div class="wrapper">
+					<div class="icon left">
+						<svg width="21" height="18" viewBox="0 0 21 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M11.2442 0.464743L19.7795 9.00004M19.7795 9.00004L11.2442 17.5353M19.7795 9.00004H0.623145"
+								stroke="currentColor"
+							/>
+						</svg>
+					</div>
+					<p>{label}</p>
+					<div class="icon right">
+						<svg width="21" height="18" viewBox="0 0 21 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M11.2442 0.464743L19.7795 9.00004M19.7795 9.00004L11.2442 17.5353M19.7795 9.00004H0.623145"
+								stroke="#141C25"
+							/>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</button>
+	) : (
+		<a href={href}>
+			<div class="outer-wrapper">
+				<div class="wrapper">
+					<div class="icon left">
+						<svg width="21" height="18" viewBox="0 0 21 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M11.2442 0.464743L19.7795 9.00004M19.7795 9.00004L11.2442 17.5353M19.7795 9.00004H0.623145"
+								stroke="currentColor"
+							/>
+						</svg>
+					</div>
+					<p>{label}</p>
+					<div class="icon right">
+						<svg width="21" height="18" viewBox="0 0 21 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M11.2442 0.464743L19.7795 9.00004M19.7795 9.00004L11.2442 17.5353M19.7795 9.00004H0.623145"
+								stroke="#141C25"
+							/>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</a>
+	)
+}
+
+<style>
+	a,
+	button {
+		--width: 32px;
+		height: 48px;
+		width: fit-content;
+		display: flex;
+		align-items: center;
+		border: 1px solid rgb(var(--clr-black));
+		border-radius: 999px;
+		overflow: hidden;
+		padding-inline: 16px;
+		transition:
+			background-color 0.2s ease-out,
+			color 0.2s ease-out;
+		cursor: pointer;
+		font-family: inherit;
+		background-color: transparent;
+	}
+
+	a:hover,
+	button:hover {
+		background-color: rgb(var(--clr-black));
+		color: rgb(var(--clr-white));
+	}
+
+	a:hover .icon-svg,
+	a:hover .icon,
+	button:hover .icon-svg,
+	button:hover .icon {
+		color: rgb(var(--clr-white));
+	}
+
+	.outer-wrapper {
+		overflow-x: hidden;
+	}
+
+	.wrapper {
+		display: flex;
+		align-items: center;
+		position: relative;
+		transition-property: transform;
+		transition: 0.2s ease-out;
+		transform: translateX(0);
+	}
+
+	.icon {
+		width: var(--width);
+		height: var(--width);
+		border-radius: 999px;
+		display: grid;
+		place-items: center;
+	}
+
+	.icon.right {
+		margin-left: auto;
+	}
+
+	.icon.left {
+		position: absolute;
+		top: 0;
+		left: 0;
+		transform: translateX(-100%);
+	}
+
+	p {
+		/* padding: 0 16px; */
+	}
+
+	a:hover .wrapper,
+	button:hover .wrapper {
+		transform: translateX(var(--width));
+	}
+</style>

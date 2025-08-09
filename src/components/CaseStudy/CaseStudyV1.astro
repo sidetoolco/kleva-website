@@ -1,0 +1,60 @@
+---
+//Types
+import type { CaseStudy } from '../../types/sanity.types';
+//Components
+import CaseStudyHeroV1 from '@components/CaseStudy/CaseStudyHeroV1.astro';
+import CaseStudyWhyTheyCameToUs from '@components/CaseStudy/CaseStudyWhyTheyCameToUs.astro';
+import CaseStudyWhatWeDid from '@components/CaseStudy/CaseStudyWhatWeDid.astro';
+import CaseStudyRelatedCaseStudies from '@components/CaseStudy/CaseStudyRelatedCaseStudies.astro';
+import CaseStudyGallery from '@components/CaseStudy/CaseStudyGallery.astro';
+import CaseStudyKillerFeatureV1 from '@components/CaseStudy/CaseStudyKillerFeatureV1.astro';
+import CaseStudyQuoteV1 from '@components/CaseStudy/CaseStudyQuoteV1.astro';
+import Contact from '@components/Contact.astro';
+
+interface Props {
+	caseStudy: CaseStudy;
+	relatedCaseStudies: CaseStudy[];
+}
+
+const { caseStudy, relatedCaseStudies } = Astro.props;
+---
+
+<main class="overflow-x-hidden text-secondary">
+	<div
+		class="hero__gradient"
+		style={`background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 60%, ${caseStudy.colorTheme?.hex} 100%);`}
+	>
+		<CaseStudyHeroV1 caseStudy={caseStudy} />
+	</div>
+	<CaseStudyWhyTheyCameToUs caseStudy={caseStudy} />
+	<div style={`background: linear-gradient(180deg, #141c25 36.5%, ${caseStudy.colorTheme?.hex} 100%);`}>
+		<CaseStudyWhatWeDid caseStudy={caseStudy} />
+	</div>
+
+	<CaseStudyGallery
+		gallery={caseStudy.imageGallery ?? []}
+		imgAlt={caseStudy.title ?? ''}
+		mainColor={caseStudy.mainColor ?? ''}
+	/>
+	<CaseStudyKillerFeatureV1
+		title={caseStudy.killerFeatureTitle ?? ''}
+		description={caseStudy.killerFeatureDescription ?? ''}
+		mainColor={caseStudy.mainColor ?? ''}
+	/>
+	{
+		caseStudy.quote && (
+			<CaseStudyQuoteV1
+				quote={caseStudy.quote ?? ''}
+				name={caseStudy.quoteAuthor ?? ''}
+				role={caseStudy.quoteAuthorRole ?? ''}
+				avatar={caseStudy.quoteAvatar}
+			/>
+		)
+	}
+
+	<CaseStudyRelatedCaseStudies
+		relatedCaseStudies={relatedCaseStudies}
+		description="We've tackled diverse challenges across AI-powered tools and user-centric experiences. Here are a few snapshots:"
+	/>
+	<Contact />
+</main>

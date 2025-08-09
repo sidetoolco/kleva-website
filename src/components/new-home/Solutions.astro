@@ -1,0 +1,284 @@
+---
+import type { SolutionCard } from '../../types';
+import { Icon } from 'astro-icon/components';
+import { solutionsCards } from '@consts';
+---
+
+<section class="page__section light">
+	<div class="section">
+		<header>
+			<div>
+				<span class="section__tag">Solutions</span>
+				<h3 class="section__heading">AI Teammates for Every Task <br />You Can Imagine</h3>
+			</div>
+			<p>And unlimited custom solutions, <br /> built exactly how you want.</p>
+		</header>
+
+		<section class="relative">
+			<div
+				class="pointer-events-none absolute right-0 z-20 h-full w-10 bg-gradient-to-l from-white to-transparent sm:hidden"
+			>
+			</div>
+			<div
+				class="pointer-events-none absolute left-0 z-20 h-full w-10 bg-gradient-to-r from-white to-transparent sm:hidden"
+			>
+			</div>
+			<div
+				role="group"
+				aria-label="Solution Categories"
+				class="container__wide relative z-10 mt-8 flex gap-2 overflow-x-auto px-4 [-ms-overflow-style:none] [scrollbar-width:none] sm:px-0 [&::-webkit-scrollbar]:hidden"
+			>
+				<button type="button" aria-pressed="true" data-tag="growth-tech">Growth & Tech</button>
+				<button type="button" aria-pressed="false" data-tag="ops-delivery">Ops & Delivery</button>
+				<button type="button" aria-pressed="false" data-tag="professional-services">Professional Services</button>
+				<button type="button" aria-pressed="false" data-tag="people-services">People-Centric Services</button>
+			</div>
+		</section>
+
+		<div class="solutions__grid">
+			{
+				solutionsCards.map((card: SolutionCard) => (
+					<div class="card" data-selector={card.selector}>
+						<div class="card__header">
+							<Icon name={card.icon} class="card__icon text-primary" size={28} />
+							<h4>{card.category}</h4>
+						</div>
+						<ul class="card__content">
+							{card.features.map((feature) => (
+								<li>{feature}</li>
+							))}
+						</ul>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	button {
+		min-width: 88px;
+		font-size: 18px;
+		line-height: 1.5;
+		padding: 4px 12px;
+		border: 1px solid #141c25;
+		border-radius: 999px;
+		flex-shrink: 0;
+		transition-property: background-color, border-color, color;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-in-out;
+	}
+	button:hover[aria-pressed='false'] {
+		background-color: #be79ff;
+		border-color: #be79ff;
+		color: white;
+	}
+	button[aria-pressed='true'] {
+		border-color: #be79ff;
+		color: #be79ff;
+	}
+	/* Base Elements */
+	section {
+		background-color: rgb(var(--clr-white));
+	}
+
+	header:not(.card__header) {
+		margin-bottom: 48px;
+	}
+
+	@media (min-width: 1024px) {
+		header {
+			margin-bottom: 64px;
+		}
+		.solutions__grid {
+			margin-top: 64px;
+		}
+	}
+
+	h3 br {
+		display: none;
+	}
+
+	header p br {
+		display: none;
+	}
+
+	h4 {
+		font-family: var(--font-titles);
+		font-size: 22px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 109%;
+	}
+
+	p {
+		font-size: 16px;
+		color: rgb(var(--clr-violet));
+	}
+
+	/* Layout Grid */
+	.solutions__grid {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		overflow: hidden;
+		margin-top: 24px;
+	}
+	@media (min-width: 1024px) {
+		.solutions__grid {
+			margin-top: 48px;
+		}
+	}
+
+	/* card Components */
+	.card {
+		padding: 16px 24px;
+		border: 1px solid rgb(var(--clr-black));
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		min-width: 0; /* Ensures content can shrink properly in grid */
+	}
+	.card:last-child {
+		border-bottom: 1px solid rgb(var(--clr-black));
+	}
+
+	@media (min-width: 768px) {
+		.solutions__grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 8px;
+		}
+		.card {
+			border: 1px solid rgb(var(--clr-black));
+		}
+	}
+
+	.card__header {
+		display: flex;
+		align-items: start;
+		gap: 8px;
+	}
+
+	.card__content {
+		margin-top: 16px;
+	}
+
+	.card__content li {
+		list-style: disc;
+		list-style-position: inside;
+		padding-left: 8px;
+	}
+
+	/* Icons */
+	[data-icon] {
+		color: rgb(var(--clr-violet));
+	}
+
+	/* Filter States */
+	.card {
+		display: none;
+	}
+
+	.card.show {
+		display: flex;
+	}
+
+	/* Media Queries */
+	@media (min-width: 768px) {
+		h3 br {
+			display: block;
+		}
+
+		h4 {
+			font-size: 28px;
+		}
+
+		p {
+			font-size: 20px;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		header {
+			display: flex;
+			align-items: flex-end;
+			justify-content: space-between;
+			gap: 48px;
+		}
+
+		h3 {
+			margin-bottom: 0;
+		}
+
+		header p br {
+			display: block;
+		}
+	}
+
+	/* Animations */
+	@keyframes marqueeLeft {
+		from {
+			transform: translateX(0%);
+		}
+		to {
+			transform: translateX(-100%);
+		}
+	}
+
+	@keyframes marqueeRight {
+		from {
+			transform: translateX(0%);
+		}
+		to {
+			transform: translateX(100%);
+		}
+	}
+</style>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const buttons = document.querySelectorAll('[data-tag]');
+		const cards = document.querySelectorAll('.card[data-selector]');
+
+		// Function to filter cards based on selected tag
+		function filterCards(selectedTag: string) {
+			cards.forEach((card) => {
+				const cardSelector = card.getAttribute('data-selector');
+
+				if (cardSelector === selectedTag) {
+					card.classList.add('show');
+				} else {
+					card.classList.remove('show');
+				}
+			});
+		}
+
+		// Function to update button states
+		function updateButtonStates(activeButton: HTMLButtonElement) {
+			buttons.forEach((button) => {
+				button.setAttribute('aria-pressed', 'false');
+			});
+			activeButton.setAttribute('aria-pressed', 'true');
+		}
+
+		// Add click event listeners to buttons
+		buttons.forEach((button) => {
+			button.addEventListener('click', function (this: HTMLButtonElement) {
+				const selectedTag = this.getAttribute('data-tag');
+
+				if (selectedTag) {
+					// Update button states
+					updateButtonStates(this);
+
+					// Filter cards
+					filterCards(selectedTag);
+				}
+			});
+		});
+
+		// Initialize with growth-tech filter
+		filterCards('growth-tech');
+	});
+</script>

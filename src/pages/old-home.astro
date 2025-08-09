@@ -1,0 +1,49 @@
+---
+// const
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+// Types
+import type { CaseStudy } from '../types/sanity.types';
+// Libs
+import { loadQuery } from '@sanity/lib/load-query';
+import { HOME_RELATED_CASE_STUDIES } from '@sanity/lib/queries';
+// layouts
+import MainLayout from '@layouts/MainLayout.astro';
+// components
+import HomeHero from '@components/Home/HomeHero.astro';
+import HomePartners from '@components/Home/HomePartners.astro';
+import HomeSolutions from '@components/Home/HomeSolutions.astro';
+import HomeVideo from '@components/Home/HomeVideo.astro';
+import CaseStudyRelatedCaseStudies from '@components/CaseStudy/CaseStudyRelatedCaseStudies.astro';
+import ClutchReviews from '@components/ClutchReviews.astro';
+import HomeHowWeWork from '@components/Home/HomeHowWeWork.astro';
+import HomeAreWeRight from '@components/Home/HomeAreWeRight.astro';
+const { data: relatedCaseStudies } = await loadQuery<CaseStudy[]>({
+	query: HOME_RELATED_CASE_STUDIES,
+});
+---
+
+<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<main id="page-content" class="min-h-screen overflow-x-hidden">
+		<HomeHero />
+		<HomeVideo />
+		<HomePartners />
+		<CaseStudyRelatedCaseStudies
+			relatedCaseStudies={relatedCaseStudies}
+			description="We've tackled diverse challenges across AI-powered tools and user-centric experiences. Here are a few snapshots:"
+		/>
+		<HomeSolutions />
+		<section class="container__wide my-24 space-y-16 md:my-36" id="home__testimonials">
+			<div class="text-center">
+				<span class="fade-in block font-titles text-2xl text-primary">Reviews</span>
+				<h3 class="fade-in section__title mb-6 mt-2 font-semibold">What Our <br class="sm:hidden" />Customers Say</h3>
+				<h6 class="fade-in section__text text-secondary">Some words from our lovely customers.</h6>
+			</div>
+			<div class="mx-auto overflow-hidden rounded-xl">
+				<ClutchReviews />
+			</div>
+		</section>
+
+		<HomeHowWeWork />
+		<HomeAreWeRight />
+	</main>
+</MainLayout>

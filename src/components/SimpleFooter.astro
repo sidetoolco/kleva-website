@@ -1,0 +1,219 @@
+---
+import { Icon } from 'astro-icon/components';
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-brand">
+          <h3 class="footer-logo">KLEVA</h3>
+          <p class="footer-tagline">
+            AI Collections for Latin American Banks & Lenders
+          </p>
+        </div>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter">
+            <Icon name="ion:logo-twitter" size={20} />
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <Icon name="ion:logo-linkedin" size={20} />
+          </a>
+          <a href="#" aria-label="GitHub">
+            <Icon name="ion:logo-github" size={20} />
+          </a>
+          <a href="#" aria-label="Instagram">
+            <Icon name="ion:logo-instagram" size={20} />
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h4 class="footer-title">Solutions</h4>
+        <ul class="footer-list">
+          <li><a href="#results">AI Collections</a></li>
+          <li><a href="#roi">ROI Calculator</a></li>
+          <li><a href="/contact">Get Demo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4 class="footer-title">Company</h4>
+        <ul class="footer-list">
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/case-studies">Portfolio</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4 class="footer-title">Get in Touch</h4>
+        <ul class="footer-list contact-list">
+          <li>
+            <Icon name="ion:mail-outline" size={16} />
+            <a href="mailto:hello@kleva.ai">hello@kleva.ai</a>
+          </li>
+          <li>
+            <Icon name="ion:call-outline" size={16} />
+            <a href="/contact">Schedule a Call</a>
+          </li>
+          <li>
+            <Icon name="ion:location-outline" size={16} />
+            <span>Latin America</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {currentYear} Kleva. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: #1a1a1a;
+    color: #e5e7eb;
+    padding: 3rem 0 1.5rem;
+    margin-top: auto;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .footer-brand {
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-logo {
+    font-size: 1.75rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-tagline {
+    color: #9ca3af;
+    line-height: 1.5;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    color: #e5e7eb;
+    transition: all 0.3s ease;
+  }
+
+  .social-links a:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transform: translateY(-2px);
+  }
+
+  .footer-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: white;
+  }
+
+  .footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-list li {
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-list a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-list a:hover {
+    color: #667eea;
+  }
+
+  .contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .contact-list span {
+    color: #9ca3af;
+  }
+
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-bottom p {
+    color: #6b7280;
+    margin: 0;
+  }
+
+  .footer-bottom-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .footer-bottom-links a {
+    color: #6b7280;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-bottom-links a:hover {
+    color: #667eea;
+  }
+
+  @media (max-width: 640px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

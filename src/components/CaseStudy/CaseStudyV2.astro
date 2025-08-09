@@ -1,0 +1,39 @@
+---
+//Types
+import type { CaseStudy } from '../../types/sanity.types';
+//Components
+import CaseStudyHeroV2 from '@components/CaseStudy/CaseStudyHeroV2.astro';
+import CaseStudyWhyTheyCameToUs from '@components/CaseStudy/CaseStudyWhyTheyCameToUs.astro';
+import CaseStudyWhatWeDidV2 from '@components/CaseStudy/CaseStudyWhatWeDidV2.astro';
+import CaseStudyRelatedCaseStudies from '@components/CaseStudy/CaseStudyRelatedCaseStudies.astro';
+import CaseStudyKillerFeatureV2 from '@components/CaseStudy/CaseStudyKillerFeatureV2.astro';
+import CaseStudyQuoteV2 from '@components/CaseStudy/CaseStudyQuoteV2.astro';
+import CasesAboutProject from '@components/CaseStudy/CasesAboutProject.astro';
+import CaseStudyTwoRowsGallery from '@components/CaseStudy/CaseStudyTwoRowsGallery.astro';
+import CaseStudySolutionProvided from '@components/CaseStudy/CaseStudySolutionProvided.astro';
+import Contact from '@components/Contact.astro';
+
+interface Props {
+	caseStudy: CaseStudy;
+	relatedCaseStudies: CaseStudy[];
+}
+
+const { caseStudy, relatedCaseStudies } = Astro.props;
+---
+
+<main class="overflow-x-hidden text-secondary">
+	<CaseStudyHeroV2 caseStudy={caseStudy} />
+	<CasesAboutProject caseStudy={caseStudy} />
+	<CaseStudyWhyTheyCameToUs caseStudy={caseStudy} />
+	<CaseStudyWhatWeDidV2 caseStudy={caseStudy} />
+	<CaseStudyTwoRowsGallery caseStudy={caseStudy} />
+	<CaseStudySolutionProvided caseStudy={caseStudy} />
+	<CaseStudyKillerFeatureV2 caseStudy={caseStudy} />
+	{caseStudy.quote && <CaseStudyQuoteV2 caseStudy={caseStudy} />}
+
+	<CaseStudyRelatedCaseStudies
+		relatedCaseStudies={relatedCaseStudies}
+		description="We've tackled diverse challenges across AI-powered tools and user-centric experiences. Here are a few snapshots:"
+	/>
+	<Contact />
+</main>

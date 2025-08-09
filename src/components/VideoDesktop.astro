@@ -1,0 +1,186 @@
+---
+import { SIDETOOL_VIDEO_URL } from '@consts';
+import { Icon } from 'astro-icon/components';
+---
+
+<div id="video-container">
+	<div class="video__overlay">
+		<div class="wrapper">
+			<span class="text-text-secondary">Some of our works</span>
+			<h2>Case Studies <br />in Motion</h2>
+		</div>
+	</div>
+	<div id="cursor">
+		<Icon name="ion:play" width={64} height={64} class="play-icon" />
+	</div>
+	<video playsinline preload="none">
+		<source data-src={SIDETOOL_VIDEO_URL} type="video/mp4" />
+	</video>
+</div>
+
+<style>
+	#video-container {
+		display: none;
+		position: relative;
+		width: 100%;
+		z-index: 20;
+		background-color: rgb(var(--clr-dark-violet));
+	}
+	.video__overlay {
+		position: absolute;
+		z-index: 20;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 64px;
+	}
+	.video__overlay .wrapper {
+		padding-left: 160px;
+	}
+	h2 {
+		font-family: var(--font-titles);
+		font-size: 60px;
+		font-weight: 600;
+		color: rgb(var(--clr-white));
+		line-height: 1;
+		letter-spacing: -1px;
+	}
+	#cursor {
+		pointer-events: none;
+		position: absolute;
+		z-index: 10;
+		display: grid;
+		aspect-ratio: 1/1;
+		width: 224px;
+		place-items: center;
+		border-radius: 999px;
+		background-color: rgba(var(--clr-white), 0.1);
+		opacity: 0;
+		backdrop-filter: blur(2px);
+		transition: opacity 0.3s ease-in-out;
+	}
+	.play-icon {
+		color: rgba(var(--clr-white), 0.3);
+	}
+	video {
+		position: relative;
+		z-index: 30;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out;
+	}
+	@media (min-width: 1024px) {
+		#video-container {
+			display: block;
+		}
+	}
+</style>
+
+<script>
+	import gsap from 'gsap';
+	const playIconOffset = -150;
+
+	document.addEventListener('DOMContentLoaded', () => {
+		const videoContainer = document.getElementById('video-container');
+		const cursor = document.getElementById('cursor');
+		const video = videoContainer?.querySelector('video');
+		const source = video?.querySelector('source');
+		let isVideoLoaded = false;
+
+		const loadVideo = () => {
+			if (!video || !source || isVideoLoaded) return;
+			const videoSrc = source.getAttribute('data-src');
+			if (videoSrc) {
+				source.setAttribute('src', videoSrc);
+				video.load();
+				isVideoLoaded = true;
+			}
+		};
+
+		const toggleVideo = () => {
+			if (!video) return;
+
+			if (video.paused) {
+				video.play();
+				gsap.to(cursor, { opacity: 0, duration: 0.3 });
+				gsap.to(video, {
+					opacity: 1,
+					duration: 0.3,
+				});
+			} else {
+				video.pause();
+				gsap.to(cursor, { opacity: 1, duration: 0.3 });
+				gsap.to(video, {
+					opacity: 0,
+					duration: 0.3,
+				});
+			}
+		};
+
+		const handleMouseMove = (e: MouseEvent) => {
+			if (!videoContainer || !cursor) return;
+
+			const rect = videoContainer.getBoundingClientRect();
+			const x = e.clientX - rect.left;
+			const y = e.clientY - rect.top;
+
+			gsap.to(cursor, {
+				x: x - cursor.offsetWidth / 2,
+				y: y - cursor.offsetHeight / 2,
+				duration: 0.5,
+				ease: 'power2.out',
+			});
+		};
+
+		const handleMouseEnter = (e: MouseEvent) => {
+			if (!cursor || !videoContainer) return;
+			handleMouseMove(e);
+		};
+
+		const handleMouseLeave = () => {
+			if (!cursor || !videoContainer) return;
+			const rect = videoContainer.getBoundingClientRect();
+			const centerX = rect.width / 2 - cursor.offsetWidth / 2 + playIconOffset;
+			const centerY = rect.height / 2 - cursor.offsetHeight / 2;
+
+			gsap.to(cursor, {
+				x: centerX,
+				y: centerY,
+				duration: 0.5,
+				ease: 'power2.out',
+			});
+		};
+
+		const positionCursorAtCenter = () => {
+			if (cursor && videoContainer) {
+				const rect = videoContainer.getBoundingClientRect();
+				const centerX = rect.width / 2 - cursor.offsetWidth / 2 + playIconOffset;
+				const centerY = rect.height / 2 - cursor.offsetHeight / 2;
+				gsap.set(cursor, {
+					x: centerX,
+					y: centerY,
+					opacity: 1,
+				});
+			}
+		};
+
+		if (videoContainer && cursor) {
+			positionCursorAtCenter();
+			cursor.classList.remove('opacity-0');
+			videoContainer.addEventListener('mouseenter', handleMouseEnter);
+			videoContainer.addEventListener('mouseleave', handleMouseLeave);
+			videoContainer.addEventListener('mousemove', handleMouseMove);
+			videoContainer.addEventListener('click', () => {
+				loadVideo();
+				toggleVideo();
+			});
+			window.addEventListener('resize', positionCursorAtCenter);
+		}
+	});
+</script>

@@ -1,0 +1,154 @@
+---
+import ButtonCircleArrowLink from '@components/Button/ButtonCircleArrowLink.astro';
+
+const blocks = [
+	'One active request at a time',
+	'Unlimited queued requests',
+	'Unlimited revisions',
+	'Pause anytime, zero hassle',
+	'Direct Slack support included',
+];
+---
+
+<section class="section page__section dark">
+	<header>
+		<span class="section__tag dark">Pricing</span>
+		<h2 class="section__heading">Clear Pricing, Zero Hassle</h2>
+	</header>
+	<div class="content">
+		<div class="header__block">
+			<h5>
+				<span class="big__text">$5,900</span><br />
+				<span class="small__text">/month</span>
+			</h5>
+			<p>We also do custom development, <span class="text__violet">starting at $20.000</span></p>
+			<div class="button__wrapper">
+				<ButtonCircleArrowLink href="/" label="Get Started Now" fullWidth asButton />
+			</div>
+		</div>
+		<div class="content__block">
+			{blocks.map((block) => <p class="block__text">{block}</p>)}
+		</div>
+	</div>
+	<div class="arrow">
+		<svg xmlns="http://www.w3.org/2000/svg" width="223" height="210" viewBox="0 0 223 210" fill="none">
+			<path
+				d="M30.7328 207.444C31.0376 207.624 31.3604 207.792 31.7011 207.942C36.238 209.98 40.0575 209.033 43.5005 205.454C64.7442 183.325 86.0357 161.238 107.315 139.145C125.696 120.062 144.052 100.967 162.481 81.9316C166.384 77.9027 170.544 74.1196 174.591 70.2227V80.8704C174.19 96.6862 173.76 112.502 173.407 128.318C173.282 134.067 173.336 139.823 173.306 145.572C173.407 150.357 176.085 153.654 180.628 154.613C183.037 155.123 185.434 155.734 187.855 156.16C193.366 157.125 198.757 158.738 204.346 159.32"
+				stroke="#BE79FF"
+				stroke-miterlimit="10"></path>
+			<path
+				d="M204.346 159.319C210.384 161.831 216.469 159.049 217.939 153.012C218.31 151.483 218.423 149.859 218.459 148.276C219.081 122.778 219.666 97.2853 220.276 71.787C220.707 53.759 221.131 35.731 221.603 17.7089C221.765 11.6656 218.77 7.87057 212.673 6.68948C209.391 6.87534 206.169 6.1499 202.888 6.1499C164.776 6.18587 126.664 6.17388 88.5522 6.17988C86.765 6.17988 84.9658 6.13791 83.2264 6.70747C81.1941 7.43291 79.7954 8.93774 78.4983 10.5625C75.0373 16.1142 76.0176 22.763 81.8516 25.6588C83.7345 26.4322 85.707 26.4322 87.6975 26.4322C109.832 26.4202 131.972 26.4202 154.106 26.4502C155.129 26.4502 156.294 25.9645 157.191 26.9358C157.352 27.0377 157.525 27.0977 157.705 27.1336"
+				stroke="#BE79FF"
+				stroke-miterlimit="10"></path>
+			<path
+				d="M204.347 159.319C201.269 158.432 200.091 155.992 199.416 153.174C199.165 152.113 198.89 151.046 198.8 149.948C199.816 139.025 198.728 128.029 199.804 117.106C199.852 116.608 199.9 116.111 199.888 115.613C199.481 102.351 200.39 89.1076 200.617 75.8578C200.808 65.0182 200.94 54.1667 201.346 42.9434C198.668 45.5034 196.068 47.8895 193.791 50.5455C189.045 56.0732 183.785 61.0853 178.632 66.2053C178.25 66.583 177.909 66.9667 177.604 67.3624L174.585 70.2222"
+				stroke="#BE79FF"
+				stroke-miterlimit="10"></path>
+			<path
+				d="M157.185 26.9296C157.992 26.5099 158.84 26.3301 159.761 26.3301C169.217 26.3541 178.679 26.3421 188.136 26.3541C188.393 26.3541 188.65 26.486 189.152 26.6179C186.737 29.3278 184.537 31.9837 182.146 34.4538C172.026 44.9037 161.751 55.2037 151.709 65.7315C140.018 77.98 128.224 90.1266 116.473 102.315C105.552 113.646 94.655 124.99 83.7403 136.327C72.1322 148.377 60.4763 160.38 48.9459 172.503C42.4425 179.343 35.6342 185.89 29.2563 192.851C28.2701 192.797 27.3137 193.121 26.3035 192.893C19.041 191.274 11.7246 189.895 4.44415 188.337C3.85837 188.211 3.29649 188.007 2.91394 187.491C7.71379 181.49 13.3565 176.28 18.6524 170.758C45.2817 143.006 71.9828 115.319 98.6659 87.6206C118.158 67.3863 137.668 47.1639 157.167 26.9356L157.185 26.9296Z"
+				stroke="#BE79FF"
+				stroke-miterlimit="10"></path>
+			<path
+				d="M57.9951 1.81514C59.2085 1.28156 60.4877 1.2276 61.7908 1.2276C102.945 1.23959 144.106 1.17964 185.26 1.31753C190.944 1.33551 196.426 3.4219 202.032 4.38715C205.601 5.00467 209.128 5.90997 212.666 6.68937"
+				stroke="#BE79FF"
+				stroke-miterlimit="10"></path>
+			<path
+				d="M29.2686 192.851C25.9811 198.529 26.9853 204.482 31.6955 207.947C23.369 206.299 14.9707 204.962 6.74581 202.911C0.475525 201.346 -1.33563 193.127 2.93223 187.491"
+				stroke="#BE79FF"
+				stroke-miterlimit="10"></path>
+			<path
+				d="M81.8516 25.6526C74.2245 24.0878 66.6152 22.4691 58.9761 20.9822C51.2772 19.4834 48.163 11.8933 52.652 5.35234C53.9133 3.37986 55.6168 2.07887 57.9958 1.80908C65.1866 3.38586 72.3655 4.98662 79.5683 6.50344C80.2796 6.65333 80.9789 6.74326 81.5946 7.04303L82.2163 7.15094"
+				stroke="#BE79FF"
+				stroke-miterlimit="10"></path>
+		</svg>
+	</div>
+</section>
+
+<style>
+	section {
+		background-color: rgb(var(--clr-black));
+		color: rgb(var(--clr-white));
+		position: relative;
+	}
+	.arrow {
+		width: 124px;
+		height: 124px;
+		margin-top: 24px;
+	}
+	.arrow svg {
+		width: 100%;
+		height: 100%;
+	}
+	.content {
+		margin-top: 24px;
+	}
+	.header__block {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		padding: 28px 32px;
+		border: 1px solid rgba(var(--clr-white), 0.25);
+		border-bottom: none;
+	}
+
+	.big__text {
+		color: #be79ff;
+		font-size: 48px;
+		font-style: normal;
+		line-height: 100%;
+		letter-spacing: -1.2px;
+	}
+	.small__text {
+		font-family: var(--font-titles);
+		font-size: 28px;
+		font-style: normal;
+		line-height: 100%;
+		letter-spacing: -0.7px;
+	}
+	.button__wrapper {
+		margin-top: auto;
+	}
+	.content__block {
+		padding: 0px 0px;
+		border: 1px solid rgba(var(--clr-white), 0.25);
+	}
+	.block__text {
+		font-family: var(--font-titles);
+		padding: 28px 32px;
+		border-bottom: 1px solid rgba(var(--clr-white), 0.25);
+	}
+	.block__text:last-child {
+		border-bottom: none;
+	}
+	.text__violet {
+		display: block;
+		color: rgb(var(--clr-violet));
+	}
+
+	@media (min-width: 768px) {
+		.content {
+			display: flex;
+		}
+		.header__block {
+			width: fit-content;
+			flex-grow: 0;
+			flex-shrink: 0;
+			border-bottom: 1px solid rgba(var(--clr-white), 0.25);
+			border-right: none;
+		}
+		.content__block {
+			flex-grow: 1;
+		}
+		.block__text {
+			font-size: 20px;
+		}
+		.arrow {
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 220px;
+			height: 208px;
+			margin: 48px 48px 0 0;
+		}
+	}
+</style>

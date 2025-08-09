@@ -1,0 +1,110 @@
+---
+interface Props {
+	classes?: string;
+}
+
+const { classes } = Astro.props;
+---
+
+<button
+	data-state="closed"
+	id="navigation-menu"
+	class="dark relative grid h-[40px] w-[40px] place-items-center"
+	class:list={[classes]}
+>
+	<div class="absolute grid h-12 w-12 place-items-center">
+		<div class="menu-open">
+			<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
+				<path fill="currentColor" d="M64 384h384v-42.67H64Zm0-106.67h384v-42.66H64ZM64 128v42.67h384V128Z"></path></svg
+			>
+		</div>
+		<div class="menu-close inactive">
+			<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
+				<path
+					fill="#fff"
+					d="M400 145.49L366.51 112L256 222.51L145.49 112L112 145.49L222.51 256L112 366.51L145.49 400L256 289.49L366.51 400L400 366.51L289.49 256z"
+				></path></svg
+			>
+		</div>
+	</div>
+</button>
+
+<style>
+	button.dark {
+		color: rgb(var(--clr-white));
+	}
+	button:not(.dark) {
+		color: rgb(var(--clr-black));
+	}
+	.menu-open,
+	.menu-close {
+		position: absolute;
+		transition: opacity 0.5s ease-out;
+	}
+	.menu-close.inactive,
+	.menu-open.inactive {
+		opacity: 0;
+	}
+</style>
+
+<script>
+	import useDispatchEvent from '../js/useDispatchEvent';
+
+	interface SpecificEventDetail {
+		command: string;
+	}
+	const openCommand: SpecificEventDetail = {
+		command: 'open',
+	};
+	const closeCommand: SpecificEventDetail = {
+		command: 'close',
+	};
+
+	const menuBtn = document.getElementById('navigation-menu') as HTMLElement | null;
+	const menu = menuBtn?.querySelector('.menu-open') as HTMLElement | null;
+	const close = menuBtn?.querySelector('.menu-close') as HTMLElement | null;
+	const nav = document.querySelector('#main-header nav');
+
+	function setMenuToOpen() {
+		if (menuBtn && menuBtn.dataset) {
+			menu?.classList.add('inactive');
+			close?.classList.remove('inactive');
+			menuBtn.dataset.state = 'open';
+			nav?.classList.add('menu-open');
+		}
+	}
+
+	function setMenuToClose() {
+		if (menuBtn && menuBtn.dataset) {
+			menu?.classList.remove('inactive');
+			close?.classList.add('inactive');
+			menuBtn.dataset.state = 'closed';
+			nav?.classList.remove('menu-open');
+		}
+	}
+
+	function openMenu() {
+		setMenuToOpen();
+		useDispatchEvent('mobileMenuToggle', openCommand);
+	}
+
+	function closeMenu() {
+		setMenuToClose();
+		useDispatchEvent('mobileMenuToggle', closeCommand);
+	}
+
+	function toggleMenu() {
+		if (menuBtn?.dataset.state === 'closed') openMenu();
+		else closeMenu();
+	}
+
+	function onResize() {
+		if (window.innerWidth >= 1024 && menuBtn?.dataset.state === 'open') {
+			closeMenu();
+		}
+	}
+
+	menuBtn?.addEventListener('mousedown', toggleMenu);
+	window.addEventListener('resize', onResize);
+	window.addEventListener('closeMenuButton', closeMenu);
+</script>

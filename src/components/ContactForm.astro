@@ -1,0 +1,232 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	source: string;
+}
+
+const { source } = Astro.props;
+---
+
+<section class="container__wide mb-[40px] max-w-4xl space-y-12 pb-16 sm:mb-[80px]">
+	<h1 class="font-titles text-[40px] font-light leading-[0.91] tracking-tight text-black sm:text-6xl md:text-[70px]">
+		<span class="font-semibold">Let's</span> Talk
+	</h1>
+	<form data-source={source} action="" id="contact-form" class="mx-auto h-auto">
+		<div class="space-y-8">
+			<fieldset class="relative h-20">
+				<input
+					type="text"
+					id="name"
+					name="name"
+					class="peer w-full border-b border-black/20 bg-transparent p-1 text-lg transition-all focus:outline-0"
+					placeholder=" "
+					required
+					minlength="2"
+					maxlength="100"
+				/>
+				<label
+					for="name"
+					class="pointer-events-none absolute -top-6 left-0 text-lg font-medium leading-[1.42] text-black transition-all peer-placeholder-shown:top-1 peer-placeholder-shown:text-black/50 peer-focus:-top-6 peer-focus:text-sm peer-focus:text-black peer-[&:not(:placeholder-shown)]:-top-6 peer-[&:not(:placeholder-shown)]:text-sm"
+				>
+					Your name <span class="text-[#0166FF]">*</span>
+				</label>
+				<span class="validation-message hidden text-xs text-red-500"></span>
+			</fieldset>
+			<fieldset class="relative h-20">
+				<input
+					type="email"
+					id="email"
+					name="email"
+					class="peer w-full border-b border-black/20 bg-transparent p-1 text-lg transition-all focus:outline-0"
+					placeholder=" "
+					required
+					pattern=".+@.+\..+"
+				/>
+				<label
+					for="email"
+					class="pointer-events-none absolute -top-6 left-0 text-lg font-medium leading-[1.42] text-black transition-all peer-placeholder-shown:top-1 peer-placeholder-shown:text-black/50 peer-focus:-top-6 peer-focus:text-sm peer-focus:text-black peer-[&:not(:placeholder-shown)]:-top-6 peer-[&:not(:placeholder-shown)]:text-sm"
+				>
+					Your email <span class="text-[#0166FF]">*</span>
+				</label>
+				<span class="validation-message hidden text-xs text-red-500"></span>
+			</fieldset>
+			<fieldset class="relative h-20">
+				<input
+					type="text"
+					id="role"
+					name="role"
+					class="peer w-full border-b border-black/20 bg-transparent p-1 text-lg transition-all focus:outline-0"
+					placeholder=" "
+					required
+					minlength="2"
+					maxlength="100"
+				/>
+				<label
+					for="role"
+					class="pointer-events-none absolute -top-6 left-0 text-lg font-medium leading-[1.42] text-black transition-all peer-placeholder-shown:top-1 peer-placeholder-shown:text-black/50 peer-focus:-top-6 peer-focus:text-sm peer-focus:text-black peer-[&:not(:placeholder-shown)]:-top-6 peer-[&:not(:placeholder-shown)]:text-sm"
+				>
+					What's your role in the project? <span class="text-[#0166FF]">*</span>
+				</label>
+				<span class="validation-message hidden text-xs text-red-500"></span>
+			</fieldset>
+			<fieldset class="relative h-auto">
+				<textarea
+					id="project"
+					name="project"
+					maxlength="250"
+					rows="3"
+					class="peer w-full border-b border-black/20 bg-transparent p-1 text-lg transition-all focus:outline-0"
+					placeholder=" "
+					required
+					minlength="10"></textarea>
+				<label
+					for="project"
+					class="pointer-events-none absolute -top-6 left-0 text-lg font-medium leading-[1.42] text-black transition-all peer-placeholder-shown:top-1 peer-placeholder-shown:text-black/50 peer-focus:-top-6 peer-focus:text-sm peer-focus:text-black peer-[&:not(:placeholder-shown)]:-top-6 peer-[&:not(:placeholder-shown)]:text-sm"
+				>
+					Tell us a little bit about your idea <span class="text-gray-500 text-xs"
+						>(<span id="char-count">0</span>/250)</span
+					>
+					<span class="text-[#0166FF]">*</span>
+				</label>
+				<span class="validation-message hidden text-xs text-red-500"></span>
+			</fieldset>
+		</div>
+	</form>
+	<button
+		type="submit"
+		form="contact-form"
+		id="submit-button"
+		class="enabled:hover:bg-gray-800 flex w-full items-center justify-center gap-2 rounded-xl bg-black/20 px-4 py-3 text-black/50 transition-colors enabled:bg-black enabled:text-white disabled:cursor-not-allowed disabled:opacity-70"
+		disabled
+	>
+		Submit
+		<Icon name="ion:arrow-forward" width={24} height={24} />
+	</button>
+</section>
+
+<script>
+	//import { sendData } from '@js/useFormWebhook';
+	const form = document.querySelector('form');
+	const projectTextarea = document.getElementById('project') as HTMLTextAreaElement;
+	const charCount = document.getElementById('char-count');
+	const submitButton = document.getElementById('submit-button') as HTMLButtonElement;
+	const inputFields = document.querySelectorAll('input[type="text"], input[type="email"], textarea');
+
+	function updateFormValidity() {
+		let isValid = true;
+
+		inputFields.forEach((field) => {
+			const input = field as HTMLInputElement | HTMLTextAreaElement;
+			if (input.required && !input.value.trim()) {
+				isValid = false;
+			}
+			if (input.type === 'email' && input.value.trim()) {
+				const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+				if (!emailRegex.test(input.value)) {
+					isValid = false;
+				}
+			}
+			if (input.hasAttribute('minlength') && input.value.trim()) {
+				const minLength = parseInt(input.getAttribute('minlength') || '0');
+				if (input.value.length < minLength) {
+					isValid = false;
+				}
+			}
+		});
+		submitButton.disabled = !isValid;
+	}
+	projectTextarea?.addEventListener('input', () => {
+		if (charCount) {
+			charCount.textContent = projectTextarea.value.length.toString();
+		}
+		validateField(projectTextarea);
+		updateFormValidity();
+	});
+	inputFields.forEach((field) => {
+		field.addEventListener('input', () => {
+			validateField(field as HTMLInputElement | HTMLTextAreaElement);
+			updateFormValidity();
+		});
+
+		field.addEventListener('blur', () => {
+			validateField(field as HTMLInputElement | HTMLTextAreaElement);
+			updateFormValidity();
+		});
+	});
+
+	function validateField(field: HTMLInputElement | HTMLTextAreaElement) {
+		const fieldName = field.id;
+		const fieldValue = field.value.trim();
+		const validationMessage = field.parentElement?.querySelector('.validation-message');
+
+		if (!validationMessage) return;
+		validationMessage.textContent = '';
+		validationMessage.classList.add('hidden');
+		if (fieldValue === '') {
+			if (field.hasAttribute('required')) {
+				validationMessage.textContent = `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} is required`;
+				validationMessage.classList.remove('hidden');
+				return false;
+			}
+		} else {
+			if (field.type === 'email') {
+				const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+				if (!emailRegex.test(fieldValue)) {
+					validationMessage.textContent = 'Please enter a valid email address';
+					validationMessage.classList.remove('hidden');
+					return false;
+				}
+			}
+			if (field.hasAttribute('minlength')) {
+				const minLength = parseInt(field.getAttribute('minlength') || '0');
+				if (fieldValue.length < minLength) {
+					validationMessage.textContent = `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} must be at least ${minLength} characters`;
+					validationMessage.classList.remove('hidden');
+					return false;
+				}
+			}
+			if (fieldName === 'project' && fieldValue.length < 10) {
+				validationMessage.textContent = 'Please provide more details about your project (at least 10 characters)';
+				validationMessage.classList.remove('hidden');
+				return false;
+			}
+		}
+		return true;
+	}
+
+	form?.addEventListener('submit', async (e) => {
+		e.preventDefault();
+		let isValid = true;
+		inputFields.forEach((field) => {
+			if (!validateField(field as HTMLInputElement | HTMLTextAreaElement)) {
+				isValid = false;
+			}
+		});
+
+		if (!isValid) return;
+
+		const formData = new FormData(form);
+		const name = formData.get('name') as string;
+		const email = formData.get('email') as string;
+		const role = formData.get('role') as string;
+		const project = formData.get('project') as string;
+		//const source = form.getAttribute('data-source') as string;
+
+		//await sendData({ name, email, project, source });
+
+		const calUrl = new URL('https://cal.com/sidetool/website-form');
+		const currentMonth = new Date().toISOString().slice(0, 7);
+		let note = '';
+
+		if (role) note += `As a ${role}`;
+		if (project) note += role ? `, I'm interested in ${project}.` : `I'm interested in ${project}.`;
+
+		calUrl.searchParams.set('month', currentMonth);
+		calUrl.searchParams.set('name', name as string);
+		calUrl.searchParams.set('email', email as string);
+		if (note) calUrl.searchParams.set('notes', note);
+		window.location.href = calUrl.toString();
+	});
+	updateFormValidity();
+</script>

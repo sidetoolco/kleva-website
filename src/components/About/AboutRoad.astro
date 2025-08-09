@@ -1,0 +1,158 @@
+---
+const stones = [
+	{
+		year: '2023',
+		title: 'How It Started',
+		html: 'A couple of DMs. Some late-night code. A shared promise: <span class="font-semibold">Build software that works, not just software that demos well.</span>  By the end of Day One, we had a bank account, a domain, and our first “what did we just get ourselves into” moment.  Since then? <span class="font-italic">We’ve been busy shipping—fast.<span/>',
+	},
+	{
+		year: '2023-2025',
+		title: 'How We Roll',
+		html: 'We’re not a cushy Silicon Valley giant, and we’re not trying to be.  We bet on grit, creativity, and execution. Every teammate owns their work, learns fast, and pushes through the hard stuff (without being a jerk). <span class="font-italic">This is high agency, <span class="font-semibold">in action.</span></span>',
+	},
+	{
+		year: '2025 & Beyond',
+		title: 'The Road Ahead',
+		html: 'AI is unlocking blue-ocean opportunities, and we’re ready to dive in. This year we’re scaling up—on our terms. Flexible. Fast. Focused on building a company where people, clients, and great products come first.',
+	},
+];
+---
+
+<section class="page__section dark">
+	<div class="wrapper container__wide flex flex-col justify-center py-24 sm:hidden md:py-36">
+		<h2 class="section__title mb-16 text-white">Our Path</h2>
+		<div id="about-road-stones" class="flex flex-col gap-16">
+			{
+				stones.map((stone) => (
+					<article class="mr-8 flex flex-col">
+						<div class="flex flex-row">
+							<header class="flex flex-col items-center gap-[5px]">
+								<div class="relative flex w-10 justify-center">
+									<div class="grid aspect-square w-8 shrink-0 place-items-center border-black transition-transform group-hover:rotate-45 md:w-10">
+										<div class="absolute h-[1px] w-6 bg-primary md:h-[2px] md:w-8" />
+										<div class="absolute h-6 w-[1px] bg-primary md:h-8 md:w-[2px]" />
+										<div class="absolute h-[1px] w-6 rotate-45 bg-primary md:h-[2px] md:w-8" />
+										<div class="absolute h-[1px] w-6 -rotate-45 bg-primary md:h-[2px] md:w-8" />
+									</div>
+								</div>
+								<div class="flex h-full w-10 justify-center pt-2">
+									<div class="h-full w-px bg-white/25 " />
+								</div>
+							</header>
+							<div class="pb-4 pr-10">
+								<h4 class="font-titles text-xl text-primary">{stone.year}</h4>
+								<h4 class="my-4 font-titles text-2xl text-white">{stone.title}</h4>
+								<p class="text-lg text-white" set:html={stone.html} />
+							</div>
+						</div>
+						<div class="mt-auto flex">
+							<div class="flex h-6 w-10 items-end justify-center">
+								<div class="h-1 w-1 rounded-full bg-white" />
+							</div>
+							<div class="flex-1 border-b border-white/25" />
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</div>
+	<div id="about-road" class="hidden h-[200vh] sm:block">
+		<div class="wrapper container__wide flex h-screen flex-col justify-center py-24 md:py-36">
+			<h2 class="section__title mb-4 text-white">Our Path</h2>
+			<p class="section__text text-text-secondary mb-16 md:mb-24">From day one till today, focusing on quality</p>
+			<div id="about-road-stones" class="flex w-max">
+				{
+					stones.map((stone) => (
+						<article class="road-card">
+							<div class="road-card-pillar">
+								<div class="relative flex w-10 justify-center">
+									<div class="grid aspect-square w-8 shrink-0 place-items-center border-black transition-transform group-hover:rotate-45 md:w-10">
+										<div class="absolute h-[1px] w-6 bg-primary md:h-[2px] md:w-8" />
+										<div class="absolute h-6 w-[1px] bg-primary md:h-8 md:w-[2px]" />
+										<div class="absolute h-[1px] w-6 rotate-45 bg-primary md:h-[2px] md:w-8" />
+										<div class="absolute h-[1px] w-6 -rotate-45 bg-primary md:h-[2px] md:w-8" />
+									</div>
+								</div>
+								<div class="flex h-full w-10 justify-center">
+									<div class="h-full w-px bg-white/70" />
+								</div>
+								<div class="h-2 w-2 flex-none rounded-full bg-white" />
+							</div>
+							<div class="">
+								<h4 class="font-titles text-xl text-primary">{stone.year}</h4>
+								<h4 class="my-6 font-titles text-3xl text-white">{stone.title}</h4>
+								<p class="text-lg text-white" set:html={stone.html} />
+							</div>
+							<div class="absolute bottom-[3px] left-0 w-full h-1">
+								<svg xmlns="http://www.w3.org/2000/svg" width="638" height="4" viewBox="0 0 638 4" fill="none" style="&#10;"><rect x="56.001" width="4" height="4" rx="2" fill="white" fill-opacity="0.75"/><rect x="114.001" width="4" height="4" rx="2" fill="white" fill-opacity="0.75"/><rect x="172.001" width="4" height="4" rx="2" fill="white" fill-opacity="0.75"/><rect x="230.001" width="4" height="4" rx="2" fill="white" fill-opacity="0.75"/><rect x="288.001" width="4" height="4" rx="2" fill="white" fill-opacity="0.75"/><rect x="346.001" width="4" height="4" rx="2" fill="white" fill-opacity="0.75"/><rect x="404.001" width="4" height="4" rx="2" fill="white" fill-opacity="0.75"/><rect x="462.001" width="4" height="4" rx="2" fill="white" fill-opacity="0.75"/><rect x="520.001" width="4" height="4" rx="2" fill="white" fill-opacity="0.75"/><rect x="578.001" width="4" height="4" rx="2" fill="white" fill-opacity="0.75"/></svg>
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	section {
+		background-color: rgb(var(--clr-black));
+	}
+	.road-card {
+		grid-row-gap: 16px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		width: 638px;
+		max-width: 638px;
+		padding-bottom: 120px;
+		padding-left: 78px;
+		padding-right: 112px;
+		position: relative;
+	}
+	.road-card-pillar {
+		display: flex;
+		position: absolute;
+		align-items: center;
+		flex-direction: column;
+		grid-row-gap: 24px;
+		inset: 0% auto 0% -18px;
+	}
+</style>
+
+<script>
+	import gsap from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	document.addEventListener('DOMContentLoaded', () => {
+		const roadStones = document.querySelectorAll('.road-card') as NodeListOf<HTMLElement>;
+		const translateX = `-${roadStones[0].offsetWidth * (roadStones.length - 1)}px`;
+		let timeline: gsap.core.Timeline | null = null;
+		let mm = gsap.matchMedia();
+
+		mm.add('(min-width: 640px)', () => {
+			timeline = gsap
+				.timeline({
+					scrollTrigger: {
+						trigger: '#about-road',
+						start: 'top top',
+						end: 'bottom bottom',
+						pin: '#about-road .wrapper',
+						scrub: true,
+					},
+				})
+				.to('#about-road-stones', {
+					translateX: translateX,
+				});
+
+			return () => {
+				if (timeline) {
+					timeline.kill();
+					timeline = null;
+				}
+			};
+		});
+	});
+</script>

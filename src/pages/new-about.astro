@@ -1,0 +1,235 @@
+---
+import SimpleLayout from '@layouts/SimpleLayout.astro';
+import SimpleButton from '@components/Button/SimpleButton.astro';
+---
+
+<SimpleLayout title="About - Kleva" description="Learn more about our team and mission">
+  <main class="about-page">
+    <section class="hero-section">
+      <div class="container">
+        <h1 class="page-title">About Kleva</h1>
+        <p class="page-subtitle">
+          We're a team of passionate developers and designers committed to building exceptional digital experiences.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <div class="content-grid">
+          <div class="content-block">
+            <h2>Our Story</h2>
+            <p>
+              Founded in 2019, Kleva started with a simple mission: to help businesses navigate the digital landscape 
+              with confidence. What began as a small team of developers has grown into a full-service digital agency 
+              serving clients worldwide.
+            </p>
+            <p>
+              We believe that great technology should be accessible to everyone. That's why we focus on creating 
+              solutions that are not just powerful, but also intuitive and user-friendly.
+            </p>
+          </div>
+
+          <div class="content-block">
+            <h2>Our Approach</h2>
+            <p>
+              Every project starts with understanding your unique needs and goals. We don't believe in one-size-fits-all 
+              solutions. Instead, we craft custom strategies that align with your business objectives.
+            </p>
+            <ul>
+              <li>Discovery & Research</li>
+              <li>Strategic Planning</li>
+              <li>Agile Development</li>
+              <li>Continuous Optimization</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="values-section">
+          <h2>Our Values</h2>
+          <div class="values-grid">
+            <div class="value-card">
+              <span class="value-icon">💡</span>
+              <h3>Innovation</h3>
+              <p>We stay ahead of the curve, using cutting-edge technologies to deliver modern solutions.</p>
+            </div>
+            <div class="value-card">
+              <span class="value-icon">🤝</span>
+              <h3>Partnership</h3>
+              <p>We work as an extension of your team, invested in your success every step of the way.</p>
+            </div>
+            <div class="value-card">
+              <span class="value-icon">⚡</span>
+              <h3>Excellence</h3>
+              <p>Quality is non-negotiable. We deliver work that exceeds expectations.</p>
+            </div>
+            <div class="value-card">
+              <span class="value-icon">🌱</span>
+              <h3>Growth</h3>
+              <p>We build scalable solutions that grow with your business.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-section">
+          <h2>Ready to Work Together?</h2>
+          <p>Let's discuss how we can help bring your vision to life.</p>
+          <SimpleButton href="/contact" size="lg">
+            Start a Conversation
+          </SimpleButton>
+        </div>
+      </div>
+    </section>
+  </main>
+</SimpleLayout>
+
+<style>
+  .about-page {
+    padding-top: var(--header-height-mobile);
+  }
+
+  .hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 4rem 0;
+    text-align: center;
+    color: white;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .page-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.95;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .content-section {
+    padding: 4rem 0;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+  }
+
+  .content-block h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #1a1a1a;
+  }
+
+  .content-block p {
+    color: #6b7280;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .content-block ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .content-block li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: #6b7280;
+  }
+
+  .content-block li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+  }
+
+  .values-section {
+    margin: 4rem 0;
+  }
+
+  .values-section h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #1a1a1a;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .value-card {
+    text-align: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 1rem;
+    transition: transform 0.3s ease;
+  }
+
+  .value-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .value-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .value-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+  }
+
+  .value-card p {
+    color: #6b7280;
+    line-height: 1.6;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 3rem;
+    background: #f8f9fa;
+    border-radius: 1rem;
+    margin-top: 4rem;
+  }
+
+  .cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #1a1a1a;
+  }
+
+  .cta-section p {
+    color: #6b7280;
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+  }
+
+  @media (min-width: 768px) {
+    .about-page {
+      padding-top: var(--header-height-desktop);
+    }
+
+    .content-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

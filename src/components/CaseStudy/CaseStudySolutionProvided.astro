@@ -1,0 +1,16 @@
+---
+import type { CaseStudy } from '../../types/sanity.types';
+
+interface Props {
+	caseStudy: CaseStudy;
+}
+
+const { caseStudy } = Astro.props;
+---
+
+<article id="solution-provided" class="section page__section light space-y-6 py-24 md:py-36">
+	<header class="section__title">Solution We Provided</header>
+	<p class="max-w-4xl text-lg leading-[1.5] md:text-[28px]">
+		{caseStudy.solutionWeProvided}
+	</p>
+</article>

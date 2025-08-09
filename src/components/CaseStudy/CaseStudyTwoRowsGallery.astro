@@ -1,0 +1,91 @@
+---
+// Types
+import type { CaseStudy } from '../../types/sanity.types';
+// Libs
+import { urlForImage } from 'src/sanity/lib/url-for-image';
+import { Image } from 'astro:assets';
+
+interface Props {
+	caseStudy: CaseStudy;
+}
+
+const { caseStudy } = Astro.props;
+---
+
+<section id="two-rows-gallery" class="bg-black py-20 overflow-hidden lg:space-y-12">
+	{
+    caseStudy.imageGallery && (
+      <div class="top-row hidden lg:flex flex-col gap-12 lg:flex-row">
+        {
+            caseStudy.imageGallery.map((image) => (
+              <div class="lg:w-[476px] lg:h-[288px] shrink-0">
+                <Image src={urlForImage(image).url()} alt={caseStudy.title ?? ''} inferSize={true} class="h-full w-full object-cover" />
+              </div>
+            ))
+          }
+      </div>
+		<div class="bottom-row hidden lg:flex flex-col gap-12 lg:flex-row">
+      {
+            caseStudy.imageGallery.slice().reverse().map((image) => (
+              <div class="lg:w-[476px] lg:h-[288px] shrink-0">
+                <Image src={urlForImage(image).url()} alt={caseStudy.title ?? ''} inferSize={true} class="h-full w-full object-cover" />
+              </div>
+            ))
+      }
+    </div>
+      )
+    }
+    <div class="container__wide grid grid-cols-1 sm:grid-cols-2 lg:hidden gap-8">
+      {
+        caseStudy.imageGallery && (
+        caseStudy.imageGallery.map((image) => (
+              <div>
+                <Image src={urlForImage(image).url()} alt={caseStudy.title ?? ''} inferSize={true} class="h-full w-full object-cover" />
+              </div>
+            ))
+        )
+      }
+    </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    let tl: gsap.core.Timeline | null = null;
+
+    function initTimeline() {
+      if (window.innerWidth >= 1024) {
+        tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: '#two-rows-gallery',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true,
+          }
+        }).fromTo('.top-row', {
+          translateX: '0%',
+        },{
+          translateX: '-25%',
+          duration: 1,
+        }).fromTo('.bottom-row', {
+          translateX: '-25%',
+        }, {
+          translateX: '0%',
+          duration: 1,
+        }, '<');
+      }
+    }
+
+    function handleResize() {
+      if (tl) {
+        tl.kill();
+        tl = null;
+      }
+      initTimeline();
+    }
+
+    initTimeline();
+    window.addEventListener('resize', handleResize);
+  });
+</script>

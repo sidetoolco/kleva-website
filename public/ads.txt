@@ -1,0 +1,15 @@
+# Ads.txt for Sidetool.co
+# This file indicates authorized digital sellers for advertising inventory
+
+# Currently, we don't display programmatic advertising
+# This file exists to prevent unauthorized ad inventory sales
+
+# If you see ads claiming to be from sidetool.co, they are unauthorized
+# Please report to: security@sidetool.co
+
+# Placeholder entries (replace with actual entries if you ever use programmatic advertising)
+# Format: <DOMAIN>, <PUBLISHER_ID>, <RELATIONSHIP>, <CERTIFICATION_ID>
+# Example: google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+
+# No authorized sellers at this time
+placeholder.example.com, 00000, RESELLER, 0000000000000000

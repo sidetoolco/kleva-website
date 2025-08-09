@@ -1,0 +1,4 @@
+{
+	"name": "Vapi AI",
+	"description": "Vapi is a developer-focused Voice AI platform that streamlines the creation, testing, and deployment of voice agents. It integrates core components—transcription, language models, and voice synthesis—allowing developers to customize each module with their preferred providers. Vapi's real-time infrastructure ensures low-latency, human-like conversations, making it suitable for applications in customer service, healthcare, and more."
+}

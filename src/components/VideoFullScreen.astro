@@ -1,0 +1,123 @@
+---
+import { SIDETOOL_VIDEO_URL } from '@consts';
+import { Icon } from 'astro-icon/components';
+---
+
+<div id="video-mobile-container" class="pointer-events-none fixed bottom-0 left-0 right-0 top-0 z-[999] flex flex-col">
+	<div class="relative z-20 flex h-[100dvh] w-full flex-col">
+		<div id="video-mask" class="absolute z-10 h-full w-full bg-[#362f6a]"></div>
+		<div class="relative z-20 flex-1">
+			<video id="video-mobile" playsinline preload="none" class="relative z-20 h-full w-full object-cover">
+				<source data-source={SIDETOOL_VIDEO_URL} />
+			</video>
+		</div>
+	</div>
+	<button
+		class="pointer-events-none fixed bottom-4 left-1/2 z-30 grid h-12 w-12 -translate-x-1/2 place-items-center opacity-70"
+	>
+		<div class="grid h-full w-full place-items-center rounded-full border-2 border-white bg-black/30 text-white">
+			<Icon name="ion:close" width={24} height={24} />
+		</div>
+	</button>
+</div>
+
+<style>
+	#video-mask {
+		clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+	}
+	button {
+		opacity: 0;
+	}
+	.pb-safe {
+		padding-bottom: env(safe-area-inset-bottom);
+	}
+</style>
+
+<script>
+	import gsap from 'gsap';
+	const container = document.getElementById('video-mobile-container');
+	const mask = document.getElementById('video-mask');
+	const closeBtn = container?.querySelector('button');
+	const video = container?.querySelector('video');
+	const source = video?.querySelector('source');
+	let isVideoLoaded = false;
+	let isVideoPlaying = false;
+
+	function initialState() {
+		if (container && closeBtn) {
+			gsap.set(closeBtn, { opacity: 0, rotate: '90deg' });
+			gsap.set(mask, { clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)', opacity: 1 });
+			container.classList.add('pointer-events-none');
+			closeBtn.classList.add('pointer-events-none');
+			document.body.style.overflow = 'auto';
+		}
+	}
+
+	const loadVideo = () => {
+		if (!video || !source || isVideoLoaded) return;
+		const videoSrc = source.getAttribute('data-source');
+		if (videoSrc) {
+			source.setAttribute('src', videoSrc);
+			video.load();
+			isVideoLoaded = true;
+		}
+	};
+
+	const openVideo = () => {
+		if (container && mask && closeBtn) {
+			container.classList.remove('pointer-events-none');
+			document.body.style.overflow = 'hidden';
+			loadVideo();
+			gsap
+				.timeline()
+				.to(mask, {
+					clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+					duration: 0.5,
+					ease: 'sine.inOut',
+				})
+				.to(closeBtn, {
+					opacity: 1,
+					rotate: '0deg',
+					duration: 0.5,
+					ease: 'sine.inOut',
+					onComplete: () => {
+						closeBtn.classList.remove('pointer-events-none');
+						if (video) {
+							video.play();
+							isVideoPlaying = true;
+							gsap.to(video, { opacity: 1, duration: 0.3 });
+						}
+					},
+				});
+		}
+	};
+
+	const closeVideo = () => {
+		if (video) {
+			video.pause();
+			isVideoPlaying = false;
+			video.currentTime = 0;
+			gsap.to(video, { opacity: 0, duration: 0.3 });
+		}
+		document.body.style.overflow = 'auto';
+		gsap.to(mask, {
+			opacity: 0,
+			duration: 0.3,
+			ease: 'power2.out',
+			onComplete: () => {
+				initialState();
+			},
+		});
+	};
+
+	closeBtn?.addEventListener('click', closeVideo);
+	window.addEventListener('open-video-mobile', () => {
+		openVideo();
+	});
+	window.addEventListener('resize', () => {
+		if (isVideoPlaying) {
+			closeVideo();
+		}
+	});
+	initialState();
+</script>

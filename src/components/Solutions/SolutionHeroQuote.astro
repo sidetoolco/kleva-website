@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import { urlForImage } from '@sanity/lib/url-for-image';
+
+interface Props {
+	companyLogo?: {
+		asset?: {
+			_ref: string;
+			_type: 'reference';
+			_weak?: boolean;
+		};
+		hotspot?: any;
+		crop?: any;
+		_type: 'image';
+	};
+	clientFullName: string;
+	companyRole: string;
+	quote: string;
+}
+
+const { companyLogo, clientFullName, companyRole, quote } = Astro.props;
+const companyLogoUrl = companyLogo ? urlForImage(companyLogo).url() : null;
+---
+
+<article class="flex h-full flex-col justify-between">
+	<header class="h-9">
+		{
+			companyLogoUrl && (
+				<Image src={companyLogoUrl} alt={clientFullName} inferSize={true} class="mx-auto h-full object-contain" />
+			)
+		}
+	</header>
+	<p
+		class="my-4 line-clamp-3 text-center font-titles text-lg leading-[1.45] text-secondary md:my-[30px] md:text-[22px]"
+	>
+		“{quote}”
+	</p>
+	<footer class="flex flex-col text-center">
+		<span class="text-[17px] font-medium leading-[1.65] text-tertiary md:text-xl">{clientFullName}</span>
+		<span class="text-sm leading-[1.71] text-secondary sm:text-base">{companyRole}</span>
+	</footer>
+</article>

@@ -1,0 +1,188 @@
+---
+// Components
+import ButtonPillSimple from '@components/Button/ButtonPillSimple.astro';
+import MobileMenuSolutions from '@components/MobileMenuSolutions.astro';
+// Libs
+import { Icon } from 'astro-icon/components';
+---
+
+<nav data-state="close" id="mobile-menu" class="pointer-events-none opacity-0">
+	<div class="nav__wrapper">
+		<ul class="links-list">
+			<li><a href="/" class="block">Home</a></li>
+			<li class="accordion">
+				<button
+					>Solutions
+					<div class="icon transition-transform duration-300">
+						<Icon name="ion:ios-arrow-down" width={16} height={16} />
+					</div>
+				</button>
+				<div class="accordion__content">
+					<MobileMenuSolutions />
+				</div>
+			</li>
+			<li><a href="/case-studies" class="block">Works</a></li>
+			<li><a href="/about" class="block">About</a></li>
+			<li><a href="/blog" class="block">Blog</a></li>
+			<li><a href="/studio" class="block">Studio</a></li>
+		</ul>
+		<div class="cta__wrapper mt-auto pb-16">
+			<ButtonPillSimple id="mobile-menu-cta" label="Let's talk" fullWidth={true} asButton={true} />
+		</div>
+	</div>
+</nav>
+
+<style>
+	nav {
+		background-color: rgb(var(--clr-black));
+		overflow: hidden;
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		z-index: 40;
+		height: 100dvh;
+		padding-inline: 8px;
+		transition-property: opacity;
+		transition-duration: 300ms;
+		transition-timing-function: ease-out;
+	}
+	@media (min-width: 768px) {
+		nav {
+			padding-inline: 48px;
+		}
+	}
+	.nav__wrapper {
+		display: flex;
+		height: 100%;
+		flex-direction: column;
+	}
+	.cta__wrapper {
+		margin-top: auto;
+		padding-bottom: 64px;
+		padding-inline: 1rem;
+	}
+	.right-bar {
+		width: 48px;
+	}
+	.accordion {
+		display: grid;
+		grid-template-rows: 46px 0fr;
+		transition: grid-template-rows 300ms;
+	}
+	.accordion.open {
+		grid-template-rows: 46px 1fr;
+	}
+	:global(.accordion.open) {
+		grid-template-rows: 46px 1fr;
+	}
+	.accordion__content {
+		overflow: hidden;
+	}
+	.links-list {
+		color: rgb(var(--clr-white));
+		padding-top: calc(var(--header-height-mobile) + 64px);
+		overflow-y: auto;
+
+		li {
+			font-size: 20px;
+			font-family: var(--font-titles);
+			padding: 20px 32px;
+			border-bottom: 1px solid rgba(var(--clr-white), 0.1);
+		}
+	}
+	button {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.rotate-180 {
+		transform: rotate(180deg);
+	}
+
+	@media (min-width: 768px) {
+		nav {
+			padding-inline: 48px;
+		}
+		.right-bar {
+			width: 64px;
+		}
+		.links-list {
+			padding-top: calc(var(--header-height-desktop) + 82px);
+		}
+	}
+</style>
+
+<script>
+	interface CustomEventWithDetail<T> extends Event {
+		detail: T;
+	}
+
+	function initializeMobileMenu() {
+		const page = document.getElementById('page-content') as HTMLElement | null;
+		const menu = document.getElementById('mobile-menu') as HTMLElement | null;
+		const accordionBtn = menu?.querySelector('.accordion button') as HTMLButtonElement | null;
+		const ctaBtn = document.getElementById('mobile-menu-cta') as HTMLButtonElement | null;
+		//console.log('Button found:', accordionBtn);
+		//console.log('Menu found:', menu);
+
+		function onCtaClick() {
+			// Dispatch event specifically for ButtonMenu to trigger closeMenu()
+			const closeMenuButtonEvent = new CustomEvent('closeMenuButton');
+			window.dispatchEvent(closeMenuButtonEvent);
+
+			// Scroll to contact section
+			const contactSection = document.getElementById('website-contact');
+			if (contactSection) {
+				contactSection.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start',
+				});
+			}
+		}
+
+		ctaBtn?.addEventListener('click', onCtaClick);
+
+		function toggleAccordion() {
+			const accordion = menu?.querySelector('.accordion');
+
+			if (accordion?.classList.contains('open')) {
+				accordion?.classList.remove('open');
+			} else {
+				accordion?.classList.add('open');
+			}
+
+			menu?.querySelector('.accordion .icon')?.classList.toggle('rotate-180');
+		}
+
+		function openMenu() {
+			menu?.classList.remove('opacity-0', 'pointer-events-none');
+			page?.classList.add('pointer-events-none');
+			if (menu && menu.dataset) menu.dataset.state = 'open';
+			document.body.style.overflow = 'hidden';
+		}
+
+		function closeMenu() {
+			menu?.classList.add('opacity-0', 'pointer-events-none');
+			page?.classList.remove('pointer-events-none');
+			if (menu && menu.dataset) menu.dataset.state = 'close';
+			document.body.style.overflow = '';
+		}
+
+		function mobileMenuToggle(ev: CustomEventWithDetail<{ command: string }>) {
+			if (ev.detail.command === 'open') openMenu();
+			if (ev.detail.command === 'close') closeMenu();
+		}
+
+		// Add event listeners
+		accordionBtn?.addEventListener('click', toggleAccordion);
+		window.addEventListener('mobileMenuToggle', mobileMenuToggle as EventListener);
+	}
+
+	// Initialize when DOM is ready
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initializeMobileMenu);
+	} else {
+		initializeMobileMenu();
+	}
+</script>

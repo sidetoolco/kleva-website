@@ -1,0 +1,26 @@
+---
+import useFormatDate from '@js/useFormatDate';
+
+interface Props {
+	tag: string;
+	title: string;
+	date: Date;
+	isMain: boolean;
+}
+
+const { tag, title, date, isMain } = Astro.props;
+---
+
+<div class="space-y-4" class:list={[isMain ? 'p-6' : 'py-6']}>
+	<span
+		class="inline-block rounded-md bg-[#F0F9FF] px-[10px] py-[2px] text-sm font-medium leading-[1.42] text-[#0B4A6F]"
+		>{tag}</span
+	>
+	<h3
+		class="text-balance text-xl font-semibold tracking-tight md:text-2xl"
+		class:list={[isMain ? 'text-xl text-white sm:text-2xl' : 'lg:text-2 text-lg text-black md:text-xl']}
+	>
+		{title}
+	</h3>
+	<span class="inline-block text-sm leading-[1.5] text-tertiary">{useFormatDate(date)}</span>
+</div>

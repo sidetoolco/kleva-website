@@ -1,0 +1,137 @@
+---
+interface Props {
+	fullWidth?: boolean;
+	href?: string;
+	label?: string;
+	asButton?: boolean;
+	theme?: 'light' | 'dark';
+	onClick?: string;
+	isCTA?: boolean;
+	id?: string;
+}
+
+const {
+	fullWidth = false,
+	href = '/',
+	label = "Let's talk",
+	asButton = false,
+	theme = 'light',
+	onClick,
+	isCTA = false,
+	id,
+} = Astro.props;
+---
+
+{
+	asButton ? (
+		<button
+			id={id}
+			type="button"
+			class:list={[fullWidth && 'full-width', theme, isCTA && 'cta-button']}
+			data-onclick={onClick}
+		>
+			<div class="wrapper">
+				<div class="primary">{label}</div>
+				<div class="secondary">{label}</div>
+			</div>
+		</button>
+	) : (
+		<a href={href} class:list={[fullWidth && 'full-width', theme]}>
+			<div class="wrapper">
+				<div class="primary">{label}</div>
+				<div class="secondary">{label}</div>
+			</div>
+		</a>
+	)
+}
+
+<style>
+	a,
+	button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 44px;
+		border-radius: 999px;
+		font-family: var(--font-body);
+		font-size: 16px;
+		font-weight: 500;
+		transition-property: background-color, color, border;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-out;
+		padding-inline: 20px;
+		border: 1px solid;
+		cursor: pointer;
+	}
+
+	/* Light Theme Styles */
+	a.light,
+	button.light {
+		background-color: rgb(var(--clr-white));
+		color: rgb(var(--clr-black));
+		border-color: rgb(var(--clr-black));
+	}
+
+	a.light:hover,
+	button.light:hover {
+		background-color: rgb(var(--clr-black));
+		color: rgb(var(--clr-white));
+		border-color: rgba(var(--clr-white), 0.2);
+	}
+
+	/* Dark Theme Styles */
+	a.dark,
+	button.dark {
+		background-color: rgb(var(--clr-black));
+		color: rgb(var(--clr-white));
+		border-color: rgb(var(--clr-white));
+	}
+
+	a.dark:hover,
+	button.dark:hover {
+		background-color: rgb(var(--clr-white));
+		color: rgb(var(--clr-black));
+		border-color: rgba(var(--clr-black), 0.2);
+	}
+
+	a.full-width,
+	button.full-width {
+		width: 100%;
+	}
+
+	.wrapper {
+		position: relative;
+		width: 100%;
+		height: fit-content;
+		overflow: hidden;
+	}
+
+	.primary,
+	.secondary {
+		transition-property: transform;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-out;
+	}
+
+	.primary {
+		position: relative;
+	}
+
+	.secondary {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		transform: translateY(100%);
+	}
+
+	a:hover .primary,
+	button:hover .primary {
+		transform: translateY(-100%);
+	}
+
+	a:hover .secondary,
+	button:hover .secondary {
+		transform: translateY(0%);
+	}
+</style>

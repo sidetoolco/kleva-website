@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import { sanityClient } from 'sanity:client';
+import { urlForImage } from 'src/sanity/lib/url-for-image';
+import MarqueePartners from '@components/MarqueePartners.astro';
+import ColumnBackground from '@components/ColumnBackground.astro';
+interface companyLogo {
+	_key: string;
+	_type: string;
+	asset: {
+		_ref: string;
+		_type: string;
+	};
+}
+
+const MARQUEE_PARTNERS_QUERY = `*[_type == "pageHome"][0].companyLogo`;
+const companyLogos = await sanityClient.fetch<companyLogo[]>(MARQUEE_PARTNERS_QUERY);
+---
+
+<article class="relative my-24 pb-12 md:my-36 md:pb-[72px]">
+	<ColumnBackground zIndex="0" color="bg-slate-100" classes="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+	<div class="container mb-8 md:mb-12">
+		<h4 class="fade-in mx-auto text-center font-titles text-3xl leading-[1] tracking-tight md:text-[40px]">
+			We've been honored to <br class="sm:hidden" />be trusted <br class="hidden sm:block" />by incredible customers
+		</h4>
+	</div>
+	<div class="hidden">
+		<MarqueePartners companyLogos={companyLogos} />
+	</div>
+	<div class="mx-auto flex max-w-screen-lg flex-wrap justify-center gap-12 px-8 xl:max-w-screen-xl">
+		{
+			companyLogos &&
+				companyLogos.map((logo) => (
+					<div class="fade-in h-10 lg:h-12 xl:h-14">
+						<Image src={urlForImage(logo).url()} inferSize={true} class="h-full w-auto" alt="logo logo" />
+					</div>
+				))
+		}
+	</div>
+</article>

@@ -1,0 +1,152 @@
+---
+//Data
+import { solutions } from '@consts';
+// Components
+import ButtonMenu from '@components/ButtonMenu.astro';
+import Logo from '@components/LogoSidetool.astro';
+import MobileMenu from '@components/MobileMenu.astro';
+import ButtonPrimary from '@components/Button/ButtonPrimary.astro';
+---
+
+<header
+	id="main-header"
+	class="fixed left-0 right-0 top-0 z-40 mx-auto flex h-auto items-center bg-full-white bg-opacity-60 py-5 shadow-lg backdrop-blur-sm"
+>
+	<nav class="container__wide relative z-50 mx-auto w-full py-0">
+		<div class="flex w-full items-center justify-between rounded-full md:px-4">
+			<a href="/">
+				<Logo />
+			</a>
+			<!-- Sections -->
+			<ul class="text-md anim-fade-in mx-auto hidden px-16 font-medium lg:flex lg:text-lg">
+				<li class="nav__link">
+					<div class="group/outer relative cursor-pointer">
+						<span
+							class="cursor-pointer rounded-lg px-4 py-2 font-titles font-medium text-secondary transition-colors hover:bg-black/10"
+							id="solutions-toggle">Solutions</span
+						>
+						<div
+							id="solutions-dropdown"
+							class="pointer-events-none absolute w-[320px] translate-y-10 rounded-2xl bg-full-white p-4 opacity-0 shadow-lg transition-opacity"
+						>
+							<ul>
+								{
+									solutions.map((solution) => (
+										<li>
+											<a
+												href={solution.href}
+												class="flex items-center gap-[6px] rounded-lg px-4 py-2 transition-colors hover:bg-black/10"
+											>
+												<span>{solution.name}</span>
+											</a>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li class="nav__link">
+					<a href="/case-studies" class="rounded-lg px-4 py-2 transition-colors hover:bg-black/10">
+						<span class="font-titles font-medium text-secondary">Work</span>
+					</a>
+				</li>
+				<li class="nav__link">
+					<a href="/about" class="rounded-lg px-4 py-2 transition-colors hover:bg-black/10">
+						<span class="h- font-titles font-medium text-secondary">About</span>
+					</a>
+				</li>
+				<li class="nav__link">
+					<a href="/blog" class="rounded-lg px-4 py-2 transition-colors hover:bg-black/10">
+						<span class="h- font-titles font-medium text-secondary">Blog</span>
+					</a>
+				</li>
+				<li class="nav__link">
+					<a href="/studio" class="rounded-lg px-4 py-2 transition-colors hover:bg-black/10">
+						<span class="h- font-titles font-medium text-secondary">Studio</span>
+					</a>
+				</li>
+			</ul>
+			<div class="hidden lg:block">
+				<ButtonPrimary label="Let's Talk" size="small" classes="anim-fade-in" link={true} href="/contact" />
+			</div>
+			<!-- Menu -->
+			<ButtonMenu classes="lg:hidden translate-x-[8px]" />
+		</div>
+	</nav>
+	<MobileMenu />
+</header>
+
+<style>
+	#main-header {
+		transition:
+			transform 0.3s ease-out,
+			padding 0.3s ease-out;
+	}
+	#main-header.hide {
+		transform: translateY(-100%);
+	}
+	#main-header.scrolled {
+		padding-top: 0.75rem;
+		padding-bottom: 0.75rem;
+	}
+	.nav__link a {
+		opacity: 80;
+	}
+	.nav__link a[aria-disabled='true'] {
+		opacity: 40;
+	}
+	.nav__link a:hover {
+		opacity: 100;
+	}
+
+	.dropdown-active {
+		opacity: 100 !important;
+		pointer-events: auto !important;
+	}
+</style>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const solutionsToggle = document.getElementById('solutions-toggle');
+		const solutionsDropdown = document.getElementById('solutions-dropdown');
+		const header = document.getElementById('main-header');
+
+		let lastScrollY = window.scrollY;
+		const MIN_SCROLL_POSITION = 100;
+
+		const handleScroll = () => {
+			const currentScrollY = window.scrollY;
+
+			if (currentScrollY === 0) {
+				header?.classList.remove('hide');
+				header?.classList.remove('scrolled');
+			} else if (currentScrollY > MIN_SCROLL_POSITION && currentScrollY > lastScrollY) {
+				header?.classList.add('hide');
+				header?.classList.add('scrolled');
+			} else if (currentScrollY < lastScrollY) {
+				header?.classList.remove('hide');
+				header?.classList.add('scrolled');
+			}
+
+			lastScrollY = currentScrollY;
+		};
+
+		window.addEventListener('scroll', handleScroll, { passive: true });
+
+		if (solutionsToggle && solutionsDropdown) {
+			solutionsToggle.addEventListener('click', (e) => {
+				e.stopPropagation();
+				solutionsDropdown.classList.toggle('dropdown-active');
+			});
+			document.addEventListener('click', (e) => {
+				if (solutionsDropdown.classList.contains('dropdown-active')) {
+					solutionsDropdown.classList.remove('dropdown-active');
+				}
+			});
+			solutionsDropdown.addEventListener('click', (e) => {
+				e.stopPropagation();
+			});
+		}
+	});
+</script>

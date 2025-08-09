@@ -1,0 +1,58 @@
+---
+import type { CaseStudy } from '../../types/sanity.types';
+// Components
+import ColumnBackground from '@components/ColumnBackground.astro';
+//Libs
+import { urlForImage } from 'src/sanity/lib/url-for-image';
+import { Image } from 'astro:assets';
+
+interface Props {
+  caseStudy: CaseStudy;
+}
+
+const  { caseStudy } = Astro.props;
+---
+
+<div class="relative overflow-hidden">
+	<ColumnBackground zIndex="10" color="bg-white" classes="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+  <div class="absolute z-0 bottom-0 left-0 -translate-x-1/2 translate-y-1/2 lg:-translate-y-1/4 w-1/2 aspect-square rounded-full bg-radial"></div>
+  <div class="absolute z-0 top-0 right-0 translate-x-1/2 -translate-y-1/2 lg:translate-y-1/4 w-1/2 aspect-square rounded-full bg-radial"></div>
+  <article class="relative z-10 container__wide ">
+    <div class="space-y-12 py-12 md:py-20">
+      <header>
+      <h5 style={`color: ${caseStudy.colorTheme?.hex};`} class="text-center font-titles text-lg md:text-2xl">Results</h5>
+    </header>
+    <section class="space-y-6">
+      <p class="text-pretty text-center text-[26px] leading-[1.5] text-secondary md:text-4xl md:leading-[1.5]">
+			“{caseStudy.quote}”
+		</p>
+
+		<div class="mx-auto flex items-center justify-center gap-5">
+			{
+				caseStudy.quoteAvatar ? (
+				<div class="h-[52px] w-[52px] shrink-0 overflow-hidden rounded-full">
+					<Image src={urlForImage(caseStudy.quoteAvatar).url()} alt={caseStudy.quoteAuthor ?? ''} inferSize class="h-full w-full object-cover" />
+				</div>
+				<div class="flex flex-col">
+					<span class="text-xl font-medium leading-[1.4]">{caseStudy.quoteAuthor ?? ''}</span>
+					<span class="text-sm leading-[1.4]">{caseStudy.quoteAuthorRole ?? ''}</span>
+				</div>
+				) : (
+					<div class="flex flex-col">
+					<span class="text-xl text-center font-medium leading-[1.4]">{caseStudy.quoteAuthor ?? ''}</span>
+					<span class="text-sm text-center leading-[1.4]">{caseStudy.quoteAuthorRole ?? ''}</span>
+				</div>
+				)
+			}
+		</div>
+    </section>
+    </div>
+  </article>
+</div>
+
+<style>
+  .bg-radial {
+    background: #00EBE2;
+    background: radial-gradient(circle, rgba(0, 235, 226, 0.5) 0%, rgb(0 235 226 / 0%) 70%);
+  }
+</style>

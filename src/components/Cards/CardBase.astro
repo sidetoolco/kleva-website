@@ -1,0 +1,39 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	title: string;
+	body: string;
+	icon: string;
+}
+
+const { title, body, icon } = Astro.props;
+---
+
+<article class="h-full space-y-[14px] rounded-xl bg-white px-5 py-6 shadow-sm">
+	<header class="space-y-[14px]">
+		<div class="flex flex-col gap-[14px]">
+			<div class="card__icon h-12 w-12 rounded-full p-3 text-white">
+				<Icon name={icon} class="h-full w-full" width={48} height={48} />
+			</div>
+
+			<h5 class="font-titles text-[22px] font-bold leading-[1.09] text-black md:text-[28px]">
+				{title}
+			</h5>
+		</div>
+	</header>
+	<section>
+		<p class="text-sm leading-[1.45] text-tertiary md:text-lg">
+			{body}
+		</p>
+	</section>
+</article>
+
+<style>
+	.card__icon {
+		background: linear-gradient(180deg, #414e62 0%, #171f28 100%);
+		box-shadow:
+			0px 0px 0px 2px var(--Icons-icon-0, #fff),
+			0px 0px 0px 3px var(--Success-100, #d1fae5);
+	}
+</style>

@@ -1,0 +1,115 @@
+---
+import MainLayout from '@layouts/MainLayout.astro';
+import ButtonPrimary from '@components/Button/ButtonPrimary.astro';
+import ButtonLinkArrow from '@components/Button/ButtonLinkArrow.astro';
+
+const title = "404 - Page Not Found | Sidetool";
+const description = "The page you're looking for doesn't exist. Let's get you back on track with our AI-powered solutions and services.";
+
+// Popular pages for quick navigation
+const popularPages = [
+	{ name: "AI Agents & Automations", href: "/automations" },
+	{ name: "Case Studies", href: "/case-studies" },
+	{ name: "About Us", href: "/about" },
+	{ name: "Blog", href: "/blog" },
+	{ name: "Contact", href: "/contact" }
+];
+---
+
+<MainLayout title={title} description={description}>
+	<main class="min-h-screen bg-black flex items-center justify-center px-4">
+		<div class="max-w-4xl mx-auto text-center">
+			<!-- 404 Animation -->
+			<div class="mb-8 relative">
+				<h1 class="text-[120px] md:text-[180px] font-titles font-bold text-primary/20 leading-none">
+					404
+				</h1>
+				<div class="absolute inset-0 flex items-center justify-center">
+					<span class="text-6xl md:text-8xl animate-pulse">🔍</span>
+				</div>
+			</div>
+
+			<!-- Error Message -->
+			<h2 class="text-3xl md:text-5xl font-titles font-semibold text-white mb-4">
+				Oops! Page Not Found
+			</h2>
+			
+			<p class="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+				Looks like you've ventured into uncharted territory. The page you're looking for might have been moved, deleted, or never existed.
+			</p>
+
+			<!-- CTAs -->
+			<div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+				<ButtonPrimary 
+					label="Back to Home" 
+					theme="light" 
+					link={true} 
+					href="/" 
+					classes="h-12 px-8"
+				/>
+				<ButtonPrimary 
+					label="Contact Support" 
+					theme="dark" 
+					link={true} 
+					href="/contact" 
+					classes="h-12 px-8 border border-primary"
+				/>
+			</div>
+
+			<!-- Popular Pages -->
+			<div class="border-t border-gray-800 pt-8">
+				<h3 class="text-xl font-semibold text-white mb-4">
+					Popular Pages
+				</h3>
+				<div class="flex flex-wrap gap-4 justify-center">
+					{popularPages.map((page) => (
+						<ButtonLinkArrow 
+							href={page.href} 
+							label={page.name}
+						/>
+					))}
+				</div>
+			</div>
+
+			<!-- Search Suggestion -->
+			<div class="mt-12 p-6 bg-gray-900/50 rounded-lg">
+				<p class="text-gray-400 mb-2">
+					Looking for something specific?
+				</p>
+				<p class="text-white">
+					Try navigating from our <a href="/" class="text-primary hover:underline">homepage</a> or check out our latest <a href="/case-studies" class="text-primary hover:underline">case studies</a>.
+				</p>
+			</div>
+		</div>
+	</main>
+</MainLayout>
+
+<style>
+	@keyframes float {
+		0%, 100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-20px);
+		}
+	}
+
+	.animate-float {
+		animation: float 3s ease-in-out infinite;
+	}
+</style>
+
+<script>
+	// Track 404 errors in analytics
+	if (typeof gtag !== 'undefined') {
+		gtag('event', 'page_not_found', {
+			page_location: window.location.href,
+			page_referrer: document.referrer
+		});
+	}
+
+	// Redirect to home after 30 seconds (optional)
+	// setTimeout(() => {
+	//   window.location.href = '/';
+	// }, 30000);
+</script>

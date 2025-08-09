@@ -1,0 +1,69 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+//Layouts
+import MainLayout from '@layouts/MainLayout.astro';
+//Components
+import CaseStudyCard from '@components/CaseStudy/CaseStudyCard.astro';
+import Contact from '@components/Contact.astro';
+//Libs
+import { loadQuery } from '@sanity/lib/load-query';
+
+import { CASE_STUDIES } from '@sanity/lib/queries';
+import type { CASE_STUDIESResult, CaseStudy } from '../types/sanity.types';
+
+const { data: caseStudies } = await loadQuery<CASE_STUDIESResult>({
+	query: CASE_STUDIES,
+});
+---
+
+<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<main class="overflow-x-hidden">
+		<section class="page__section light">
+			<div class="container__wide mb-12 space-y-4 xl:space-y-5">
+				<h1 class="section__title text-center font-semibold">We don't Just Work Fast</h1>
+				<p class="section__text text-center">We create products that people love using</p>
+			</div>
+			<div class="container__wide">
+				<ul
+					class="grid grid-cols-1 items-center gap-3 pb-12 sm:grid-cols-2 sm:gap-y-12 md:gap-x-6 lg:grid-cols-3 lg:gap-y-16"
+				>
+					{
+						caseStudies.map((caseStudy: CaseStudy) => (
+							<li class="h-full">
+								<CaseStudyCard caseStudy={caseStudy} />
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</section>
+		<Contact />
+	</main>
+</MainLayout>
+
+<style>
+	section {
+		overflow: hidden;
+		background-color: rgb(var(--clr-white));
+		padding-top: calc(var(--header-height-mobile) + 64px);
+	}
+
+	@media (min-width: 768px) {
+		section {
+			padding-top: calc(var(--header-height-desktop) + 82px);
+		}
+	}
+
+	@media (min-width: 1024px) {
+		section {
+			padding-top: calc(var(--header-height-desktop) + 120px);
+		}
+	}
+</style>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const nav = document.querySelector('#main-header nav');
+		nav?.classList.remove('dark');
+	});
+</script>

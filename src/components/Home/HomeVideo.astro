@@ -1,0 +1,124 @@
+---
+import { Image } from 'astro:assets';
+import big from '@assets/big__engine.svg';
+import small from '@assets/small__engine.svg';
+import VideoDesktop from '@components/VideoDesktop.astro';
+import VideoMobile from '@components/VideoMobile.astro';
+import VideoFullScreen from '@components/VideoFullScreen.astro';
+import ColumnBackground from '@components/ColumnBackground.astro';
+---
+
+<section id="home-video" class="relative pb-12 pt-12 md:pb-[72px] md:pt-[72px] xl:pt-4">
+	<ColumnBackground zIndex="0" color="bg-slate-100" classes="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+	<VideoFullScreen />
+	<div class="container__wide relative z-10">
+		<VideoMobile classes="md:hidden relative z-20" />
+		<VideoDesktop classes="hidden md:block relative z-20" />
+		<div class="big relative z-10">
+			<div class="big__radial"></div>
+			<Image src={big} width={1966} height={453} alt="Just a decorative pattern" class="w-full" />
+		</div>
+		<div class="small relative z-10">
+			<div class="small__radial"></div>
+			<Image src={small} width={1966} height={453} alt="Just a decorative pattern" class="w-full" />
+		</div>
+	</div>
+</section>
+
+<style>
+	.big {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		right: 0;
+		transform: translate(50%, -25%);
+		width: 100%;
+		max-width: 548px;
+	}
+	.big__radial {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 70vw;
+		max-width: 754px;
+		aspect-ratio: 1/1;
+		border-radius: 754px;
+		opacity: 0.35;
+		background: radial-gradient(50% 50% at 50% 50%, #be79ff 0%, rgba(255, 255, 255, 0) 100%);
+	}
+
+	.small {
+		position: absolute;
+		z-index: 1;
+		bottom: 0;
+		left: 0;
+		transform: translate(-50%, 40%);
+		width: 70%;
+		max-width: 350px;
+	}
+
+	.small__radial {
+		position: absolute;
+		bottom: -20%;
+		left: 0;
+		width: 60vw;
+		max-width: 540px;
+		aspect-ratio: 1/1;
+		border-radius: 754px;
+		opacity: 0.35;
+		background: radial-gradient(50% 50% at 50% 50%, #be79ff 0%, rgba(255, 255, 255, 0) 100%);
+	}
+
+	@media (min-width: 1024px) {
+		.big {
+			transform: translate(25%, -25%);
+		}
+		.big__radial {
+			transform: translate(-22%, 24%);
+		}
+		.small {
+			transform: translate(0%, 28%);
+		}
+		.small__radial {
+			bottom: -25%;
+		}
+	}
+
+	.hidden {
+		display: none;
+	}
+</style>
+
+<script>
+	import gsap from 'gsap';
+	import ScrollTrigger from 'gsap/ScrollTrigger';
+	gsap.registerPlugin(ScrollTrigger);
+
+	document.addEventListener('DOMContentLoaded', () => {
+		gsap
+			.timeline({
+				scrollTrigger: {
+					trigger: '#home-video .big',
+					start: 'top bottom',
+					end: 'bottom 10%',
+					scrub: true,
+				},
+			})
+			.to('#home-video .big img', {
+				rotate: -18,
+			});
+
+		gsap
+			.timeline({
+				scrollTrigger: {
+					trigger: '#home-video .small',
+					start: 'top bottom',
+					end: 'bottom 10%',
+					scrub: true,
+				},
+			})
+			.to('#home-video .small img', {
+				rotate: 26,
+			});
+	});
+</script>

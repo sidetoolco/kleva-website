@@ -1,0 +1,330 @@
+---
+import { Image } from 'astro:assets';
+
+// Import avatar images
+import alejandroAvatar from '@assets/reviews/alejandro-palacio-srpilaw.jpg';
+import luisaAvatar from '@assets/reviews/luisa-carvajal-envoys.jpg';
+import kellyAvatar from '@assets/reviews/kelly-tyra.jpg';
+import brandonAvatar from '@assets/reviews/brandond-adhesivemedia.jpg';
+import angelAvatar from '@assets/reviews/angel-cruzado-respiris.jpg';
+import rachelAvatar from '@assets/reviews/rachel-mullen-naonow.jpg';
+import shobhitAvatar from '@assets/reviews/shobhit-ipm.jpg';
+import vagelieAvatar from '@assets/reviews/vagelie-cima.jpg';
+import benAvatar from '@assets/reviews/ben-robinson-playbook.jpg';
+import darrenAvatar from '@assets/reviews/darren-levy.jpg';
+import jonAvatar from '@assets/reviews/jon-mannix.jpg';
+import marcoAvatar from '@assets/reviews/marco-zavala.jpg';
+
+const reviews = [
+	{
+		quote: 'The quality of the people and work was highly commendable.',
+		author: 'Alejandro Palacio',
+		role: 'Software Developer, SRipLaw',
+		avatarUrl: alejandroAvatar,
+	},
+	{
+		quote: 'They are all willing to help and understand the concept we have. I love working with them!',
+		author: 'Luisa María Carvajal',
+		role: 'Director of Experience Management, Envoys',
+		avatarUrl: luisaAvatar,
+	},
+	{
+		quote: 'The Sidetool team was helpful, innovative, and patient throughout the process.',
+		author: 'Kelly Tyra',
+		role: 'Executive Coordinator, FirstGenLaw',
+		avatarUrl: kellyAvatar,
+	},
+	{
+		quote:
+			'Sidetool stays honest and transparent and does not overbuild. They are efficient and get things done quickly.',
+		author: 'Brandon Pourmorady',
+		role: 'Founder & CEO, Adhesive Media',
+		avatarUrl: brandonAvatar,
+	},
+	{
+		quote:
+			'They demonstrate a keen understanding of our requirements and respond promptly to any questions or concerns.',
+		author: 'Angel Cruzado',
+		role: 'CEO & Founder, Respiris',
+		avatarUrl: angelAvatar,
+	},
+	{
+		quote: 'They’ve done exactly what we wanted and created an AI bot that works perfectly for our business.',
+		author: 'Rachel Mullen',
+		role: 'CEO, Nao Now',
+		avatarUrl: rachelAvatar,
+	},
+	{
+		quote: 'What impressed me most about Sidetool was their intuitive no-code platform and collaborative spirit.',
+		author: 'Shobhit Chugh',
+		role: 'CEO, Intentional Product Manager',
+		avatarUrl: shobhitAvatar,
+	},
+	{
+		quote: "Their professionalism and responsiveness were crucial to the project's success.",
+		author: 'Vagelie Guillen',
+		role: 'PM, Investment Research Platform',
+		avatarUrl: vagelieAvatar,
+	},
+	{
+		quote: 'Their speed, their attention to detail, and the genuine care they give are impressive.',
+		author: 'Ben Robinson',
+		role: 'Managing Director, Playbook Systems',
+		avatarUrl: benAvatar,
+	},
+	{
+		quote: "I found the team's organization and communication impressive",
+		author: 'Marco Zavala',
+		role: 'Owner, AffiliateFlow',
+		avatarUrl: marcoAvatar,
+	},
+	{
+		quote: 'Their staff is super friendly and very smart.',
+		author: 'Darren Levy',
+		role: 'Owner, zewind.ai',
+		avatarUrl: darrenAvatar,
+	},
+	{
+		quote: "Sidetool's willingness to go above and beyond impressed us.",
+		author: 'Jon Mannix',
+		role: 'COO, RevenueRoll',
+		avatarUrl: jonAvatar,
+	},
+];
+---
+
+<section class="page__section light">
+	<div class="section">
+		<header>
+			<div>
+				<span class="section__tag">Reviews</span>
+				<h3 class="section__heading">What Our Customers Say</h3>
+			</div>
+		</header>
+
+		<div class="reviews-swiper">
+			<div class="swiper-wrapper w-full">
+				{
+					reviews.map((review) => (
+						<div class="swiper-slide">
+							<div class="block">
+								<p class="quote">"{review.quote}"</p>
+								<div class="author">
+									<Image src={review.avatarUrl} alt={review.author} width={52} height={52} />
+									<div class="author-info">
+										<p class="author">{review.author}</p>
+										<p class="role">{review.role}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					))
+				}
+			</div>
+			<div class="swiper-navigation">
+				<div class="swiper-button-prev">
+					<svg xmlns="http://www.w3.org/2000/svg" width="21" height="19" viewBox="0 0 21 19" fill="none">
+						<path
+							d="M11.5149 1.27627L20.0501 9.81156M20.0501 9.81156L11.5149 18.3469M20.0501 9.81156H0.893821"
+							stroke="currentColor"></path>
+					</svg>
+				</div>
+				<div class="swiper-button-next">
+					<svg xmlns="http://www.w3.org/2000/svg" width="21" height="19" viewBox="0 0 21 19" fill="none">
+						<path
+							d="M11.5149 1.27627L20.0501 9.81156M20.0501 9.81156L11.5149 18.3469M20.0501 9.81156H0.893821"
+							stroke="currentColor"></path>
+					</svg>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	section {
+		background-color: rgb(var(--clr-white));
+	}
+	header:not(.block__header) {
+		margin-bottom: 48px;
+	}
+	h3 br {
+		display: none;
+	}
+	header p br {
+		display: none;
+	}
+	@media (min-width: 768px) {
+		h3 br {
+			display: block;
+		}
+	}
+	.reviews-swiper {
+		position: relative;
+	}
+	.block {
+		padding: 2.25rem 1.5rem;
+		border: 1px solid rgb(var(--clr-black));
+		border-right: none;
+		height: 100%;
+		display: flex;
+		gap: 20px;
+		flex-direction: column;
+	}
+	.author {
+		margin-top: auto;
+	}
+	img {
+		margin-bottom: 8px;
+		border-radius: 999px;
+		overflow: hidden;
+	}
+	.block .quote {
+		font-size: 18px;
+		color: rgb(var(--clr-secondary));
+		font-family: var(--font-titles);
+	}
+	.block .author {
+		font-size: 20px;
+		font-weight: 500;
+		line-height: 1.4;
+	}
+	.block .role {
+		font-size: 16px;
+		line-height: 1.5;
+		opacity: 0.5;
+		font-weight: 400;
+	}
+
+	.swiper-slide:last-child .block {
+		border-right: 1px solid rgb(var(--clr-black));
+	}
+	h4 {
+		font-family: var(--font-titles);
+		font-size: 22px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 109%; /* 30.52px */
+	}
+	.swiper-navigation {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 16px;
+		margin-top: 32px;
+	}
+	.swiper-button-next,
+	.swiper-button-prev {
+		position: static;
+		width: 48px;
+		height: 48px;
+		background: rgba(0, 0, 0, 0);
+		border: 1px solid rgba(0, 0, 0, 0.2);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		margin: 0;
+		color: rgb(var(--clr-black));
+	}
+
+	.swiper-button-disabled {
+		opacity: 0.3;
+		pointer-events: none;
+	}
+
+	.swiper-button-next:hover,
+	.swiper-button-prev:hover {
+		background: rgba(0, 0, 0, 0.1);
+		border-color: rgba(0, 0, 0, 0.4);
+		transform: scale(1.05);
+	}
+
+	.swiper-button-prev {
+		transform: rotate(180deg);
+	}
+
+	.swiper-button-prev:hover {
+		transform: rotate(180deg) scale(1.05);
+	}
+
+	.swiper-button-next::after,
+	.swiper-button-prev::after {
+		display: none;
+	}
+
+	.swiper-slide {
+		height: auto;
+	}
+
+	@media (min-width: 768px) {
+		h4 {
+			font-size: 28px;
+		}
+		li {
+			font-size: 20px;
+		}
+		p {
+			font-size: 20px;
+		}
+		.swiper-navigation {
+			margin-top: 48px;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		header {
+			display: flex;
+			align-items: flex-end;
+			justify-content: space-between;
+			gap: 48px;
+		}
+		h3 {
+			margin-bottom: 0;
+		}
+		header p br {
+			display: block;
+		}
+	}
+</style>
+
+<script>
+	import Swiper from 'swiper';
+	import 'swiper/css';
+	import { Navigation } from 'swiper/modules';
+
+	new Swiper('.reviews-swiper', {
+		modules: [Navigation],
+		freeMode: true,
+		slidesPerView: 1.1,
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
+		breakpoints: {
+			470: {
+				slidesPerView: 1.2,
+			},
+			540: {
+				slidesPerView: 1.3,
+			},
+			640: {
+				slidesPerView: 1.6,
+			},
+			768: {
+				slidesPerView: 1.8,
+			},
+			820: {
+				slidesPerView: 2.1,
+			},
+			950: {
+				slidesPerView: 2.5,
+			},
+			1200: {
+				slidesPerView: 3,
+			},
+		},
+	});
+</script>

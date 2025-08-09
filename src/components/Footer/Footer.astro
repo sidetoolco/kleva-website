@@ -1,0 +1,172 @@
+---
+import { solutions } from '@consts';
+// Libs
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+// Components
+import FooterHero from '@components/Footer/FooterHero.astro';
+import BubbleGoldagency from '@components/Badges/BadgeBubble.astro';
+//import MicrosoftBadge from '@components/Badges/BadgeMicrosoft.astro';
+import RetoolBadge from '@components/Badges/BadgeRetool.astro';
+// Assets
+import Logo from '@assets/sidetool-dark.svg';
+import clutch from '@assets/clutch__logo__simple.svg';
+//import retell from '@assets/retell.png';
+---
+
+<footer class="page__section dark relative flex flex-col gap-24 overflow-hidden bg-[#000] pt-24 md:gap-36 md:pt-36">
+	<FooterHero />
+	<div class="container__wide relative z-10 mt-auto w-full py-12 md:py-10">
+		<div class="flex flex-col gap-12 md:gap-8 xl:justify-between">
+			<div class="flex flex-col gap-6">
+				<div class="w-28"><Image src={Logo} alt="Sidetool's Logo" /></div>
+			</div>
+
+			<div class="flex flex-row gap-16 sm:flex-col sm:gap-6 md:gap-6">
+				<div class="flex-0 flex flex-col gap-4 sm:flex-row lg:flex-row">
+					<nav
+						class="flex flex-col gap-4 space-y-2 text-sm sm:flex sm:flex-row sm:items-center sm:space-x-6 sm:space-y-0"
+					>
+						<a href="/case-studies" class="text-text-secondary transition-colors duration-200 hover:text-white">Works</a
+						>
+						<a href="/about" class="text-text-secondary transition-colors duration-200 hover:text-white">About</a>
+						<a href="/blog" class="text-text-secondary transition-colors duration-200 hover:text-white">Blog</a>
+						<a href="/studio" class="text-text-secondary transition-colors duration-200 hover:text-white">Studio</a>
+						<button
+							id="footer-lets-talk"
+							class="text-left text-text-secondary transition-colors duration-200 hover:text-white">Let's Talk</button
+						>
+						<a
+							href="https://apply.workable.com/sidetool/"
+							target="_blank"
+							class="text-text-secondary transition-colors duration-200 hover:text-white">Work With Us</a
+						>
+					</nav>
+				</div>
+				<div class="flex-0 flex flex-col gap-4 sm:flex-row lg:flex-row">
+					<nav
+						class="flex flex-col gap-4 space-y-2 text-sm sm:flex sm:flex-row sm:items-center sm:space-x-6 sm:space-y-0"
+					>
+						{
+							solutions.map((solution) => (
+								<a href={solution.href} class="text-text-secondary transition-colors duration-200 hover:text-white">
+									{solution.name}
+								</a>
+							))
+						}
+					</nav>
+				</div>
+			</div>
+		</div>
+		<div class="my-8 h-[1px] w-full bg-white/10"></div>
+		<div class="relative flex flex-col justify-between gap-8 lg:flex-row">
+			<div class="flex justify-between">
+				<p class="text-sm leading-[1.5] text-text-secondary/80">
+					Sidetool © 2025 Copyright,<br class="sm:hidden" /> All Rights Reserved.
+				</p>
+				<div class="flex items-center gap-3 lg:hidden">
+					<a
+						href="https://www.linkedin.com/company/sidetool/"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="h-fit text-white transition-colors duration-200"
+					>
+						<Icon name="ion:logo-linkedin" width={25} height={25} />
+					</a>
+					<a
+						href="https://clutch.co/profile/sidetool"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="h-fit w-5 text-text-secondary transition-colors duration-200 hover:text-white"
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" width="22" height="24" viewBox="0 0 20 22" fill="none">
+							<path
+								d="M15.2653 15.4898C14.1429 16.3878 12.5714 17.0612 11 17.0612C7.40817 17.0612 4.93878 14.3673 4.93878 10.7755C4.93878 7.18367 7.40817 4.71428 11 4.71428C12.5714 4.71428 14.1429 5.16326 15.2653 6.28571L15.9388 6.95918L19.5306 3.59183L18.6327 2.91836C16.6122 1.12244 13.9184 0 11 0C4.71429 0 0 4.71428 0 11C0 17.2857 4.71429 22 11 22C13.9184 22 16.6122 20.8776 18.6327 19.0816L19.5306 18.4082L15.9388 14.8163L15.2653 15.4898Z"
+								fill="white"></path>
+							<path
+								d="M10.7754 14.5919C12.7592 14.5919 14.3673 12.9838 14.3673 11C14.3673 9.01633 12.7592 7.4082 10.7754 7.4082C8.79172 7.4082 7.18359 9.01633 7.18359 11C7.18359 12.9838 8.79172 14.5919 10.7754 14.5919Z"
+								fill="#EF4335"></path>
+						</svg>
+					</a>
+				</div>
+			</div>
+			<ul class="flex flex-wrap items-center justify-start gap-5">
+				<li class="hidden lg:block">
+					<a
+						href="https://clutch.co/profile/sidetool"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="w-5 text-text-secondary transition-colors duration-200 hover:text-white"
+					>
+						<Image src={clutch} alt="Clutch Reviews" />
+					</a>
+				</li>
+				<li class="hidden lg:block">
+					<a
+						href="https://www.linkedin.com/company/sidetool/"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-text-secondary transition-colors duration-200 hover:text-white"
+					>
+						<Icon name="ion:logo-linkedin" width={24} height={24} />
+					</a>
+				</li>
+				<li>
+					<RetoolBadge />
+				</li>
+				<li>
+					<BubbleGoldagency />
+				</li>
+				<!-- <li class="shrink-0">
+					<Image src={retell} alt="Retell" width={111} height={31} />
+				</li> -->
+			</ul>
+		</div>
+	</div>
+	<div class="radial__big relative z-0"></div>
+	<div class="radial__small relative z-0"></div>
+</footer>
+
+<style>
+	.radial__big {
+		border-radius: 1239px;
+		opacity: 0.25;
+		background: radial-gradient(50% 50% at 50% 50%, #be79ff 0%, rgba(0, 0, 0, 0) 100%);
+		position: absolute;
+		bottom: -15%;
+		right: -15%;
+		width: 85vw;
+		min-width: 700px;
+		aspect-ratio: 1/1;
+		transform: translate(50%, 0%);
+	}
+
+	.radial__small {
+		opacity: 0.25;
+		background: radial-gradient(50% 50% at 50% 50%, #be79ff 0%, rgba(0, 0, 0, 0) 100%);
+		border-radius: 1239px;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 58vw;
+		min-width: 450px;
+		aspect-ratio: 1/1;
+		transform: translate(-50%, -24%);
+	}
+
+	@media (min-width: 1280px) {
+		.radial__big {
+			bottom: -96%;
+			right: -6%;
+		}
+	}
+</style>
+
+<script>
+	const letsTalkButton = document.getElementById('footer-lets-talk');
+	function scrollToContact() {
+		const contactSection = document.getElementById('website-contact');
+		contactSection?.scrollIntoView({ behavior: 'smooth' });
+	}
+	letsTalkButton?.addEventListener('click', scrollToContact);
+</script>

@@ -1,0 +1,150 @@
+---
+// Types
+import type { Solution } from '../../types/sanity.types';
+import type { SanityAsset } from '@sanity/image-url/lib/types/types';
+
+// Components
+import CardBase from '@components/Cards/CardBase.astro';
+import PortableText from '@components/PortableText.astro';
+//Libs
+import { urlForImage } from 'src/sanity/lib/url-for-image';
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	solution: Solution;
+}
+
+const { solution } = Astro.props;
+const imageUrl = (image: SanityAsset) => {
+	return image ? urlForImage(image).url() : undefined;
+};
+---
+
+<div class="page__section who-is-this-for-gradient dark">
+	<article id="who-is-this-for" class="container__wide mx-auto px-5 py-24 md:py-36 lg:px-24">
+		<div class="gap-10 md:flex">
+			<header>
+				<h2 class="mb-8 font-titles text-[40px] leading-[1.25] tracking-[-1px] text-white">
+					<PortableText portableText={solution.storyTitle} />
+				</h2>
+			</header>
+			<div class="hidden h-auto w-[1px] bg-text-secondary md:block"></div>
+			<section class="font-titles text-lg leading-[1.55] text-text-secondary md:min-w-[50%]">
+				<PortableText portableText={solution.story} />
+
+				{
+					solution.storyBonus && (
+						<section class="mt-7 rounded-xl border-2 border-[#637083] p-6 text-center font-titles text-text-secondary">
+							<PortableText portableText={solution.storyBonus} />
+						</section>
+					)
+				}
+			</section>
+		</div>
+
+		<section class="mt-[72px]">
+			<h2
+				class="fade-in mb-6 font-titles text-[30px] font-bold leading-[0.91] tracking-tight text-white lg:mb-12 lg:text-[50px]"
+			>
+				Who This Is For
+			</h2>
+
+			<div id="solutions__swiper" class="fade-in mb-12">
+				<div class="swiper-wrapper flex">
+					{
+						solution.whoIsThisFor &&
+							solution.whoIsThisFor.filter(Boolean).map((card) => (
+								<div class="swiper-slide">
+									<CardBase title={card?.title ?? ''} body={card?.description ?? ''} icon={card?.icon ?? ''} />
+								</div>
+							))
+					}
+				</div>
+			</div>
+
+			<div
+				class="fade-in flex flex-col justify-center gap-6 rounded-[20px] bg-white px-5 py-8 md:px-10 lg:flex-row lg:px-12 xl:px-16"
+			>
+				<h3
+					class="mb-[14px] flex items-center gap-2 text-nowrap text-center font-titles text-[28px] font-bold leading-[1.45] text-black lg:mb-0"
+				>
+					<div class="flex h-12 w-12 items-center justify-center gap-2 rounded-full bg-black text-white">
+						<Icon name="ion:settings-outline" width={28} height={28} />
+					</div>
+					Tools We Use
+				</h3>
+				<div class="hidden h-auto w-[1px] bg-black lg:block"></div>
+				<div class="flex flex-wrap gap-6 lg:items-center">
+					{
+						solution.tools &&
+							solution.tools.map((tool) => {
+								const url = imageUrl(tool);
+								return (
+									typeof url === 'string' && (
+										<Image src={url} alt={tool.asset?._ref ?? ''} inferSize={true} class="h-7 object-contain" />
+									)
+								);
+							})
+					}
+				</div>
+			</div>
+		</section>
+	</article>
+</div>
+
+<style>
+	.who-is-this-for-gradient {
+		background: linear-gradient(180deg, #171f28 0%, #414e62 100%);
+	}
+	.swiper-slide {
+		height: auto;
+	}
+	@media (min-width: 860px) {
+		.swiper-slide {
+			flex: 1;
+		}
+		.swiper-wrapper {
+			gap: 24px;
+		}
+	}
+</style>
+
+<script>
+	import Swiper from 'swiper';
+	import type { SwiperOptions, Swiper as SwiperInstance } from 'swiper/types';
+	import 'swiper/css';
+
+	let swiper: SwiperInstance | null = null;
+	const breakpoint = 860;
+
+	const initSwiper = (): void => {
+		if (window.innerWidth <= breakpoint && !swiper) {
+			const options: SwiperOptions = {
+				freeMode: true,
+				slidesPerView: 1.2,
+				spaceBetween: 24,
+				breakpoints: {
+					550: {
+						slidesPerView: 1.4,
+					},
+					640: {
+						slidesPerView: 1.6,
+					},
+					700: {
+						slidesPerView: 1.8,
+					},
+				},
+			};
+			swiper = new Swiper('#solutions__swiper', options);
+		} else if (window.innerWidth > breakpoint && swiper) {
+			swiper.destroy(true, true);
+			swiper = null;
+		}
+	};
+
+	document.addEventListener('DOMContentLoaded', initSwiper);
+	window.addEventListener('resize', () => {
+		initSwiper();
+	});
+</script>

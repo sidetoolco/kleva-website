@@ -1,0 +1,69 @@
+---
+//Types
+import type { CollectionEntry } from 'astro:content';
+import type { Post } from '../../types';
+//Libs
+import { getEntries } from 'astro:content';
+// Utils
+import useFormatDate from '../../js/useFormatDate';
+
+interface Props {
+	post: { type: 'collection'; data: CollectionEntry<'posts'> } | { type: 'sanity'; data: Post };
+}
+
+const { post } = Astro.props;
+let tools: CollectionEntry<'tools'>[] = [];
+let topics: CollectionEntry<'topics'>[] = [];
+
+if (post.type === 'collection') {
+	tools = await getEntries(post.data.data.tools);
+	topics = await getEntries(post.data.data.topics);
+}
+---
+
+<header class="container__wide mx-auto">
+	<section class="mx-auto max-w-screen-md space-y-4 py-12">
+		<a
+			href="/blog"
+			class="block w-fit rounded-lg border border-tertiary px-3 py-1 text-sm font-medium text-tertiary transition-colors hover:bg-black hover:text-white"
+		>
+			Back
+		</a>
+		<h1 class="text-2xl font-extrabold lg:text-4xl">
+			{post.type === 'collection' ? post.data.data.title : post.data.title}
+		</h1>
+		<div class="flex items-center gap-2">
+			<div class="flex flex-wrap gap-2">
+				{
+					post.type === 'collection' ? (
+						<>
+							{tools.map((tool) => (
+								<span class="inline-block rounded-md bg-[#F0F9FF] px-[10px] py-[2px] text-sm font-medium leading-[1.42] text-[#0B4A6F]">
+									{tool.data.name}
+								</span>
+							))}
+							{topics.map((topic) => (
+								<span class="inline-block rounded-md bg-[#F0F9FF] px-[10px] py-[2px] text-sm font-medium leading-[1.42] text-[#0B4A6F]">
+									{topic.data.name}
+								</span>
+							))}
+						</>
+					) : (
+						post.data.tags.map((tag) => (
+							<span class="inline-block rounded-md bg-[#F0F9FF] px-[10px] py-[2px] text-sm font-medium leading-[1.42] text-[#0B4A6F]">
+								{tag}
+							</span>
+						))
+					)
+				}
+			</div>
+			<span class="font-medium">
+				{
+					post.type === 'collection'
+						? useFormatDate(post.data.data.date)
+						: useFormatDate(new Date(post.data.publishedAt))
+				}
+			</span>
+		</div>
+	</section>
+</header>

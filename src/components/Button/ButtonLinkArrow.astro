@@ -1,0 +1,16 @@
+---
+interface Props {
+	href: string;
+	label: string;
+}
+const { href, label } = Astro.props;
+---
+
+<a href={href} class="mt-auto flex items-center gap-2 text-base leading-[1.5] text-black hover:underline">
+	{label}
+	<div class="-translate-y-[1px] -rotate-45">
+		<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
+			<path fill="currentColor" d="M4 12h12.25L11 6.75l.66-.75l6.5 6.5l-6.5 6.5l-.66-.75L16.25 13H4z"></path></svg
+		>
+	</div>
+</a>

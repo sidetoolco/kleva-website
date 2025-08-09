@@ -1,0 +1,36 @@
+---
+// Constants
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+// Layouts
+import SimpleLayout from '@layouts/SimpleLayout.astro';
+// Components
+import BankingHero from '@components/BankingHero.astro';
+import ProblemsSection from '@components/ProblemsSection.astro';
+import SolutionSection from '@components/SolutionSection.astro';
+import ROISection from '@components/ROISection.astro';
+import Contact from '@components/Contact.astro';
+---
+
+<SimpleLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <main id="page-content" class="main-content">
+    <BankingHero />
+    <ProblemsSection />
+    <SolutionSection />
+    <ROISection />
+    <Contact />
+  </main>
+</SimpleLayout>
+
+<style>
+  .main-content {
+    min-height: 100vh;
+    background-color: #ffffff;
+    padding-top: var(--header-height-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .main-content {
+      padding-top: var(--header-height-desktop);
+    }
+  }
+</style>

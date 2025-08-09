@@ -1,0 +1,4 @@
+{
+	"name": "Lovable",
+	"description": "Lovable is an AI-powered platform that enables users to create, edit, and deploy web applications through natural language interactions. By describing your app idea in plain English, Lovable generates responsive front-end applications using technologies like React, Tailwind, and Vite. It integrates with Supabase for backend functionalities, supports GitHub synchronization for version control, and offers one-click deployment for rapid sharing."
+}

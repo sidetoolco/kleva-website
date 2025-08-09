@@ -1,0 +1,28 @@
+# Security Policy for Sidetool.co
+# Last Updated: 2025-01-08
+
+# Contact for security issues
+Contact: mailto:security@sidetool.co
+Contact: mailto:hello@sidetool.co
+
+# Preferred languages
+Preferred-Languages: en
+
+# Security page
+Policy: https://www.sidetool.co/security
+
+# Acknowledgments page (for responsible disclosure)
+Acknowledgments: https://www.sidetool.co/security/thanks
+
+# PGP key (if you have one)
+# Encryption: https://www.sidetool.co/pgp-key.txt
+
+# Canonical URL for this file
+Canonical: https://www.sidetool.co/.well-known/security.txt
+
+# Expiry date (update annually)
+Expires: 2026-01-08T00:00:00.000Z
+
+# Additional information
+# We appreciate responsible disclosure of security vulnerabilities.
+# Please allow us reasonable time to respond before public disclosure.

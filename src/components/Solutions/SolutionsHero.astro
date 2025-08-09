@@ -1,0 +1,130 @@
+---
+import type { Solution } from '../../types/sanity.types';
+import PortableText from '@components/PortableText.astro';
+import SolutionHeroQuote from '@components/Solutions/SolutionHeroQuote.astro';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+import background from '@assets/solutions__hero__background.svg';
+import blob from '@assets/solutions__blob.svg';
+
+interface Props {
+	solution: Solution;
+}
+
+const { solution } = Astro.props;
+---
+
+<article class="container__wide page__section light relative items-center justify-center gap-16 px-5 pb-20 lg:flex">
+	<div class="absolute left-[70%] top-1/2 z-0 hidden h-full w-full -translate-x-1/2 -translate-y-1/2 lg:block">
+		<Image src={background} alt="Background" class="h-full w-full object-cover" />
+	</div>
+	<div class="relative z-10">
+		<header class="space-y-4">
+			<div
+				class="mx-auto flex w-fit items-center gap-1 rounded-md bg-purple py-1 pl-2 pr-[10px] text-sm text-white lg:mx-0"
+			>
+				<Icon name={solution.heroIcon} size={18} />Solution
+			</div>
+			<h1
+				class="text-center font-titles text-[40px] font-bold leading-[0.91] tracking-[-1px] sm:text-[56px] md:text-[70px] lg:text-left"
+			>
+				{solution.title}
+			</h1>
+		</header>
+		<section class="mx-auto mb-7 mt-8 max-w-[572px] text-center text-lg leading-[1.45] md:text-2xl lg:text-left">
+			<PortableText portableText={solution.description} />
+			<a
+				href="/contact"
+				class="mt-12 hidden w-full max-w-[335px] rounded-xl bg-black px-6 py-3 text-center font-medium text-white lg:block"
+				>Let's Talk</a
+			>
+		</section>
+	</div>
+	<div class="relative z-10 items-center justify-center py-12 lg:flex lg:flex-col">
+		<div class="absolute left-1/2 top-1/2 z-0 hidden h-full w-[125%] -translate-x-1/2 translate-y-[-53%] lg:block">
+			<Image src={blob} alt="Blob" class="h-full w-full" />
+		</div>
+		<section
+			id="hero-quotes"
+			class="relative z-10 mx-auto max-w-[480px] overflow-hidden rounded-xl border border-text-secondary bg-white p-8 shadow-xl xl:h-[370px] xl:max-w-[540px] xl:px-12 xl:py-16"
+		>
+			<ul class="swiper-wrapper">
+				{
+					solution.heroQuotes &&
+						solution.heroQuotes.map((quote) => (
+							<li class="swiper-slide">
+								<SolutionHeroQuote
+									companyLogo={quote.companyLogo}
+									clientFullName={quote.clientFullName ?? ''}
+									companyRole={quote.companyRole ?? ''}
+									quote={quote.quote ?? ''}
+								/>
+							</li>
+						))
+				}
+			</ul>
+		</section>
+		<div class="swiper-pagination relative z-10 my-7 flex justify-center gap-2 lg:mb-0 lg:mt-7"></div>
+	</div>
+	<a
+		href="/contact"
+		class="mx-auto block w-full max-w-[335px] rounded-xl bg-black px-6 py-3 text-center font-medium text-white lg:hidden"
+		>Let's Talk</a
+	>
+</article>
+
+<style>
+	article {
+		padding-top: calc(var(--header-height-mobile) + 64px);
+	}
+	@media (min-width: 768px) {
+		article {
+			padding-top: calc(var(--header-height-desktop) + 82px);
+		}
+	}
+	@media (min-width: 1024px) {
+		article {
+			padding-top: calc(var(--header-height-desktop) + 120px);
+		}
+	}
+	.swiper-slide {
+		height: auto;
+	}
+	:global(.swiper-pagination-bullet) {
+		display: block;
+		width: 14px;
+		height: 14px;
+		background-color: #fff;
+		border-radius: 100%;
+		transition: background-color 0.3s ease;
+	}
+	:global(.swiper-pagination-bullet),
+	:global(.swiper-pagination-bullet:hover) {
+		cursor: pointer;
+	}
+	:global(.swiper-pagination-bullet:hover),
+	:global(.swiper-pagination-bullet-active) {
+		background-color: #97a1af !important;
+	}
+	:global(.swiper-pagination-bullet-active) {
+		cursor: default;
+	}
+</style>
+
+<script>
+	import Swiper from 'swiper';
+	import { Pagination } from 'swiper/modules';
+
+	new Swiper('#hero-quotes', {
+		modules: [Pagination],
+		pagination: {
+			el: '.swiper-pagination',
+			bulletClass: 'swiper-pagination-bullet',
+			bulletActiveClass: 'swiper-pagination-bullet-active',
+			clickable: true,
+		},
+		slidesPerView: 1,
+		spaceBetween: 48,
+		effect: 'fade',
+	});
+</script>

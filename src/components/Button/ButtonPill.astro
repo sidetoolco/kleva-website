@@ -1,0 +1,112 @@
+---
+interface Props {
+	fullWidth?: boolean;
+	label?: string;
+	theme?: 'light' | 'dark';
+	isCTA?: boolean;
+	id?: string;
+	form?: string;
+	type?: 'button' | 'submit';
+}
+
+const {
+	fullWidth = false,
+	label = "Let's talk",
+	theme = 'light',
+	isCTA = false,
+	id,
+	form,
+	type = 'button',
+} = Astro.props;
+---
+
+<button id={id} type={type} class:list={[fullWidth && 'full-width', theme, isCTA && 'cta-button']} form={form}>
+	<div class="wrapper">
+		<div class="primary">{label}</div>
+		<div class="secondary">{label}</div>
+	</div>
+</button>
+
+<style>
+	button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 44px;
+		border-radius: 999px;
+		font-family: var(--font-body);
+		font-size: 16px;
+		font-weight: 500;
+		transition-property: background-color, color, border;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-out;
+		padding-inline: 20px;
+		border: 1px solid;
+		cursor: pointer;
+	}
+
+	/* Light Theme Styles */
+	button.light {
+		background-color: rgb(var(--clr-white));
+		color: rgb(var(--clr-black));
+		border-color: rgb(var(--clr-black));
+	}
+
+	button.light:hover {
+		background-color: rgb(var(--clr-black));
+		color: rgb(var(--clr-white));
+		border-color: rgba(var(--clr-white), 0.2);
+	}
+
+	/* Dark Theme Styles */
+	button.dark {
+		background-color: rgb(var(--clr-black));
+		color: rgb(var(--clr-white));
+		border-color: rgb(var(--clr-white));
+	}
+
+	button.dark:hover {
+		background-color: rgb(var(--clr-white));
+		color: rgb(var(--clr-black));
+		border-color: rgba(var(--clr-black), 0.2);
+	}
+
+	button.full-width {
+		width: 100%;
+	}
+
+	.wrapper {
+		position: relative;
+		width: 100%;
+		min-width: 163px;
+		height: fit-content;
+		overflow: hidden;
+	}
+
+	.primary,
+	.secondary {
+		transition-property: transform;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-out;
+	}
+
+	.primary {
+		position: relative;
+	}
+
+	.secondary {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		transform: translateY(100%);
+	}
+
+	button:hover .primary {
+		transform: translateY(-100%);
+	}
+
+	button:hover .secondary {
+		transform: translateY(0%);
+	}
+</style>

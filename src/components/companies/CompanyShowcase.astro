@@ -1,0 +1,65 @@
+---
+import ButtonPrimary from '@components/Button/ButtonPrimary.astro';
+import type { CompanyShowcase } from '../../types/sanity.types';
+import { urlForImage } from '@sanity/lib/url-for-image';
+import { Image } from 'astro:assets';
+import ButtonLinkArrow from '@components/Button/ButtonLinkArrow.astro';
+interface Props {
+	company: CompanyShowcase;
+}
+const { company } = Astro.props;
+---
+
+<article class="lg:container__wide gap-8 md:gap-12 lg:flex lg:flex-row-reverse">
+	<section id="company__showcase__swiper" class="md:mx-8 md:overflow-x-hidden lg:mx-0 lg:h-fit">
+		<div class="swiper-wrapper">
+			{
+				company.imageGallery &&
+					company.imageGallery.map((image) => (
+						<div class="swiper-slide cursor-grab active:cursor-grabbing">
+							<Image
+								src={urlForImage(image).width(1440).height(1024).url()}
+								alt={image.alt || ''}
+								width={1440}
+								height={1024}
+								class="h-full"
+							/>
+						</div>
+					))
+			}
+		</div>
+	</section>
+	<div class="max-lg:container__wide mx-auto mt-4 lg:w-1/4 lg:shrink-0">
+		<header class="space-y-2">
+			<h2 style={`color: ${company.color?.hex}`} class="font-titles text-2xl font-semibold">{company.companyName}</h2>
+			<h3 class="font-titles text-[28px] leading-[1.09]">{company.title}</h3>
+		</header>
+		<p class="my-4 text-lg text-tertiary">{company.description}</p>
+		<ButtonLinkArrow href={company.link ?? '/'} label="Learn more" />
+	</div>
+</article>
+
+<style>
+	.swiper-slide {
+		aspect-ratio: 1440/1024;
+		height: auto;
+	}
+</style>
+
+<script>
+	import Swiper from 'swiper';
+	import { Autoplay, EffectFade } from 'swiper/modules';
+	import 'swiper/css';
+	import 'swiper/css/effect-fade';
+
+	new Swiper('#company__showcase__swiper', {
+		modules: [Autoplay, EffectFade],
+		effect: 'fade',
+		slidesPerView: 1,
+		loop: true,
+		autoplay: {
+			delay: 5000,
+			disableOnInteraction: false,
+		},
+	});
+</script>

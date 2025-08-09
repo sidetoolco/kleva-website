@@ -1,0 +1,47 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Sidetool Team -- Design & Development -- @sidetool
+    Location: Global (Remote-First)
+
+# THANKS
+
+    Our clients for trusting us with their projects
+    The open source community for amazing tools
+    Our partners at Bubble.io, FlutterFlow, and WeWeb
+
+# TECHNOLOGY COLOPHON
+
+    Framework: Astro
+    CSS: Tailwind CSS
+    JavaScript: TypeScript, GSAP
+    CMS: Sanity
+    Analytics: Mixpanel, Google Analytics
+    Hosting: Vercel
+    
+    Standards: HTML5, CSS3, ECMAScript 2022+
+    Components: Astro Components, React
+    
+    Tools: VS Code, Figma, Linear, Slack
+    
+# SERVICES WE OFFER
+
+    - AI Agents & Automation
+    - Custom Software Development
+    - No-Code/Low-Code Solutions
+    - MVP Development
+    - Enterprise Applications
+    - API Integrations
+    - UI/UX Design
+    
+# CONTACT
+
+    Website: https://www.sidetool.co
+    Email: hello@sidetool.co
+    LinkedIn: https://www.linkedin.com/company/sidetool
+    
+# LAST UPDATE
+
+    2025/01/08
