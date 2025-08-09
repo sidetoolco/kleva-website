@@ -1,0 +1,183 @@
+---
+import KlevaLogo from '../assets/kleva-logo.png';
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src={KlevaLogo.src} alt="Kleva" class="footer-logo" />
+          <p class="footer-tagline">
+            AI Collections for Latin American Banks & Lenders
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#demo">Demo</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="/about">About</a></li>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#case-studies">Case Studies</a></li>
+              <li><a href="#roi">ROI Calculator</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Get in touch</h4>
+            <ul>
+              <li><a href="mailto:hello@kleva.co">hello@kleva.co</a></li>
+              <li><a href="/contact">Schedule a call</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; {currentYear} Kleva. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/security">Security</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-gray-50);
+    border-top: 1px solid var(--color-gray-200);
+    padding: 64px 0 32px;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+  }
+
+  .footer-brand {
+    max-width: 280px;
+  }
+
+  .footer-logo {
+    height: 24px;
+    width: auto;
+    margin-bottom: 16px;
+  }
+
+  .footer-tagline {
+    font-size: 14px;
+    color: var(--color-gray-600);
+    line-height: 1.6;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+
+  .footer-column h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-black);
+    margin-bottom: 16px;
+  }
+
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-column li {
+    margin-bottom: 12px;
+  }
+
+  .footer-column a {
+    font-size: 14px;
+    color: var(--color-gray-600);
+    transition: color 0.2s ease;
+  }
+
+  .footer-column a:hover {
+    color: var(--color-black);
+  }
+
+  .footer-bottom {
+    padding-top: 32px;
+    border-top: 1px solid var(--color-gray-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-bottom p {
+    font-size: 14px;
+    color: var(--color-gray-500);
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-legal a {
+    font-size: 14px;
+    color: var(--color-gray-500);
+    transition: color 0.2s ease;
+  }
+
+  .footer-legal a:hover {
+    color: var(--color-black);
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      padding: 48px 0 24px;
+    }
+
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .footer-links {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+  }
+</style>

@@ -1,0 +1,163 @@
+---
+const faqs = [
+  {
+    question: "How quickly can Kleva be implemented?",
+    answer: "Implementation takes 2-3 weeks from contract signing. This includes system integration, AI training on your specific use cases, compliance setup, and team onboarding. We handle all the technical heavy lifting."
+  },
+  {
+    question: "What systems does Kleva integrate with?",
+    answer: "Kleva integrates with all major core banking systems, CRMs, and collection platforms. We've built connectors for SAP, Oracle, Salesforce, and custom systems. If you have an API, we can integrate."
+  },
+  {
+    question: "Is Kleva compliant with LATAM regulations?",
+    answer: "Yes. We're fully compliant with debt collection regulations in Mexico, Brazil, Colombia, Guatemala, Ecuador, and Peru. Our AI is trained on country-specific compliance requirements and automatically adapts its approach based on jurisdiction."
+  },
+  {
+    question: "How does pricing work?",
+    answer: "We charge per minute of AI agent time, with volume discounts starting at 50,000 minutes per month. Most clients see 70% cost reduction compared to human agents. We provide a detailed ROI calculation during your intro call."
+  },
+  {
+    question: "What languages does Kleva support?",
+    answer: "Native Spanish, Portuguese, and English. Our AI understands regional dialects and slang across Latin America. We don't use Google Translate - this is real, contextual language understanding built from millions of actual collection calls."
+  },
+  {
+    question: "How many calls can Kleva handle simultaneously?",
+    answer: "Unlimited. Our infrastructure scales automatically. We currently process 900,000+ minutes monthly and can handle thousands of simultaneous calls without any degradation in quality or response time."
+  }
+];
+---
+
+<section class="faq-section">
+  <div class="container">
+    <div class="faq-header">
+      <h2>Frequently asked questions</h2>
+      <p>Everything you need to know about Kleva's AI collections platform</p>
+    </div>
+    
+    <div class="faq-list">
+      {faqs.map((faq, index) => (
+        <details class="faq-item">
+          <summary class="faq-question">
+            {faq.question}
+            <span class="faq-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-answer">
+            <p>{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    padding: 80px 0;
+    background: var(--color-white);
+  }
+
+  .faq-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .faq-header h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--color-black);
+  }
+
+  .faq-header p {
+    font-size: 16px;
+    color: var(--color-gray-600);
+  }
+
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+
+  .faq-item:first-child {
+    border-top: 1px solid var(--color-gray-200);
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-black);
+    transition: color 0.2s ease;
+  }
+
+  .faq-question:hover {
+    color: var(--color-gray-700);
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+    color: var(--color-gray-400);
+  }
+
+  details[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 0 24px 0;
+    animation: slideDown 0.3s ease;
+  }
+
+  .faq-answer p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-gray-600);
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .faq-header h2 {
+      font-size: 28px;
+    }
+
+    .faq-question {
+      font-size: 15px;
+    }
+
+    .faq-answer p {
+      font-size: 14px;
+    }
+  }
+</style>

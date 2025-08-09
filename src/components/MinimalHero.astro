@@ -1,0 +1,240 @@
+---
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        #1 AI Agent for Debt Collection in LATAM
+      </div>
+      
+      <h1 class="hero-title">
+        The AI Agent that collects<br />
+        better than humans
+      </h1>
+      
+      <p class="hero-description">
+        Cut collection costs by 70%. Recover 25% more debt. Zero turnover.<br />
+        Trusted by leading financial institutions across Latin America.
+      </p>
+      
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">70%</div>
+          <div class="stat-label">Cost reduction</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">25%</div>
+          <div class="stat-label">Higher recovery</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">900K+</div>
+          <div class="stat-label">Minutes monthly</div>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="/contact" class="btn-primary">
+          Book a 15-minute intro call
+        </a>
+        <a href="#demo" class="btn-secondary">
+          View demo
+        </a>
+      </div>
+
+      <div class="hero-partners">
+        <span class="partners-label">Trusted by</span>
+        <div class="partners-list">
+          <span>Vana</span>
+          <span>Tandem</span>
+          <span>Diners Club</span>
+          <span>Grupo Pichincha</span>
+          <span>Ficohsa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 160px 0 80px;
+    background: linear-gradient(180deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, var(--color-gray-100) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, var(--color-gray-100) 0%, transparent 50%);
+    opacity: 0.5;
+  }
+
+  .hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--color-gray-900);
+    color: var(--color-white);
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 100px;
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-title {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    color: var(--color-black);
+  }
+
+  .hero-description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-gray-600);
+    margin-bottom: 48px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    margin-bottom: 48px;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--color-black);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: var(--color-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 64px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+
+  .btn-primary {
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-gray-800);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: var(--color-white);
+    color: var(--color-black);
+    border: 1px solid var(--color-gray-300);
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-gray-50);
+    border-color: var(--color-gray-400);
+  }
+
+  .hero-partners {
+    padding-top: 32px;
+    border-top: 1px solid var(--color-gray-200);
+  }
+
+  .partners-label {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-500);
+    margin-bottom: 16px;
+  }
+
+  .partners-list {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .partners-list span {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-gray-400);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 120px 0 60px;
+    }
+
+    .hero-title {
+      font-size: 36px;
+    }
+
+    .hero-description {
+      font-size: 16px;
+    }
+
+    .hero-stats {
+      gap: 32px;
+    }
+
+    .stat-number {
+      font-size: 28px;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      max-width: 280px;
+    }
+  }
+</style>

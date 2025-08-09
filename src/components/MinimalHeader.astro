@@ -1,0 +1,122 @@
+---
+import KlevaLogo from '../assets/kleva-logo.png';
+---
+
+<header class="header">
+  <nav class="nav-container">
+    <div class="nav-content">
+      <a href="/" class="logo">
+        <img src={KlevaLogo.src} alt="Kleva" class="logo-img" />
+      </a>
+      
+      <ul class="nav-menu">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/about" class="nav-link">About</a></li>
+        <li><a href="/blog" class="nav-link">Blog</a></li>
+        <li><a href="/contact" class="nav-link">Contact</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <a href="/contact" class="cta-button">
+          Book a 15-minute intro call
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-gray-200);
+    z-index: 1000;
+    height: var(--header-height-desktop);
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+  }
+
+  .nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 24px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-img {
+    height: 28px;
+    width: auto;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    padding: 8px 16px;
+    color: var(--color-gray-600);
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-black);
+    background: var(--color-gray-100);
+  }
+
+  .cta-button {
+    padding: 10px 20px;
+    background: var(--color-black);
+    color: var(--color-white);
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .cta-button:hover {
+    background: var(--color-gray-800);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    .header {
+      height: var(--header-height-mobile);
+    }
+
+    .nav-content {
+      padding: 0 16px;
+    }
+
+    .nav-menu {
+      display: none;
+    }
+
+    .cta-button {
+      font-size: 13px;
+      padding: 8px 16px;
+    }
+  }
+</style>

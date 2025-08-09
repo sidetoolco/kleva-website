@@ -1,0 +1,189 @@
+---
+---
+
+<section class="features">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Why Kleva</span>
+      <h2>Complete AI Agent System for Collections</h2>
+      <p>Built specifically for Latin American financial institutions</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-number">01</div>
+        <h3>Unmatched Performance</h3>
+        <p>25% higher recovery rates than human agents. Our AI consistently outperforms in head-to-head tests.</p>
+        <div class="feature-stats">
+          <div class="stat">
+            <span class="stat-value">73%</span>
+            <span class="stat-label">Resolution rate</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">24/7</span>
+            <span class="stat-label">Availability</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-number">02</div>
+        <h3>Built for LATAM</h3>
+        <p>Native Spanish and Portuguese understanding. We know the difference between "pisto" and "lana".</p>
+        <div class="feature-stats">
+          <div class="stat">
+            <span class="stat-value">94%</span>
+            <span class="stat-label">Address accuracy</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">7</span>
+            <span class="stat-label">Countries</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-number">03</div>
+        <h3>Zero Burnout</h3>
+        <p>AI agents never quit, never get stressed, and treat every debtor with infinite patience.</p>
+        <div class="feature-stats">
+          <div class="stat">
+            <span class="stat-value">0%</span>
+            <span class="stat-label">Turnover</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">∞</span>
+            <span class="stat-label">Patience</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-number">04</div>
+        <h3>Instant Scale</h3>
+        <p>Handle thousands of simultaneous calls. Scale up or down instantly based on demand.</p>
+        <div class="feature-stats">
+          <div class="stat">
+            <span class="stat-value">10K+</span>
+            <span class="stat-label">Calls/day</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">900K+</span>
+            <span class="stat-label">Minutes/month</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .features {
+    padding: 80px 0;
+    background: var(--color-white);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-500);
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--color-black);
+  }
+
+  .section-header p {
+    font-size: 16px;
+    color: var(--color-gray-600);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .feature-card {
+    padding: 32px;
+    background: var(--color-gray-50);
+    border-radius: 12px;
+    border: 1px solid var(--color-gray-200);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    border-color: var(--color-gray-300);
+    transform: translateY(-2px);
+  }
+
+  .feature-number {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-gray-400);
+    margin-bottom: 16px;
+  }
+
+  .feature-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--color-black);
+  }
+
+  .feature-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-gray-600);
+    margin-bottom: 24px;
+  }
+
+  .feature-stats {
+    display: flex;
+    gap: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-gray-200);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--color-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .section-header h2 {
+      font-size: 28px;
+    }
+  }
+</style>
