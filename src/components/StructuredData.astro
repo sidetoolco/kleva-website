@@ -1,0 +1,141 @@
+---
+const currentPage = Astro.url.pathname;
+
+// Organization Schema (for all pages)
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Kleva",
+  "alternateName": "Kleva AI",
+  "url": "https://www.kleva.co",
+  "logo": "https://www.kleva.co/og-image.jpg",
+  "description": "AI-powered debt collection for Latin American banks. Cut costs by 70% and recover 25% more debt with our native Spanish and Portuguese AI agents.",
+  "sameAs": [
+    "https://www.linkedin.com/company/kleva-ai",
+    "https://twitter.com/kleva_ai"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Miami",
+    "addressRegion": "FL",
+    "addressCountry": "US"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-704-816-9059",
+    "contactType": "sales",
+    "email": "hi@kleva.co",
+    "areaServed": ["MX", "BR", "CO", "GT", "EC", "PE", "CL", "AR"],
+    "availableLanguage": ["Spanish", "Portuguese", "English"]
+  }
+};
+
+// Service Schema
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "AI Debt Collection",
+  "provider": {
+    "@type": "Organization",
+    "name": "Kleva"
+  },
+  "areaServed": [
+    {"@type": "Country", "name": "Mexico"},
+    {"@type": "Country", "name": "Brazil"},
+    {"@type": "Country", "name": "Colombia"},
+    {"@type": "Country", "name": "Guatemala"},
+    {"@type": "Country", "name": "Ecuador"},
+    {"@type": "Country", "name": "Peru"}
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "AI Collection Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "AI Voice Agents",
+          "description": "Natural Spanish and Portuguese speaking AI agents for debt collection"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Automated Collections",
+          "description": "24/7 automated debt collection with 73% success rate"
+        }
+      }
+    ]
+  }
+};
+
+// FAQ Schema (only for homepage)
+const faqSchema = currentPage === '/' ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How quickly can we see ROI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most clients see 70% cost reduction within 30 days. Our AI agents start making calls immediately after the 3-week implementation, processing thousands of accounts daily at a fraction of human agent costs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes Kleva different?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We're built specifically for LATAM. Native Spanish and Portuguese understanding, full compliance with local regulations, and AI trained on millions of actual Latin American collection calls. We don't translate - we understand."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does pricing work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Simple per-minute pricing with volume discounts. No setup fees, no minimums. Most clients save 70% compared to human agents. We'll calculate your exact ROI during the intro call."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it really compliant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "100% compliant in Mexico, Brazil, Colombia, Guatemala, Ecuador, and Peru. Our AI automatically adapts to each country's regulations and records all interactions for audit purposes."
+      }
+    }
+  ]
+} : null;
+
+// Software Application Schema
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Kleva AI Collection Platform",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web-based",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Contact for pricing"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "127"
+  }
+};
+
+// Combine all schemas
+const schemas = [organizationSchema, serviceSchema, softwareSchema];
+if (faqSchema) schemas.push(faqSchema);
+---
+
+{schemas.map(schema => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

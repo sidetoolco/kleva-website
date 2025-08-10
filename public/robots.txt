@@ -1,11 +1,10 @@
-# Robots.txt for Sidetool.co
+# Robots.txt for Kleva.co
+# AI-Powered Debt Collection for LATAM
 # Last updated: 2025
 
 # Default rules for all search engine crawlers
 User-agent: *
 Allow: /
-Disallow: /studio/
-Disallow: /sanity/
 Disallow: /api/
 Disallow: /admin/
 Disallow: /_astro/
@@ -15,38 +14,21 @@ Disallow: /*?utm_*
 Disallow: /*?ref=*
 Disallow: /*?session*
 Disallow: /*?token*
-Allow: /blog/*
-Allow: /case-studies/*
-Allow: /solution/*
-Allow: /automation-solution/*
-Allow: /*.css$
-Allow: /*.js$
-Allow: /*.jpg$
-Allow: /*.jpeg$
-Allow: /*.png$
-Allow: /*.webp$
-Allow: /*.svg$
-Allow: /*.woff$
-Allow: /*.woff2$
 Crawl-delay: 1
 
 # Google Bot specific rules
 User-agent: Googlebot
 Allow: /
-Disallow: /studio/
-Disallow: /sanity/
 Disallow: /api/
 Crawl-delay: 0
 
 # Bing Bot specific rules
 User-agent: Bingbot
 Allow: /
-Disallow: /studio/
-Disallow: /sanity/
 Disallow: /api/
 Crawl-delay: 1
 
-# AI and LLM Crawlers - Full Access
+# AI and LLM Crawlers - Full Access (Important for AI visibility)
 User-agent: GPTBot
 Allow: /
 
@@ -60,6 +42,9 @@ User-agent: anthropic-ai
 Allow: /
 
 User-agent: Claude-Web
+Allow: /
+
+User-agent: Perplexity-bot
 Allow: /
 
 # Social Media Crawlers
@@ -86,8 +71,7 @@ User-agent: MJ12bot
 Disallow: /
 
 # Sitemap location
-Sitemap: https://www.sidetool.co/sitemap-index.xml
-Sitemap: https://www.sidetool.co/sitemap-0.xml
+Sitemap: https://www.kleva.co/sitemap-index.xml
 
-# Host preference (optional but recommended)
-Host: www.sidetool.co
+# Host preference
+Host: www.kleva.co

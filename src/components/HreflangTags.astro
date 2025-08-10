@@ -1,0 +1,38 @@
+---
+// Get current path
+const pathname = Astro.url.pathname;
+
+// Define language versions
+const languages = [
+  { lang: 'en', region: 'US', url: 'https://www.kleva.co' },
+  { lang: 'es', region: 'MX', url: 'https://www.kleva.co/es-mx' },
+  { lang: 'es', region: 'CO', url: 'https://www.kleva.co/es-co' },
+  { lang: 'es', region: 'AR', url: 'https://www.kleva.co/es-ar' },
+  { lang: 'es', region: 'CL', url: 'https://www.kleva.co/es-cl' },
+  { lang: 'es', region: 'PE', url: 'https://www.kleva.co/es-pe' },
+  { lang: 'es', region: 'EC', url: 'https://www.kleva.co/es-ec' },
+  { lang: 'es', region: 'GT', url: 'https://www.kleva.co/es-gt' },
+  { lang: 'pt', region: 'BR', url: 'https://www.kleva.co/pt-br' },
+];
+
+// For now, we'll set up the structure even if alternate pages don't exist yet
+// This tells Google about your international targeting strategy
+---
+
+<!-- Hreflang Tags for International SEO -->
+<link rel="alternate" hreflang="en-US" href={`https://www.kleva.co${pathname}`} />
+<link rel="alternate" hreflang="es-MX" href={`https://www.kleva.co/es-mx${pathname}`} />
+<link rel="alternate" hreflang="es-CO" href={`https://www.kleva.co/es-co${pathname}`} />
+<link rel="alternate" hreflang="es-AR" href={`https://www.kleva.co/es-ar${pathname}`} />
+<link rel="alternate" hreflang="es-CL" href={`https://www.kleva.co/es-cl${pathname}`} />
+<link rel="alternate" hreflang="es-PE" href={`https://www.kleva.co/es-pe${pathname}`} />
+<link rel="alternate" hreflang="es-EC" href={`https://www.kleva.co/es-ec${pathname}`} />
+<link rel="alternate" hreflang="es-GT" href={`https://www.kleva.co/es-gt${pathname}`} />
+<link rel="alternate" hreflang="pt-BR" href={`https://www.kleva.co/pt-br${pathname}`} />
+<link rel="alternate" hreflang="x-default" href={`https://www.kleva.co${pathname}`} />
+
+<!-- Regional targeting meta tags -->
+<meta name="geo.region" content="US-FL" />
+<meta name="geo.placename" content="Miami" />
+<meta name="geo.position" content="25.7617;-80.1918" />
+<meta name="ICBM" content="25.7617, -80.1918" />

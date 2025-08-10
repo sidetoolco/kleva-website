@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import NavigationTracker from '@components/NavigationTracker.astro';
+import StructuredData from '@components/StructuredData.astro';
+import HreflangTags from '@components/HreflangTags.astro';
 
 interface Props {
 	title: string;
@@ -8,7 +10,7 @@ interface Props {
 	image?: string;
 }
 
-//const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = new URL(Astro.url.pathname, 'https://www.kleva.co');
 const { title, description, image = '/og-image.jpg' } = Astro.props;
 ---
 
@@ -28,7 +30,10 @@ const { title, description, image = '/og-image.jpg' } = Astro.props;
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
 <!-- Canonical URL -->
-<!-- <link rel="canonical" href={canonicalURL} /> -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- International SEO -->
+<HreflangTags />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
@@ -48,6 +53,9 @@ const { title, description, image = '/og-image.jpg' } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Structured Data -->
+<StructuredData />
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
