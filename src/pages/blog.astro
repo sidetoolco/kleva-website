@@ -10,7 +10,8 @@ const featuredPost = {
   category: "Industry Insights",
   readTime: "5 min read",
   author: "Gonza",
-  slug: "collections-agent-burnout-crisis"
+  slug: "collections-agent-burnout-crisis",
+  href: "/blog/collections-agent-burnout-crisis"
 };
 
 const recentPosts = [
@@ -21,7 +22,8 @@ const recentPosts = [
     category: "ROI Analysis",
     readTime: "7 min read",
     author: "JM",
-    slug: "real-cost-manual-collections"
+    slug: "real-cost-manual-collections",
+    href: "/blog/real-cost-manual-collections"
   },
   {
     title: "How Vana Cut Collection Costs by 70% with AI",
@@ -30,7 +32,8 @@ const recentPosts = [
     category: "Case Study",
     readTime: "6 min read",
     author: "Juli",
-    slug: "vana-case-study"
+    slug: "vana-case-study",
+    href: "/blog/vana-case-study"
   },
   {
     title: "LATAM's $67 Billion Collections Problem",
@@ -39,7 +42,8 @@ const recentPosts = [
     category: "Market Analysis",
     readTime: "8 min read",
     author: "Gonza",
-    slug: "latam-collections-problem"
+    slug: "latam-collections-problem",
+    href: "/blog/latam-collections-problem"
   },
   {
     title: "Why Debtors Actually Prefer Talking to AI",
@@ -159,7 +163,7 @@ const categories = [
                   <span class="date">{post.date}</span>
                 </div>
                 <h3>
-                  <a href={`/blog/${post.slug}`}>{post.title}</a>
+                  <a href={post.href || `/blog/${post.slug}`}>{post.title}</a>
                 </h3>
                 <p>{post.excerpt}</p>
                 <div class="post-footer">
