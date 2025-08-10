@@ -1,0 +1,238 @@
+---
+import ZcalWidget from './ZcalWidget.astro';
+
+const faqs = [
+  {
+    question: "How quickly can we see ROI?",
+    answer: "Most clients see 70% cost reduction within 30 days. Our AI agents start making calls immediately after the 3-week implementation, processing thousands of accounts daily at a fraction of human agent costs."
+  },
+  {
+    question: "What makes Kleva different?",
+    answer: "We're built specifically for LATAM. Native Spanish and Portuguese understanding, full compliance with local regulations, and AI trained on millions of actual Latin American collection calls. We don't translate - we understand."
+  },
+  {
+    question: "How does pricing work?",
+    answer: "Simple per-minute pricing with volume discounts. No setup fees, no minimums. Most clients save 70% compared to human agents. We'll calculate your exact ROI during the intro call."
+  },
+  {
+    question: "Is it really compliant?",
+    answer: "100% compliant in Mexico, Brazil, Colombia, Guatemala, Ecuador, and Peru. Our AI automatically adapts to each country's regulations and records all interactions for audit purposes."
+  },
+  {
+    question: "What about integration?",
+    answer: "We integrate with all major banking systems and CRMs. If you have an API, we can connect. Implementation takes 2-3 weeks including training and compliance setup."
+  }
+];
+---
+
+<section class="faq-schedule">
+  <div class="container">
+    <div class="section-header">
+      <h2>Ready to transform your collections?</h2>
+      <p>Get answers to your questions and book a demo in one place</p>
+    </div>
+
+    <div class="content-grid">
+      <!-- FAQ Column -->
+      <div class="faq-column">
+        <h3>Frequently asked questions</h3>
+        <div class="faq-list">
+          {faqs.map((faq) => (
+            <details class="faq-item">
+              <summary class="faq-question">
+                {faq.question}
+                <span class="faq-icon">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 7L10 13L4 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+        
+        <div class="more-questions">
+          <p>Have more questions?</p>
+          <a href="mailto:hello@kleva.co" class="email-link">hello@kleva.co</a>
+        </div>
+      </div>
+
+      <!-- Calendar Column -->
+      <div class="calendar-column">
+        <h3>Book your 15-minute intro call</h3>
+        <p class="calendar-intro">See a live demo and get a custom ROI calculation for your institution</p>
+        <div class="calendar-wrapper">
+          <ZcalWidget mode="inline" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-schedule {
+    padding: 80px 0;
+    background: linear-gradient(180deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .section-header h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--color-black);
+  }
+
+  .section-header p {
+    font-size: 16px;
+    color: var(--color-gray-600);
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  /* FAQ Column Styles */
+  .faq-column h3,
+  .calendar-column h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--color-black);
+  }
+
+  .faq-list {
+    margin-bottom: 32px;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+
+  .faq-item:first-child {
+    border-top: 1px solid var(--color-gray-200);
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-black);
+    transition: color 0.2s ease;
+  }
+
+  .faq-question:hover {
+    color: var(--color-gray-700);
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+    color: var(--color-gray-400);
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+
+  details[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 0 20px 0;
+    animation: slideDown 0.3s ease;
+  }
+
+  .faq-answer p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-gray-600);
+  }
+
+  .more-questions {
+    padding: 24px;
+    background: var(--color-gray-50);
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .more-questions p {
+    font-size: 14px;
+    color: var(--color-gray-600);
+    margin-bottom: 8px;
+  }
+
+  .email-link {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-black);
+    text-decoration: underline;
+  }
+
+  .email-link:hover {
+    color: var(--color-gray-700);
+  }
+
+  /* Calendar Column Styles */
+  .calendar-intro {
+    font-size: 14px;
+    color: var(--color-gray-600);
+    margin-bottom: 24px;
+  }
+
+  .calendar-wrapper {
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: 12px;
+    padding: 24px;
+    min-height: 450px;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 968px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .section-header h2 {
+      font-size: 28px;
+    }
+
+    .calendar-column {
+      order: -1; /* Put calendar first on mobile */
+    }
+  }
+</style>
