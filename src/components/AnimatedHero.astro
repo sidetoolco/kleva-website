@@ -1,6 +1,5 @@
 ---
 import ZcalWidget from './ZcalWidget.astro';
-import LottieAnimation from './LottieAnimation.astro';
 ---
 
 <section class="animated-hero">
@@ -30,15 +29,63 @@ import LottieAnimation from './LottieAnimation.astro';
       </div>
 
       <div class="hero-visual">
-        <!-- AI Agent animation -->
-        <LottieAnimation 
-          id="hero-animation"
-          src="https://assets10.lottiefiles.com/packages/lf20_vnikrcia.json"
-          width="100%"
-          height="400px"
-          autoplay={true}
-          loop={true}
-        />
+        <!-- Minimal geometric animation -->
+        <div class="geometric-animation">
+          <svg viewBox="0 0 400 400" class="hero-svg">
+            <!-- Grid background -->
+            <defs>
+              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="1"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+            
+            <!-- Central AI visualization -->
+            <g class="ai-core">
+              <!-- Outer ring -->
+              <circle cx="200" cy="200" r="80" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="2" />
+              <circle cx="200" cy="200" r="80" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="2" 
+                      stroke-dasharray="10 5" class="rotating-ring" />
+              
+              <!-- Middle ring -->
+              <circle cx="200" cy="200" r="60" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1" />
+              
+              <!-- Inner core -->
+              <circle cx="200" cy="200" r="40" fill="rgba(0,0,0,0.05)" />
+              <circle cx="200" cy="200" r="30" fill="#000" class="pulse-core" />
+              
+              <!-- Connection nodes -->
+              <g class="nodes">
+                <circle cx="200" cy="120" r="4" fill="#000" class="node node-1" />
+                <circle cx="280" cy="200" r="4" fill="#000" class="node node-2" />
+                <circle cx="200" cy="280" r="4" fill="#000" class="node node-3" />
+                <circle cx="120" cy="200" r="4" fill="#000" class="node node-4" />
+                
+                <!-- Diagonal nodes -->
+                <circle cx="260" cy="140" r="3" fill="rgba(0,0,0,0.5)" class="node node-5" />
+                <circle cx="260" cy="260" r="3" fill="rgba(0,0,0,0.5)" class="node node-6" />
+                <circle cx="140" cy="260" r="3" fill="rgba(0,0,0,0.5)" class="node node-7" />
+                <circle cx="140" cy="140" r="3" fill="rgba(0,0,0,0.5)" class="node node-8" />
+              </g>
+              
+              <!-- Connecting lines -->
+              <g class="connections">
+                <line x1="200" y1="120" x2="200" y2="170" stroke="rgba(0,0,0,0.2)" stroke-width="1" class="connection-line" />
+                <line x1="230" y1="200" x2="280" y2="200" stroke="rgba(0,0,0,0.2)" stroke-width="1" class="connection-line" />
+                <line x1="200" y1="230" x2="200" y2="280" stroke="rgba(0,0,0,0.2)" stroke-width="1" class="connection-line" />
+                <line x1="170" y1="200" x2="120" y2="200" stroke="rgba(0,0,0,0.2)" stroke-width="1" class="connection-line" />
+              </g>
+            </g>
+            
+            <!-- Floating particles -->
+            <g class="particles">
+              <circle cx="100" cy="100" r="2" fill="rgba(0,0,0,0.3)" class="particle particle-1" />
+              <circle cx="300" cy="150" r="2" fill="rgba(0,0,0,0.3)" class="particle particle-2" />
+              <circle cx="350" cy="300" r="2" fill="rgba(0,0,0,0.3)" class="particle particle-3" />
+              <circle cx="50" cy="250" r="2" fill="rgba(0,0,0,0.3)" class="particle particle-4" />
+            </g>
+          </svg>
+        </div>
       </div>
     </div>
 
@@ -201,6 +248,79 @@ import LottieAnimation from './LottieAnimation.astro';
   /* Hero Visual */
   .hero-visual {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .geometric-animation {
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+  }
+
+  .hero-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Animations */
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes pulse-opacity {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(10px, -10px); }
+    50% { transform: translate(-10px, 10px); }
+    75% { transform: translate(-10px, -10px); }
+  }
+
+  @keyframes pulse-scale {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  .rotating-ring {
+    transform-origin: center;
+    animation: rotate 30s linear infinite;
+  }
+
+  .pulse-core {
+    animation: pulse-scale 3s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  .node {
+    animation: pulse-opacity 2s ease-in-out infinite;
+  }
+
+  .node-1 { animation-delay: 0s; }
+  .node-2 { animation-delay: 0.5s; }
+  .node-3 { animation-delay: 1s; }
+  .node-4 { animation-delay: 1.5s; }
+  .node-5 { animation-delay: 0.25s; }
+  .node-6 { animation-delay: 0.75s; }
+  .node-7 { animation-delay: 1.25s; }
+  .node-8 { animation-delay: 1.75s; }
+
+  .particle {
+    animation: float 10s ease-in-out infinite;
+  }
+
+  .particle-1 { animation-delay: 0s; animation-duration: 8s; }
+  .particle-2 { animation-delay: 2s; animation-duration: 10s; }
+  .particle-3 { animation-delay: 4s; animation-duration: 12s; }
+  .particle-4 { animation-delay: 6s; animation-duration: 9s; }
+
+  .connection-line {
+    animation: pulse-opacity 3s ease-in-out infinite;
   }
 
   /* Metrics Ticker */
