@@ -43,135 +43,23 @@ import ZcalWidget from '@components/ZcalWidget.astro';
             <div class="contact-methods">
               <div class="contact-method">
                 <span class="method-label">Email</span>
-                <a href="mailto:hello@kleva.co" class="method-value">hello@kleva.co</a>
+                <a href="mailto:hi@kleva.co" class="method-value">hi@kleva.co</a>
               </div>
               
               <div class="contact-method">
                 <span class="method-label">WhatsApp</span>
-                <a href="https://wa.me/1234567890" class="method-value">+1 (234) 567-890</a>
+                <a href="https://wa.me/17048169059" class="method-value">+1 704-816-9059</a>
               </div>
               
               <div class="contact-method">
                 <span class="method-label">Office</span>
-                <span class="method-value">Mexico City, CDMX</span>
+                <span class="method-value">Miami, Florida</span>
               </div>
             </div>
 
             <div class="response-time">
-              <span class="response-icon">⚡</span>
               <span>We typically respond within 2 hours during business hours</span>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- What to Expect -->
-    <section class="expect-section">
-      <div class="container">
-        <div class="expect-header">
-          <h2>What to expect</h2>
-          <p>A focused 15-minute conversation about your collection challenges</p>
-        </div>
-
-        <div class="expect-grid">
-          <div class="expect-card">
-            <span class="expect-number">01</span>
-            <h3>Quick discovery</h3>
-            <p>We'll understand your current collection process, volume, and challenges</p>
-          </div>
-
-          <div class="expect-card">
-            <span class="expect-number">02</span>
-            <h3>Live demo</h3>
-            <p>See Kleva make actual collection calls in Spanish or Portuguese</p>
-          </div>
-
-          <div class="expect-card">
-            <span class="expect-number">03</span>
-            <h3>ROI calculation</h3>
-            <p>Get specific numbers on cost savings and recovery improvements</p>
-          </div>
-
-          <div class="expect-card">
-            <span class="expect-number">04</span>
-            <h3>Next steps</h3>
-            <p>If there's a fit, we'll schedule a deeper dive with your team</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Ideal Customer -->
-    <section class="ideal-section">
-      <div class="container">
-        <div class="ideal-content">
-          <h2>Are we a fit?</h2>
-          <p>Kleva works best for financial institutions that have:</p>
-          
-          <div class="criteria-grid">
-            <div class="criteria-card">
-              <span class="check-icon">✓</span>
-              <div>
-                <h4>Volume</h4>
-                <p>At least 1,000 delinquent accounts per month</p>
-              </div>
-            </div>
-
-            <div class="criteria-card">
-              <span class="check-icon">✓</span>
-              <div>
-                <h4>Geography</h4>
-                <p>Operations in Mexico, Brazil, Colombia, Guatemala, Ecuador, or Peru</p>
-              </div>
-            </div>
-
-            <div class="criteria-card">
-              <span class="check-icon">✓</span>
-              <div>
-                <h4>Integration</h4>
-                <p>Existing CRM or banking system with API access</p>
-              </div>
-            </div>
-
-            <div class="criteria-card">
-              <span class="check-icon">✓</span>
-              <div>
-                <h4>Urgency</h4>
-                <p>Ready to implement within the next 3 months</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq-section">
-      <div class="container">
-        <div class="faq-header">
-          <h2>Common questions</h2>
-        </div>
-
-        <div class="faq-grid">
-          <div class="faq-item">
-            <h3>How long is the demo?</h3>
-            <p>The initial call is 15 minutes. If there's mutual interest, we'll schedule a 45-minute deep dive with your team.</p>
-          </div>
-
-          <div class="faq-item">
-            <h3>What do I need to prepare?</h3>
-            <p>Just bring information about your current collection volume, recovery rates, and main challenges. We'll handle the rest.</p>
-          </div>
-
-          <div class="faq-item">
-            <h3>Can I see it working with our data?</h3>
-            <p>Yes! In the follow-up demo, we can show Kleva working with a sample of your actual accounts (with proper NDAs in place).</p>
-          </div>
-
-          <div class="faq-item">
-            <h3>Who should be on the call?</h3>
-            <p>The initial call is perfect for heads of collections, risk, or operations. Technical teams can join the deep dive later.</p>
           </div>
         </div>
       </div>
@@ -325,180 +213,6 @@ import ZcalWidget from '@components/ZcalWidget.astro';
     color: var(--color-gray-600);
   }
 
-  .response-icon {
-    font-size: 20px;
-  }
-
-  /* What to Expect */
-  .expect-section {
-    padding: 80px 0;
-    background: var(--color-gray-50);
-  }
-
-  .expect-header {
-    text-align: center;
-    margin-bottom: 64px;
-  }
-
-  .expect-header h2 {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: var(--color-black);
-  }
-
-  .expect-header p {
-    font-size: 16px;
-    color: var(--color-gray-600);
-  }
-
-  .expect-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-  }
-
-  .expect-card {
-    text-align: center;
-  }
-
-  .expect-number {
-    display: inline-block;
-    width: 48px;
-    height: 48px;
-    background: var(--color-black);
-    color: var(--color-white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    margin: 0 auto 16px;
-  }
-
-  .expect-card h3 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--color-black);
-  }
-
-  .expect-card p {
-    font-size: 14px;
-    color: var(--color-gray-600);
-    line-height: 1.5;
-  }
-
-  /* Ideal Customer */
-  .ideal-section {
-    padding: 80px 0;
-    background: var(--color-white);
-  }
-
-  .ideal-content {
-    text-align: center;
-  }
-
-  .ideal-content h2 {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 16px;
-    color: var(--color-black);
-  }
-
-  .ideal-content > p {
-    font-size: 16px;
-    color: var(--color-gray-600);
-    margin-bottom: 48px;
-  }
-
-  .criteria-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .criteria-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 24px;
-    background: var(--color-gray-50);
-    border-radius: 12px;
-    text-align: left;
-  }
-
-  .check-icon {
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    background: var(--color-black);
-    color: var(--color-white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .criteria-card h4 {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 4px;
-    color: var(--color-black);
-  }
-
-  .criteria-card p {
-    font-size: 14px;
-    color: var(--color-gray-600);
-  }
-
-  /* FAQ */
-  .faq-section {
-    padding: 80px 0;
-    background: var(--color-gray-50);
-  }
-
-  .faq-header {
-    text-align: center;
-    margin-bottom: 48px;
-  }
-
-  .faq-header h2 {
-    font-size: 32px;
-    font-weight: 600;
-    color: var(--color-black);
-  }
-
-  .faq-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .faq-item {
-    padding: 32px;
-    background: var(--color-white);
-    border-radius: 12px;
-  }
-
-  .faq-item h3 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: var(--color-black);
-  }
-
-  .faq-item p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--color-gray-600);
-  }
-
   /* Final CTA */
   .final-cta {
     padding: 80px 0;
@@ -531,18 +245,6 @@ import ZcalWidget from '@components/ZcalWidget.astro';
     }
 
     .options-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .expect-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .criteria-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .faq-grid {
       grid-template-columns: 1fr;
     }
 
