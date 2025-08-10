@@ -28,6 +28,7 @@
 		"astro-portabletext": "^0.11.1",
 		"groq": "^3.83.0",
 		"gsap": "^3.12.7",
+		"lottie-web": "^5.13.0",
 		"mixpanel-browser": "^2.67.0",
 		"sanity": "^3.75.1",
 		"swiper": "^11.1.4",

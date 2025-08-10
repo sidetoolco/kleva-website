@@ -1,0 +1,352 @@
+---
+import ZcalWidget from './ZcalWidget.astro';
+import LottieAnimation from './LottieAnimation.astro';
+---
+
+<section class="animated-hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-pulse"></span>
+          <span class="badge-text">LIVE: Processing 10,000+ calls daily</span>
+        </div>
+        
+        <h1 class="hero-title">
+          <span class="title-line">AI agents that</span>
+          <span class="title-highlight">collect better</span>
+          <span class="title-line">than humans</span>
+        </h1>
+        
+        <p class="hero-description">
+          Cut collection costs by 70%. Recover 25% more debt.<br />
+          Proven across 900,000+ minutes monthly in Latin America.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number" data-target="70">0</div>
+            <div class="stat-label">% Cost Reduction</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="25">0</div>
+            <div class="stat-label">% Higher Recovery</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="24">0</div>
+            <div class="stat-label">/7 Availability</div>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <ZcalWidget mode="popup" buttonText="Book a 15-minute intro call" />
+          <button class="demo-btn" id="playDemo">
+            <span class="play-icon">▶</span>
+            Watch AI in action
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <!-- AI/Robot animation for debt collection -->
+        <LottieAnimation 
+          id="hero-animation"
+          src="https://lottie.host/53be22ba-3bb1-4bc1-9e56-c0e7e0f0a39f/R0tJxXYVhd.json"
+          width="100%"
+          height="500px"
+          autoplay={true}
+          loop={true}
+        />
+      </div>
+    </div>
+
+    <!-- Animated metrics ticker -->
+    <div class="metrics-ticker">
+      <div class="ticker-content">
+        <span class="ticker-item">
+          <span class="ticker-label">Live Now:</span>
+          <span class="ticker-value">2,847 concurrent calls</span>
+        </span>
+        <span class="ticker-separator">•</span>
+        <span class="ticker-item">
+          <span class="ticker-label">Today:</span>
+          <span class="ticker-value">$487K collected</span>
+        </span>
+        <span class="ticker-separator">•</span>
+        <span class="ticker-item">
+          <span class="ticker-label">Success Rate:</span>
+          <span class="ticker-value">73%</span>
+        </span>
+        <span class="ticker-separator">•</span>
+        <span class="ticker-item">
+          <span class="ticker-label">Avg Handle Time:</span>
+          <span class="ticker-value">4.2 min</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .animated-hero {
+    padding: 120px 0 40px;
+    background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  /* Hero Badge */
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--color-black);
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .badge-pulse {
+    width: 8px;
+    height: 8px;
+    background: #00ff88;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
+    }
+  }
+
+  .badge-text {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-white);
+    letter-spacing: 0.02em;
+  }
+
+  /* Hero Title */
+  .hero-title {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: var(--color-black);
+  }
+
+  .title-line {
+    display: block;
+  }
+
+  .title-highlight {
+    display: block;
+    background: linear-gradient(90deg, #000 0%, #333 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Hero Description */
+  .hero-description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-gray-600);
+    margin-bottom: 32px;
+  }
+
+  /* Animated Stats */
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 40px;
+  }
+
+  .stat-item {
+    text-align: left;
+  }
+
+  .stat-number {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--color-black);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: var(--color-gray-500);
+    margin-top: 8px;
+  }
+
+  /* Hero Actions */
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+  }
+
+  .demo-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--color-white);
+    color: var(--color-black);
+    border: 1px solid var(--color-gray-300);
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .demo-btn:hover {
+    background: var(--color-gray-50);
+    border-color: var(--color-gray-400);
+    transform: translateY(-2px);
+  }
+
+  .play-icon {
+    font-size: 12px;
+  }
+
+  /* Hero Visual */
+  .hero-visual {
+    position: relative;
+  }
+
+  /* Metrics Ticker */
+  .metrics-ticker {
+    margin-top: 60px;
+    padding: 20px;
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .ticker-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    animation: slide 30s linear infinite;
+  }
+
+  .ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  .ticker-label {
+    font-size: 13px;
+    color: var(--color-gray-500);
+  }
+
+  .ticker-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-black);
+  }
+
+  .ticker-separator {
+    color: var(--color-gray-300);
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-visual {
+      order: -1;
+      margin-bottom: 32px;
+    }
+
+    .hero-title {
+      font-size: 36px;
+    }
+
+    .hero-stats {
+      justify-content: space-between;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .ticker-content {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+  }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+</style>
+
+<script>
+  // Animate numbers on scroll
+  const animateNumbers = () => {
+    const numbers = document.querySelectorAll('.stat-number');
+    
+    numbers.forEach((num) => {
+      const element = num as HTMLElement;
+      const target = parseInt(element.dataset.target || '0');
+      let current = 0;
+      const increment = target / 50;
+      
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        element.textContent = Math.floor(current).toString();
+      }, 30);
+    });
+  };
+
+  // Trigger animation when section is in view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateNumbers();
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+
+  const heroSection = document.querySelector('.animated-hero');
+  if (heroSection) {
+    observer.observe(heroSection);
+  }
+
+  // Demo button click handler
+  document.getElementById('playDemo')?.addEventListener('click', () => {
+    // You can add a modal with a video demo here
+    alert('Demo video coming soon!');
+  });
+</script>

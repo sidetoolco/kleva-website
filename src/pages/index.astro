@@ -1,19 +1,39 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import MinimalLayout from '@layouts/MinimalLayout.astro';
+// Animated components
+import AnimatedHero from '@components/AnimatedHero.astro';
+import AnimatedFeatures from '@components/AnimatedFeatures.astro';
+// Regular components
 import MinimalHero from '@components/MinimalHero.astro';
+import MinimalFeatures from '@components/MinimalFeatures.astro';
+// Shared components
 import TrustedBy from '@components/TrustedBy.astro';
 import ImpactMetrics from '@components/ImpactMetrics.astro';
 import KlevaEngine from '@components/KlevaEngine.astro';
 import KlevaCapabilities from '@components/KlevaCapabilities.astro';
 import ResultsROI from '@components/ResultsROI.astro';
 import FAQandSchedule from '@components/FAQandSchedule.astro';
+
+// Toggle this to switch between animated and regular components
+const useAnimatedComponents = true;
 ---
 
 <MinimalLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <main>
-    <MinimalHero />
-    <TrustedBy />
+    {useAnimatedComponents ? (
+      <>
+        <AnimatedHero />
+        <TrustedBy />
+        <AnimatedFeatures />
+      </>
+    ) : (
+      <>
+        <MinimalHero />
+        <TrustedBy />
+        <MinimalFeatures />
+      </>
+    )}
     <ImpactMetrics />
     <KlevaEngine />
     <KlevaCapabilities />

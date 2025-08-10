@@ -1,0 +1,338 @@
+---
+import LottieAnimation from './LottieAnimation.astro';
+---
+
+<section class="animated-features">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">CAPABILITIES</span>
+      <h2>AI that understands Latin America</h2>
+      <p>Built from the ground up for LATAM's unique collection challenges</p>
+    </div>
+
+    <div class="features-grid">
+      <!-- Feature 1: Voice AI -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- Phone/Call animation -->
+          <LottieAnimation 
+            id="voice-animation"
+            src="https://lottie.host/b76bc0c7-c5a4-4df8-85d6-27c3e23ad531/AcbtOxhGJ6.json"
+            width="80px"
+            height="80px"
+            autoplay={true}
+            loop={true}
+          />
+        </div>
+        <h3>Natural Voice AI</h3>
+        <p>Speaks Spanish and Portuguese like a native. Understands regional slang, accents, and cultural nuances.</p>
+        <div class="feature-stats">
+          <span class="stat">94% comprehension</span>
+          <span class="stat">45+ dialects</span>
+        </div>
+      </div>
+
+      <!-- Feature 2: Smart Negotiation -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- AI/Brain animation -->
+          <LottieAnimation 
+            id="brain-animation"
+            src="https://lottie.host/ee76a2e4-7e03-4316-9a73-8db1f6a43df5/5g3RSgejx0.json"
+            width="80px"
+            height="80px"
+            autoplay={true}
+            loop={true}
+          />
+        </div>
+        <h3>Smart Negotiation</h3>
+        <p>Adapts strategy in real-time based on debtor responses. Offers payment plans that maximize recovery.</p>
+        <div class="feature-stats">
+          <span class="stat">25% higher recovery</span>
+          <span class="stat">73% success rate</span>
+        </div>
+      </div>
+
+      <!-- Feature 3: Compliance -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- Shield/Security animation -->
+          <LottieAnimation 
+            id="shield-animation"
+            src="https://lottie.host/c59f0ece-1879-4f87-bd5c-3f1733c8563f/JKz1OGCJp4.json"
+            width="80px"
+            height="80px"
+            autoplay={true}
+            loop={true}
+          />
+        </div>
+        <h3>100% Compliant</h3>
+        <p>Automatically follows regulations in Mexico, Brazil, Colombia, Guatemala, Ecuador, and Peru.</p>
+        <div class="feature-stats">
+          <span class="stat">7 countries</span>
+          <span class="stat">0 violations</span>
+        </div>
+      </div>
+
+      <!-- Feature 4: Scale -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- Growth/Chart animation -->
+          <LottieAnimation 
+            id="scale-animation"
+            src="https://lottie.host/9e16e7ef-d8f2-4046-849c-4fd1961a9f87/bE4JTm8DyH.json"
+            width="80px"
+            height="80px"
+            autoplay={true}
+            loop={true}
+          />
+        </div>
+        <h3>Infinite Scale</h3>
+        <p>From 10 to 10,000 calls instantly. No hiring, no training, no infrastructure needed.</p>
+        <div class="feature-stats">
+          <span class="stat">∞ capacity</span>
+          <span class="stat">0 downtime</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Animated process flow -->
+    <div class="process-flow">
+      <h3>How Kleva AI works in real-time</h3>
+      <div class="flow-container">
+        <div class="flow-step active">
+          <span class="step-icon">📞</span>
+          <span class="step-label">Call initiated</span>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <span class="step-icon">🎯</span>
+          <span class="step-label">Analyze debtor</span>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <span class="step-icon">💬</span>
+          <span class="step-label">Negotiate</span>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <span class="step-icon">✅</span>
+          <span class="step-label">Secure payment</span>
+        </div>
+      </div>
+      <div class="flow-time">Average call time: <strong>4.2 minutes</strong></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .animated-features {
+    padding: 80px 0;
+    background: var(--color-white);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-500);
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--color-black);
+  }
+
+  .section-header p {
+    font-size: 16px;
+    color: var(--color-gray-600);
+  }
+
+  /* Features Grid */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-bottom: 80px;
+  }
+
+  .feature-card {
+    padding: 32px 24px;
+    background: var(--color-gray-50);
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--color-black), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  .feature-card:hover::before {
+    transform: translateX(100%);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-icon {
+    margin-bottom: 20px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .feature-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--color-black);
+  }
+
+  .feature-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-gray-600);
+    margin-bottom: 20px;
+  }
+
+  .feature-stats {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .stat {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-black);
+    padding: 4px 12px;
+    background: var(--color-white);
+    border-radius: 100px;
+  }
+
+  /* Process Flow */
+  .process-flow {
+    padding: 48px;
+    background: var(--color-black);
+    border-radius: 16px;
+    color: var(--color-white);
+  }
+
+  .process-flow h3 {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .flow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .flow-step.active {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+
+  .flow-step:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .step-icon {
+    font-size: 32px;
+  }
+
+  .step-label {
+    font-size: 13px;
+    color: var(--color-gray-300);
+  }
+
+  .flow-arrow {
+    font-size: 24px;
+    color: var(--color-gray-500);
+  }
+
+  .flow-time {
+    text-align: center;
+    font-size: 16px;
+    color: var(--color-gray-400);
+  }
+
+  .flow-time strong {
+    color: var(--color-white);
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .flow-container {
+      flex-direction: column;
+    }
+
+    .flow-arrow {
+      transform: rotate(90deg);
+    }
+  }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+</style>
+
+<script>
+  // Animate process flow steps
+  const steps = document.querySelectorAll('.flow-step');
+  let currentStep = 0;
+
+  setInterval(() => {
+    steps.forEach((step) => step.classList.remove('active'));
+    currentStep = (currentStep + 1) % steps.length;
+    steps[currentStep].classList.add('active');
+  }, 2000);
+</script>
