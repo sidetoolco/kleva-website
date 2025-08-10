@@ -109,7 +109,7 @@ import ZcalWidget from './ZcalWidget.astro';
         <span class="ticker-separator">•</span>
         <span class="ticker-item">
           <span class="ticker-label">Avg Handle Time:</span>
-          <span class="ticker-value">4.2 min</span>
+          <span class="ticker-value">1 min</span>
         </span>
       </div>
     </div>
@@ -367,11 +367,16 @@ import ZcalWidget from './ZcalWidget.astro';
   @media (max-width: 968px) {
     .hero-grid {
       grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .hero-content {
+      order: 1;
     }
 
     .hero-visual {
-      order: -1;
-      margin-bottom: 32px;
+      order: 2;
+      margin-top: 32px;
     }
 
     .hero-title {
