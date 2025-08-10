@@ -132,7 +132,7 @@ const softwareSchema = {
 };
 
 // Combine all schemas
-const schemas = [organizationSchema, serviceSchema, softwareSchema];
+const schemas: any[] = [organizationSchema, serviceSchema, softwareSchema];
 if (faqSchema) schemas.push(faqSchema);
 ---
 
