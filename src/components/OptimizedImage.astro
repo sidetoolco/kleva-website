@@ -1,0 +1,56 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  class?: string;
+  sizes?: string;
+}
+
+const { 
+  src, 
+  alt, 
+  width, 
+  height, 
+  loading = 'lazy', 
+  class: className,
+  sizes = '100vw'
+} = Astro.props;
+
+// Generate WebP and fallback sources
+const isExternal = src.startsWith('http');
+const imageSrc = isExternal ? src : src;
+
+// For future: Add image optimization service integration
+// const optimizedSrc = `/_image?src=${encodeURIComponent(src)}&w=${width}&f=webp`;
+---
+
+<picture>
+  <!-- WebP version for modern browsers -->
+  <source 
+    type="image/webp" 
+    srcset={imageSrc}
+    sizes={sizes}
+  />
+  
+  <!-- Fallback for older browsers -->
+  <img 
+    src={imageSrc}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    class={className}
+    decoding="async"
+  />
+</picture>
+
+<style>
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>

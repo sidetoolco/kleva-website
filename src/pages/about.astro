@@ -1,10 +1,20 @@
 ---
 import MinimalLayout from '@layouts/MinimalLayout.astro';
 import ZcalWidget from '@components/ZcalWidget.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'About' }
+];
 ---
 
-<MinimalLayout title="About Kleva - The AI Transforming LATAM Collections" description="How we're building the AI solution that's revolutionizing debt collection in Latin America">
+<MinimalLayout title="About Kleva | AI-Powered Debt Collection Team for Latin America" description="Meet the team building LATAM's leading AI debt collection platform. 900K+ minutes monthly, 73% success rate. From Miami, serving Mexico to Argentina.">
   <main class="about-page">
+    <div class="container">
+      <Breadcrumbs items={breadcrumbs} />
+    </div>
+    
     <!-- Hero Section -->
     <section class="hero">
       <div class="container">
