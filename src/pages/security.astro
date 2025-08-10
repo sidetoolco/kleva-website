@@ -1,0 +1,489 @@
+---
+import MinimalLayout from '@layouts/MinimalLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Security' }
+];
+
+const title = "Security - Kleva";
+const description = "Enterprise-grade security for AI debt collection. Learn how Kleva protects your data and maintains compliance.";
+---
+
+<MinimalLayout title={title} description={description}>
+  <article class="security-page">
+    <div class="container">
+      <Breadcrumbs items={breadcrumbs} />
+      
+      <header class="page-header">
+        <h1>Security at Kleva</h1>
+        <p class="page-subtitle">
+          Enterprise-grade security infrastructure protecting millions of sensitive 
+          financial records across Latin America.
+        </p>
+      </header>
+
+      <div class="security-content">
+        <section class="intro-section">
+          <div class="security-badges">
+            <div class="badge">
+              <svg viewBox="0 0 24 24" class="badge-icon">
+                <path d="M12 2L4 7v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V7l-8-5z" fill="currentColor"/>
+              </svg>
+              <span>SOC 2 Type II</span>
+            </div>
+            <div class="badge">
+              <svg viewBox="0 0 24 24" class="badge-icon">
+                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="currentColor"/>
+              </svg>
+              <span>ISO 27001</span>
+            </div>
+            <div class="badge">
+              <svg viewBox="0 0 24 24" class="badge-icon">
+                <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l6.59-6.59L20 9l-8 8z" fill="currentColor"/>
+              </svg>
+              <span>PCI DSS</span>
+            </div>
+            <div class="badge">
+              <svg viewBox="0 0 24 24" class="badge-icon">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+              </svg>
+              <span>LGPD Compliant</span>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Infrastructure Security</h2>
+          
+          <div class="security-feature">
+            <h3>🔒 End-to-End Encryption</h3>
+            <p>
+              All data transmitted between our systems and your infrastructure is encrypted 
+              using TLS 1.3. Data at rest is encrypted using AES-256-GCM encryption.
+            </p>
+          </div>
+
+          <div class="security-feature">
+            <h3>🌍 Global Infrastructure</h3>
+            <p>
+              Our infrastructure spans multiple AWS regions with automatic failover. 
+              Data is replicated across availability zones with 99.99% uptime SLA.
+            </p>
+          </div>
+
+          <div class="security-feature">
+            <h3>🛡️ DDoS Protection</h3>
+            <p>
+              AWS Shield Advanced provides always-on DDoS protection. CloudFlare adds an 
+              additional layer of protection against sophisticated attacks.
+            </p>
+          </div>
+
+          <div class="security-feature">
+            <h3>🔐 Zero Trust Architecture</h3>
+            <p>
+              Every request is authenticated and authorized. No implicit trust based on 
+              network location. Principle of least privilege for all access.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Data Protection</h2>
+          
+          <div class="data-grid">
+            <div class="data-card">
+              <h3>Data Isolation</h3>
+              <p>
+                Each client's data is logically isolated in separate database schemas. 
+                Multi-tenant architecture with complete data segregation.
+              </p>
+            </div>
+            <div class="data-card">
+              <h3>Access Controls</h3>
+              <p>
+                Role-based access control (RBAC) with fine-grained permissions. 
+                Multi-factor authentication (MFA) required for all users.
+              </p>
+            </div>
+            <div class="data-card">
+              <h3>Audit Logging</h3>
+              <p>
+                Comprehensive audit logs of all data access and modifications. 
+                Logs are immutable and retained for 7 years.
+              </p>
+            </div>
+            <div class="data-card">
+              <h3>Data Residency</h3>
+              <p>
+                Choose where your data is stored. Options for in-country data residency 
+                to meet local regulatory requirements.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Compliance & Certifications</h2>
+          
+          <div class="compliance-grid">
+            <div class="compliance-item">
+              <h3>SOC 2 Type II</h3>
+              <p>Annual audit of security, availability, processing integrity, confidentiality, and privacy.</p>
+            </div>
+            <div class="compliance-item">
+              <h3>ISO 27001</h3>
+              <p>Certified Information Security Management System (ISMS).</p>
+            </div>
+            <div class="compliance-item">
+              <h3>PCI DSS Level 1</h3>
+              <p>Highest level of payment card data security compliance.</p>
+            </div>
+            <div class="compliance-item">
+              <h3>LGPD (Brazil)</h3>
+              <p>Full compliance with Brazilian General Data Protection Law.</p>
+            </div>
+            <div class="compliance-item">
+              <h3>LPDP (Argentina)</h3>
+              <p>Compliant with Argentine Personal Data Protection Law.</p>
+            </div>
+            <div class="compliance-item">
+              <h3>LFPDPPP (Mexico)</h3>
+              <p>Mexican Federal Law on Protection of Personal Data compliance.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>AI Security</h2>
+          
+          <div class="ai-security">
+            <h3>Model Security</h3>
+            <ul>
+              <li>AI models are trained on anonymized data only</li>
+              <li>No personally identifiable information (PII) in training data</li>
+              <li>Regular model audits for bias and fairness</li>
+              <li>Adversarial testing to prevent model manipulation</li>
+            </ul>
+
+            <h3>Voice Security</h3>
+            <ul>
+              <li>Voice biometric authentication available</li>
+              <li>Real-time fraud detection during calls</li>
+              <li>Automatic PII redaction in transcripts</li>
+              <li>Encrypted storage of call recordings</li>
+            </ul>
+
+            <h3>Compliance Automation</h3>
+            <ul>
+              <li>Automated compliance checks before every call</li>
+              <li>Real-time monitoring for regulatory violations</li>
+              <li>Automatic call termination if compliance risk detected</li>
+              <li>Complete audit trail for regulatory reviews</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>Security Operations</h2>
+          
+          <div class="operations-grid">
+            <div class="operation-card">
+              <h3>24/7 Security Monitoring</h3>
+              <p>
+                Security Operations Center (SOC) monitors threats around the clock. 
+                Automated threat detection with human expert review.
+              </p>
+            </div>
+            <div class="operation-card">
+              <h3>Incident Response</h3>
+              <p>
+                Documented incident response plan with &lt;15 minute response time. 
+                Regular drills and simulations to ensure readiness.
+              </p>
+            </div>
+            <div class="operation-card">
+              <h3>Vulnerability Management</h3>
+              <p>
+                Weekly vulnerability scans and quarterly penetration testing. 
+                Responsible disclosure program with bug bounties.
+              </p>
+            </div>
+            <div class="operation-card">
+              <h3>Security Training</h3>
+              <p>
+                All employees receive security training quarterly. 
+                Engineering teams undergo secure coding training.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Business Continuity</h2>
+          
+          <div class="continuity-features">
+            <div class="feature">
+              <h3>Disaster Recovery</h3>
+              <p>
+                RPO (Recovery Point Objective): 1 hour<br>
+                RTO (Recovery Time Objective): 4 hours<br>
+                Automated failover to secondary regions<br>
+                Daily backup testing and validation
+              </p>
+            </div>
+            <div class="feature">
+              <h3>Data Backup</h3>
+              <p>
+                Continuous replication to multiple regions<br>
+                Point-in-time recovery for past 35 days<br>
+                Encrypted backups with separate key management<br>
+                Annual recovery drills with clients
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="security-contact">
+          <h2>Security Contact</h2>
+          <p>
+            For security inquiries, vulnerability reports, or compliance documentation:
+          </p>
+          <div class="contact-info">
+            <p><strong>Security Team:</strong> security@kleva.co</p>
+            <p><strong>24/7 Security Hotline:</strong> +1 704-816-9059</p>
+            <p><strong>Bug Bounty Program:</strong> security.kleva.co/bugbounty</p>
+          </div>
+        </section>
+
+        <section class="cta-section">
+          <h2>Ready to Learn More?</h2>
+          <p>
+            Get a detailed security assessment and compliance documentation for your organization.
+          </p>
+          <a href="/contact" class="cta-button">Request Security Documentation</a>
+        </section>
+      </div>
+    </div>
+  </article>
+</MinimalLayout>
+
+<style>
+  .security-page {
+    padding: 120px 0 80px;
+  }
+
+  .page-header {
+    max-width: 800px;
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: var(--color-black);
+  }
+
+  .page-subtitle {
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--color-gray-600);
+  }
+
+  .security-content {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .security-content section {
+    margin-bottom: 64px;
+  }
+
+  .security-content h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    color: var(--color-black);
+  }
+
+  .security-content h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--color-black);
+  }
+
+  .security-badges {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: var(--color-gray-50);
+    border-radius: 8px;
+    font-weight: 500;
+  }
+
+  .badge-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--color-black);
+  }
+
+  .security-feature {
+    padding: 24px;
+    background: var(--color-gray-50);
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+
+  .security-feature p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--color-gray-700);
+  }
+
+  .data-grid, .compliance-grid, .operations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .data-card, .compliance-item, .operation-card {
+    padding: 24px;
+    background: var(--color-gray-50);
+    border-radius: 12px;
+  }
+
+  .data-card h3, .compliance-item h3, .operation-card h3 {
+    margin-bottom: 12px;
+  }
+
+  .data-card p, .compliance-item p, .operation-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-gray-700);
+  }
+
+  .ai-security {
+    background: var(--color-gray-50);
+    padding: 32px;
+    border-radius: 12px;
+  }
+
+  .ai-security h3 {
+    margin-top: 24px;
+  }
+
+  .ai-security h3:first-child {
+    margin-top: 0;
+  }
+
+  .ai-security ul {
+    margin-bottom: 0;
+    padding-left: 24px;
+  }
+
+  .ai-security li {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 8px;
+    color: var(--color-gray-700);
+  }
+
+  .continuity-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .feature {
+    padding: 24px;
+    background: var(--color-gray-50);
+    border-radius: 12px;
+  }
+
+  .feature p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--color-gray-700);
+  }
+
+  .security-contact {
+    background: var(--color-gray-50);
+    padding: 32px;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .contact-info {
+    margin-top: 24px;
+  }
+
+  .contact-info p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--color-gray-700);
+    margin-bottom: 8px;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 48px;
+    background: var(--color-black);
+    border-radius: 16px;
+    color: var(--color-white);
+  }
+
+  .cta-section h2 {
+    color: var(--color-white);
+  }
+
+  .cta-section p {
+    font-size: 18px;
+    color: var(--color-gray-300);
+    margin-bottom: 32px;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 12px 32px;
+    background: var(--color-white);
+    color: var(--color-black);
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 32px;
+    }
+
+    .security-badges {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .data-grid, .compliance-grid, .operations-grid, .continuity-features {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

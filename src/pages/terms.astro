@@ -1,0 +1,299 @@
+---
+import MinimalLayout from '@layouts/MinimalLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Terms of Service' }
+];
+
+const title = "Terms of Service - Kleva";
+const description = "Terms of Service for Kleva AI debt collection platform";
+---
+
+<MinimalLayout title={title} description={description}>
+  <article class="legal-page">
+    <div class="container">
+      <Breadcrumbs items={breadcrumbs} />
+      
+      <header class="page-header">
+        <h1>Terms of Service</h1>
+        <p class="last-updated">Last updated: November 2024</p>
+      </header>
+
+      <div class="legal-content">
+        <section>
+          <h2>1. Agreement to Terms</h2>
+          <p>
+            By accessing or using Kleva's AI-powered debt collection platform ("Service"), 
+            you agree to be bound by these Terms of Service ("Terms"). If you disagree with 
+            any part of these terms, you may not access the Service.
+          </p>
+        </section>
+
+        <section>
+          <h2>2. Description of Service</h2>
+          <p>
+            Kleva provides an AI-powered debt collection platform designed for financial 
+            institutions in Latin America. Our Service includes:
+          </p>
+          <ul>
+            <li>AI voice agents for automated debt collection calls</li>
+            <li>Multi-channel communication (voice, SMS, WhatsApp)</li>
+            <li>Real-time analytics and reporting</li>
+            <li>Compliance management tools</li>
+            <li>Integration with existing banking systems</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>3. Use License</h2>
+          <p>
+            Subject to your compliance with these Terms, Kleva grants you a limited, 
+            non-exclusive, non-transferable, revocable license to use the Service for 
+            your internal business purposes.
+          </p>
+          <p>You may not:</p>
+          <ul>
+            <li>Modify, reverse engineer, or decompile the Service</li>
+            <li>Use the Service for any unlawful purpose</li>
+            <li>Resell or redistribute the Service without permission</li>
+            <li>Use the Service to harass or abuse debtors</li>
+            <li>Violate any applicable debt collection regulations</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4. Account Registration</h2>
+          <p>
+            To access the Service, you must register for an account. You agree to:
+          </p>
+          <ul>
+            <li>Provide accurate and complete registration information</li>
+            <li>Maintain the security of your account credentials</li>
+            <li>Notify us immediately of any unauthorized access</li>
+            <li>Accept responsibility for all activities under your account</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>5. Data Processing</h2>
+          <p>
+            By using the Service, you acknowledge that:
+          </p>
+          <ul>
+            <li>Kleva will process debtor data on your behalf</li>
+            <li>You maintain ownership of all customer data</li>
+            <li>You have obtained necessary consents for data processing</li>
+            <li>Kleva will handle data in accordance with our Privacy Policy</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>6. Compliance</h2>
+          <p>
+            You represent and warrant that your use of the Service will comply with all 
+            applicable laws and regulations, including but not limited to:
+          </p>
+          <ul>
+            <li>Local debt collection laws in your jurisdiction</li>
+            <li>Consumer protection regulations</li>
+            <li>Data privacy laws (LGPD, etc.)</li>
+            <li>Telecommunications regulations</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>7. Payment Terms</h2>
+          <p>
+            Payment terms are specified in your Service Agreement. You agree to:
+          </p>
+          <ul>
+            <li>Pay all fees according to the agreed schedule</li>
+            <li>Provide valid payment information</li>
+            <li>Pay any applicable taxes</li>
+          </ul>
+          <p>
+            Kleva reserves the right to suspend Service for non-payment after 30 days notice.
+          </p>
+        </section>
+
+        <section>
+          <h2>8. Service Level Agreement</h2>
+          <p>
+            Kleva commits to:
+          </p>
+          <ul>
+            <li>99.9% platform uptime (excluding scheduled maintenance)</li>
+            <li>24/7 technical support for critical issues</li>
+            <li>Regular security updates and patches</li>
+            <li>Data backup and recovery procedures</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>9. Intellectual Property</h2>
+          <p>
+            The Service, including all software, algorithms, and documentation, is the 
+            exclusive property of Kleva. These Terms do not transfer any intellectual 
+            property rights to you.
+          </p>
+        </section>
+
+        <section>
+          <h2>10. Confidentiality</h2>
+          <p>
+            Both parties agree to maintain the confidentiality of any proprietary information 
+            shared during the course of the Service relationship.
+          </p>
+        </section>
+
+        <section>
+          <h2>11. Limitation of Liability</h2>
+          <p>
+            TO THE MAXIMUM EXTENT PERMITTED BY LAW, KLEVA SHALL NOT BE LIABLE FOR ANY 
+            INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING 
+            LOST PROFITS, LOST DATA, OR BUSINESS INTERRUPTION.
+          </p>
+          <p>
+            Kleva's total liability shall not exceed the amount paid by you for the Service 
+            in the twelve months preceding the claim.
+          </p>
+        </section>
+
+        <section>
+          <h2>12. Indemnification</h2>
+          <p>
+            You agree to indemnify and hold Kleva harmless from any claims arising from:
+          </p>
+          <ul>
+            <li>Your violation of these Terms</li>
+            <li>Your violation of applicable laws or regulations</li>
+            <li>Your use of the Service</li>
+            <li>Any dispute between you and debtors</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>13. Termination</h2>
+          <p>
+            Either party may terminate these Terms with 60 days written notice. Upon 
+            termination:
+          </p>
+          <ul>
+            <li>Your access to the Service will be disabled</li>
+            <li>You must pay any outstanding fees</li>
+            <li>You may request export of your data within 30 days</li>
+            <li>Confidentiality obligations survive termination</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>14. Modifications</h2>
+          <p>
+            Kleva reserves the right to modify these Terms at any time. We will provide 
+            30 days notice for material changes. Continued use of the Service constitutes 
+            acceptance of modified Terms.
+          </p>
+        </section>
+
+        <section>
+          <h2>15. Governing Law</h2>
+          <p>
+            These Terms shall be governed by the laws of Delaware, United States, without 
+            regard to conflict of law principles. Any disputes shall be resolved through 
+            binding arbitration.
+          </p>
+        </section>
+
+        <section>
+          <h2>16. Contact Information</h2>
+          <p>
+            For questions about these Terms, please contact us at:
+          </p>
+          <address>
+            Kleva, Inc.<br>
+            Email: legal@kleva.co<br>
+            Phone: +1 704-816-9059
+          </address>
+        </section>
+      </div>
+    </div>
+  </article>
+</MinimalLayout>
+
+<style>
+  .legal-page {
+    padding: 120px 0 80px;
+  }
+
+  .page-header {
+    max-width: 800px;
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--color-black);
+  }
+
+  .last-updated {
+    font-size: 16px;
+    color: var(--color-gray-600);
+  }
+
+  .legal-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .legal-content section {
+    margin-bottom: 48px;
+  }
+
+  .legal-content h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--color-black);
+  }
+
+  .legal-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 16px;
+    color: var(--color-gray-700);
+  }
+
+  .legal-content ul {
+    margin-bottom: 16px;
+    padding-left: 24px;
+  }
+
+  .legal-content li {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 8px;
+    color: var(--color-gray-700);
+  }
+
+  address {
+    font-style: normal;
+    line-height: 1.8;
+    color: var(--color-gray-700);
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 32px;
+    }
+
+    .legal-content h2 {
+      font-size: 20px;
+    }
+  }
+</style>
