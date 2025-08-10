@@ -6,7 +6,7 @@ import LottieAnimation from './LottieAnimation.astro';
   <div class="container">
     <div class="section-header">
       <span class="section-label">CAPABILITIES</span>
-      <h2>AI that understands Latin America</h2>
+      <h2>Why Kleva outperforms human agents</h2>
       <p>Built from the ground up for LATAM's unique collection challenges</p>
     </div>
 
@@ -48,8 +48,8 @@ import LottieAnimation from './LottieAnimation.astro';
         <h3>Smart Negotiation</h3>
         <p>Adapts strategy in real-time based on debtor responses. Offers payment plans that maximize recovery.</p>
         <div class="feature-stats">
-          <span class="stat">25% higher recovery</span>
           <span class="stat">73% success rate</span>
+          <span class="stat">4.2 min avg call</span>
         </div>
       </div>
 
@@ -101,22 +101,22 @@ import LottieAnimation from './LottieAnimation.astro';
       <h3>How Kleva AI works in real-time</h3>
       <div class="flow-container">
         <div class="flow-step active">
-          <span class="step-icon">📞</span>
+          <span class="step-number">1</span>
           <span class="step-label">Call initiated</span>
         </div>
         <div class="flow-arrow">→</div>
         <div class="flow-step">
-          <span class="step-icon">🎯</span>
+          <span class="step-number">2</span>
           <span class="step-label">Analyze debtor</span>
         </div>
         <div class="flow-arrow">→</div>
         <div class="flow-step">
-          <span class="step-icon">💬</span>
+          <span class="step-number">3</span>
           <span class="step-label">Negotiate</span>
         </div>
         <div class="flow-arrow">→</div>
         <div class="flow-step">
-          <span class="step-icon">✅</span>
+          <span class="step-number">4</span>
           <span class="step-label">Secure payment</span>
         </div>
       </div>
@@ -278,8 +278,21 @@ import LottieAnimation from './LottieAnimation.astro';
     background: rgba(255, 255, 255, 0.2);
   }
 
-  .step-icon {
-    font-size: 32px;
+  .step-number {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .flow-step.active .step-number {
+    background: var(--color-white);
+    color: var(--color-black);
   }
 
   .step-label {

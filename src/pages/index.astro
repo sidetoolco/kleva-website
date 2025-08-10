@@ -4,13 +4,15 @@ import MinimalLayout from '@layouts/MinimalLayout.astro';
 // Animated components
 import AnimatedHero from '@components/AnimatedHero.astro';
 import AnimatedFeatures from '@components/AnimatedFeatures.astro';
+import AnimatedImpactMetrics from '@components/AnimatedImpactMetrics.astro';
+import AnimatedKlevaEngine from '@components/AnimatedKlevaEngine.astro';
 // Regular components
 import MinimalHero from '@components/MinimalHero.astro';
 import MinimalFeatures from '@components/MinimalFeatures.astro';
-// Shared components
-import TrustedBy from '@components/TrustedBy.astro';
 import ImpactMetrics from '@components/ImpactMetrics.astro';
 import KlevaEngine from '@components/KlevaEngine.astro';
+// Shared components
+import TrustedBy from '@components/TrustedBy.astro';
 import KlevaCapabilities from '@components/KlevaCapabilities.astro';
 import ResultsROI from '@components/ResultsROI.astro';
 import FAQandSchedule from '@components/FAQandSchedule.astro';
@@ -26,18 +28,23 @@ const useAnimatedComponents = true;
         <AnimatedHero />
         <TrustedBy />
         <AnimatedFeatures />
+        <AnimatedKlevaEngine />
+        <AnimatedImpactMetrics />
+        <ResultsROI />
+        <KlevaCapabilities />
+        <FAQandSchedule />
       </>
     ) : (
       <>
         <MinimalHero />
         <TrustedBy />
         <MinimalFeatures />
+        <KlevaEngine />
+        <ImpactMetrics />
+        <ResultsROI />
+        <KlevaCapabilities />
+        <FAQandSchedule />
       </>
     )}
-    <ImpactMetrics />
-    <KlevaEngine />
-    <KlevaCapabilities />
-    <ResultsROI />
-    <FAQandSchedule />
   </main>
 </MinimalLayout>

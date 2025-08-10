@@ -1,0 +1,315 @@
+---
+import ZcalWidget from './ZcalWidget.astro';
+import LottieAnimation from './LottieAnimation.astro';
+---
+
+<section class="animated-impact-metrics">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Market Opportunity</span>
+      <h2>The $67 billion collection crisis in LATAM</h2>
+      <p>Why leading banks are switching from human agents to AI</p>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card primary">
+        <div class="metric-icon">
+          <LottieAnimation 
+            id="money-animation"
+            src="https://lottie.host/e82a2c65-14cc-46ee-b5c5-c49b0e8d1e19/2ZOHjMwFMz.json"
+            width="60px"
+            height="60px"
+            autoplay={true}
+            loop={true}
+          />
+        </div>
+        <div class="metric-number" data-target="67">0</div>
+        <div class="metric-suffix">B</div>
+        <div class="metric-description">Total addressable market in LATAM consumer debt</div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-icon">
+          <LottieAnimation 
+            id="clock-animation"
+            src="https://lottie.host/fdf455bb-4869-455f-83db-38fa0b44cd01/FhD8qPRxPi.json"
+            width="50px"
+            height="50px"
+            autoplay={true}
+            loop={true}
+          />
+        </div>
+        <div class="metric-number" data-target="900">0</div>
+        <div class="metric-suffix">K+</div>
+        <div class="metric-description">Minutes processed monthly</div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-icon">
+          <LottieAnimation 
+            id="satisfaction-animation"
+            src="https://lottie.host/4dc1c5e8-2eea-4531-a282-91c10ff7e55c/Mz5DiqCFSl.json"
+            width="50px"
+            height="50px"
+            autoplay={true}
+            loop={true}
+          />
+        </div>
+        <div class="metric-number" data-target="94">0</div>
+        <div class="metric-suffix">%</div>
+        <div class="metric-description">Customer satisfaction rate</div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-icon">
+          <LottieAnimation 
+            id="globe-animation"
+            src="https://lottie.host/fb54a219-3620-4149-ac23-cd6e1375e73b/M70vxZAGJF.json"
+            width="50px"
+            height="50px"
+            autoplay={true}
+            loop={true}
+          />
+        </div>
+        <div class="metric-number" data-target="7">0</div>
+        <div class="metric-suffix"></div>
+        <div class="metric-description">Countries with full compliance</div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-icon">
+          <LottieAnimation 
+            id="rocket-animation"
+            src="https://lottie.host/d1c14ba9-8ce6-42d3-b038-2d4975c0b3ac/mZlRTHVGHR.json"
+            width="50px"
+            height="50px"
+            autoplay={true}
+            loop={true}
+          />
+        </div>
+        <div class="metric-number">2-3</div>
+        <div class="metric-suffix"></div>
+        <div class="metric-description">Weeks to full deployment</div>
+      </div>
+      
+      <div class="metric-card">
+        <div class="metric-icon">
+          <LottieAnimation 
+            id="infinite-animation"
+            src="https://lottie.host/3f4e43d9-40ae-4a76-afc6-381c96850091/H9pOdCBmhy.json"
+            width="50px"
+            height="50px"
+            autoplay={true}
+            loop={true}
+          />
+        </div>
+        <div class="metric-number">24/7</div>
+        <div class="metric-suffix"></div>
+        <div class="metric-description">Continuous operation without breaks</div>
+      </div>
+    </div>
+
+    <div class="impact-statement">
+      <h3>The human cost of collections</h3>
+      <p>
+        80% annual agent turnover. Burnout in weeks. Inconsistent results.<br/>
+        Kleva's AI agents work 24/7 with infinite patience, perfect compliance, and zero turnover.<br/>
+        Your team focuses on strategy while AI handles the conversations.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .animated-impact-metrics {
+    padding: 80px 0;
+    background: var(--color-white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-500);
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--color-black);
+  }
+
+  .section-header p {
+    font-size: 16px;
+    color: var(--color-gray-600);
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+
+  .metric-card {
+    padding: 32px;
+    background: var(--color-gray-50);
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-black), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  .metric-card:hover::before {
+    transform: translateX(100%);
+  }
+
+  .metric-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .metric-card.primary {
+    grid-column: span 1;
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .metric-icon {
+    margin-bottom: 16px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .metric-number {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+
+  .metric-suffix {
+    font-size: 32px;
+    font-weight: 700;
+    display: inline-block;
+    margin-left: 2px;
+  }
+
+  .primary .metric-number,
+  .primary .metric-suffix {
+    color: var(--color-white);
+  }
+
+  .metric-description {
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--color-gray-600);
+  }
+
+  .primary .metric-description {
+    color: var(--color-gray-300);
+  }
+
+  .impact-statement {
+    text-align: center;
+    padding: 48px;
+    background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+    border-radius: 16px;
+  }
+
+  .impact-statement h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--color-black);
+  }
+
+  .impact-statement p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-gray-600);
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .metrics-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .metric-card.primary {
+      grid-column: span 1;
+    }
+  }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+</style>
+
+<script>
+  // Animate numbers on scroll
+  const animateMetrics = () => {
+    const numbers = document.querySelectorAll('.animated-impact-metrics .metric-number[data-target]');
+    
+    numbers.forEach((num) => {
+      const element = num as HTMLElement;
+      const target = parseInt(element.dataset.target || '0');
+      let current = 0;
+      const increment = target / 50;
+      
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        element.textContent = Math.floor(current).toString();
+      }, 30);
+    });
+  };
+
+  // Trigger animation when section is in view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateMetrics();
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+
+  const metricsSection = document.querySelector('.animated-impact-metrics');
+  if (metricsSection) {
+    observer.observe(metricsSection);
+  }
+</script>

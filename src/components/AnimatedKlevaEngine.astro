@@ -1,0 +1,467 @@
+---
+import ZcalWidget from './ZcalWidget.astro';
+import LottieAnimation from './LottieAnimation.astro';
+---
+
+<section class="animated-kleva-engine">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">HOW IT WORKS</span>
+      <h2>5-phase AI process that never stops learning</h2>
+      <p>Kleva's AI engine processes thousands of conversations simultaneously, improving with every interaction</p>
+    </div>
+
+    <div class="engine-visualization">
+      <!-- Central AI Brain -->
+      <div class="ai-brain">
+        <LottieAnimation 
+          id="brain-central"
+          src="https://lottie.host/adf4ae62-4e09-483f-8b94-0b1c087dc0d9/VfUfQkJDBh.json"
+          width="200px"
+          height="200px"
+          autoplay={true}
+          loop={true}
+        />
+        <div class="brain-label">Kleva AI Core</div>
+      </div>
+
+      <!-- Process Flow -->
+      <div class="process-phases">
+        <div class="phase" data-phase="1">
+          <div class="phase-icon">
+            <LottieAnimation 
+              id="analyze-icon"
+              src="https://lottie.host/d1ddc209-3c72-4bb4-be6e-f5f4db5e1ed1/bK0vJtNsBg.json"
+              width="60px"
+              height="60px"
+              autoplay={true}
+              loop={true}
+            />
+          </div>
+          <div class="phase-content">
+            <div class="phase-number">01</div>
+            <h3>Analyze</h3>
+            <p>Instantly assess debtor profile, payment history, and behavioral patterns</p>
+            <div class="phase-metric">
+              <span class="metric-value">0.3s</span>
+              <span class="metric-label">Response time</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase" data-phase="2">
+          <div class="phase-icon">
+            <LottieAnimation 
+              id="personalize-icon"
+              src="https://lottie.host/89b6ac77-5cd8-45fc-86a8-0ec7098fb9ba/FsDCRKJcVL.json"
+              width="60px"
+              height="60px"
+              autoplay={true}
+              loop={true}
+            />
+          </div>
+          <div class="phase-content">
+            <div class="phase-number">02</div>
+            <h3>Personalize</h3>
+            <p>Tailor approach based on cultural context and individual circumstances</p>
+            <div class="phase-metric">
+              <span class="metric-value">45+</span>
+              <span class="metric-label">Dialects supported</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase" data-phase="3">
+          <div class="phase-icon">
+            <LottieAnimation 
+              id="negotiate-icon"
+              src="https://lottie.host/5f52b319-4eb0-46e8-8f13-cf0b1c1c8e3f/GCIKcBFP9r.json"
+              width="60px"
+              height="60px"
+              autoplay={true}
+              loop={true}
+            />
+          </div>
+          <div class="phase-content">
+            <div class="phase-number">03</div>
+            <h3>Negotiate</h3>
+            <p>Dynamically adjust payment plans to maximize recovery probability</p>
+            <div class="phase-metric">
+              <span class="metric-value">73%</span>
+              <span class="metric-label">Success rate</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase" data-phase="4">
+          <div class="phase-icon">
+            <LottieAnimation 
+              id="compliance-icon"
+              src="https://lottie.host/c59f0ece-1879-4f87-bd5c-3f1733c8563f/JKz1OGCJp4.json"
+              width="60px"
+              height="60px"
+              autoplay={true}
+              loop={true}
+            />
+          </div>
+          <div class="phase-content">
+            <div class="phase-number">04</div>
+            <h3>Ensure</h3>
+            <p>Maintain 100% compliance with local regulations automatically</p>
+            <div class="phase-metric">
+              <span class="metric-value">0</span>
+              <span class="metric-label">Violations</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase" data-phase="5">
+          <div class="phase-icon">
+            <LottieAnimation 
+              id="optimize-icon"
+              src="https://lottie.host/644efda0-7058-4bbf-a3f0-a087ac95b4c2/n5x9BlzJW1.json"
+              width="60px"
+              height="60px"
+              autoplay={true}
+              loop={true}
+            />
+          </div>
+          <div class="phase-content">
+            <div class="phase-number">05</div>
+            <h3>Optimize</h3>
+            <p>Learn from every interaction to improve future performance</p>
+            <div class="phase-metric">
+              <span class="metric-value">94%</span>
+              <span class="metric-label">First-call resolution</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connection Lines Animation -->
+      <svg class="connection-lines" viewBox="0 0 1200 600">
+        <defs>
+          <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:var(--color-gray-300);stop-opacity:0" />
+            <stop offset="50%" style="stop-color:var(--color-black);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:var(--color-gray-300);stop-opacity:0" />
+          </linearGradient>
+        </defs>
+        <path class="connection-path" d="M 100,300 Q 300,200 600,300 T 1100,300" />
+      </svg>
+    </div>
+
+    <div class="engine-stats">
+      <div class="stat-card">
+        <div class="stat-value">10,000+</div>
+        <div class="stat-label">Concurrent calls</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">4.2 min</div>
+        <div class="stat-label">Avg handle time</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">94%</div>
+        <div class="stat-label">First-call resolution</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">$0.12</div>
+        <div class="stat-label">Cost per minute</div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h3>See Kleva AI in action</h3>
+      <p>Watch how our AI handles real collection calls in Spanish and Portuguese</p>
+      <ZcalWidget mode="popup" buttonText="Book a 15-minute intro call" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .animated-kleva-engine {
+    padding: 80px 0;
+    background: linear-gradient(180deg, var(--color-white) 0%, var(--color-gray-50) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-500);
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--color-black);
+  }
+
+  .section-header p {
+    font-size: 16px;
+    color: var(--color-gray-600);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Engine Visualization */
+  .engine-visualization {
+    position: relative;
+    margin-bottom: 64px;
+    min-height: 500px;
+  }
+
+  .ai-brain {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+  }
+
+  .brain-label {
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-black);
+  }
+
+  /* Process Phases */
+  .process-phases {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    position: relative;
+    z-index: 5;
+  }
+
+  .phase {
+    background: var(--color-white);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .phase:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .phase.active {
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .phase-icon {
+    margin-bottom: 16px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .phase-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-gray-300);
+    margin-bottom: 8px;
+  }
+
+  .phase.active .phase-number {
+    color: var(--color-gray-500);
+  }
+
+  .phase h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--color-black);
+  }
+
+  .phase.active h3 {
+    color: var(--color-white);
+  }
+
+  .phase p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-gray-600);
+    margin-bottom: 16px;
+  }
+
+  .phase.active p {
+    color: var(--color-gray-300);
+  }
+
+  .phase-metric {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--color-gray-200);
+  }
+
+  .phase.active .phase-metric {
+    border-color: var(--color-gray-700);
+  }
+
+  .metric-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-black);
+  }
+
+  .phase.active .metric-value {
+    color: var(--color-white);
+  }
+
+  .metric-label {
+    font-size: 12px;
+    color: var(--color-gray-500);
+  }
+
+  .phase.active .metric-label {
+    color: var(--color-gray-400);
+  }
+
+  /* Connection Lines */
+  .connection-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .connection-path {
+    fill: none;
+    stroke: url(#line-gradient);
+    stroke-width: 2;
+    stroke-dasharray: 10, 5;
+    animation: dash 20s linear infinite;
+  }
+
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -1000;
+    }
+  }
+
+  /* Engine Stats */
+  .engine-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: 24px;
+    background: var(--color-white);
+    border-radius: 8px;
+    border: 1px solid var(--color-gray-200);
+  }
+
+  .stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: var(--color-gray-600);
+  }
+
+  /* CTA Section */
+  .cta-section {
+    text-align: center;
+    padding: 48px;
+    background: var(--color-black);
+    border-radius: 16px;
+    color: var(--color-white);
+  }
+
+  .cta-section h3 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .cta-section p {
+    font-size: 16px;
+    color: var(--color-gray-300);
+    margin-bottom: 32px;
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .process-phases {
+      grid-template-columns: 1fr;
+    }
+
+    .engine-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ai-brain {
+      position: relative;
+      transform: none;
+      top: auto;
+      left: auto;
+      margin-bottom: 48px;
+    }
+
+    .engine-visualization {
+      min-height: auto;
+    }
+  }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+</style>
+
+<script>
+  // Animate phases on scroll
+  const phases = document.querySelectorAll('.phase');
+  let currentPhase = 0;
+
+  setInterval(() => {
+    phases.forEach((phase) => phase.classList.remove('active'));
+    currentPhase = (currentPhase + 1) % phases.length;
+    phases[currentPhase].classList.add('active');
+  }, 3000);
+
+  // Click handler for phases
+  phases.forEach((phase, index) => {
+    phase.addEventListener('click', () => {
+      phases.forEach((p) => p.classList.remove('active'));
+      phase.classList.add('active');
+      currentPhase = index;
+    });
+  });
+</script>
