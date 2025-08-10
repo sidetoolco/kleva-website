@@ -1,0 +1,447 @@
+---
+import ZcalWidget from './ZcalWidget.astro';
+---
+
+<section class="kleva-engine">
+  <div class="container">
+    <div class="engine-header">
+      <span class="badge-new">NEW</span>
+      <h1>AI engineered for collections, compliance, and results</h1>
+      <p class="engine-subtitle">
+        The patented Kleva Collections Engine™ allows Kleva to understand every debtor, 
+        optimize every conversation, and maximize recovery rates. That's why Kleva is the only 
+        AI Agent that achieves 25% higher recovery with 70% lower costs, making it the 
+        highest-performing AI collection agent in Latin America.
+      </p>
+      <div class="engine-cta">
+        <ZcalWidget mode="popup" buttonText="Start free pilot" />
+        <a href="#demo" class="btn-secondary">View demo</a>
+      </div>
+    </div>
+
+    <div class="process-visual">
+      <div class="process-steps">
+        <div class="step-card active" data-step="1">
+          <span class="step-number">01</span>
+          <span class="step-label">analyze debtor</span>
+        </div>
+        <div class="step-card" data-step="2">
+          <span class="step-number">02</span>
+          <span class="step-label">personalize approach</span>
+        </div>
+        <div class="step-card" data-step="3">
+          <span class="step-number">03</span>
+          <span class="step-label">negotiate payment</span>
+        </div>
+        <div class="step-card" data-step="4">
+          <span class="step-number">04</span>
+          <span class="step-label">ensure compliance</span>
+        </div>
+        <div class="step-card" data-step="5">
+          <span class="step-number">05</span>
+          <span class="step-label">optimize & learn</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="phases-section">
+      <!-- Phase 1 -->
+      <div class="phase-block">
+        <div class="phase-header">
+          <span class="phase-label">Phase 1</span>
+          <h2>Analyze debtor profile</h2>
+          <p>
+            Before making any call, Kleva analyzes payment history, communication preferences, 
+            and financial situation to determine the optimal collection strategy for each debtor.
+          </p>
+        </div>
+        <div class="phase-specs">
+          <h3>Specification</h3>
+          <ul>
+            <li><span>1.1</span> Review payment history and patterns</li>
+            <li><span>1.2</span> Assess financial capacity and willingness</li>
+            <li><span>1.3</span> Check regulatory requirements by jurisdiction</li>
+            <li><span>1.4</span> Select optimal communication channel</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="phase-block">
+        <div class="phase-header">
+          <span class="phase-label">Phase 2</span>
+          <h2>Personalize approach</h2>
+          <p>
+            Kleva crafts each conversation based on cultural context, regional dialect, 
+            and individual circumstances—speaking naturally in Spanish, Portuguese, or English.
+          </p>
+        </div>
+        <div class="phase-specs">
+          <h3>Specification</h3>
+          <ul>
+            <li><span>2.1</span> Adapt tone to debtor's emotional state</li>
+            <li><span>2.2</span> Use regional language and expressions</li>
+            <li><span>2.3</span> Reference specific account details</li>
+            <li><span>2.4</span> Build rapport through empathy</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="phase-block">
+        <div class="phase-header">
+          <span class="phase-label">Phase 3</span>
+          <h2>Negotiate payment</h2>
+          <p>
+            Using proven negotiation strategies, Kleva works with debtors to find 
+            realistic payment solutions while maximizing recovery for your institution.
+          </p>
+        </div>
+        <div class="phase-specs">
+          <h3>Specification</h3>
+          <ul>
+            <li><span>3.1</span> Present payment options dynamically</li>
+            <li><span>3.2</span> Calculate affordable installment plans</li>
+            <li><span>3.3</span> Process promises to pay</li>
+            <li><span>3.4</span> Schedule follow-up actions</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="phase-block">
+        <div class="phase-header">
+          <span class="phase-label">always-on</span>
+          <h2>Compliance & optimization</h2>
+          <p>
+            Every interaction is recorded, compliant, and analyzed to continuously 
+            improve collection strategies and maintain regulatory standards.
+          </p>
+        </div>
+        <div class="phase-specs">
+          <h3>Specification</h3>
+          <ul>
+            <li><span>4.1</span> Real-time compliance monitoring</li>
+            <li><span>4.2</span> Call recording and transcription</li>
+            <li><span>4.3</span> Performance analytics and reporting</li>
+            <li><span>4.4</span> Strategy refinement through ML</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Phase 5 -->
+      <div class="phase-block">
+        <div class="phase-header">
+          <span class="phase-label">safeguarding</span>
+          <h2>Security & trust</h2>
+          <p>
+            Bank-grade security protects sensitive financial data while ensuring 
+            ethical collection practices that preserve customer relationships.
+          </p>
+        </div>
+        <div class="phase-specs">
+          <h3>Specification</h3>
+          <ul>
+            <li><span>5.1</span> End-to-end encryption</li>
+            <li><span>5.2</span> PCI DSS compliance</li>
+            <li><span>5.3</span> Regional data sovereignty</li>
+            <li><span>5.4</span> Ethical collection guidelines</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="engine-footer">
+      <h2>Get the highest-performing collection agent</h2>
+      <div class="footer-cta">
+        <ZcalWidget mode="popup" buttonText="Start free pilot" />
+        <a href="#demo" class="btn-secondary">Get a demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .kleva-engine {
+    padding: 120px 0 80px;
+    background: linear-gradient(180deg, var(--color-white) 0%, var(--color-gray-50) 100%);
+  }
+
+  .engine-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .badge-new {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--color-black);
+    color: var(--color-white);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+
+  .engine-header h1 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: var(--color-black);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .engine-subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-gray-600);
+    max-width: 720px;
+    margin: 0 auto 32px;
+  }
+
+  .engine-cta {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .btn-secondary {
+    padding: 12px 24px;
+    background: var(--color-white);
+    color: var(--color-black);
+    border: 1px solid var(--color-gray-300);
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-gray-50);
+    border-color: var(--color-gray-400);
+  }
+
+  /* Process Visual */
+  .process-visual {
+    margin: 80px 0;
+    padding: 48px;
+    background: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--color-gray-200);
+  }
+
+  .process-steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 60px;
+    right: 60px;
+    height: 2px;
+    background: var(--color-gray-200);
+    z-index: 0;
+  }
+
+  .step-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .step-card:hover .step-number {
+    background: var(--color-gray-800);
+    transform: scale(1.1);
+  }
+
+  .step-card.active .step-number {
+    background: var(--color-black);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .step-number {
+    width: 60px;
+    height: 60px;
+    background: var(--color-gray-300);
+    color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+  }
+
+  .step-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-600);
+    text-align: center;
+    max-width: 100px;
+  }
+
+  /* Phases */
+  .phases-section {
+    margin: 80px 0;
+  }
+
+  .phase-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-bottom: 80px;
+    padding: 48px;
+    background: var(--color-white);
+    border-radius: 16px;
+    border: 1px solid var(--color-gray-200);
+  }
+
+  .phase-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-500);
+    margin-bottom: 16px;
+  }
+
+  .phase-header h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--color-black);
+  }
+
+  .phase-header p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-gray-600);
+  }
+
+  .phase-specs h3 {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-500);
+    margin-bottom: 24px;
+  }
+
+  .phase-specs ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .phase-specs li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-gray-100);
+    font-size: 15px;
+    color: var(--color-gray-700);
+  }
+
+  .phase-specs li:last-child {
+    border-bottom: none;
+  }
+
+  .phase-specs li span {
+    font-weight: 600;
+    color: var(--color-gray-400);
+    min-width: 28px;
+  }
+
+  /* Footer */
+  .engine-footer {
+    text-align: center;
+    padding: 64px;
+    background: var(--color-black);
+    border-radius: 16px;
+    margin-top: 80px;
+  }
+
+  .engine-footer h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: 32px;
+  }
+
+  .footer-cta {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .footer-cta .btn-secondary {
+    background: transparent;
+    color: var(--color-white);
+    border-color: var(--color-gray-700);
+  }
+
+  .footer-cta .btn-secondary:hover {
+    background: var(--color-gray-900);
+    border-color: var(--color-gray-600);
+  }
+
+  @media (max-width: 968px) {
+    .engine-header h1 {
+      font-size: 32px;
+    }
+
+    .process-steps {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .process-steps::before {
+      top: 60px;
+      bottom: 60px;
+      left: 30px;
+      right: auto;
+      width: 2px;
+      height: auto;
+    }
+
+    .phase-block {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .engine-cta,
+    .footer-cta {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
+
+<script>
+  // Interactive step highlighting
+  document.addEventListener('DOMContentLoaded', () => {
+    const steps = document.querySelectorAll('.step-card');
+    
+    steps.forEach(step => {
+      step.addEventListener('click', () => {
+        steps.forEach(s => s.classList.remove('active'));
+        step.classList.add('active');
+      });
+    });
+  });
+</script>
