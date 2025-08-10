@@ -531,7 +531,7 @@
     
     navBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        const capability = btn.dataset.capability;
+        const capability = (btn as HTMLElement).dataset.capability;
         
         // Update nav buttons
         navBtns.forEach(b => b.classList.remove('active'));
